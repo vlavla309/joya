@@ -1,0 +1,41 @@
+package com.joya.common.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/** Î™®Îç∏ Î∞? Î∑? ?å®?ä§ ???û•?ùÑ ?úÑ?ïú Wrapper ?Å¥?ûò?ä§ */
+public class ModelAndView{
+	private String view;
+	private Map<String, Object> model;
+	
+	public ModelAndView() {
+		model = new HashMap<String, Object>();
+	}
+	
+	/*Î∑? ?éò?ù¥Ïß??ùò Í≤ΩÎ°ú */
+	public ModelAndView(String view, Map<String, Object> model) {
+		this.view = view;
+		this.model = model;
+	}
+	public String getView() {
+		return view;
+	}
+	public void setView(String view) {
+		this.view = view;
+	}
+	public Map<String, Object> getModel() {
+		return model;
+	}
+	public void setModel(Map<String, Object> model) {
+		this.model = model;
+	}
+	
+	public void addObject(String key, Object value){
+		model.put(key, value);
+	}
+	
+	@Override
+	public String toString() {
+		return "ModelAndView [view=" + view + ", model=" + model + "]";
+	}
+}
