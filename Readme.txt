@@ -7,3 +7,4 @@ hangul
 mimimimi
 
 Joya
+jihyun finally
