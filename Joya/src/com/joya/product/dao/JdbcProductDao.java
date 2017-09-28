@@ -3,6 +3,7 @@ package com.joya.product.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +45,45 @@ public class JdbcProductDao implements ProductDao{
 
 	}
 
+
+	@Override
+	public Product read(int productId) {
+		Product product = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT product_id, " + 
+				"       product_name, " + 
+				"       category_name, " + 
+				"       product_desc, " + 
+				"       maker, " + 
+				"       amount, " + 
+				"       price, " + 
+				"       hitcount, " + 
+				"       TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:SS') regdate " + 
+				"		FROM   products " + 
+				"		WHERE  product_id = ?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, productId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				product = createProduct(rs);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new MallException("JdbcUserDao.read(String id) �떎�뻾 以� �삁�쇅諛쒖깮", e);
+		}finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return product;
+	}
+	
 	@Override
 	public List<Product> listByParams(Params params, String categoryName, String orderType) {
 
@@ -129,17 +169,7 @@ public class JdbcProductDao implements ProductDao{
 			list = new ArrayList<Product>();
 
 			while(rs.next()){
-				int productId=rs.getInt("product_id");
-				String productName=rs.getString("product_name");
-				String categoryNameGet=rs.getString("category_name");
-				String maker=rs.getString("maker");
-				String productDesc=rs.getString("product_desc");
-				String regdate=rs.getString("regdate");
-				int price=rs.getInt("price");
-				int amount=rs.getInt("amount");
-				int hitcount=rs.getInt("hitcount");
-				Product product = new Product(productId, productName, categoryNameGet, maker, productDesc, regdate, price, amount, hitcount);
-				list.add(product);
+				list.add(createProduct(rs));
 			}
 
 		} catch (Exception e) {
@@ -241,6 +271,22 @@ public class JdbcProductDao implements ProductDao{
 		return null;
 	}
 
+	
+	private Product createProduct(ResultSet rs) throws SQLException {
+		int productId=rs.getInt("product_id");
+		String categoryName = rs.getString("category_name");		
+		String productName = rs.getString("product_name");		
+		String maker = rs.getString("maker");		
+		String productDesc = rs.getString("product_desc");		
+		String regdate = rs.getString("regdate");		
+		int price = rs.getInt("price");
+		int amount =rs.getInt("amount");
+		int hitcount =rs.getInt("hitcount");
+		
+		return new Product(productId, productName, categoryName, maker, productDesc, regdate, price, amount, hitcount);
+	}
+	
+	
 	public void search(String id) {
 		// TODO Auto-generated method stub
 
@@ -258,8 +304,9 @@ public class JdbcProductDao implements ProductDao{
 			System.out.println(product);
 		}
 		System.out.println(productDao.pageCount(params, "반지", "highPrice"));
+		
+		System.out.println(productDao.read(1));
 	}
-
 }
 
 

@@ -11,6 +11,7 @@ public interface ProductDao {
 
 	public void update(Product product);
 	
+	public Product read(int productId);
 	
 	public List<Product> listByParams(Params params, String categoryName, String orderType);
 	
