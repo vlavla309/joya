@@ -1,12 +1,11 @@
-package com.joya.product.dao;
+package com.joya.product.service;
 
 import java.util.List;
+
 import com.joya.common.web.Params;
 import com.joya.product.domain.Product;
 
-public interface ProductDao {
-	//create, update, list
-	
+public interface ProductService {
 	public void create(Product product);
 
 	public void update(Product product);
