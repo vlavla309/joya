@@ -1,0 +1,12 @@
+    .modal-dialog {
+      width: 300px;
+      margin-top: 200px;
+    }
+    .modal-body {
+      padding-bottom: 18px;
+    }
+    #myModalLabel {
+      color: gray;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
