@@ -27,18 +27,117 @@ public class JdbcUserDao implements UserDao{
 		this.dataSource = dataSource;
 	}
 
+//	회원 가입
 	@Override
 	public void create(User user) {
-		// TODO Auto-generated method stub
-
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO users " + 
+					   "            (email, " + 
+					   "             phone, " + 
+					   "             NAME, " + 
+					   "             passwd, " + 
+					   "             address, " + 
+					   "             point, " + 
+					   "             birthdate, " + 
+					   "             type) " + 
+					   "VALUES      (?, " + 
+					   "             ?, " + 
+					   "             ?, " + 
+					   "             ?, " + 
+					   "             ?, " + 
+					   "             ?, " + 
+					   "             ?, " + 
+					   "             ?) ";
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, user.getEmail());
+			pstmt.setString(2, user.getPhone());
+			pstmt.setString(3, user.getName());
+			pstmt.setString(4, user.getPasswd());
+			pstmt.setString(5, user.getAddress());
+			pstmt.setInt(6, user.getPoint());
+			pstmt.setString(7, user.getBirthdate());
+			pstmt.setInt(8, user.getType());
+			pstmt.executeQuery();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+				throw new MallException("JdbcUserDao.create(User user)실행 중 예외 발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch(SQLException e) {}
+		}
 	}
 
+//	회원 탈퇴
 	@Override
 	public void delete(String email) {
-		// TODO Auto-generated method stub
-
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String query = "DELETE FROM users " + 
+					   "WHERE  email = ? ";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, email);
+			pstmt.executeQuery();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new MallException("JdbcBoardDao.delete(String email) 에러 발생", e);
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+	}
+	
+//	회원 정보 수정
+	@Override
+	public void modify(User user) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String query = "UPDATE users " + 
+					   "SET    name = ?, " + 
+					   "       passwd = ?, " + 
+					   "       phone = ?, " + 
+					   "       address = ? " + 
+					   "WHERE  email = ? ";
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, user.getName());
+			pstmt.setString(2, user.getPasswd());
+			pstmt.setString(3, user.getPhone());
+			pstmt.setString(4, user.getAddress());
+			pstmt.setString(5, user.getEmail());
+			pstmt.executeQuery();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+				throw new MallException("JdbcUserDao.modify(User user)실행 중 예외 발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch(SQLException e) {}
+		}
 	}
 
+//	회원 상세 정보 조회
 	@Override
 	public User read(String email) {
 		User user = null;
@@ -65,7 +164,7 @@ public class JdbcUserDao implements UserDao{
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcUserDao.read(String id) �떎�뻾 以� �삁�쇅諛쒖깮", e);
+			throw new MallException("JdbcUserDao.read(String id) 에러 발생", e);
 		}finally {
 			try {
 				if(rs != null)    rs.close();
@@ -76,6 +175,7 @@ public class JdbcUserDao implements UserDao{
 		return user;
 	}
 
+//	전체 회원 조회
 	@Override
 	public List<User> listByParams(Params params) {
 		String type = params.getType();
@@ -119,7 +219,6 @@ public class JdbcUserDao implements UserDao{
 		}
 		sb.append(" WHERE  request_page = ?");
 
-		//System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -153,6 +252,7 @@ public class JdbcUserDao implements UserDao{
 		return list;
 	}
 
+//	페이징
 	@Override
 	public int pageCount(Params params) {
 		String type = params.getType();
@@ -209,6 +309,7 @@ public class JdbcUserDao implements UserDao{
 		return count;
 	}
 
+//	유저 객체 생성
 	private User createUser(ResultSet rs) throws SQLException {
 		String email = rs.getString("email");		
 		String name = rs.getString("name");		
@@ -227,8 +328,19 @@ public class JdbcUserDao implements UserDao{
 	public static void main(String[] args) {
 		JdbcUserDao userDao=(JdbcUserDao) DaoFactory.getInstance().getDao(JdbcUserDao.class);
 
-
-		Params params = new Params();
+		/*userDao.create(new User("dsf@gmail.com", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
+		System.out.println("가입 성공");*/
+		
+		/*System.out.println("삭제 준비");
+		userDao.delete("dsf@gmail.com");
+		System.out.println("삭제 성공");
+		*/
+		
+		/*System.out.println("수정 준비");
+		userDao.modify(new User("joa@joa52", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
+		System.out.println("수정 성공");*/
+		
+	/*	Params params = new Params();
 		List<User> users=userDao.listByParams(params);
 		for (User user : users) {
 			System.out.println(user);
@@ -236,6 +348,6 @@ public class JdbcUserDao implements UserDao{
 		System.out.println(userDao.pageCount(params));
 		
 		System.out.println(userDao.read("joa@joa"));
-		System.out.println(userDao.read("admin@joa"));
+		System.out.println(userDao.read("admin@joa"));*/
 	}
 }

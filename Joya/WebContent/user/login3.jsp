@@ -154,7 +154,7 @@
                               <div class="orderselect_mimi1">
                               <div class="minimi">
                               <h1>ORDER <br>for Guest</h1> 
-                              <image src="assets/images/guest_cart.png" align="center" class="mi_user">
+                              <image src="../assets/images/guest_cart.png" align="center" class="mi_user">
                               </div>
                               </div>
                               </a>
@@ -162,7 +162,7 @@
                               <div class="orderselect_mimi2">
                               <div class="minimi">
                               <h1>SIGN UP</h1>
-                              <image src="assets/images/join.png" align="center" class="mi_wish"></image>
+                              <image src="../assets/images/join.png" align="center" class="mi_wish"></image>
                               </div>
                               </div>
                               </a>
