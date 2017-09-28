@@ -8,9 +8,9 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.joya.article.domain.Article;
+import com.joya.common.db.DaoFactory;
 import com.joya.common.web.Params;
 
-import kr.or.kosta.blog.common.exception.EMSException;
 
 public class JdbcArticleDao implements ArticleDao {
 	
@@ -154,6 +154,17 @@ public class JdbcArticleDao implements ArticleDao {
 		return 0;
 	}
 
-
+	/**
+	public static void main(String[] args) {
+		ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
+		Article article = new Article();
+		article.setEmail("joa@joa");
+		article.setTitle("질문");
+		article.setContents("목걸이 재입고 언제되나요?");
+		article.setPasswd("1111");
+		dao.create(article);
+		System.out.println(article.toString());
+	}
+	*/
 
 }

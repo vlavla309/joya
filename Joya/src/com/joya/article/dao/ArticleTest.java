@@ -1,8 +1,5 @@
 package com.joya.article.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +28,9 @@ public class ArticleTest {
 		article.setTitle("질문합니다");
 		article.setContents("목걸이 언제 들어오나요?");
 		article.setPasswd("1111");
+		dao.create(article);
+		System.out.println("회원가입됨");
+		System.out.println(article.toString());
 	}
 	
 	
