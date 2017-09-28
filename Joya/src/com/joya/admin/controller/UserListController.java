@@ -21,7 +21,7 @@ import com.joya.user.service.UserServiceImpl;
  *
  */
 public class UserListController implements Controller {
-	private UserService userService=new UserServiceImpl(); 
+	private UserService userService=new UserServiceImpl();
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
