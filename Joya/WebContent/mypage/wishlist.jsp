@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
@@ -64,70 +66,21 @@
 								</div>
 								<div id="col-main" class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">
 									<div class="blog-content-wrapper">
-                  
+ 
                                         <!-- 아이템 시작 -->
-										<div class="blogs col-sm-8 col-md-8 clearfix">
-											<article class="blogs-item">
-											<div class="row">
-												<div class="article-content col-md-24">
-													<div class="article-content-inner">
-                          
-                                                        <!-- 아이템 제목 부분 시작 -->
-														<!-- <div >
-															<div class="date" >
-																<p>
-																	<small>June</small><span>30</span>
-																</p>
-															</div>
-															<h4><a href="article.html">아이템1</a></h4>
-														</div> -->
-                                                        <!-- 아이템 제목 부분 시작 -->
-                                                        
-                                                        <!-- 아이템 사진 부분 시작 -->
-														<div class="blogs-image">
-															<ul class="list-inline">
-																<li><a href="article.html">
-																<div style="text-align: left;">
-																	<img src="../assets/images/img_blog2.png" alt="">
-																</div>
-																</a></li>
-															</ul>
-														</div>
-                                                        <!-- 아이템 사진 부분 시작 -->
-                                                        
-                                                        <!-- 아이템 이름 부분 시작 -->
-														<ul class="post list-inline">
-                                                            <li class="select"><input class="ji-selectC" type="checkbox"></li>
-															<li class="author">여기는 상품 이름 정보</li>
-															<li class="post-action">
-															<a href><img src="../assets/images/wishlist.png" alt="" ></a>
-															</li>
-														</ul>
-                                                        <!-- 아이템 이름 부분 시작 -->
-													</div>
-												</div>
-											</div>
-											</article>
-										</div>
-                                        <!-- 아이템 종료 -->
+                                        <c:choose>
+                                        <c:when test="${empty list}">
+                                        <span style="text-align: center"><h3>위시리스트가 존재하지 않습니다</h3></span>
+                                        </c:when>
                                         
 										<div class="blogs col-sm-8 col-md-8 clearfix">
 											<article class="blogs-item">
 											<div class="row">
 												<div class="article-content col-md-24">
-													<div class="article-content-inner">
-                          
-                                                        <!-- 아이템 제목 부분 시작 -->
-														<!-- <div >
-															<div class="date" >
-																<p>
-																	<small>June</small><span>30</span>
-																</p>
-															</div>
-															<h4><a href="article.html">아이템1</a></h4>
-														</div> -->
-                                                        <!-- 아이템 제목 부분 시작 -->
-                                                        
+                                        <c:otherwise>
+                                        <c:forEach items="${list}" var="wishlist" varStatus="status">
+													<div class="article-content-inner" >
+     
                                                         <!-- 아이템 사진 부분 시작 -->
 														<div class="blogs-image">
 															<ul class="list-inline">
@@ -142,75 +95,67 @@
                                                         
                                                         <!-- 아이템 이름 부분 시작 -->
 														<ul class="post list-inline">
-                                                            <li class="select"><input class="ji-selectC" type="checkbox"></li>
-															<li class="author">여기는 상품 이름 정보</li>
+                                                            <li class="select"><input class="ji-selectC" type="checkbox" value="${wishlist.productId }"></li>
+															<li class="author">${wishlist.productName }</li>
 															<li class="post-action">
 															<a href><img src="../assets/images/wishlist.png" alt="" ></a>
 															</li>
 														</ul>
-                                                        <!-- 아이템 이름 부분 시작 -->
+                                                        <!-- 아이템 이름 부분 종료 -->
 													</div>
-												</div>
-											</div>
-											</article>
-										</div>
-                    
-										<div class="blogs col-sm-8 col-md-8 clearfix">
-											<article class="blogs-item">
-											<div class="row">
-												<div class="article-content col-md-24">
-													<div class="article-content-inner">
                           
-                                                        <!-- 아이템 제목 부분 시작 -->
-														<!-- <div >
-															<div class="date" >
-																<p>
-																	<small>June</small><span>30</span>
-																</p>
-															</div>
-															<h4><a href="article.html">아이템1</a></h4>
-														</div> -->
-                                                        <!-- 아이템 제목 부분 시작 -->
-                                                        
-                                                        <!-- 아이템 사진 부분 시작 -->
-														<div class="blogs-image">
-															<ul class="list-inline">
-																<li><a href="article.html">
-																<div style="text-align: left;">
-																	<img src="../assets/images/img_blog2.png" alt="">
-																</div>
-																</a></li>
-															</ul>
-														</div>
-                                                        <!-- 아이템 사진 부분 시작 -->
-                                                        
-                                                        <!-- 아이템 이름 부분 시작 -->
-														<ul class="post list-inline">
-                                                            <li class="select"><input class="ji-selectC" type="checkbox"></li>
-                                                            <li class="order-check"></li>
-															<li class="author">여기는 상품 이름 정보</li>
-															<li class="post-action">
-															<a href><img src="../assets/images/wishlist.png" alt="" ></a>
-															</li>
-														</ul>
-                                                        <!-- 아이템 이름 부분 시작 -->
-													</div>
+                                                   </c:forEach>
+                                  
+                                                </c:otherwise>
+                                              </c:choose>
 												</div>
 											</div>
 											</article>
 										</div>
-                    
+                                        <!-- 아이템 종료 -->
 									</div>
 								</div>
 								
                                 <!-- 페이지 리스트 영역 시작 -->
-                                <div>
-                                </div>
+                                <div class="row">
+										    <div class="col-md-6 float-right">
+											    	<nav aria-label="Page navigation">
+													  <ul class="pagination">
+                         	                            <c:if test="${pageBuilder.showPrevious }">
+													       <li>
+													         <a href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}" aria-label="Previous">
+													         <span aria-hidden="true">&laquo;</span>
+													         </a>
+													       </li>
+                                                        </c:if>
+                                                        
+                                                        <c:forEach var="i" begin="${pageBuilder.currentStartPage}" end="${pageBuilder.currentEndPage }">
+													    <c:choose>
+                                                          <c:when test="${i == params.page }">
+                                                            <li class="active"><a>${i }</a></li>
+                                                          </c:when>
+                                                          <c:otherwise>
+                                                            <li><a href="${pageBuilder.getQueryString(i)}">${i }</a></li>
+                                                          </c:otherwise>
+                                                        </c:choose>
+                                                      </c:forEach>
+                                                      
+                                                      <c:if test="${pageBuilder.showNext }">
+													    <li>
+													      <a href="${pageBuilder.getQueryString(pageBuilder.nextStartPage)}" aria-label="Next">
+													        <span aria-hidden="true">&raquo;</span>
+													      </a>
+													    </li>
+                                                      </c:if>
+													  </ul>
+													</nav>
+											  </div>
+										</div>
                                 <!-- 페이지 리스트 영역 시작 -->
                                 
                                 <!-- 주문하기 버튼 영역 시작 -->
                                <div>
-                                <button id="acc-close" class="btn" type="button">Order</button>
+                                <button id="ji-" class="btn" type="button">Order</button>
                                </div>
                                <!-- 주문하기 버튼 영역 시작 -->
 								<!-- End of layout -->

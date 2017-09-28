@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.PageBuilder;
 import com.joya.common.web.Params;
+import com.joya.image.domain.Images;
 import com.joya.image.service.ImageService;
 import com.joya.image.service.ImageServiceImpl;
 import com.joya.wishlist.domain.Wishlist;
@@ -25,8 +27,8 @@ import com.joya.wishlist.service.WishlistServiceImpl;
  */
 public class WishlistController implements Controller {
 	
-	private ImageService imgService = new ImageServiceImpl();
 	private WishlistService wishlistService = new WishlistServiceImpl();
+	private ImageService imgservice = new ImageServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, UnsupportedEncodingException {
@@ -45,20 +47,22 @@ public class WishlistController implements Controller {
 		params.setPageSize(pageSize);
 		params.setPageNum(pageNum);
 
+		List<Images> imglist = imgservice.listAll();
+		
 		// 페이징
-		List<Wishlist> list = wishlistService.listByParams(params);
-		int rowCount = userService.pageCount(params);
+		List<Wishlist> list = wishlistService.listByParams(userEmail, params);
+		int totalCount = wishlistService.listAll(userEmail).size();
 		
 		// 페이징 계산 유틸리티 생성 및 실행
-		PageBuilder pageBuilder = new PageBuilder(params, rowCount);
+		PageBuilder pageBuilder = new PageBuilder(params, totalCount);
 	    pageBuilder.build();
 		
 		mav.addObject("list", list);
+		mav.addObject("images", imglist);
 		mav.addObject("params", params);
 		mav.addObject("pageBuilder", pageBuilder);
 		
-//		mav.setView("/user/list_v1.jsp");
-		mav.setView("/user/list_v2.jsp");
+		mav.setView("/mypage/wishlist.jsp");
 		
 		return mav;
 	}

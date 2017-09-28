@@ -10,6 +10,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.joya.common.web.Params;
+import com.joya.image.domain.Images;
 import com.joya.wishlist.domain.Wishlist;
 
 public class JdbcWishlistDao implements WishlistDao {
@@ -138,6 +139,44 @@ public class JdbcWishlistDao implements WishlistDao {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	/** 상품아이디에 대한 상품 사진 반환 */
+	public Images productPic(int productId) {
+		Images image = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT image_name, \r\n" + 
+								"       product_id, \r\n" + 
+								"       path, \r\n" + 
+								"       order_no \r\n" + 
+								"FROM   images \r\n" + 
+								"WHERE  product_id = ? ";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, productId);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Wishlist>();
+			while(rs.next()) {
+				Wishlist wishlist = createWishlist(rs);
+				list.add(wishlist);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("JdbcWishlistDao.listAll() 실행 중 예외발생");
+		}finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return list;
 	}
 
 	@Override
