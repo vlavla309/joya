@@ -13,25 +13,25 @@
   <meta name="description" content="" />
   <title>Login Page</title>
   
-    <link href="assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
+    <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
   
-	<link href="assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 	
-	<link href="assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.animate.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	<%@ include file="assets/stylesheets/mimimicms.css" %>
-	<script src="assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
+	<link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 	
+	<link href="../assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.animate.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
+	<%@ include file="../assets/stylesheets/mimimicms.css" %>
+	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
   
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" class="templateCustomersRegister notouch">
   
 	<!-- Header -->
-  <jsp:include page="include/header.jsp"/>
+  <jsp:include page="../include/header.jsp"/>
     <!-- Header End -->
   
 	<div id="content-wrapper-parent">
@@ -215,6 +215,6 @@
 	</div>
 
 	 <!-- Footer -->
-    <jsp:include page="include/footer.jsp"/>
+    <jsp:include page="../include/footer.jsp"/>
     <!-- Footer End -->
 </body>
