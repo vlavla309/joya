@@ -18,6 +18,10 @@ public class User {
 		this(email, phone, name, passwd, address, 0, null, 0, null);
 	}
 	
+	public User(String email, String phone, String name, String passwd, String address, String birthdate) {
+		this(email, phone, name, passwd, address, 0, birthdate, 0, null);
+	}
+	
 	public User(String email, String phone, String name, String passwd, String address, int point, String birthdate,
 			int type, String regdate) {
 		this.email = email;

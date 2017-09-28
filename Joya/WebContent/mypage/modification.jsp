@@ -23,7 +23,7 @@
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/acc_close.css" rel="stylesheet" type="text/css" media="all">
-    <%@ include file="../assets/stylesheets/cms_div.css" %>
+	<link href="../assets/stylesheets/cms_div.css" rel="stylesheet" type="text/css" media="all">
 	
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
