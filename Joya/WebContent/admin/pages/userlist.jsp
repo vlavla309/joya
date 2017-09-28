@@ -407,39 +407,10 @@
                                         <td>${user.email }</td>
                                         <td>${user.name }</td>
                                         <td class="center">${user.phone }</td>
-                                        <c:if test="${user.type}=0">
-                                        <td class="center">일반회원</td>
-                                        </c:if>
+                                        <td class="center">${user.type}</td>
                                     </tr>
                                     </c:forEach>
-                                    <tr class="odd gradeX">
-                                        <td>2</td>
-                                        <td>cms</td>
-                                        <td>최명승</td>
-                                        <td class="center">123-123-1234</td>
-                                        <td class="center">VIP</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>3</td>
-                                        <td>kms</td>
-                                        <td>김미소</td>
-                                        <td class="center">123-123-1234</td>
-                                        <td class="center">일반회원</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>4</td>
-                                        <td>jjh</td>
-                                        <td>정지현</td>
-                                        <td class="center">123-123-1234</td>
-                                        <td class="center">일반회원</td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>5</td>
-                                        <td>hsj</td>
-                                        <td>한수진</td>
-                                        <td class="center">123-123-1234</td>
-                                        <td class="center">일반회원</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
