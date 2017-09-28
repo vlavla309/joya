@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.joya.article.domain.Article;
 import com.joya.common.db.DaoFactory;
 
 public class ArticleTest {
@@ -24,14 +25,13 @@ public class ArticleTest {
 	}
 
 	@Test
-	public void sumTest() {
-		assertEquals(20, service.sum(10, 10)); 
-		System.out.println(service.sum(10, 10));
+	public void createTest() {
+		Article article = new Article();
+		article.setEmail("joa@joa");
+		article.setTitle("질문합니다");
+		article.setContents("목걸이 언제 들어오나요?");
+		article.setPasswd("1111");
 	}
 	
-	@Test
-	public void getMessageTest() {
-		assertNotNull(service.getMessage());
-	}
-
+	
 }
