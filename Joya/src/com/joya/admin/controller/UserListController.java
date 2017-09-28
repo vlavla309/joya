@@ -53,7 +53,6 @@ public class UserListController implements Controller {
 		mav.addObject("pageBuilder", pageBuilder);
 		mav.addObject("params", params);;
 	
-		System.out.println("/admin/pages/userlist.jsp");
 		mav.setView("/admin/pages/userlist.jsp");
 
 		return mav;
