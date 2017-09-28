@@ -193,9 +193,53 @@ public class JdbcWishlistDao implements WishlistDao {
 	
 	@Override
 	/** {선택페이지, 한페이지당 출력 행수}에 대한 위시리스트 반환 */
-	public List<Wishlist> listByParams(Params params) {
+	public List<Wishlist> listByParams(String userEmail, Params params) {
+		List<Wishlist> list = null;		
 		
-		return null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT email, \r\n" + 
+								"       product_id, \r\n" + 
+								"       To_char(regdate, 'YYYY.MM.DD HH24:MI') regdate \r\n" + 
+								"FROM   (SELECT Ceil(rownum / ?) request_page, \r\n" + 
+								"               email, \r\n" + 
+								"               product_id, \r\n" + 
+								"               regdate \r\n" + 
+								"        FROM   (SELECT email, \r\n" + 
+								"                       product_id, \r\n" + 
+								"                       regdate \r\n" + 
+								"                FROM   wishlist \r\n" + 
+								"                WHERE  email = ? \r\n" + 
+								"                ORDER  BY regdate DESC)) \r\n" + 
+								"WHERE  request_page = ? ";
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, params.getPageSize());
+			pstmt.setString(2, userEmail);
+			pstmt.setInt(3, params.getPage());
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Wishlist>();
+			
+			while(rs.next()){
+				Wishlist wishlist = createWishlist(rs);
+				list.add(wishlist);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("JdbcArticleDao.listByPage(params) 실행 중 예외발생");
+		} finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return list;
 	}
 	
 	/** 단일 위시리스트 생성 */

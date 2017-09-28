@@ -20,6 +20,6 @@ public interface WishlistDao {
 	public List<Wishlist> listByPage(String email, int pageNum);
 	
 	/** {선택페이지, 한페이지당 출력 행수}에 대한 위시리스트 반환 */
-	public List<Wishlist> listByParams(Params params);
+	public List<Wishlist> listByParams(String userEmail, Params params);
 	
 }
