@@ -2,5 +2,6 @@
 <beans>
 	<bean name="/hello" class="com.joya.test.HelloController" />
 	<bean name="/admin/userlist" class="com.joya.admin.controller.UserListController" />
+	<bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
 	<bean name="/product/list" class="com.joya.product.controller.ProductlistController" />
 </beans>

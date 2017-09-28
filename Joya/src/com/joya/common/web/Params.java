@@ -1,17 +1,17 @@
 package com.joya.common.web;
 
 /**
- * ?뿬?윭媛쒖쓽 ?슂泥??뙆?씪硫뷀꽣?뱾?쓣 ???옣(?룷?옣)?븯湲? ?쐞?븳 JavaBean
- * {?궗?슜?옄 ?꽑?깮?럹?씠吏?, 寃??깋?쑀?삎, 寃??깋媛?, ?븳?럹?씠吏??뿉 異쒕젰?븯?뒗 ?뻾?쓽 媛??닔, ?럹?씠吏? 踰덊샇 ?벑}
+ * 여러개의 요청파라메터들을 저장(포장)하기 위한 JavaBean
+ * {사용자 선택페이지, 검색유형, 검색값, 한페이지에 출력하는 행의 갯수, 페이지 번호 등}
  *  
- * @author 源?湲곗젙
+ * @author 김기정
  */
 public class Params {
-	private int page;         /** ?궗?슜?옄 ?슂泥? ?럹?씠吏? */
-	private String type;      /** ?궗?슜?옄 寃??깋 ?쑀?삎 */
-	private String value;     /** ?궗?슜?옄 寃??깋 媛? */
-	private int pageSize;     /** ?럹?씠吏??뿉 異쒕젰?븷 ?뻾?쓽 ?닔 */
-	private int pageNum;      /** ?럹?씠吏??뿉 異쒕젰?븷 ?럹?씠吏? ?닔 */
+	private int page;         /** 사용자 요청 페이지 */
+	private String type;      /** 사용자 검색 유형 */
+	private String value;     /** 사용자 검색 값 */
+	private int pageSize;     /** 페이지에 출력할 행의 수 */
+	private int pageNum;      /** 페이지에 출력할 페이지 수 */
 	
 	public Params() {
 		this(1, null, null, 10, 10);
