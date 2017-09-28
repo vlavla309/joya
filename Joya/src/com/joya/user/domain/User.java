@@ -12,12 +12,14 @@ public class User {
 	private int type;
 	private String regdate;
 	
-	public User() {
+	public User() {}
+	
+	public User(String email, String phone, String name, String passwd, String address) {
+		this(email, phone, name, passwd, address, 0, null, 0, null);
 	}
-
+	
 	public User(String email, String phone, String name, String passwd, String address, int point, String birthdate,
 			int type, String regdate) {
-		super();
 		this.email = email;
 		this.phone = phone;
 		this.name = name;

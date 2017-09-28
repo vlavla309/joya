@@ -1,0 +1,34 @@
+#thanks-text{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h2, h3 {
+	text-align: center;
+}
+
+#buttons{
+	text-align: center;
+}
+
+#userInfo{
+	color: rgb(110, 110, 110);
+	border:3px solid white;
+	border-radius: 5px;
+	padding:10px;
+	text-align: center;
+	width:60%;
+	height:100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.kind{
+	margin-right: 10px;
+}
+
+#gohomeB{
+	margin-right: 30px;
+}

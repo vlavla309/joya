@@ -91,7 +91,7 @@ blockquote p{font-weight:600;margin-bottom:15px;line-height:1.3em;font-size:13em
 .status_authorized{text-transform:capitalize;color:#1e1e1e;}
 .status_unauthorized{text-transform:capitalize;color:#000000;}
 .status_fulfilled{text-transform:capitalize;color:#666666;}
-.status_unfulfilled{text-transform:capitalize;color:#ff2222;}
+.status_unfulfilled{text-transform:capitalize;color:black;}
 .dropdown-menu.focus{display:block !important;}
 .wrap-table{overflow-y:hidden;overflow-x:auto;clear:both;margin-bottom:110px;margin-top:30px;}
 .cart-items .action button{background:none;border:0;color:#000000;font-size:12px;font-family:'Lato', sans-serif;text-transform:uppercase;font-weight:300;}
