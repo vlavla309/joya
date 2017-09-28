@@ -14,7 +14,7 @@
   <title>Login Page</title>
   
     <link href="assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
-  
+   
 	<link href="assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 	
 	<link href="assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
 	<link href="assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
