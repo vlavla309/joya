@@ -51,7 +51,7 @@ public class MainController extends HttpServlet {
 		String uri = request.getRequestURI();
 
 		// 확장자 형식 매핑시..
-		// /appName/some.mall -> /some
+		// /appName/some.joya -> /some
 		// /appName/board/some.do -> /board/some
 		String contextPath = request.getContextPath();
 		uri = uri.substring(contextPath.length(), uri.lastIndexOf("."));
