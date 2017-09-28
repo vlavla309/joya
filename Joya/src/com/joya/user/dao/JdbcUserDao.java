@@ -106,35 +106,21 @@ public class JdbcUserDao implements UserDao{
 	public void modify(User user) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String query = "INSERT INTO users " + 
-					   "            (email, " + 
-					   "             phone, " + 
-					   "             NAME, " + 
-					   "             passwd, " + 
-					   "             address, " + 
-					   "             point, " + 
-					   "             birthdate, " + 
-					   "             type) " + 
-					   "VALUES      (?, " + 
-					   "             ?, " + 
-					   "             ?, " + 
-					   "             ?, " + 
-					   "             ?, " + 
-					   "             ?, " + 
-					   "             ?, " + 
-					   "             ?) ";
+		String query = "UPDATE users " + 
+					   "SET    name = ?, " + 
+					   "       passwd = ?, " + 
+					   "       phone = ?, " + 
+					   "       address = ? " + 
+					   "WHERE  email = ? ";
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user.getEmail());
-			pstmt.setString(2, user.getPhone());
-			pstmt.setString(3, user.getName());
-			pstmt.setString(4, user.getPasswd());
-			pstmt.setString(5, user.getAddress());
-			pstmt.setInt(6, user.getPoint());
-			pstmt.setString(7, user.getBirthdate());
-			pstmt.setInt(8, user.getType());
+			pstmt.setString(1, user.getName());
+			pstmt.setString(2, user.getPasswd());
+			pstmt.setString(3, user.getPhone());
+			pstmt.setString(4, user.getAddress());
+			pstmt.setString(5, user.getEmail());
 			pstmt.executeQuery();
 			con.commit();
 		} catch (SQLException e) {
@@ -349,6 +335,11 @@ public class JdbcUserDao implements UserDao{
 		userDao.delete("dsf@gmail.com");
 		System.out.println("삭제 성공");
 		*/
+		
+		/*System.out.println("수정 준비");
+		userDao.modify(new User("joa@joa52", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
+		System.out.println("수정 성공");*/
+		
 	/*	Params params = new Params();
 		List<User> users=userDao.listByParams(params);
 		for (User user : users) {
