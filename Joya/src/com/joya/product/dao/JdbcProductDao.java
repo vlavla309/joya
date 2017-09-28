@@ -110,7 +110,7 @@ public class JdbcProductDao implements ProductDao{
 
 		sb.append(" WHERE  request_page = ?");
 
-		System.out.println(sb.toString());
+//		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -156,9 +156,81 @@ public class JdbcProductDao implements ProductDao{
 	}
 
 	@Override
-	public int pageCount(Params params, String cateforyName, String orderType) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int pageCount(Params params, String categoryName, String orderType) {
+		
+		String type = params.getType();
+		String value = params.getValue();
+
+		int count=0;		
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT count(*) count");
+		sb.append("         FROM   (SELECT product_id,");
+		sb.append("       	 			product_name,");
+		sb.append("       				category_name,");
+		sb.append("       				maker,");
+		sb.append("       				product_desc,");
+		sb.append("                     TO_CHAR(regdate, 'YYYY/MM/DD HH24:MI:SS') regdate,");
+		sb.append("        				price,");
+		sb.append("        				amount,");
+		sb.append("        				hitcount");
+		sb.append("                 	FROM   products ");
+		sb.append(" 					where category_name = ?");
+		sb.append(" 					or category_name in (select category_name from categories where parent=?)");
+		if(type!=null) {
+			sb.append(" and  product_name LIKE ?");
+		}
+
+		switch(orderType) {
+		case "newProduct":
+			sb.append(" ORDER BY regdate DESC)");
+			break;
+		case "hitProduct":
+			sb.append(" ORDER BY hitcount DESC)");
+			break;
+		case "highPrice":
+			sb.append(" ORDER BY price DESC)");
+			break;
+		case "lowPrice":
+			sb.append(" ORDER BY price asc)");
+			break;
+		default:
+		}
+
+
+		//System.out.println(sb.toString());
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1,  categoryName);
+			pstmt.setString(2,  categoryName);
+
+			if(type != null){
+				pstmt.setString(3, value);
+			}
+
+			rs = pstmt.executeQuery();
+			
+
+			if(rs.next()){
+				count=rs.getInt("count");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MallException("JdbcUserDao.listByParams(Params params) 에러발생", e);
+		} finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return count;
 	}
 
 
@@ -185,7 +257,7 @@ public class JdbcProductDao implements ProductDao{
 		for (Product product : products) {
 			System.out.println(product);
 		}
-
+		System.out.println(productDao.pageCount(params, "반지", "highPrice"));
 	}
 
 }
