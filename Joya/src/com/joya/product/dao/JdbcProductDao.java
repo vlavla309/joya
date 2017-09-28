@@ -84,10 +84,12 @@ public class JdbcProductDao implements ProductDao{
 		return product;
 	}
 	
+	
 	@Override
 	public List<Product> listByParams(Params params, String categoryName, String orderType) {
 
 		String type = params.getType();
+		
 		String value = params.getValue();
 
 		List<Product> list = null;		
@@ -125,13 +127,18 @@ public class JdbcProductDao implements ProductDao{
 		sb.append("        				price,");
 		sb.append("        				amount,");
 		sb.append("        				hitcount");
-		sb.append("                 	FROM   products ");
-		sb.append(" 					where category_name = ?");
-		sb.append(" 					or category_name in (select category_name from categories where parent=?)");
+		sb.append("                 	FROM   products");
+		if(!categoryName.equals("전체")) {
+			sb.append(" 					where category_name = ?");
+			sb.append(" 					or category_name in (select category_name from categories where parent=?)");
+		}else {
+			sb.append(")");
+		}
 		if(type!=null) {
 			sb.append(" and  product_name LIKE ?");
+			value = "%" + value + "%";
 		}
-
+		
 		switch(orderType) {
 		case "newProduct":
 			sb.append(" ORDER BY regdate DESC))");
@@ -145,12 +152,12 @@ public class JdbcProductDao implements ProductDao{
 		case "lowPrice":
 			sb.append(" ORDER BY price asc))");
 			break;
-		default:
+		default:sb.append(" ORDER BY regdate DESC))");
 		}
 
 		sb.append(" WHERE  request_page = ?");
 
-//		System.out.println(sb.toString());
+		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
