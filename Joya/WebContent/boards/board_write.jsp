@@ -22,7 +22,7 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/mi_board_write.css" rel="stylesheet" type="text/css" media="all">
+    <%@ include file="../assets/stylesheets/mi_board_write.css" %>
 	
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
@@ -454,35 +454,38 @@
 						<div class="group-contact clearfix">
 							<div class="container">
 								<div class="row">
-									<div class="left-block col-md-12">
+									<div class="left-block col-md-12" >
 										<form method="post" action="http://demo.designshopify.com/contact" class="contact-form" accept-charset="UTF-8">
 											<input type="hidden" value="contact" name="form_type"><input type="hidden" name="utf8" value="â">
-											<ul id="contact-form" class="row list-unstyled">
-												<li class="">
-												<span class="write_mi"> 쇼핑몰 이용하시면서 궁금하신 점이나 불편하신 점 등을 문의해주세요. </span>
-												</li>
-												<li class="">
-												<label class="control-label" for="name">Your Name</label>
-												<input type="text" id="name" value="" class="form-control" name="contact[name]">
-												</li>
-												<li class="clearfix"></li>
-												<li class="">
-												<label class="control-label" for="email">Your Email <span class="req">*</span></label>
-												<input type="email" id="email" value="" class="form-control email" name="contact[email]">
-												</li>
-												<li class="clearfix"></li>
-												<li class="">
-												<label class="control-label" for="message">Your Message <span class="req">*</span></label>
+                                               <div class="midivision2">
+                                                <label class="control-label" for="name">제목<span class="req">*</span></label>
+                                                </div>
+                                                <input type="text" id="name" value="" class="form-control" name="contact[name]">
+                                             
+                                                <div class="">
+                                                  <div class="midivision left-block col-md-12"> 
+                                                  <label class="control-label" for="email">이름 <span class="req">*</span></label>
+                                                  <input type="email" id="email" value="" class="form-control email" name="contact[email]">
+                                                  </div>
+                                                
+                                                  <div class="midivision1 col-md-12"> 
+												  <label class="control-label" for="name">비밀번호<span class="req">*</span></label>
+												  <input type="text" id="name" value="" class="form-control" name="contact[name]">
+                                                 </div>
+                                                </div>
+                                                
+                                                <div  class="midivision3 col-md-24">
+												<label class="control-label" for="message">문의사항 <span class="req">*</span></label>
 												<textarea id="message" rows="5" class="form-control" name="contact[body]"></textarea>
-												</li>
-												<li class="clearfix"></li>
-												<li class="unpadding-top">
+                                                <br>
+                                                <div class="midivision6">
 												<button type="submit" class="btn">Submit Contact</button>
-												</li>
-											</ul>
+                                                </div>
+                                                </div>
 										</form>
 									</div>
 									<div class="right-block contact-content col-md-12">
+                                        <div class="border_mi">
 										<h6 class="sb-title"><i class="fa fa-home"></i> Contact Information</h6>
 										<ul class="right-content">
 											<li class="title">
@@ -490,10 +493,13 @@
 											</li>
 											<li class="address">
 											<p>
-												249 Ung Van Khiem Street, Binh Thanh Dist, HCM city
+												서울특별시 가산동 12345 신한이노플랙스 1차 KOSTA 
 											</p>
 											</li>
-											<li class="phone">+84 0123456xxx</li>
+                                            <br>
+											<li>010-1111-0000</li>
+                                            <br>
+                                            <br>
 											<li class="email"><i class="fa fa-envelope"></i> support@designshopify.com</li>
 										</ul>
 										<ul class="right-content">
@@ -506,6 +512,7 @@
 											<li class="pinterest"><a href="#"><span class="fa-stack fa-lg btooltip" title="" data-original-title="Pinterest"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-pinterest fa-inverse fa-stack-1x"></i></span></a></li>
 										</ul>
 									</div>
+                                  </div>
 								</div>
 							</div>
 							<div id="contact_map_wrapper">
