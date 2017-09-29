@@ -44,7 +44,7 @@ public class JdbcImageDao implements ImageDao{
 					   "VALUES      (?, " + 
 					   "             ?, " + 
 					   "             ?, " + 
-					   "             ? ";
+					   "             ? )";
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
