@@ -381,11 +381,11 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Form Elements
+                            상품 등록
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                             <form role="form">
+                             <form role="form" name="productForm" action="/admin/product_add_action.joya" method="post">
                                 <div class="col-lg-6">
                                    		<h1>상품 정보</h1>
                                         <div class="form-group">
