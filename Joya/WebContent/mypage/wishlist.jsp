@@ -49,15 +49,16 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage"
-  class="templateBlog notouch">
+<body itemscope="" itemtype="http://schema.org/WebPage" class="templateBlog notouch">
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
-  <!-- hearder 영역 종료 -->
+  <!-- Header 영역 종료 -->
 
+  <!-- 본문 영역 시작 -->
   <div id="content-wrapper-parent">
     <div id="content-wrapper">
-      <!-- Content -->
+    
+      <!-- Content 영역 시작-->
       <div id="content" class="clearfix">
 
         <!-- smallHeader 영역 시작 -->
@@ -79,18 +80,18 @@
           <!-- 아이템 시작 -->
           <div class="container">
             <div class="row">
+            
               <div id="page-header" class="col-md-24">
                 <h1 id="page-title">Wish List</h1>
               </div>
 
-              <div id="col-main"
-                class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">
+              <div id="col-main"  class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">
                 <div class="blog-content-wrapper">
 
                   <c:choose>
                     <!-- 위시리스트가 존재하지 않는 경우 출력 시작 -->
                     <c:when test="${empty list}">
-                      <span style="text-align: center"><h3>위시리스트가 존재하지 않습니다</h3></span>
+                      <span style="text-align: center">위시리스트가 존재하지 않습니다</span>
                     </c:when>
                     <!-- 위시리스트가 존재하지 않는 경우 출력 종료 -->
 
@@ -111,9 +112,7 @@
                                     <ul class="list-inline">
                                       <li><a href="#">
                                           <div style="text-align: left;">
-                                            <img
-                                              src="${wishlist.path}${wishlist.imgName}"
-                                              alt="">
+                                            <img src="${wishlist.path}${wishlist.imgName}" alt="">
                                           </div>
                                       </a></li>
                                     </ul>
@@ -198,6 +197,7 @@
         </section>
         <!-- 본문 영역 종료 -->
       </div>
+      <!-- Content 영역 종료-->
     </div>
   </div>
 
