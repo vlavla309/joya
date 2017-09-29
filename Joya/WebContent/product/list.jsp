@@ -44,6 +44,7 @@
 		var value="";
 		var type = "";
 		
+		/* 정렬하기 */
 		$('#mySelect').change(function(){
 		    type = $(this).val();
 		    
@@ -53,11 +54,13 @@
 		    
 		});
 		
+		/* 상품명으로 검색 하기 */
 		$("#value").keyup(function(){
 			value = $("#value").val();
 		});
 		
 		
+		// quick-view modal
 		$(".clickid").click(function(event) {
 			var id = $(this).attr("value");
 			alert(id)
@@ -71,14 +74,18 @@
 			});
 		});
 		
-		
-		/*모달*/
-		  function viewuser(data) {
+		function viewuser(data) {
 			$("#quickview_title").text(data.Product[0].productname);
 			$("#description").text(data.Product[0].discription);
-			$(".price_sale").text(data.Product[0].price)
-			$(".maker").text(data.Product[0].maker)
-			
+			$(".price_sale").text(data.Product[0].price);
+			$(".maker").text(data.Product[0].maker);
+			$.each(data.images, function(index,  image) {
+				var pathname = image.path + image.filename
+				if(image.order=="0"){
+				$(".imagemain").attr("src",pathname);
+					alert($(".imagemain").attr("src"));
+				} 
+			});
 		} 
 		
 		
@@ -164,7 +171,8 @@
 															<li class="element no_full_width" data-alpha="Curabitur cursus dignis" data-price="20000">
 																<ul class="row-container list-unstyled clearfix">
 																	<li class="row-left">
-																	<a href="product.html" class="container_item" value = "${product.productId }">
+																	
+																	<a href="${pageContext.servletContext.contextPath }/product/view.joya?productid=${product.productId}&type=view" class="container_item">
 																		<img src="${img.path}${img.imageName}" class="img-responsive" alt="Curabitur cursus dignis">
 																	</a>
 																	<div class="hbw">
@@ -285,15 +293,11 @@
 						<div class="row">
 							<div class="col-md-12 product-image">
 								<div id="quick-shop-image" class="product-image-wrapper">
-									<a class="main-image"><img class="img-zoom img-responsive image-fly" src="../assets/images/1_grande.jpg" data-zoom-image="./../assets/images/1.jpg" alt=""/></a>
-									<div id="gallery_main_qs" class="product-image-thumb">
-										<a class="image-thumb active" href="../assets/1images/.html" data-image="../assets/images/1_grande.jpg" data-zoom-image="../assets/images/1.html"><img src="../assets/images/1_compact.jpg" alt=""/></a>
-										<a class="image-thumb" href="../assets/images/2.html" data-image="../assets/images/2_grande.jpg" data-zoom-image="../assets/images/2.html"><img src="../assets/images/2_compact.jpg" alt=""/></a>
-										<a class="image-thumb" href="../assets/images/3.html" data-image="../assets/images/3_grande.jpg" data-zoom-image="../assets/images/3.html"><img src="../assets/images/3_compact.jpg" alt=""/></a>
-										<a class="image-thumb" href="../assets/images/4.html" data-image="../assets/images/4_grande.jpg" data-zoom-image="../assets/images/4.html"><img src="../assets/images/4_compact.jpg" alt=""/></a>
-										<a class="image-thumb" href="../assets/images/5.html" data-image="../assets/images/5_grande.jpg" data-zoom-image="../assets/images/5.html"><img src="../assets/images/5_compact.jpg" alt=""/></a>
-										<a class="image-thumb" href="../assets/images/6.html" data-image="../assets/images/6_grande.jpg" data-zoom-image="../assets/images/6.html"><img src="../assets/images/6_compact.jpg" alt=""/></a>
-									</div>	
+								
+									<!-- start quick-view image -->
+									<a class="main-image"><img class="img-zoom img-responsive image-fly imagemain" src="../assets/images/1_grande.jpg" data-zoom-image="./../assets/images/1.jpg" alt=""/></a>
+									<!-- end quick-view image -->
+									
 								</div>
 							</div>
 							<div class="col-md-12 product-information">

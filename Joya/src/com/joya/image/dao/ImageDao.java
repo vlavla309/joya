@@ -10,5 +10,5 @@ public interface ImageDao {
 	public void create(Images image);
 	public  List<Images> listAll();
 	public  Images search(String filename);
-
+	public  List<Images> listByProductid(int productid);
 }
