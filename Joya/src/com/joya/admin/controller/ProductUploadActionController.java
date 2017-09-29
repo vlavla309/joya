@@ -12,11 +12,12 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.joya.category.domain.Categories;
-import com.joya.category.service.CategoryService;
-import com.joya.category.service.CategoryServiceImpl;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.image.service.ImageService;
+import com.joya.image.service.ImageServiceImpl;
+import com.joya.product.service.ProductService;
+import com.joya.product.service.ProductServiceImpl;
 
 
 /**
@@ -25,7 +26,8 @@ import com.joya.common.controller.ModelAndView;
  *
  */
 public class ProductUploadActionController implements Controller {
-	
+	ProductService productService=new ProductServiceImpl();
+	ImageService imgService= new ImageServiceImpl();
 	private String fileRepository = "C:\\gugu\\fileupload\\";
 	String fileName;
 
@@ -63,6 +65,7 @@ public class ProductUploadActionController implements Controller {
 
 					File saveFile = new File(fileRepository + fileName);
 					item.write(saveFile);
+					
 				}
 			}
 		}catch (Exception e) {}
