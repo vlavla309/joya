@@ -62,7 +62,7 @@
                 <label>${user}님 환영합니다.&nbsp;&nbsp;&nbsp;</label>  
              </li>
              <li class="my-account">
-                <a href="account.html">My Account</a>
+                <a href="account.html">마이페이지</a>
              </li> 
              <li class="my-account">
                 <a href="/user/login_action.joya">로그아웃</a>
