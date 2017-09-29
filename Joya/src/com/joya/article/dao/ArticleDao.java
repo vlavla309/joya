@@ -26,7 +26,7 @@ public interface ArticleDao {
 	public void delete(Article article);
 	
 	/** 답글등록(관리자) */
-	public void reply(Article article);
+	public void reply(int articleId, Article article);
 	
 	/** 게시글 조회수 증가 */
 	public void count(int articleId);

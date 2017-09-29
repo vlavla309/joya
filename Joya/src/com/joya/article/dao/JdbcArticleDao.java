@@ -3,6 +3,7 @@ package com.joya.article.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -50,9 +51,7 @@ public class JdbcArticleDao implements ArticleDao {
 				"             2, \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
-				"             (SELECT NAME \r\n" + 
-				"              FROM   users \r\n" + 
-				"              WHERE  email = ?), \r\n" + 
+				"             ?, \r\n" + 
 				"             ?, \r\n" + 
 				"             articles_seq.currval, \r\n" + 
 				"             0, \r\n" + 
@@ -66,7 +65,7 @@ public class JdbcArticleDao implements ArticleDao {
 			pstmt.setString(1, article.getEmail());
 			pstmt.setString(2, article.getTitle());
 			pstmt.setString(3, article.getContents());
-			pstmt.setString(4, article.getEmail());
+			pstmt.setString(4, article.getWriter());
 			pstmt.setString(5, article.getPasswd());
 			pstmt.setString(6, article.getFilePath());
 			pstmt.executeQuery();
@@ -101,7 +100,8 @@ public class JdbcArticleDao implements ArticleDao {
 	/** 전체 글 목록 */
 	@Override
 	public List<Article> listAll() {
-		// TODO Auto-generated method stub
+		List<Article> list = new ArrayList<Article>();
+		String sql="";
 		return null;
 	}
 
@@ -128,9 +128,60 @@ public class JdbcArticleDao implements ArticleDao {
 
 	/** 답글등록(관리자) */
 	@Override
-	public void reply(Article article) {
-		// TODO Auto-generated method stub
+	public void reply(int articleId, Article article) {
+		String sql="INSERT INTO articles \r\n" + 
+				"            (article_id, \r\n" + 
+				"             email, \r\n" + 
+				"             board_id, \r\n" + 
+				"             title, \r\n" + 
+				"             contents, \r\n" + 
+				"             writer, \r\n" + 
+				"             passwd, \r\n" + 
+				"             group_no, \r\n" + 
+				"             type) \r\n" + 
+				"VALUES      (articles_seq.nextval, \r\n" + 
+				"             ?, \r\n" + 
+				"             ?, \r\n" + 
+				"             ?, \r\n" + 
+				"             ?, \r\n" + 
+				"             ?, \r\n" + 
+				"             ?, \r\n" + 
+				"             ?, \r\n" + 
+				"             1)";
 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, article.getEmail());
+			pstmt.setInt(2, article.getBoardId());
+			pstmt.setString(3, article.getTitle());
+			pstmt.setString(4, article.getContents());
+			pstmt.setString(5, article.getWriter());
+			pstmt.setString(6, article.getPasswd());
+			pstmt.setInt(7, articleId);
+			pstmt.executeQuery();
+			con.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
 	}
 
 	/** 게시글 조회수 증가 */
@@ -154,17 +205,30 @@ public class JdbcArticleDao implements ArticleDao {
 		return 0;
 	}
 
-	/**
+	
 	public static void main(String[] args) {
+		
 		ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
 		Article article = new Article();
+		/**
 		article.setEmail("joa@joa");
 		article.setTitle("질문");
 		article.setContents("목걸이 재입고 언제되나요?");
 		article.setPasswd("1111");
 		dao.create(article);
 		System.out.println(article.toString());
+		*/
+		
+		article.setEmail("admin@joa");
+		article.setBoardId(2);
+		article.setTitle("답변");
+		article.setContents("답변내용");
+		article.setWriter("관리자");
+		article.setPasswd("admin");
+		dao.reply(8, article);
+		System.out.println(article.toString());
+		
 	}
-	*/
+	
 
 }
