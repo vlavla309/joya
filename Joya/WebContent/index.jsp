@@ -45,7 +45,9 @@
 	<script src="assets/javascripts/cs.script.js" type="text/javascript"></script>
   
   <style type="text/css">
-  
+    #cal {
+      text-align: center;
+    }
   </style>
 </head>
 

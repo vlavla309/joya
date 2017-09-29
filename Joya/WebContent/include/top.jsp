@@ -23,25 +23,25 @@
                 <i class="sub-dropdown"></i>
               </span>
               <div id="loginBox" class="dropdown-menu text-left">
-              <form method="post" action="#" id="customer_login" accept-charset="UTF-8"><input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
+              <form method="post" action="/user/login_action.joya" id="customer_login" accept-charset="UTF-8"><input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
                 <div id="bodyBox">
                   <ul class="control-container customer-accounts list-unstyled">
                     <li>
-                      <label>Customer Account Login</label>
+                      <label id="cal">Customer Account Login</label>
                     </li>
                     <li class="clearfix">
                       <label for="customer_email_box" class="control-label">Email Address <span class="req">*</span></label>
-                      <input type="email" value="" name="customer[email]" id="customer_email_box" class="form-control">
+                      <input type="email" value="" name="email" id="customer_email_box" class="form-control">
                     </li>            
                     <li class="clearfix">
                       <label for="customer_password_box" class="control-label">Password <span class="req">*</span></label>
-                      <input type="password" value="" name="customer[password]" id="customer_password_box" class="form-control password">
+                      <input type="password" value="" name="passwd" id="customer_password_box" class="form-control password">
                     </li>             
                     <li class="clearfix">
-                      <a class="action btn btn-1" href="/user/login_action.joya">Login</a>
+                      <button class="action btn btn-1" type="submit">Login</button>
                     </li>
                     <li class="clearfix">
-                      <a class="action btn btn-1" href="register.html">Create an account</a>
+                      <button class="action btn btn-1" type="button">Create an account</button>
                     </li>
                   </ul>
                 </div>
