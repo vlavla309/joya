@@ -35,7 +35,6 @@ public class JdbcArticleDao implements ArticleDao {
 	/** 글 등록 */
 	@Override
 	public void create(Article article) {
-		
 		String sql = "INSERT INTO articles \r\n" + 
 				"            (article_id, \r\n" + 
 				"             email, \r\n" + 
@@ -88,6 +87,7 @@ public class JdbcArticleDao implements ArticleDao {
 			}
 		}
 		
+		
 
 	}
 	
@@ -100,7 +100,7 @@ public class JdbcArticleDao implements ArticleDao {
 
 	/** 전체 글 목록 */
 	@Override
-	public List<Article> listAll(int boardId) {
+	public List<Article> listAll() {
 		List<Article> list = new ArrayList<Article>();
 		String sql="SELECT article_id, \r\n" + 
 				"       email, \r\n" + 
@@ -116,7 +116,7 @@ public class JdbcArticleDao implements ArticleDao {
 				"       file_path, \r\n" + 
 				"       product_id \r\n" + 
 				"FROM   articles \r\n" + 
-				"WHERE  board_id = ? \r\n" + 
+				"WHERE  board_id = 2 \r\n" + 
 				"ORDER  BY group_no DESC ";
 		
 		Connection con = null;
@@ -126,7 +126,7 @@ public class JdbcArticleDao implements ArticleDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, boardId);
+			//pstmt.setInt(1, boardId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Article article = createArticle(rs);
@@ -134,14 +134,48 @@ public class JdbcArticleDao implements ArticleDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null)rs.close();
+				if(pstmt != null)pstmt.close();
+				if(con != null)con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}
-		return null;
+		return list;
 	}
 
 	/** 게시글 상세보기 */
 	@Override
 	public Article read(int articleId) {
-		// TODO Auto-generated method stub
+		
+		String sql = "SELECT article_id, \r\n" + 
+				"       email, \r\n" + 
+				"       board_id, \r\n" + 
+				"       title, \r\n" + 
+				"       contents, \r\n" + 
+				"       writer, \r\n" + 
+				"       regdate, \r\n" + 
+				"       passwd, \r\n" + 
+				"       group_no, \r\n" + 
+				"       type, \r\n" + 
+				"       hitcount, \r\n" + 
+				"       file_path, \r\n" + 
+				"       product_id \r\n" + 
+				"FROM   articles \r\n" + 
+				"WHERE  board_id = 2 \r\n" + 
+				"       AND article_id = ?";
+		
+		Article article = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		con = dataSource.getConnection();
+		
+		
 		return null;
 	}
 
@@ -239,8 +273,9 @@ public class JdbcArticleDao implements ArticleDao {
 	}
 
 	
-	/** CreateArticle */
-	public Article createArticle(ResultSet rs) {
+	/** CreateArticle 
+	 * @throws SQLException */
+	public Article createArticle(ResultSet rs) throws SQLException {
 		int articleId = rs.getInt("article_id");
 		String email = rs.getString("email");
 		int boardId = rs.getInt("board_id");
@@ -253,14 +288,30 @@ public class JdbcArticleDao implements ArticleDao {
 		int type = rs.getInt("type");
 		int hitcount = rs.getInt("hitcount");
 		String filePath = rs.getString("file_path");
-		String productId = rs.getString("product_id");
+		int productId = rs.getInt("product_id");
+		
+		Article article = new Article();
+		article.setArticleId(articleId);
+		article.setEmail(email);
+		article.setBoardId(boardId);
+		article.setTitle(title);
+		article.setContents(contents);
+		article.setWriter(writer);
+		article.setRegdate(regdate);
+		article.setPasswd(passwd);
+		article.setGroupNo(groupNo);
+		article.setType(type);
+		article.setHitcount(hitcount);
+		article.setFilePath(filePath);
+		article.setProductId(productId);
 		
 		return article;
 	}
 	
 	public static void main(String[] args) {
-		/**
+		
 		ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
+		/**
 		Article article = new Article();
 		
 		article.setEmail("joa@joa");
@@ -280,6 +331,10 @@ public class JdbcArticleDao implements ArticleDao {
 		dao.reply(8, article);
 		System.out.println(article.toString());
 		*/
+		List<Article> list = dao.listAll();
+		for (Article article : list) {
+			System.out.println(article);
+		}
 		
 	}
 	
