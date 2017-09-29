@@ -43,6 +43,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.read(productId);
 	}
 	
+	public int getNewProductId() {
+		return productDao.getNewProductId();
+	}
+	
 	public static void main(String[] args) {
 		ProductServiceImpl pro=new ProductServiceImpl();
 		List<Product> pros=pro.listByParams(new Params(), "����", "hitProduct");

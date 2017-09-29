@@ -17,4 +17,6 @@ public interface ProductService {
 	
 	public Product read(int productId);
 	
+	public int getNewProductId();
+	
 }
