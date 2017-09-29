@@ -31,11 +31,10 @@ public class CertificationController implements Controller {
 			String referer = request.getParameter("referer");
 
 			User user = userService.isMember(email, passwd);
-			System.out.println(user);
 			if(user != null){
 				String userInfo = null;
 				try {
-					userInfo = URLEncoder.encode(user.getEmail() + "," + user.getName(), "utf-8");
+					userInfo = URLEncoder.encode(user.getEmail() + "@#@" + user.getName(), "utf-8");
 				} catch (UnsupportedEncodingException e) {
 					throw new ServletException("UserAuthController.handleRequest() 실행중 예외 발생", e);
 				}

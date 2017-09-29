@@ -35,7 +35,7 @@ public class JdbcUserDao implements UserDao{
 		String query = "INSERT INTO users " + 
 					   "            (email, " + 
 					   "             phone, " + 
-					   "             NAME, " + 
+					   "             name, " + 
 					   "             passwd, " + 
 					   "             address, " + 
 					   "             point, " + 

@@ -22,7 +22,7 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	
+	<%@ include file="../assets/stylesheets/mimimicms.css" %>
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
     <script src="../assets/javascripts/referer.js" type="text/javascript"></script>
@@ -72,7 +72,7 @@
 											<form method="post" action="/user/login_action.joya" id="customer_login" accept-charset="UTF-8">
 												<input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
 												<div class="col-md-21 login-alert">
-													<div class="alert alert-danger">
+													<div class="alert alert-danger warning">
 														<button type="button" class="close btooltip" data-toggle="tooltip" data-placement="top" title="" data-dismiss="alert" data-original-title="Close">x</button>
 														<div class="errors">
 															<ul>
@@ -149,12 +149,7 @@
                         <input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
                         <div class="col-md-21 login-alert">
                           <div class="alert alert-danger">
-                            <button type="button" class="close btooltip" data-toggle="tooltip" data-placement="top" title="" data-dismiss="alert" data-original-title="Close">x</button>
-                            <div class="errors">
-                              <ul>
-                                <li>Invalid login credentials.</li>
-                              </ul>
-                            </div>
+                           <label id="notice1">※ 회원 가입을 하시면 더 많은 서비스를 이용하실 수 있습니다.</label>
                           </div>
                         </div>
                         <ul id="login-form" class="list-unstyled">

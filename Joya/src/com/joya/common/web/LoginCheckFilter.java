@@ -34,7 +34,7 @@ public class LoginCheckFilter implements Filter {
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equalsIgnoreCase("user")) {
 					user = URLDecoder.decode(cookie.getValue(), "utf-8");
-	                String[] tokens = user.split(",");
+	                String[] tokens = user.split("@#@");
 	                user = tokens[1] + "("+tokens[0]+")";
 				}
 			}

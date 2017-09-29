@@ -52,7 +52,7 @@
             </li>
             <li>/</li>   
             <li class="register">
-              <a href="register.html" id="customer_register_link">Create an account</a>
+              <a href="/user/register.joya" id="customer_register_link">Create an account</a>
             </li>  
           </ul>
           </c:when>
