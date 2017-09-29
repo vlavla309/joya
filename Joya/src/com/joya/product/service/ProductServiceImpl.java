@@ -37,18 +37,17 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	
+	@Override
+	public Product read(int productId) {
+		// TODO Auto-generated method stub
+		return productDao.read(productId);
+	}
+	
 	public static void main(String[] args) {
 		ProductServiceImpl pro=new ProductServiceImpl();
-		List<Product> pros=pro.listByParams(new Params(), "¹ÝÁö", "hitProduct");
+		List<Product> pros=pro.listByParams(new Params(), "ï¿½ï¿½ï¿½ï¿½", "hitProduct");
 		for (Product product : pros) {
 			System.out.println(product);
 		}
 	}
-
-	@Override
-	public Product read(int productId) {
-		return productDao.read(productId);
-	}
-
-	
 }
