@@ -70,6 +70,30 @@ public class Product {
 		this.amount = amount;
 	}
 
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductDesc() {
+		return productDesc;
+	}
+
+	public void setProductDesc(String productDesc) {
+		this.productDesc = productDesc;
+	}
+
+	public int getHitcount() {
+		return hitcount;
+	}
+
+	public void setHitcount(int hitcount) {
+		this.hitcount = hitcount;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", categoryName=" + categoryName + ", productName=" + productName

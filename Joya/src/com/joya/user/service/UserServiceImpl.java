@@ -19,6 +19,16 @@ public class UserServiceImpl implements UserService{
 	public void delete(String email) {
 		
 	}
+	
+	@Override
+	public void modify(User user) {
+		
+	}
+	
+	@Override
+	public User isMember(String id, String passwd) {
+		return userDao.isMember(id, passwd);
+	}
 
 	@Override
 	public User read(String email) {

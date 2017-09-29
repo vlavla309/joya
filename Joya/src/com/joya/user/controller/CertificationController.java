@@ -29,9 +29,9 @@ public class CertificationController implements Controller {
 			String email = request.getParameter("email");
 			String passwd = request.getParameter("passwd");
 			String referer = request.getParameter("referer");
+			System.out.println(email);
 			
 			User user = userService.isMember(email, passwd);
-			System.out.println("유저"+user);
 			if(user != null){
 			    String userInfo = null;
 				try {
