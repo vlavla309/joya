@@ -387,7 +387,7 @@
                             <div class="row">
                              <form role="form">
                                 <div class="col-lg-6">
-                                   
+                                   		<h1>상품 정보</h1>
                                         <div class="form-group">
                                             <label>상품이름</label>
                                             <input class="form-control" maxlength="30">
@@ -412,28 +412,25 @@
                                             <label>카테고리</label>
                                             <select class="form-control">
                                              <c:forEach items="${categories}" var="category" varStatus="status">
-												<option>${category}</option>
+												<option>${category.categoryName}</option>
 											 </c:forEach>
                                               
                                             </select>
                                         </div>
                                          <div class="form-group">
                                             <label>상품 설명</label>
-                                            <textarea class="form-control" rows="3" ></textarea>
+                                            <textarea class="form-control" rows="6" ></textarea>
                                         </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-6">
-                                         <div class="form-group">
+                                <div class="col-lg-6" >
+										<h1>상품 사진</h1>
+										<input type="button" value="추가" onClick="addFile(this.form)" border=0 style='cursor:hand'>
+										<input type="button" value="제거" onClick="deleteFile(this.form)" border=0 style='cursor:hand'>
+										<div class="form-group" id="imageForm">
                                             <label>사진 등록 (대표 사진)</label>
-                                            <input type="file">
+                                            <input type="file" name="filename1" value="5">
                                              <p class="help-block">필수 사항입니다.</p>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>사진 등록 (2)</label>
-                                            <input type="file">
-                                            
                                         </div>
                                      
                                         <button type="submit" class="btn btn-default">Submit Button</button>
@@ -459,7 +456,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="${pageContext.servletContext.contextPath}/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/admin/vendor/jquery/jquery-3.2.0.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.servletContext.contextPath}/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -469,6 +466,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="${pageContext.servletContext.contextPath}/admin/dist/js/sb-admin-2.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/admin/dist/js/productform.js"></script>
 
 </body>
 
