@@ -86,32 +86,24 @@
                 <h1 id="page-title">Wish List</h1>
               </div>
 
-              <div id="col-main"
-                class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">
+              <div id="col-main"class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">  
                 <c:choose>
                   <c:when test="${empty list}">
                     <h2 style="text-align: center">위시리스트가 존재하지 않습니다</h2>
                   </c:when>
-
-
                   <c:otherwise>
                     <div class="blog-content-wrapper">
                       <div class="blogs col-sm-8 col-md-8 clearfix">
                         <article class="blogs-item">
                           <div class="row">
                             <div class="article-content col-md-24">
-
-                              <c:forEach items="${list}" var="wishlist"
-                                varStatus="status">
-
+                            
+                              <c:forEach items="${list}" var="wishlist" varStatus="status">
                                 <div class="article-content-inner">
                                   <div class="blogs-image">
                                     <ul class="list-inline">
                                       <li><a href="#">
-                                          <div style="text-align: left;">
-                                            <img
-                                              src="${wishlist.path}${wishlist.imgName}"
-                                              alt="">
+                                          <div><img src="${wishlist.imgPath}${wishlist.imgName}"  alt="">
                                           </div>
                                       </a></li>
                                     </ul>
@@ -142,10 +134,10 @@
               </div>
 
               <!-- 페이지 리스트 영역 시작 -->
-              <div class="ji-page">
+              <div>
                 <div class="col-md-6" >
                   <nav aria-label="Page navigation">
-                    <ul>
+                    <ul class="pagination">
                       <c:if test="${pageBuilder.showPrevious }">
                         <li><a
                           href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}"

@@ -46,6 +46,10 @@ public class WishlistController implements Controller {
 		
 		// 페이징
 		List<Wishlist> list = wishlistService.listByParams(userEmail, params);
+		for (Wishlist wishlist : list) {
+			System.out.println(wishlist);
+		}
+		
 		int totalCount = wishlistService.listAll(userEmail).size();
 		System.out.println(totalCount);
 		
