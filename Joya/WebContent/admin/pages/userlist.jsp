@@ -268,7 +268,7 @@
 								<li><a href="morris.html">Morris.js Charts</a></li>
 							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>
-								회원목록</a></li>
+								회원정보</a></li>
 						<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
 								Forms</a></li>
 						<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI
@@ -310,7 +310,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">회원목록</h1>
+					<h1 class="page-header">회원정보</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -318,7 +318,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">DataTables Advanced Tables</div>
+						<div class="panel-heading">회원 목록</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<table width="100%"
@@ -336,8 +336,8 @@
 								<tbody>
 									<c:forEach items="${users}" var="user" varStatus="status">
 										<tr class="odd gradeX">
-											<td>${status.count}</td>
-											<td>${user.email }</td>
+											<td>${(pageBuilder.totalRowCount-((params.page-1)*(params.pageSize)))-status.index}</td>
+											<td><a class="userInfoBtn" value="${user.email }">${user.email }</a></td>
 											<td>${user.name }</td>
 											<td class="center">${user.phone }</td>
 											<c:if test="${user.type==0}">
@@ -346,7 +346,6 @@
 											<c:if test="${user.type==1}">
 												<td class="center">관리자</td>
 											</c:if>
-											
 										</tr>
 									</c:forEach>
 
@@ -425,6 +424,30 @@
 	</div>
 	<!-- /#wrapper -->
 
+	<!--  #modal start -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header alert alert-danger">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">회원상세정보</h4>
+				</div>
+				<div class="modal-body" id="userInfoDiv">
+					<label class="success-message">여기에 회원 상세 정보를 보여주면 된다</label>
+					<p></p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-default" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  #modal end -->
+
 	<!-- jQuery -->
 	<script
 		src="${pageContext.servletContext.contextPath}/admin/vendor/jquery/jquery.min.js"></script>
@@ -446,9 +469,9 @@
 		src="${pageContext.servletContext.contextPath}/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
 	<!-- Custom Theme JavaScript -->
-	<script
-		src="${pageContext.servletContext.contextPath}/admin/dist/js/sb-admin-2.js"></script>
-
+	<script	src="${pageContext.servletContext.contextPath}/admin/dist/js/sb-admin-2.js"></script>
+	<script	src="${pageContext.servletContext.contextPath}/admin/dist/js/userlist.js"></script>
+	
 	<!-- Page-Level Demo Scripts - Tables - Use for reference
 	<script>
     $(document).ready(function() {
