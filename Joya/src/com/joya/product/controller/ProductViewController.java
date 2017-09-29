@@ -29,7 +29,7 @@ public class ProductViewController implements Controller{
 		String type = request.getParameter("type");
 		Product product = productservice.read(Integer.parseInt(productid));
 		
-		//list에서 quick view를 누르거나, 상세보기 페이지로 이동해서 보여줄 때, 두 가지 경우때문에 type으로 분기함. 
+		
 		if(type.equals("quick")) {
 			JSONObject jsonMain = new JSONObject();
 			JSONArray jArray = new JSONArray();
@@ -42,7 +42,7 @@ public class ProductViewController implements Controller{
 			obj.put("maker", product.getMaker());
 			obj.put("hitcount", product.getHitcount());
 			obj.put("categoryname", product.getCategoryName());
-			obj.put("discription", product.getProductDes());
+			obj.put("discription", product.getProductDesc());
 			
 			jArray.add(0, obj);
 			
