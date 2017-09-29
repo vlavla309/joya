@@ -80,7 +80,7 @@
                                         <c:otherwise>
                                         <c:forEach items="${list}" var="wishlist" varStatus="status">
 													<div class="article-content-inner" >
-     
+ 
                                                         <!-- 아이템 사진 부분 시작 -->
 														<div class="blogs-image">
 															<ul class="list-inline">

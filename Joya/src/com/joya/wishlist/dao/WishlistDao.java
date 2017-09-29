@@ -17,9 +17,6 @@ public interface WishlistDao {
 	/** 위시리스트 목록에서 삭제 */
 	public boolean delete(Wishlist wishlist);
 	
-	/** 위시리스트 상품 아이디에 따른 이미지 반환 */
-	public Images productPic(int productId);
-	
 	/** 선택 페이지에 대한 위시리스트 반환 */
 	public List<Wishlist> listByPage(String email, int pageNum);
 	

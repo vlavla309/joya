@@ -72,11 +72,19 @@ public class JdbcWishlistDao implements WishlistDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT email, \r\n" + 
-								"       product_id, \r\n" + 
-								"       To_char(regdate, 'YYYY.MM.DD HH24:MI') regdate \r\n" + 
-								"FROM   wishlist \r\n" + 
-								"WHERE  email = ? \r\n" + 
+		String sql = "SELECT w.email                                  email, \r\n" + 
+								"       w.product_id                             product_id, \r\n" + 
+								"       To_char(w.regdate, 'YYYY.MM.DD HH24:MI') regdate, \r\n" + 
+								"       p.product_name                           product_name, \r\n" + 
+								"       i.path                                   path, \r\n" + 
+								"       i.image_name                             image_name \r\n" + 
+								"FROM   wishlist w \r\n" + 
+								"       JOIN products p \r\n" + 
+								"         ON w.product_id = p.product_id \r\n" + 
+								"       JOIN images i \r\n" + 
+								"         ON p.product_id = i.product_id \r\n" + 
+								"WHERE  w.email = ? \r\n" + 
+								"       AND i.order_no = 0 \r\n" + 
 								"ORDER  BY regdate DESC ";
 		try {
 			con = dataSource.getConnection();
@@ -139,44 +147,6 @@ public class JdbcWishlistDao implements WishlistDao {
 			}
 		}
 		return false;
-	}
-	
-	@Override
-	/** 상품아이디에 대한 상품 사진 반환 */
-	public Images productPic(int productId) {
-		Images image = null;
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "SELECT image_name, \r\n" + 
-								"       product_id, \r\n" + 
-								"       path, \r\n" + 
-								"       order_no \r\n" + 
-								"FROM   images \r\n" + 
-								"WHERE  product_id = ? ";
-		try {
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, productId);
-			rs = pstmt.executeQuery();
-			list = new ArrayList<Wishlist>();
-			while(rs.next()) {
-				Wishlist wishlist = createWishlist(rs);
-				list.add(wishlist);
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("JdbcWishlistDao.listAll() 실행 중 예외발생");
-		}finally {
-			try {
-				if(rs != null)    rs.close();
-				if(pstmt != null) pstmt.close();
-				if(con != null)   con.close();
-			} catch (Exception e) {}
-		}
-		return list;
 	}
 
 	@Override
