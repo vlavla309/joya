@@ -27,6 +27,24 @@ public class Product {
 		this.hitcount = hitcount;
 	}
 	
+	
+	
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public int getHitcount() {
+		return hitcount;
+	}
+
+	public void setHitcount(int hitcount) {
+		this.hitcount = hitcount;
+	}
+
 	public int getProductId() {
 		return productId;
 	}
@@ -45,10 +63,10 @@ public class Product {
 	public void setMaker(String maker) {
 		this.maker = maker;
 	}
-	public String getProductDes() {
+	public String getProductDesc() {
 		return productDesc;
 	}
-	public void setProductDes(String productDes) {
+	public void setProductDesc(String productDes) {
 		this.productDesc = productDes;
 	}
 	public String getRegdate() {
