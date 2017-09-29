@@ -150,7 +150,6 @@ public class JdbcArticleDao implements ArticleDao {
 	/** 게시글 상세보기 */
 	@Override
 	public Article read(int articleId) {
-		
 		String sql = "SELECT article_id, \r\n" + 
 				"       email, \r\n" + 
 				"       board_id, \r\n" + 
@@ -173,10 +172,26 @@ public class JdbcArticleDao implements ArticleDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		con = dataSource.getConnection();
-		
-		
-		return null;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, articleId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				article = createArticle(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null)rs.close();
+				if(pstmt != null)pstmt.close();
+				if(con != null)con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return article;
 	}
 
 	/** 글 수정 */
@@ -311,9 +326,8 @@ public class JdbcArticleDao implements ArticleDao {
 	public static void main(String[] args) {
 		
 		ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
-		/**
 		Article article = new Article();
-		
+		/**
 		article.setEmail("joa@joa");
 		article.setTitle("질문");
 		article.setContents("목걸이 재입고 언제되나요?");
@@ -330,12 +344,16 @@ public class JdbcArticleDao implements ArticleDao {
 		article.setPasswd("admin");
 		dao.reply(8, article);
 		System.out.println(article.toString());
-		*/
+		
+		
 		List<Article> list = dao.listAll();
 		for (Article article : list) {
 			System.out.println(article);
 		}
+		*/
 		
+		article = dao.read(9);
+		System.out.println(article);
 	}
 	
 
