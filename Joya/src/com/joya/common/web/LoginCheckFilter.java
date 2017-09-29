@@ -13,7 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * ?š”ì²??ŒŒ?¼ë©”í„° ?•œê¸??¸ì½”ë”© ì²˜ë¦¬ ?•„?„°
+ * ?ï¿½ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ë©”í„° ?ï¿½ï¿½ï¿½??ï¿½ï¿½ì½”ë”© ì²˜ë¦¬ ?ï¿½ï¿½?ï¿½ï¿½
  */
 public class LoginCheckFilter implements Filter {
 	
@@ -27,11 +27,14 @@ public class LoginCheckFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest)request;
 		String user = null;
+		System.out.println("ìœ ì € ì¿ í‚¤ ê²€ì‚¬");
 
 		Cookie[] cookies = req.getCookies();
 		if (cookies != null) {
+			
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equalsIgnoreCase("user")) {
+					System.out.println("ìœ ì € ì¿ í‚¤ ìˆìŒ");
 					user = URLDecoder.decode(cookie.getValue(), "utf-8");
 	                String[] tokens = user.split(",");
 	                user = tokens[1] + "("+tokens[0]+")";
