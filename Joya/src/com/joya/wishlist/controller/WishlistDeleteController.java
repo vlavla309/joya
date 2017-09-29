@@ -32,11 +32,10 @@ public class WishlistDeleteController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 		
-		/*String userEmail = request.getParameter("email");*/
-		String userEmail = "joa@joa";
+		String userEmail = request.getParameter("userEmail");
 		String id = request.getParameter("productId");
 		int productId = Integer.parseInt(id);
-		System.out.println("!!!!!" + productId + "!!!!!");
+		System.out.println("!!!!!" + productId + "!!!!!" + userEmail + "????");
 		
 		PrintWriter out;
 		response.setContentType("text/plain;charset=utf-8");
