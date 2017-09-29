@@ -14,7 +14,7 @@ public interface ArticleDao {
 	public void review(Article article);
 	
 	/** 전체 글 목록 */
-	public List<Article> listAll();
+	public List<Article> listAll(int boardId);
 	
 	/** 게시글 상세보기 */
 	public Article read(int articleId);

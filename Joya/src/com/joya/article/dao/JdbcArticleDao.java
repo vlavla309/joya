@@ -2,6 +2,7 @@ package com.joya.article.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,9 +100,41 @@ public class JdbcArticleDao implements ArticleDao {
 
 	/** 전체 글 목록 */
 	@Override
-	public List<Article> listAll() {
+	public List<Article> listAll(int boardId) {
 		List<Article> list = new ArrayList<Article>();
-		String sql="";
+		String sql="SELECT article_id, \r\n" + 
+				"       email, \r\n" + 
+				"       board_id, \r\n" + 
+				"       title, \r\n" + 
+				"       contents, \r\n" + 
+				"       writer, \r\n" + 
+				"       regdate, \r\n" + 
+				"       passwd, \r\n" + 
+				"       group_no, \r\n" + 
+				"       type, \r\n" + 
+				"       hitcount, \r\n" + 
+				"       file_path, \r\n" + 
+				"       product_id \r\n" + 
+				"FROM   articles \r\n" + 
+				"WHERE  board_id = ? \r\n" + 
+				"ORDER  BY group_no DESC ";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Article article = createArticle(rs);
+				list.add(article);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -206,18 +239,37 @@ public class JdbcArticleDao implements ArticleDao {
 	}
 
 	
-	public static void main(String[] args) {
+	/** CreateArticle */
+	public Article createArticle(ResultSet rs) {
+		int articleId = rs.getInt("article_id");
+		String email = rs.getString("email");
+		int boardId = rs.getInt("board_id");
+		String title = rs.getString("title");
+		String contents = rs.getString("contents");
+		String writer = rs.getString("writer");
+		String regdate = rs.getString("regdate");
+		String passwd = rs.getString("passwd");
+		int groupNo = rs.getInt("group_no");
+		int type = rs.getInt("type");
+		int hitcount = rs.getInt("hitcount");
+		String filePath = rs.getString("file_path");
+		String productId = rs.getString("product_id");
 		
+		return article;
+	}
+	
+	public static void main(String[] args) {
+		/**
 		ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
 		Article article = new Article();
-		/**
+		
 		article.setEmail("joa@joa");
 		article.setTitle("질문");
 		article.setContents("목걸이 재입고 언제되나요?");
 		article.setPasswd("1111");
 		dao.create(article);
 		System.out.println(article.toString());
-		*/
+		
 		
 		article.setEmail("admin@joa");
 		article.setBoardId(2);
@@ -227,6 +279,7 @@ public class JdbcArticleDao implements ArticleDao {
 		article.setPasswd("admin");
 		dao.reply(8, article);
 		System.out.println(article.toString());
+		*/
 		
 	}
 	
