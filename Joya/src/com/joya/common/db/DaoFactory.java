@@ -21,8 +21,8 @@ public class DaoFactory {
 	private static final String URL = "jdbc:oracle:thin:@192.168.0.86:1521";
 	private static final String USER = "a";
 	private static final String PASSWORD = "a";
-	private static final int INIT_SIZE = 15;
-	private static final int MAX_SIZE = 40;
+	private static final int INIT_SIZE = 1;
+	private static final int MAX_SIZE = 1;
 	
 	private BasicDataSource dataSource;
 	
