@@ -137,6 +137,49 @@ public class JdbcUserDao implements UserDao{
 		}
 	}
 
+	
+//	회원 인증
+	@Override
+	public User isMember(String id, String passwd) {
+		User user = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT email, " + 
+					 "       phone, " + 
+					 "       NAME, " + 
+					 "       passwd, " + 
+					 "       address, " + 
+					 "       point, " + 
+					 "       birthdate, " + 
+					 "       type, " + 
+					 "       To_char(regdate, 'YYYY/MM/DD') regdate " + 
+					 "FROM   users " + 
+					 "WHERE  email = ? " + 
+					 "       AND passwd = ? ";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, passwd);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user = createUser(rs);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new MallException("JdbcUserDao.isMember(id, passwd) 실행 중 예외발생", e);
+		}finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return user;
+	}
+	
 //	회원 상세 정보 조회
 	@Override
 	public User read(String email) {
@@ -335,6 +378,10 @@ public class JdbcUserDao implements UserDao{
 		userDao.delete("dsf@gmail.com");
 		System.out.println("삭제 성공");
 		*/
+		
+		/*System.out.println("인증 준비");
+		System.out.println(userDao.isMember("joa@joa52", "2222"));
+		System.out.println("인증 성공");*/
 		
 		/*System.out.println("수정 준비");
 		userDao.modify(new User("joa@joa52", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
