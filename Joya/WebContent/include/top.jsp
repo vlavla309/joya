@@ -1,6 +1,7 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="container">
       <div class="top row">
       <div class="col-md-6 phone-shopping">
@@ -32,6 +33,7 @@
                     <li class="clearfix">
                       <label for="customer_email_box" class="control-label">Email Address <span class="req">*</span></label>
                       <input type="email" value="" name="email" id="customer_email_box" class="form-control">
+                      <input id="referer" type="hidden" name="referer" >
                     </li>            
                     <li class="clearfix">
                       <label for="customer_password_box" class="control-label">Password <span class="req">*</span></label>
@@ -56,14 +58,14 @@
           </c:when>
           <c:otherwise>
             <ul id="accounts" class="list-inline">
+             <li>
+                <label>${user}님 환영합니다.&nbsp;&nbsp;&nbsp;</label>  
+             </li>
              <li class="my-account">
                 <a href="account.html">My Account</a>
              </li> 
-             <li>
-                <label>${cookie.user.value}님 환영합니다.</label>  
-             </li>
              <li class="my-account">
-                <a href="account.html">로그아웃</a>
+                <a href="/user/login_action.joya">로그아웃</a>
              </li> 
             </ul>
           </c:otherwise>

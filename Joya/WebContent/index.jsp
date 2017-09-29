@@ -43,12 +43,8 @@
 	<script src="assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
 	<script src="assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="assets/javascripts/cs.script.js" type="text/javascript"></script>
-  
-  <style type="text/css">
-    #cal {
-      text-align: center;
-    }
-  </style>
+	<script src="assets/javascripts/referer.js" type="text/javascript"></script>
+    
 </head>
 
 <body class="templateIndex notouch">

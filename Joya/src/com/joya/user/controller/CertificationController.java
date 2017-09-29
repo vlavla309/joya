@@ -22,14 +22,13 @@ public class CertificationController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
-		String location = "/user/login.joya";
+		String location = "/index.joya";
 		
 		// 로그인
 		if(request.getMethod().equalsIgnoreCase("post")) {
 			String email = request.getParameter("email");
 			String passwd = request.getParameter("passwd");
 			String referer = request.getParameter("referer");
-			System.out.println(email);
 			
 			User user = userService.isMember(email, passwd);
 			if(user != null){
@@ -43,9 +42,10 @@ public class CertificationController implements Controller {
 				loginCookie.setPath("/");
 				response.addCookie(loginCookie);
 			    if(referer != null)  location = referer;
-			    location = "/admin/userlist.joya";
-			}else{
-			  location = "/user/login.jsp";
+			}else if(referer.contains("/user/login.joya")) {
+				location = "/index.joya";
+			} else {
+				location = "/user/login.joya";
 			}
 		}else {// 로그아웃
 			String user = null;
