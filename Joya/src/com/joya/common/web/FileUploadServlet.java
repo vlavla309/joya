@@ -36,27 +36,26 @@ public class FileUploadServlet extends HttpServlet {
 			for (FileItem item : fileList) {
 				if (item.isFormField()) {
 					String writer = item.getString("utf-8");
-					System.out.println("�ۼ���: " + writer);
-				}else {// ���ε� ������ ���
+				}else {// 占쏙옙占싸듸옙 占쏙옙占쏙옙占쏙옙 占쏙옙占�
 					fileName = item.getName();
-					System.out.println("���ε� ���ϸ�: " + fileName);
-					// fileName = c:\xxx\yyy\���ε����ϸ�
+					System.out.println("占쏙옙占싸듸옙 占쏙옙占싹몌옙: " + fileName);
+					// fileName = c:\xxx\yyy\占쏙옙占싸듸옙占쏙옙占싹몌옙
 					String[] tokens = fileName.split("\\\\");
-					fileName = tokens[tokens.length-1];//���ϸ� ����
+					fileName = tokens[tokens.length-1];//占쏙옙占싹몌옙 占쏙옙占쏙옙
 					long fileSize = item.getSize();
-					System.out.println("���ϻ�����: " + fileSize);
+					System.out.println("占쏙옙占싹삼옙占쏙옙占쏙옙: " + fileSize);
 	
-					// ���ε�� ������ ������ Ư�� ���丮�� ����
+					// 占쏙옙占싸듸옙占� 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 특占쏙옙 占쏙옙占썰리占쏙옙 占쏙옙占쏙옙
 					File saveFile = new File(fileRepository + fileName);
 					item.write(saveFile);
 				}
 			}
-			/*// ���ε� ��� Response
+			/*// 占쏙옙占싸듸옙 占쏙옙占� Response
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<html>");
 			out.println("<body>");
-			out.println("<h2>���� ���ε� �Ϸ�!</h2>");
+			out.println("<h2>占쏙옙占쏙옙 占쏙옙占싸듸옙 占싹뤄옙!</h2>");
 			out.println("<h3>"+fileName+"</h3>");
 			out.println("</body>");
 			out.println("</html>");*/
