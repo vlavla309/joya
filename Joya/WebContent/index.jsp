@@ -45,6 +45,10 @@
 	<script src="assets/javascripts/cs.script.js" type="text/javascript"></script>
 	<script src="assets/javascripts/referer.js" type="text/javascript"></script>
     
+    
+    <style type="text/css">
+      
+    </style>
 </head>
 
 <body class="templateIndex notouch">

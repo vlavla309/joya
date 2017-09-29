@@ -31,6 +31,7 @@ public class CertificationController implements Controller {
 			String referer = request.getParameter("referer");
 
 			User user = userService.isMember(email, passwd);
+			System.out.println(user);
 			if(user != null){
 				String userInfo = null;
 				try {
@@ -49,7 +50,7 @@ public class CertificationController implements Controller {
 					}
 					}
 				} else {
-					location = "/index.joya";
+					location = "/user/login.joya";
 				}
 			}else {// 로그아웃
 				Cookie[] cookies = request.getCookies();

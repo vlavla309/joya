@@ -15,7 +15,7 @@
           <c:when test="${empty cookie.user}">
               <ul id="accounts" class="list-inline">
             <li class="my-account">
-              <a href="account.html">My Account</a>
+              <a href="account.html">Order List</a>
             </li>  
             <li class="login">    
               <span id="loginButton" class="dropdown-toggle" data-toggle="dropdown">
@@ -57,7 +57,6 @@
           </ul>
           </c:when>
           <c:otherwise>
-          <form action="/user/login_action.joya">
             <ul id="accounts" class="list-inline">
              <li>
                 <label>${user}님 환영합니다.&nbsp;&nbsp;&nbsp;</label>  
@@ -66,10 +65,9 @@
                 <a href="account.html">My Account</a>
              </li> 
              <li class="my-account">
-                <button type="button">로그아웃</button>
+                <a href="/user/login_action.joya">로그아웃</a>
              </li> 
             </ul>
-            </form> 
           </c:otherwise>
         </c:choose>
         
