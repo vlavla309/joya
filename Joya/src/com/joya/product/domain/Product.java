@@ -11,7 +11,6 @@ public class Product {
 	private int price;
 	private int amount;
 	private int hitcount;
-	
 	public Product() {}
 	
 	public Product(int productId, String productName, String categoryName, String maker, String productDesc, String regdate, int price,
@@ -28,6 +27,7 @@ public class Product {
 		this.hitcount = hitcount;
 	}
 	
+
 	public int getProductId() {
 		return productId;
 	}
@@ -46,12 +46,7 @@ public class Product {
 	public void setMaker(String maker) {
 		this.maker = maker;
 	}
-	public String getProductDes() {
-		return productDesc;
-	}
-	public void setProductDes(String productDes) {
-		this.productDesc = productDes;
-	}
+	
 	public String getRegdate() {
 		return regdate;
 	}

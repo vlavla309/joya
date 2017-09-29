@@ -66,7 +66,7 @@
 				dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
 				success : function(data) {
 					//viewuser(data)
-					alert(data.Product[0].productname);
+					alert(data);
 				}
 			});
 		});
