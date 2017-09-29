@@ -8,13 +8,13 @@ import com.joya.wishlist.domain.Wishlist;
 public interface WishlistService {
 	
 	/** 위시리스트에 등록 */
-	public void insert(Wishlist wishlist);
+	public void insert(String userEmail,  int productId);
 	
 	/** 위시리스트 전체 목록 반환 */
 	public List<Wishlist> listAll(String userEmail);
 	
 	/** 위시리스트 목록에서 삭제 */
-	public boolean delete(Wishlist wishlist);
+	public boolean delete(String userEmail,  int productId);
 	
 	/** 선택 페이지에 대한 위시리스트 반환 */
 	public List<Wishlist> listByPage(String email, int pageNum);

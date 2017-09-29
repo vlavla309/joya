@@ -13,25 +13,26 @@ public class WishlistServiceImpl implements WishlistService {
 	WishlistDao wishlistDao = (WishlistDao)DaoFactory.getInstance().getDao(JdbcWishlistDao.class);
 	
 	@Override
-	public void insert(Wishlist wishlist) {
-		wishlistDao.insert(wishlist);
+	public void insert(String userEmail, int productId) {
+		wishlistDao.insert(userEmail, productId);
+		
 	}
-
+	
 	@Override
 	public List<Wishlist> listAll(String userEmail) {
 		return wishlistDao.listAll(userEmail);
 	}
-
+	
 	@Override
-	public boolean delete(Wishlist wishlist) {
-		return wishlistDao.delete(wishlist);
+	public boolean delete(String userEmail, int productId) {
+		return wishlistDao.delete(userEmail, productId);
 	}
-
+	
 	@Override
 	public List<Wishlist> listByPage(String email, int pageNum) {
 		return wishlistDao.listByPage(email, pageNum);
 	}
-
+	
 	@Override
 	public List<Wishlist> listByParams(String userEmail, Params params) {
 		return wishlistDao.listByParams(userEmail, params);

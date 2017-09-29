@@ -28,7 +28,6 @@ import com.joya.wishlist.service.WishlistServiceImpl;
 public class WishlistController implements Controller {
 	
 	private WishlistService wishlistService = new WishlistServiceImpl();
-	private ImageService imgservice = new ImageServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, UnsupportedEncodingException {
@@ -46,8 +45,6 @@ public class WishlistController implements Controller {
 		params.setPage(pageCount);
 		params.setPageSize(pageSize);
 		params.setPageNum(pageNum);
-
-		List<Images> imglist = imgservice.listAll();
 		
 		// 페이징
 		List<Wishlist> list = wishlistService.listByParams(userEmail, params);
@@ -58,7 +55,6 @@ public class WishlistController implements Controller {
 	    pageBuilder.build();
 		
 		mav.addObject("list", list);
-		mav.addObject("images", imglist);
 		mav.addObject("params", params);
 		mav.addObject("pageBuilder", pageBuilder);
 		
