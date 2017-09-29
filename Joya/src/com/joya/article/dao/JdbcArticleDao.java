@@ -197,8 +197,33 @@ public class JdbcArticleDao implements ArticleDao {
 	/** 글 수정 */
 	@Override
 	public void edit(Article article) {
-		// TODO Auto-generated method stub
-
+		String sql = "UPDATE articles \r\n" + 
+				"SET    title = ?, \r\n" + 
+				"       contents = ?, \r\n" + 
+				"       regdate = sysdate, \r\n" + 
+				"       passwd = ?, \r\n" + 
+				"       file_path = ?, \r\n" + 
+				"       product_id = ? \r\n" + 
+				"WHERE  article_id = ?";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, article.getTitle());
+			pstmt.setString(2, article.getContents());
+			pstmt.setString(3, article.getPasswd());
+			pstmt.setString(4, article.getFilePath());
+			pstmt.setInt(5, article.getProductId());
+			pstmt.setInt(6, article.getArticleId());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 	/** 글 삭제 */
@@ -210,7 +235,7 @@ public class JdbcArticleDao implements ArticleDao {
 
 	/** 답글등록(관리자) */
 	@Override
-	public void reply(int articleId, Article article) {
+	public void reply(Article article) {
 		String sql="INSERT INTO articles \r\n" + 
 				"            (article_id, \r\n" + 
 				"             email, \r\n" + 
@@ -223,13 +248,15 @@ public class JdbcArticleDao implements ArticleDao {
 				"             type) \r\n" + 
 				"VALUES      (articles_seq.nextval, \r\n" + 
 				"             ?, \r\n" + 
+				"             2, \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
-				"             ?, \r\n" + 
-				"             ?, \r\n" + 
-				"             1)";
+				"             (SELECT group_no \r\n" + 
+				"              FROM   articles \r\n" + 
+				"              WHERE  article_id = ?), \r\n" + 
+				"             1) ";
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -238,12 +265,11 @@ public class JdbcArticleDao implements ArticleDao {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getEmail());
-			pstmt.setInt(2, article.getBoardId());
-			pstmt.setString(3, article.getTitle());
-			pstmt.setString(4, article.getContents());
-			pstmt.setString(5, article.getWriter());
-			pstmt.setString(6, article.getPasswd());
-			pstmt.setInt(7, articleId);
+			pstmt.setString(2, article.getTitle());
+			pstmt.setString(3, article.getContents());
+			pstmt.setString(4, article.getWriter());
+			pstmt.setString(5, article.getPasswd());
+			pstmt.setInt(6, article.getArticleId());
 			pstmt.executeQuery();
 			con.commit();
 			
