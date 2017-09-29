@@ -428,6 +428,12 @@
                                             <label>사진 등록 (대표 사진)</label>
                                             <input type="file">
                                         </div>
+                                        
+                                        <div class="form-group">
+                                            <label><a href사진 등록 (2)</label>
+                                            <input type="file">
+                                            
+                                        </div>
                                      
                                         <button type="submit" class="btn btn-default">Submit Button</button>
                                         <button type="reset" class="btn btn-default">Reset Button</button>
