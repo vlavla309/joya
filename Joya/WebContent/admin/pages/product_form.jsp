@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,16 +14,16 @@
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.servletContext.contextPath}/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${pageContext.servletContext.contextPath}/admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${pageContext.servletContext.contextPath}/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.servletContext.contextPath}/admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -380,53 +381,45 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Basic Form Elements
+                            상품 등록
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                             <form role="form">
+                             <form role="form" name="productForm" action="/admin/product_add_action.joya" method="post" enctype="multipart/form-data">
                                 <div class="col-lg-6">
                                    		<h1>상품 정보</h1>
                                         <div class="form-group">
                                             <label>상품이름</label>
-                                            <input class="form-control" maxlength="30">
+                                            <input class="form-control" maxlength="30" name="productName">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
                                             <label>제조사</label>
-                                            <input class="form-control" maxlength="30">
+                                            <input class="form-control" maxlength="30" name="make">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
                                             <label>가격</label>
-                                            <input type="number" class="form-control">
+                                            <input type="number" class="form-control" name="price">
                                             <p class="help-block">(단위:원)</p>
                                         </div>
                                         <div class="form-group">
                                             <label>재고량</label>
-                                            <input type="number" class="form-control">
+                                            <input type="number" class="form-control" name="amount">
                                             <p class="help-block">(단위:개)</p>
                                         </div>
                                         <div class="form-group">
                                             <label>카테고리</label>
-                                            <select class="form-control">
-<<<<<<< HEAD
+                                            <select class="form-control"  name="categoryName">
                                              <c:forEach items="${categories}" var="category" varStatus="status">
 												<option>${category.categoryName}</option>
 											 </c:forEach>
                                               
-=======
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
->>>>>>> 90857380fe8db34f809ec6dfe5364cb84d556c62
                                             </select>
                                         </div>
                                          <div class="form-group">
                                             <label>상품 설명</label>
-                                            <textarea class="form-control" rows="6" ></textarea>
+                                            <textarea class="form-control" rows="6"  name="productDesc"></textarea>
                                         </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -439,19 +432,6 @@
                                             <input type="file" name="filename1" value="5">
                                              <p class="help-block">필수 사항입니다.</p>
                                         </div>
-<<<<<<< HEAD
-=======
-                                        
-                                        <div class="form-group">
-<<<<<<< HEAD
-                                            <label><a href사진 등록 (2)></a></label>
-=======
-                                            <label>사진 등록 (2)</label>
->>>>>>> 970d7926deb585a99aa949b18e406ff42dd9984b
-                                            <input type="file">
-                                            
-                                        </div>
->>>>>>> 90857380fe8db34f809ec6dfe5364cb84d556c62
                                      
                                         <button type="submit" class="btn btn-default">Submit Button</button>
                                         <button type="reset" class="btn btn-default">Reset Button</button>
@@ -476,25 +456,17 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-<<<<<<< HEAD
     <script src="${pageContext.servletContext.contextPath}/admin/vendor/jquery/jquery-3.2.0.min.js"></script>
-=======
-    <script src="../vendor/jquery/jquery.min.js"></script>
->>>>>>> 90857380fe8db34f809ec6dfe5364cb84d556c62
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/admin/vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-<<<<<<< HEAD
     <script src="${pageContext.servletContext.contextPath}/admin/dist/js/sb-admin-2.js"></script>
     <script src="${pageContext.servletContext.contextPath}/admin/dist/js/productform.js"></script>
-=======
-    <script src="../dist/js/sb-admin-2.js"></script>
->>>>>>> 90857380fe8db34f809ec6dfe5364cb84d556c62
 
 </body>
 
