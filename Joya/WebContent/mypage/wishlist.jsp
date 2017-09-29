@@ -46,18 +46,38 @@
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
-
+<script type="text/javascript">
+  $(function() {
+    $(".ji-deleteBtn").click(function(event) {
+      var id = $(event.target).attr("value");
+      var email = $(event.target).attr("name");
+        $(function() {
+          $.ajax({
+            url : "${pageContext.servletContext.contextPath}/wishlistdelete.joya",
+            dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
+            data : {productId : id},{userEmail : email},
+            success : function(){
+            	console.log(productId);
+              /* $("div[value=" + productId + "]").remove(); */
+            }
+          })
+        })
+    })
+  });
+</script>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templateBlog notouch">
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
-  <!-- hearder 영역 종료 -->
+  <!-- Header 영역 종료 -->
 
+  <!-- 본문 영역 시작 -->
   <div id="content-wrapper-parent">
     <div id="content-wrapper">
-      <!-- Content -->
+
+      <!-- Content 영역 시작-->
       <div id="content" class="clearfix">
 
         <!-- smallHeader 영역 시작 -->
@@ -79,106 +99,84 @@
           <!-- 아이템 시작 -->
           <div class="container">
             <div class="row">
+
               <div id="page-header" class="col-md-24">
                 <h1 id="page-title">Wish List</h1>
               </div>
 
-              <div id="col-main"
-                class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">
-                <div class="blog-content-wrapper">
-
-                  <c:choose>
-                    <!-- 위시리스트가 존재하지 않는 경우 출력 시작 -->
-                    <c:when test="${empty list}">
-                      <span style="text-align: center"><h3>위시리스트가 존재하지 않습니다</h3></span>
-                    </c:when>
-                    <!-- 위시리스트가 존재하지 않는 경우 출력 종료 -->
-
-                    <!-- 위시리스트가 존재하는 경우 출력 시작 -->
-                    <c:otherwise>
+              <div id="col-main"class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">  
+                <c:choose>
+                  <c:when test="${empty list}">
+                    <h2 style="text-align: center">위시리스트가 존재하지 않습니다</h2>
+                  </c:when>
+                  <c:otherwise>
+                  
+                  <!--for  -->
+                    
+                    <div class="blog-content-wrapper">
+                    <c:forEach items="${list}" var="wishlist" varStatus="status">
                       <div class="blogs col-sm-8 col-md-8 clearfix">
                         <article class="blogs-item">
                           <div class="row">
                             <div class="article-content col-md-24">
-
-                              <c:forEach items="${list}" var="wishlist"
-                                varStatus="status">
-                                <!-- 단일 아이템 출력 부분 시작 -->
-                                <div class="article-content-inner">
-
-                                  <!-- 아이템 사진 부분 시작 -->
+                                <div class="article-content-inner" value="${wishlist.productId }">
                                   <div class="blogs-image">
                                     <ul class="list-inline">
                                       <li><a href="#">
-                                          <div style="text-align: left;">
-                                            <img
-                                              src="${wishlist.path}${wishlist.imgName}"
-                                              alt="">
+                                          <div><img src="${wishlist.imgPath}${wishlist.imgName}"  alt="">
                                           </div>
                                       </a></li>
                                     </ul>
                                   </div>
-                                  <!-- 아이템 사진 부분 시작 -->
 
-                                  <!-- 아이템 이름 부분 시작 -->
                                   <ul class="post list-inline">
                                     <li class="select"><input
                                       class="ji-selectC" type="checkbox"
-                                      value="${wishlist.productId }">
-                                    </li>
+                                      value="${wishlist.productId }"></li>
                                     <li class="author">${wishlist.productName }</li>
-                                    <li class="post-action"><a
-                                      href="#"><img
-                                        src="../assets/images/wishlist.png"
-                                        alt=""></a></li>
+                                    <li class="post-action"><button class="ji-deleteBtn" value="${wishlist.productId}" name="${wishlist.email}" ><img src="../assets/images/wishlistDelete.png" alt="" ></button></li>
                                   </ul>
-                                  <!-- 아이템 이름 부분 종료 -->
+
                                 </div>
-                                <!-- 단일 아이템 출력 부분 종료 -->
-                                
-                              </c:forEach>
                             </div>
                           </div>
                         </article>
                       </div>
-                    </c:otherwise>
-                  </c:choose>
-                  <!-- 위시리스트가 존재하는 경우 출력 종료 -->
-                </div>
+                      </c:forEach>
+                      </div>
+
+                    <!-- end for  -->
+                    
+                  </c:otherwise>
+                </c:choose>
               </div>
 
               <!-- 페이지 리스트 영역 시작 -->
-              <div class="row">
-                <div class="col-md-6 float-right">
+              <div>
+                <div class="col-md-6" >
                   <nav aria-label="Page navigation">
                     <ul class="pagination">
                       <c:if test="${pageBuilder.showPrevious }">
                         <li><a
-                          href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}"
+                          href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}&email=${wishlist.email}"
                           aria-label="Previous"> <span
                             aria-hidden="true">&laquo;</span>
                         </a></li>
                       </c:if>
 
-                      <c:forEach var="i"
-                        begin="${pageBuilder.currentStartPage}"
-                        end="${pageBuilder.currentEndPage }">
+                      <c:forEach var="i" begin="${pageBuilder.currentStartPage}" end="${pageBuilder.currentEndPage }">
                         <c:choose>
                           <c:when test="${i == params.page }">
                             <li class="active"><a>${i }</a></li>
                           </c:when>
                           <c:otherwise>
-                            <li><a
-                              href="${pageBuilder.getQueryString(i)}">${i }</a></li>
+                            <li><a href="${pageBuilder.getQueryString(i)}&email=${wishlist.email}">${i }</a></li>
                           </c:otherwise>
                         </c:choose>
                       </c:forEach>
 
                       <c:if test="${pageBuilder.showNext }">
-                        <li><a
-                          href="${pageBuilder.getQueryString(pageBuilder.nextStartPage)}"
-                          aria-label="Next"> <span
-                            aria-hidden="true">&raquo;</span>
+                        <li><a href="${pageBuilder.getQueryString(pageBuilder.nextStartPage)}&email=${wishlist.email}" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                         </a></li>
                       </c:if>
                     </ul>
@@ -189,7 +187,7 @@
 
               <!-- 주문하기 버튼 영역 시작 -->
               <div>
-                <button id="ji-" class="btn" type="button">Order</button>
+                <button id="ji-orderB" class="btn" type="button">Order</button>
               </div>
               <!-- 주문하기 버튼 영역 시작 -->
               <!-- End of layout -->
@@ -198,6 +196,7 @@
         </section>
         <!-- 본문 영역 종료 -->
       </div>
+      <!-- Content 영역 종료-->
     </div>
   </div>
 

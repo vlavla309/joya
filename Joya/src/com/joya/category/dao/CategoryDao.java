@@ -8,11 +8,8 @@ public interface CategoryDao {
 
 	public void create(Categories product);
 	
-	public Categories read(String categoryName);
-	
 	public  List<Categories> listAll();
 
-	
 	public void update(Categories product);
 	
 	public void delete(int categoriesid);
