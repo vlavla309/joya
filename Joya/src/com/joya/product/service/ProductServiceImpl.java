@@ -44,4 +44,11 @@ public class ProductServiceImpl implements ProductService {
 			System.out.println(product);
 		}
 	}
+
+	@Override
+	public Product read(int productId) {
+		return productDao.read(productId);
+	}
+
+	
 }
