@@ -390,27 +390,27 @@
                                    		<h1>상품 정보</h1>
                                         <div class="form-group">
                                             <label>상품이름</label>
-                                            <input class="form-control" maxlength="30">
+                                            <input class="form-control" maxlength="30" name="productName">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
                                             <label>제조사</label>
-                                            <input class="form-control" maxlength="30">
+                                            <input class="form-control" maxlength="30" name="make">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
                                             <label>가격</label>
-                                            <input type="number" class="form-control">
+                                            <input type="number" class="form-control" name="price">
                                             <p class="help-block">(단위:원)</p>
                                         </div>
                                         <div class="form-group">
                                             <label>재고량</label>
-                                            <input type="number" class="form-control">
+                                            <input type="number" class="form-control" name="amount">
                                             <p class="help-block">(단위:개)</p>
                                         </div>
                                         <div class="form-group">
                                             <label>카테고리</label>
-                                            <select class="form-control">
+                                            <select class="form-control"  name="categoryName">
                                              <c:forEach items="${categories}" var="category" varStatus="status">
 												<option>${category.categoryName}</option>
 											 </c:forEach>
@@ -419,7 +419,7 @@
                                         </div>
                                          <div class="form-group">
                                             <label>상품 설명</label>
-                                            <textarea class="form-control" rows="6" ></textarea>
+                                            <textarea class="form-control" rows="6"  name="productDesc"></textarea>
                                         </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
