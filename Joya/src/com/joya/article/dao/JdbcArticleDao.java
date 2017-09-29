@@ -48,14 +48,16 @@ public class JdbcArticleDao implements ArticleDao {
 				"             file_path) \r\n" + 
 				"VALUES      (articles_seq.nextval, \r\n" + 
 				"             ?, \r\n" + 
-				"             2, \r\n" + 
+				"             (SELECT board_id \r\n" + 
+				"              FROM   articles \r\n" + 
+				"              WHERE  article_id = ?), \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
 				"             articles_seq.currval, \r\n" + 
 				"             0, \r\n" + 
-				"             ?) ";
+				"             ?)";
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -63,11 +65,12 @@ public class JdbcArticleDao implements ArticleDao {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getEmail());
-			pstmt.setString(2, article.getTitle());
-			pstmt.setString(3, article.getContents());
-			pstmt.setString(4, article.getWriter());
-			pstmt.setString(5, article.getPasswd());
-			pstmt.setString(6, article.getFilePath());
+			pstmt.setInt(2, article.getArticleId());
+			pstmt.setString(3, article.getTitle());
+			pstmt.setString(4, article.getContents());
+			pstmt.setString(5, article.getWriter());
+			pstmt.setString(6, article.getPasswd());
+			pstmt.setString(7, article.getFilePath());
 			pstmt.executeQuery();
 			con.commit();
 			
@@ -164,8 +167,7 @@ public class JdbcArticleDao implements ArticleDao {
 				"       file_path, \r\n" + 
 				"       product_id \r\n" + 
 				"FROM   articles \r\n" + 
-				"WHERE  board_id = 2 \r\n" + 
-				"       AND article_id = ?";
+				"WHERE  article_id = ?";
 		
 		Article article = null;
 		Connection con = null;
@@ -193,10 +195,11 @@ public class JdbcArticleDao implements ArticleDao {
 		}
 		return article;
 	}
-
+	
 	/** 글 수정 */
 	@Override
-	public void edit(Article article) {
+	public boolean edit(Article article) {
+		boolean result = false;
 		String sql = "UPDATE articles \r\n" + 
 				"SET    title = ?, \r\n" + 
 				"       contents = ?, \r\n" + 
@@ -204,13 +207,16 @@ public class JdbcArticleDao implements ArticleDao {
 				"       passwd = ?, \r\n" + 
 				"       file_path = ?, \r\n" + 
 				"       product_id = ? \r\n" + 
-				"WHERE  article_id = ?";
+				"WHERE  article_id = (SELECT article_id \r\n" + 
+				"                     FROM   articles \r\n" + 
+				"                     WHERE  article_id = ?) ";
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = dataSource.getConnection();
+			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getTitle());
 			pstmt.setString(2, article.getContents());
@@ -219,23 +225,42 @@ public class JdbcArticleDao implements ArticleDao {
 			pstmt.setInt(5, article.getProductId());
 			pstmt.setInt(6, article.getArticleId());
 			
+			int flag = pstmt.executeUpdate();
+			if(flag > 0) {
+				result = true;
+				con.commit();
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if(pstmt != null)pstmt.close();
+				if(con != null)con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
+		return result;
 	}
+
+
 
 	/** 글 삭제 */
 	@Override
 	public void delete(Article article) {
-		// TODO Auto-generated method stub
 
 	}
 
 	/** 답글등록(관리자) */
 	@Override
 	public void reply(Article article) {
+		
 		String sql="INSERT INTO articles \r\n" + 
 				"            (article_id, \r\n" + 
 				"             email, \r\n" + 
@@ -248,7 +273,9 @@ public class JdbcArticleDao implements ArticleDao {
 				"             type) \r\n" + 
 				"VALUES      (articles_seq.nextval, \r\n" + 
 				"             ?, \r\n" + 
-				"             2, \r\n" + 
+				"             (SELECT board_id \r\n" + 
+				"              FROM   articles \r\n" + 
+				"              WHERE  article_id = ?), \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
 				"             ?, \r\n" + 
@@ -265,11 +292,12 @@ public class JdbcArticleDao implements ArticleDao {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getEmail());
-			pstmt.setString(2, article.getTitle());
-			pstmt.setString(3, article.getContents());
-			pstmt.setString(4, article.getWriter());
-			pstmt.setString(5, article.getPasswd());
-			pstmt.setInt(6, article.getArticleId());
+			pstmt.setInt(2, article.getArticleId());
+			pstmt.setString(3, article.getTitle());
+			pstmt.setString(4, article.getContents());
+			pstmt.setString(5, article.getWriter());
+			pstmt.setString(6, article.getPasswd());
+			pstmt.setInt(7, article.getArticleId());
 			pstmt.executeQuery();
 			con.commit();
 			
@@ -295,14 +323,49 @@ public class JdbcArticleDao implements ArticleDao {
 	/** 게시글 조회수 증가 */
 	@Override
 	public void count(int articleId) {
-		// TODO Auto-generated method stub
-
+		String sql = "UPDATE articles \r\n" + 
+				"SET    hitcount = hitcount + 1 \r\n" + 
+				"WHERE  article_id = ?";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, articleId);
+			pstmt.executeQuery();
+			con.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if(pstmt != null)pstmt.close();
+				if(con != null)con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 	/** 선택페이지, 검색유형, 검색값, 한페이지당 출력 행수에 대한 글목록 반환 */
 	@Override
 	public List<Article> listByParams(Params params) {
-		// TODO Auto-generated method stub
+		List<Article> list = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		StringBuilder sb = new StringBuilder();
+		
 		return null;
 	}
 
@@ -350,25 +413,27 @@ public class JdbcArticleDao implements ArticleDao {
 	}
 	
 	public static void main(String[] args) {
-		
+		/**
 		ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
 		Article article = new Article();
-		/**
+		
 		article.setEmail("joa@joa");
-		article.setTitle("질문");
-		article.setContents("목걸이 재입고 언제되나요?");
+		article.setTitle("질문ㅇㅇ");
+		article.setContents("목걸이 재입고 언제?");
+		article.setWriter("조아조");
 		article.setPasswd("1111");
+		article.setArticleId(8);
 		dao.create(article);
 		System.out.println(article.toString());
 		
 		
 		article.setEmail("admin@joa");
-		article.setBoardId(2);
 		article.setTitle("답변");
 		article.setContents("답변내용");
 		article.setWriter("관리자");
 		article.setPasswd("admin");
-		dao.reply(8, article);
+		article.setArticleId(7);
+		dao.reply(article);
 		System.out.println(article.toString());
 		
 		
@@ -376,11 +441,30 @@ public class JdbcArticleDao implements ArticleDao {
 		for (Article article : list) {
 			System.out.println(article);
 		}
-		*/
+		
 		
 		article = dao.read(9);
 		System.out.println(article);
+		
+		System.out.println("1212121212121212");
+		article.setTitle("수정내용~~~~~~");
+		article.setContents("수정내용~~~~~~~~");
+		article.setPasswd("1111");
+		article.setArticleId(9);
+		dao.edit(article);
+		System.out.println("수정됨");
+		
+		dao.count(10);
+		System.out.println("조회수 증가됨");
+		*/
+		
+		
+		
+
+
 	}
+
+
 	
 
 }

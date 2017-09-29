@@ -20,13 +20,13 @@ public interface ArticleDao {
 	public Article read(int articleId);
 	
 	/** 글 수정 */
-	public void edit(Article article);
+	public boolean edit(Article article);
 	
 	/** 글 삭제 */
 	public void delete(Article article);
 	
 	/** 답글등록(관리자) */
-	public void reply(int articleId, Article article);
+	public void reply(Article article);
 	
 	/** 게시글 조회수 증가 */
 	public void count(int articleId);
