@@ -65,8 +65,8 @@
 				url : "${pageContext.servletContext.contextPath }/product/view.joya?productid="+id+"&type=quick",
 				dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
 				success : function(data) {
-					//viewuser(data)
-					alert(data);
+					viewuser(data)
+					//alert(data.Product[0].productname);
 				}
 			});
 		});
@@ -74,24 +74,10 @@
 		
 		/*모달*/
 		  function viewuser(data) {
-			console.log(data)
-			var txt = "";
-			txt += "<table stye='width:70%' border='1'>";
-			txt += "<thead>"
-			txt += "<tr> <td>가입일자</td> <td>휴대폰번호</td> <td>Message</td> <td>이름</td> <td>아이디</td> <td>직업</td> <td>이메일</td> </tr>"
-			txt += "</thead>"
-			txt += "<tbody>";
-			txt += "<tr>"
-			//서버쪽에서 데이터를 받았을때 주로 사용함. 
-			$.each(data, function(index, product) {
-				txt += "<td>" + user + "</td>"
-				alert(product[index].discription);
-			});
-			txt += "</tr>"
-			txt += "</tbody>";
-			txt += "</table>"
-			
-			$("#quickview_title").text("hihihi")
+			$("#quickview_title").text(data.Product[0].productname);
+			$("#description").text(data.Product[0].discription);
+			$(".price_sale").text(data.Product[0].price)
+			$(".maker").text(data.Product[0].maker)
 			
 		} 
 		
@@ -284,7 +270,6 @@
 	<!-- end of footer -->
 	
 	<!-- start quick-view   -->
-	<c:forEach items="${productlist}" var="product" varStatus="status">
 		<div id="quick-shop-modal" class="modal in" role="dialog" aria-hidden="false" tabindex="-1" data-width="800">
 			<div class="modal-backdrop in" style="height: 742px;">
 			</div>
@@ -315,11 +300,8 @@
 								<h1 id="quick-shop-title"><span> <a id="quickview_title" href="http://demo.designshopify.com/products/curabitur-cursus-dignis">Curabitur cursus dignis</a></span></h1>
 								<div id="quick-shop-infomation" class="description">
 									<div id="quick-shop-description" class="text-left">
-										<p>
+										<p id = description>
 											Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum.
-										</p>
-										<p>
-											Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor s...
 										</p>
 									</div>
 								</div>
@@ -336,7 +318,7 @@
 									</div>
 									<form action="#" method="post" class="variants" id="quick-shop-product-actions" enctype="multipart/form-data">
 										<div id="quick-shop-price-container" class="detail-price">
-											<span class="price_sale">$259.00</span><span class="dash">/</span><del class="price_compare">$300.00</del>
+											<span class="price_sale">$259.00</span><span class="dash">
 										</div>
 										<div class="quantity-wrapper clearfix">
 											<label class="wrapper-title">Quantity</label>
@@ -354,32 +336,9 @@
 												</span>
 											</div>
 										</div>
-										<div id="quick-shop-variants-container" class="variants-wrapper">
-											<div class="selector-wrapper">
-												<label for="#quick-shop-variants-1293238211-option-0">Color</label>
-												<div class="wrapper">
-													<select class="single-option-selector" data-option="option1" id="#quick-shop-variants-1293238211-option-0" style="z-index: 1000; position: absolute; opacity: 0; font-size: 15px;">
-														<option value="black">black</option>
-														<option value="red">red</option>
-														<option value="blue">blue</option>
-														<option value="purple">purple</option>
-														<option value="green">green</option>
-														<option value="white">white</option>
-													</select>
-													<button type="button" class="custom-style-select-box" style="display: block; overflow: hidden;"><span class="custom-style-select-box-inner" style="width: 264px; display: inline-block;">black</span></button><i class="fa fa-caret-down"></i>
-												</div>
-											</div>
-											<div class="selector-wrapper">
-												<label for="#quick-shop-variants-1293238211-option-1">Size</label>
-												<div class="wrapper">
-													<select class="single-option-selector" data-option="option2" id="#quick-shop-variants-1293238211-option-1" style="z-index: 1000; position: absolute; opacity: 0; font-size: 15px;">
-														<option value="small">small</option>
-														<option value="medium">medium</option>
-														<option value="large">large</option>
-													</select>
-													<button type="button" class="custom-style-select-box" style="display: block; overflow: hidden;"><span class="custom-style-select-box-inner" style="width: 264px; display: inline-block;">small</span></button><i class="fa fa-caret-down"></i>
-												</div>
-											</div>
+										<div class="selector-wrapper">
+											<label for="#quick-shop-variants-1293238211-option-0">Maker</label>
+											<p class ="maker"></p>
 										</div>
 										<div class="others-bottom">
 											<input id="quick-shop-add" class="btn small add-to-cart" type="submit" name="add" value="Add to Cart" style="opacity: 1;">
@@ -392,7 +351,6 @@
 				</div>
 			</div>
 		</div>
-	</c:forEach>	
 	<!-- end quick-view   -->
 	
 </body>
