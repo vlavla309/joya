@@ -439,14 +439,30 @@ public class JdbcArticleDao implements ArticleDao {
 			
 			if(type != null) {
 				pstmt.setString(3, value);
-				pstmt.set
+				pstmt.setInt(4, params.getPage());
+			}else {
+				pstmt.setInt(3, params.getPage());
+			}
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Article>();
+			
+			while(rs.next()) {
+				Article article = createArticle(rs);
+				list.add(article);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
-		
 		return list;
 	}
 
