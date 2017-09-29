@@ -53,7 +53,7 @@
       var email = $(event.target).attr("name");
         $(function() {
           $.ajax({
-            url : "${pageContext.servletContext.contextPath}/wishlist/delete.joya",
+            url : "${pageContext.servletContext.contextPath}/wishlistdelete.joya",
             dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
             data : {productId : id},{userEmail : email},
             success : function(){
