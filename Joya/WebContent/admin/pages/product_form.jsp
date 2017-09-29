@@ -430,7 +430,7 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label><a href사진 등록 (2)</label>
+                                            <label><a href사진 등록 (2)></a></label>
                                             <input type="file">
                                             
                                         </div>
