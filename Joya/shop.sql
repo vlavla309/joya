@@ -305,4 +305,25 @@ VALUES ('zzzz.jpg', 5, '/shopimg/', 0);
 
 INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
 VALUES ('grande.jpg', 6, '/shopimg/', 0);
+
+
+--wishlist µî·Ï
+insert into wishlist(email, product_id)
+values ('joa@joa', 2);
+
+insert into wishlist(email, product_id)
+values ('joa@joa', 3);
+
+insert into wishlist(email, product_id)
+values ('joa@joa', 4);
+
+insert into wishlist(email, product_id)
+values ('joa@joa', 5);
+
+insert into wishlist(email, product_id)
+values ('joa@joa', 6);
+
+insert into wishlist(email, product_id)
+values ('joa@joa', 1);
+
 commit;

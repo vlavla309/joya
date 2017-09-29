@@ -17,5 +17,6 @@
 	
 	<!-- 마이페이지 관련 -->
 	<bean name="/mypage/wishlist" class="com.joya.wishlist.controller.WishlistController" />
+	<bean name="/mypage/wishlistdelete" class="com.joya.wishlist.controller.WishlistDeleteController" />
 	
 </beans>
