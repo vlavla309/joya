@@ -33,8 +33,7 @@ public class WishlistController implements Controller {
 		int pageSize = 3; // 한페이지에 출력될 위시리스트 수
 		int pageNum = 3; // 페이지 그룹 크기
 		
-		/*String userEmail = request.getParameter("email");*/
-		String userEmail = "joa@joa";
+		String userEmail = request.getParameter("email");
 		String page = request.getParameter("page");
 		if(page == null)  page = "1";
 		int pageCount = Integer.parseInt(page);

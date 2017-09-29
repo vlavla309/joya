@@ -46,7 +46,25 @@
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
-
+<script type="text/javascript">
+  $(function() {
+    $(".ji-deleteBtn").click(function(event) {
+      var id = $(event.target).attr("value");
+      var email = $(event.target).attr("name");
+        $(function() {
+          $.ajax({
+            url : "${pageContext.servletContext.contextPath}/wishlist/delete.joya",
+            dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
+            data : {productId : id},{}
+            success : function(){
+            	console.log(productId);
+              /* $("div[value=" + productId + "]").remove(); */
+            }
+          })
+        })
+    })
+  });
+</script>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
@@ -92,14 +110,16 @@
                     <h2 style="text-align: center">위시리스트가 존재하지 않습니다</h2>
                   </c:when>
                   <c:otherwise>
+                  
+                  <!--for  -->
+                    
                     <div class="blog-content-wrapper">
+                    <c:forEach items="${list}" var="wishlist" varStatus="status">
                       <div class="blogs col-sm-8 col-md-8 clearfix">
                         <article class="blogs-item">
                           <div class="row">
                             <div class="article-content col-md-24">
-                            
-                              <c:forEach items="${list}" var="wishlist" varStatus="status">
-                                <div class="article-content-inner">
+                                <div class="article-content-inner" value="${wishlist.productId }">
                                   <div class="blogs-image">
                                     <ul class="list-inline">
                                       <li><a href="#">
@@ -114,22 +134,20 @@
                                       class="ji-selectC" type="checkbox"
                                       value="${wishlist.productId }"></li>
                                     <li class="author">${wishlist.productName }</li>
-                                    <li class="post-action"><a
-                                      href="#"><img
-                                        src="../assets/images/wishlist.png"
-                                        alt=""></a></li>
+                                    <li class="post-action"><button class="ji-deleteBtn" value="${wishlist.productId}" name="${wishlist.email}" ><img src="../assets/images/wishlistDelete.png" alt="" ></button></li>
                                   </ul>
 
                                 </div>
-                              </c:forEach>
                             </div>
                           </div>
                         </article>
                       </div>
-                    </div>
+                      </c:forEach>
+                      </div>
+
+                    <!-- end for  -->
+                    
                   </c:otherwise>
-
-
                 </c:choose>
               </div>
 
@@ -140,7 +158,7 @@
                     <ul class="pagination">
                       <c:if test="${pageBuilder.showPrevious }">
                         <li><a
-                          href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}"
+                          href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}&email=${wishlist.email}"
                           aria-label="Previous"> <span
                             aria-hidden="true">&laquo;</span>
                         </a></li>
@@ -152,13 +170,13 @@
                             <li class="active"><a>${i }</a></li>
                           </c:when>
                           <c:otherwise>
-                            <li><a href="${pageBuilder.getQueryString(i)}">${i }</a></li>
+                            <li><a href="${pageBuilder.getQueryString(i)}&email=${wishlist.email}">${i }</a></li>
                           </c:otherwise>
                         </c:choose>
                       </c:forEach>
 
                       <c:if test="${pageBuilder.showNext }">
-                        <li><a href="${pageBuilder.getQueryString(pageBuilder.nextStartPage)}" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+                        <li><a href="${pageBuilder.getQueryString(pageBuilder.nextStartPage)}&email=${wishlist.email}" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                         </a></li>
                       </c:if>
                     </ul>

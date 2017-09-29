@@ -18,3 +18,10 @@
 #ji-page{
 	text-align: center;
 }
+
+.ji-deleteBtn{
+	width:40px;
+	height:40px;
+	background: transparent;
+	border: none;
+}
