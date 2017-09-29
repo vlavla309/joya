@@ -427,10 +427,15 @@
                                          <div class="form-group">
                                             <label>사진 등록 (대표 사진)</label>
                                             <input type="file">
+                                             <p class="help-block">필수 사항입니다.</p>
                                         </div>
                                         
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label><a href사진 등록 (2)></a></label>
+=======
+                                            <label>사진 등록 (2)</label>
+>>>>>>> 970d7926deb585a99aa949b18e406ff42dd9984b
                                             <input type="file">
                                             
                                         </div>
