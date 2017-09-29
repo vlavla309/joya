@@ -1,6 +1,7 @@
 package com.joya.admin.controller;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ import com.joya.common.controller.ModelAndView;
  *
  */
 public class ProductUploadActionController implements Controller {
-	private CategoryService categoryService=new CategoryServiceImpl();
+	
 	private String fileRepository = "C:\\gugu\\fileupload\\";
 	String fileName;
 
@@ -32,7 +33,12 @@ public class ProductUploadActionController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
 		ModelAndView mav = new ModelAndView();
 
-		request.setCharacterEncoding("utf-8");
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		DiskFileItemFactory itemFactory = new DiskFileItemFactory();
 		ServletFileUpload fileUpload = new ServletFileUpload(itemFactory);
@@ -44,7 +50,6 @@ public class ProductUploadActionController implements Controller {
 			fileList = fileUpload.parseRequest(request);
 			for (FileItem item : fileList) {
 				if (item.isFormField()) {
-					String writer = item.getString("utf-8");
 					System.out.println(item.getString("utf-8"));
 				}else {
 					fileName = item.getName();
