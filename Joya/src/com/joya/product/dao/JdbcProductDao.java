@@ -35,8 +35,47 @@ public class JdbcProductDao implements ProductDao{
 
 	@Override
 	public void create(Product product) {
-		// TODO Auto-generated method stub
-
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO products " + 
+				"            (product_id, " + 
+				"             category_name, " + 
+				"             product_name, " + 
+				"             maker, " + 
+				"             product_desc, " + 
+				"             price, " + 
+				"             amount " + 
+				"VALUES      (products_seq.NEXTVAL, " + 
+				"             ?, " +
+				"             ?, " +
+				"             ?, " + 
+				"             ?, " + 
+				"             ?, " + 
+				"             ?) ";
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, product.getCategoryName());
+			pstmt.setString(2, product.getProductDesc());
+			pstmt.setString(3, product.getProductName());
+			pstmt.setString(4, product.getMaker());
+			pstmt.setInt(5, product.getPrice());
+			pstmt.setInt(6, product.getAmount());
+			pstmt.executeQuery();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+			throw new MallException("JdbcProductDao.create(Product product)실행 중 예외 발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch(SQLException e) {}
+		}
 	}
 
 	@Override
@@ -83,13 +122,11 @@ public class JdbcProductDao implements ProductDao{
 		}
 		return product;
 	}
-	
-	
+
 	@Override
 	public List<Product> listByParams(Params params, String categoryName, String orderType) {
 
 		String type = params.getType();
-		
 		String value = params.getValue();
 
 		List<Product> list = null;		
@@ -127,18 +164,13 @@ public class JdbcProductDao implements ProductDao{
 		sb.append("        				price,");
 		sb.append("        				amount,");
 		sb.append("        				hitcount");
-		sb.append("                 	FROM   products");
-		if(!categoryName.equals("전체")) {
-			sb.append(" 					where category_name = ?");
-			sb.append(" 					or category_name in (select category_name from categories where parent=?)");
-		}else {
-			sb.append(")");
-		}
+		sb.append("                 	FROM   products ");
+		sb.append(" 					where category_name = ?");
+		sb.append(" 					or category_name in (select category_name from categories where parent=?)");
 		if(type!=null) {
 			sb.append(" and  product_name LIKE ?");
-			value = "%" + value + "%";
 		}
-		
+
 		switch(orderType) {
 		case "newProduct":
 			sb.append(" ORDER BY regdate DESC))");
@@ -152,11 +184,12 @@ public class JdbcProductDao implements ProductDao{
 		case "lowPrice":
 			sb.append(" ORDER BY price asc))");
 			break;
-		default:sb.append(" ORDER BY regdate DESC))");
+		default:
 		}
 
 		sb.append(" WHERE  request_page = ?");
 
+		//		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -193,7 +226,7 @@ public class JdbcProductDao implements ProductDao{
 
 	@Override
 	public int pageCount(Params params, String categoryName, String orderType) {
-		
+
 		String type = params.getType();
 		String value = params.getValue();
 
@@ -250,7 +283,7 @@ public class JdbcProductDao implements ProductDao{
 			}
 
 			rs = pstmt.executeQuery();
-			
+
 
 			if(rs.next()){
 				count=rs.getInt("count");
@@ -277,7 +310,7 @@ public class JdbcProductDao implements ProductDao{
 		return null;
 	}
 
-	
+
 	private Product createProduct(ResultSet rs) throws SQLException {
 		int productId=rs.getInt("product_id");
 		String categoryName = rs.getString("category_name");		
@@ -288,11 +321,11 @@ public class JdbcProductDao implements ProductDao{
 		int price = rs.getInt("price");
 		int amount =rs.getInt("amount");
 		int hitcount =rs.getInt("hitcount");
-		
+
 		return new Product(productId, productName, categoryName, maker, productDesc, regdate, price, amount, hitcount);
 	}
-	
-	
+
+
 	public void search(String id) {
 		// TODO Auto-generated method stub
 
@@ -310,7 +343,7 @@ public class JdbcProductDao implements ProductDao{
 			System.out.println(product);
 		}
 		System.out.println(productDao.pageCount(params, "반지", "highPrice"));
-		
+
 		System.out.println(productDao.read(1));
 	}
 }
