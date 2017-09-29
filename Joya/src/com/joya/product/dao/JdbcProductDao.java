@@ -35,47 +35,48 @@ public class JdbcProductDao implements ProductDao{
 
 	@Override
 	public void create(Product product) {
+		System.out.println(product);
 		Connection con = null;
-		 		PreparedStatement pstmt = null;
-		 		String query = "INSERT INTO products " + 
-		 				"            (product_id, " + 
-		 				"             category_name, " + 
-		 				"             product_name, " + 
-		 				"             maker, " + 
-		 				"             product_desc, " + 
-		 				"             price, " + 
-		 				"             amount " + 
-		 				"VALUES      (products_seq.NEXTVAL, " + 
-		 				"             ?, " +
-		 				"             ?, " +
-		 				"             ?, " + 
-		 				"             ?, " + 
-		 				"             ?, " + 
-		 				"             ?) ";
-		 		try {
-		 			con = dataSource.getConnection();
-		 			con.setAutoCommit(false);
-		 			pstmt = con.prepareStatement(query);
-		 			pstmt.setString(1, product.getCategoryName());
-		 			pstmt.setString(2, product.getProductDesc());
-		 			pstmt.setString(3, product.getProductName());
-		 			pstmt.setString(4, product.getMaker());
-		 			pstmt.setInt(5, product.getPrice());
-		 			pstmt.setInt(6, product.getAmount());
-		 			pstmt.executeQuery();
-		 			con.commit();
-		 		} catch (SQLException e) {
-		 			e.printStackTrace();
-		 			try {
-		 				con.rollback();
-		 			} catch (SQLException e1) {}
-		 			throw new MallException("JdbcProductDao.create(Product product)실행 중 예외 발생", e);
-		 		} finally {
-		 			try {
-		 				if(pstmt != null) pstmt.close();
-		 				if(con != null) con.close();
-		 			} catch(SQLException e) {}
-		 		}
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO products " + 
+				"            (product_id, " + 
+				"             category_name, " + 
+				"             product_name, " + 
+				"             maker, " + 
+				"             product_desc, " + 
+				"             price, " + 
+				"             amount)" + 
+				"	VALUES      (products_seq.NEXTVAL, " + 
+				"             ?, " +
+				"             ?, " +
+				"             ?, " + 
+				"             ?, " + 
+				"             ?, " + 
+				"             ?) ";
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, product.getCategoryName());
+			pstmt.setString(2, product.getProductName());
+			pstmt.setString(3, product.getMaker());
+			pstmt.setString(4, product.getProductDesc());
+			pstmt.setInt(5, product.getPrice());
+			pstmt.setInt(6, product.getAmount());
+			pstmt.executeQuery();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+			throw new MallException("JdbcProductDao.create(Product product)실행 중 예외 발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch(SQLException e) {}
+		}
 	}
 
 	@Override
