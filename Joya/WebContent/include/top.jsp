@@ -57,6 +57,7 @@
           </ul>
           </c:when>
           <c:otherwise>
+          <form action="/user/login_action.joya">
             <ul id="accounts" class="list-inline">
              <li>
                 <label>${user}님 환영합니다.&nbsp;&nbsp;&nbsp;</label>  
@@ -65,9 +66,10 @@
                 <a href="account.html">My Account</a>
              </li> 
              <li class="my-account">
-                <a href="/user/login_action.joya">로그아웃</a>
+                <button type="button">로그아웃</button>
              </li> 
             </ul>
+            </form> 
           </c:otherwise>
         </c:choose>
         
