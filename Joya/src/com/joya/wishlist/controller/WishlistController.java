@@ -11,9 +11,6 @@ import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 import com.joya.common.web.PageBuilder;
 import com.joya.common.web.Params;
-import com.joya.image.domain.Images;
-import com.joya.image.service.ImageService;
-import com.joya.image.service.ImageServiceImpl;
 import com.joya.wishlist.domain.Wishlist;
 import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
@@ -36,7 +33,8 @@ public class WishlistController implements Controller {
 		int pageSize = 3; // 한페이지에 출력될 위시리스트 수
 		int pageNum = 3; // 페이지 그룹 크기
 		
-		String userEmail = request.getParameter("email");
+		/*String userEmail = request.getParameter("email");*/
+		String userEmail = "joa@joa";
 		String page = request.getParameter("page");
 		if(page == null)  page = "1";
 		int pageCount = Integer.parseInt(page);
@@ -49,6 +47,7 @@ public class WishlistController implements Controller {
 		// 페이징
 		List<Wishlist> list = wishlistService.listByParams(userEmail, params);
 		int totalCount = wishlistService.listAll(userEmail).size();
+		System.out.println(totalCount);
 		
 		// 페이징 계산 유틸리티 생성 및 실행
 		PageBuilder pageBuilder = new PageBuilder(params, totalCount);
