@@ -91,10 +91,10 @@ public class JdbcArticleDao implements ArticleDao {
 
 	}
 	
-	/** 상품평 등록 */
+	/** 상품평, A/S게시판 글 등록 */
 	@Override
 	public void review(Article article) {
-		// TODO Auto-generated method stub
+		String sql="";
 		
 	}
 

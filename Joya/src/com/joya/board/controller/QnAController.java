@@ -25,6 +25,9 @@ public class QnAController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
 		
+		ModelAndView mav = new ModelAndView();
+		
+		
 		return null;
 	}
 
