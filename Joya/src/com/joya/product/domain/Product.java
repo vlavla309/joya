@@ -27,23 +27,6 @@ public class Product {
 		this.hitcount = hitcount;
 	}
 	
-	
-	
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public int getHitcount() {
-		return hitcount;
-	}
-
-	public void setHitcount(int hitcount) {
-		this.hitcount = hitcount;
-	}
 
 	public int getProductId() {
 		return productId;
@@ -63,12 +46,7 @@ public class Product {
 	public void setMaker(String maker) {
 		this.maker = maker;
 	}
-	public String getProductDesc() {
-		return productDesc;
-	}
-	public void setProductDesc(String productDes) {
-		this.productDesc = productDes;
-	}
+	
 	public String getRegdate() {
 		return regdate;
 	}
@@ -86,6 +64,30 @@ public class Product {
 	}
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductDesc() {
+		return productDesc;
+	}
+
+	public void setProductDesc(String productDesc) {
+		this.productDesc = productDesc;
+	}
+
+	public int getHitcount() {
+		return hitcount;
+	}
+
+	public void setHitcount(int hitcount) {
+		this.hitcount = hitcount;
 	}
 
 	@Override
