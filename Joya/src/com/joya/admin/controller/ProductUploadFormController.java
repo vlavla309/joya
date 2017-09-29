@@ -25,12 +25,10 @@ public class ProductUploadFormController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
 		ModelAndView mav = new ModelAndView();
 		
-		List<Categories> categories=categoryService.listAll();
 		
-		mav.addObject("categories", categories);
 		mav.setView("/admin/pages/product_form.jsp");
 		
-		return null;
+		return mav;
 	}
 }
 
