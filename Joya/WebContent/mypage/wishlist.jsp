@@ -55,7 +55,7 @@
           $.ajax({
             url : "${pageContext.servletContext.contextPath}/wishlist/delete.joya",
             dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
-            data : {productId : id},{}
+            data : {productId : id},{userEmail : email},
             success : function(){
             	console.log(productId);
               /* $("div[value=" + productId + "]").remove(); */
