@@ -10,7 +10,6 @@
   <title>Collection Full Width Page</title>
   
 	<link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
-    
 	<link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 
 	<link href="../assets/stylesheets/jquery.camera.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" media="all">
@@ -24,7 +23,6 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
@@ -40,6 +38,31 @@
 	<script src="../assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="../assets/javascripts/cs.script.js" type="text/javascript"></script>
+	
+	<script>
+	$(function() {
+		var value="";
+		var type = "";
+		
+		$('#mySelect').change(function(){
+		    type = $(this).val();
+		    
+		    var frm = $("#search");
+		    frm.action = 'product/list.joya?type='+type;
+		    frm.submit();
+		    
+		});
+		
+		$("#value").keyup(function(){
+			value = $("#value").val();
+			console.log(value)
+		});
+		
+		
+		
+		
+	});
+	</script>
 </head>
 
 <body>
@@ -90,158 +113,117 @@
 														</li>
 													</ul>
 													</li>
-													
-													<li class="sortBy">
-													<div id="sortButtonWarper" class="dropdown-toggle" data-toggle="dropdown">
-														<strong class="title-6">View as</strong>
-														<button id="sortButton">
-														<span class="name">Featured</span><i class="fa fa-caret-down"></i>
-														</button>
-														<i class="sub-dropdown1"></i>
-														<i class="sub-dropdown"></i>
-													</div>
-													<div id="sortBox" class="control-container dropdown-menu">
-														<ul id="sortForm" class="list-unstyled option-set text-left list-styled" data-option-key="sortBy">
-															<li class="sort" data-option-value="manual">Featured</li>
-															<li class="sort" data-option-value="price-ascending" data-order="asc">Price: Low to High</li>
-															<li class="sort" data-option-value="price-descending" data-order="desc">Price: High to Low</li>
-															<li class="sort" data-option-value="title-ascending" data-order="asc">A-Z</li>
-															<li class="sort" data-option-value="title-descending" data-order="desc">Z-A</li>
-															<li class="sort" data-option-value="created-ascending" data-order="asc">Oldest to Newest</li>
-															<li class="sort" data-option-value="created-descending" data-order="desc">Newest to Oldest</li>
-															<li class="sort" data-option-value="best-selling">Best Selling</li>
-														</ul>
-													</div>
+													<li>
+														<form id = "search" name="search" class="form-inline" role="form" method="get">
+															<select class="form-control" name="type" id="mySelect">
+																	<option value="null">전체보기</option>
+																	<option value="newProduct">newProduct</option>
+																	<option value="hitProduct">hitProduct</option>
+																	<option value="highPrice">highPrice</option>
+																	<option value="lowPrice">lowPrice</option>
+															</select> 
+															<div class="form-group">
+																<input type="text" class="form-control" id="value" name="value" placeholder="Search for Product Name">
+															</div>
+															<button type="submit" class="btn btn-default">검색</button>
+														</form>
 													</li>
-													<li><input type="text" class="form-control input-md-4" placeholder="Search for..."></li>
-													<li><button class="btn btn-default" type="button">Go!</button></li>
 												</ul>
 											</div>
 										</div>
 										<div id="sandBox-wrapper" class="group-product-item row collection-full">
 											<ul id="sandBox" class="list-unstyled">
-												<li class="element first no_full_width" data-alpha="Curabitur cursus dignis" data-price="25900">
-													<ul class="row-container list-unstyled clearfix">
-														<li class="row-left">
-														<a href="product.html" class="container_item">
-														<img src="../assets/images/1_grande.jpg" class="img-responsive" alt="Curabitur cursus dignis">
-														<span class="sale_banner">
-														<span class="sale_text">Sale</span>
-														</span>
-														</a>
-														<div class="hbw">
-															<span class="hoverBorderWrapper"></span>
-														</div>
-														</li>
-														<li class="row-right parent-fly animMix">
-														<div class="product-content-left">
-															<a class="title-5" href="product.html">Curabitur cursus dignis</a>
-															<span class="spr-badge" id="spr_badge_12932382113" data-rating="0.0">
-															<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
-															<span class="spr-badge-caption">
-															No reviews </span>
-															</span>
-														</div>
-														<div class="product-content-right">
-															<div class="product-price">
-																<span class="price_sale">$259.00</span>
-																<del class="price_compare"> $300.00</del>
-															</div>
-														</div>
-														<div class="list-mode-description">
-															 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-														</div>
-														<div class="hover-appear">
-															<form action="#" method="post">
-																<div class="effect-ajax-cart">
-																	<input name="quantity" value="1" type="hidden">
-																	<button class="select-option" type="button" onclick="window.location.href='product.html'"><i class="fa fa-th-list" title="Select Options"></i><span class="list-mode">Select Option</span></button>
-																</div>
-															</form>
-															<div class="product-ajax-qs hidden-xs hidden-sm">
-																<div data-handle="curabitur-cursus-dignis" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																	<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>
-																	
-																</div>
-															</div>
-															<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-														</div>
-														</li>
-													</ul>
-												</li>
-												<c:forEach items="${imglist}" var="img" varStatus="status">
-												
-													<li class="element no_full_width" data-alpha="Curabitur cursus dignis" data-price="20000">
-														<ul class="row-container list-unstyled clearfix">
-															<li class="row-left">
-															<a href="product.html" class="container_item">
-															<img src="${img.path}${img.imageName}" class="img-responsive" alt="Curabitur cursus dignis">
-															</a>
-															<div class="hbw">
-																<span class="hoverBorderWrapper"></span>
-															</div>
-															</li>
-															<li class="row-right parent-fly animMix">
-															<div class="product-content-left">
-																<a class="title-5" href="product.html">Curabitur cursus dignis</a>
-																<span class="spr-badge" id="spr_badge_1293239619454" data-rating="0.0">
-																<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
-																<span class="spr-badge-caption">
-																No reviews </span>
-																</span>
-															</div>
-															<div class="product-content-right">
-																<div class="product-price">
-																	<span class="price">
-																	$200.00 </span>
-																</div>
-															</div>
-															<div class="list-mode-description">
-																 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-															</div>
-															<div class="hover-appear">
-																<form action="#" method="post">						
-																	<div class="effect-ajax-cart">
-																		<input name="quantity" value="1" type="hidden">
-																		<button class="add-to-cart" type="submit" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
+												<c:forEach items="${productlist}" var="product" varStatus="status">
+													<c:forEach items="${imglist}" var="img" varStatus="status">
+														<c:if test="${(product.productId eq img.productId)&&(img.order eq 0)}">
+															<li class="element no_full_width" data-alpha="Curabitur cursus dignis" data-price="20000">
+																<ul class="row-container list-unstyled clearfix">
+																	<li class="row-left">
+																	<a href="product.html" class="container_item">
+																	<img src="${img.path}${img.imageName}" class="img-responsive" alt="Curabitur cursus dignis">
+																	</a>
+																	<div class="hbw">
+																		<span class="hoverBorderWrapper"></span>
 																	</div>
-																</form>
-																<div class="product-ajax-qs hidden-xs hidden-sm">
-																		<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																			<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
+																	</li>
+																	<li class="row-right parent-fly animMix">
+																	<div class="product-content-left">
+																		<a class="title-5" href="product.html">${product.productName}</a>
+																		<span class="spr-badge" id="spr_badge_1293239619454" data-rating="0.0">
+																		<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
+																		<span class="spr-badge-caption">
+																		No reviews </span>
+																		</span>
+																	</div>
+																	<div class="product-content-right">
+																		<div class="product-price">
+																			<span class="price">
+																			${product.price} </span>
 																		</div>
 																	</div>
-																<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-															</div>
+																	<div class="list-mode-description">
+																		 ${product.productDesc}
+																	</div>
+																	<div class="hover-appear">
+																		<form action="#" method="post">						
+																			<div class="effect-ajax-cart">
+																				<input name="quantity" value="1" type="hidden">
+																				<button class="add-to-cart" type="submit" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
+																			</div>
+																		</form>
+																		<div class="product-ajax-qs hidden-xs hidden-sm">
+																				<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
+																					<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
+																				</div>
+																			</div>
+																		<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
+																	</div>
+																	</li>
+																</ul>
 															</li>
-														</ul>
-													</li>
+														</c:if>
+													</c:forEach>	
 												</c:forEach>												
 											</ul>
 										</div>
 										<div class="row">
 										    <div class="col-md-6 float-right">
-											    	<nav aria-label="Page navigation">
-													  <ul class="pagination">
-													    <li>
-													      <a href="#" aria-label="Previous">
-													        <span aria-hidden="true">&laquo;</span>
-													      </a>
-													    </li>
-													    <li><a href="#">1</a></li>
-													    <li><a href="#">2</a></li>
-													    <li><a href="#">3</a></li>
-													    <li><a href="#">4</a></li>
-													    <li><a href="#">5</a></li>
-													    <li><a href="#">6</a></li>
-													    <li>
-													      <a href="#" aria-label="Next">
-													        <span aria-hidden="true">&raquo;</span>
-													      </a>
-													    </li>
-													  </ul>
-													</nav>
-											  </div>
+										    	<nav aria-label="Page navigation">
+												  <ul class="pagination">
+														<c:if test="${pageBuilder.isShowFirst()}">
+															<li><a href="${pageBuilder.getQueryString(1)}">처음으로</a></li>
+														</c:if>
+									
+														<c:if test="${pageBuilder.isShowPrevious()}">
+															<li class="prev"><a
+																href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}">이전목록</a></li>
+														</c:if>
+									
+														<c:forEach var="i" begin="${pageBuilder.currentStartPage }"
+															end="${pageBuilder.currentEndPage}" varStatus="status">
+															<c:choose>
+																<c:when test="${param.page==i}">
+																	<li class="active"><a>${i}</a></li>
+																</c:when>
+																<c:otherwise>
+																	<li><a href="${pageBuilder.getQueryString(i)}">${i}</a></li>
+																</c:otherwise>
+															</c:choose>
+														</c:forEach>
+									
+														<c:if test="${pageBuilder.isShowNext()}">
+															<li class="next"><a
+																href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}">다음목록</a></li>
+														</c:if>
+									
+														<c:if test="${pageBuilder.isShowLast()}">
+															<li><a
+																href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}">끝으로</a></li>
+														</c:if>
+									
+													</ul>
+												</nav>
+										    </div>
 										</div>
 									</div>  									
 								</div>

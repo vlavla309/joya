@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
+	<!-- test page -->
 	<bean name="/hello" class="com.joya.test.HelloController" />
+	
+	<!-- admin -->
 	<bean name="/admin/userlist" class="com.joya.admin.controller.UserListController" />
 	<bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
+	
+	<!-- product -->
 	<bean name="/product/list" class="com.joya.product.controller.ProductlistController" />
+	<bean name="/product/view" class="com.joya.product.controller.ProductViewController" />
 	
 	<!-- 회원 관련 -->
 	<bean name="/user/login_action" class="com.joya.user.controller.CertificationController" />
