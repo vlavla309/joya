@@ -277,5 +277,32 @@ insert into products values(6,'목걸이', '목걸이C', '미니골드', '쌈 매우 쌈', SYS
 insert into visitlog values('210.231.231.50', SYSDATE);
 commit
 
+-- 이미지등록
+--IMAGE TABLE DUMMY DATA INSERT
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('esmall.jpg', 1, '/shopimg/', 0);
 
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('4_large.png', 1, '/shopimg/', 3);
 
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('3_large.png', 1, '/shopimg/', 2);
+
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('1qqw.jp', 1, '/shopimg/', 1);
+
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('ring.jpg', 2, '/shopimg/', 0);
+
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('Sgrande.jpg', 3, '/shopimg/', 0);
+
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('hihi.jpg', 4, '/shopimg/', 0);
+
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('zzzz.jpg', 5, '/shopimg/', 0);
+
+INSERT INTO images (IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO)
+VALUES ('grande.jpg', 6, '/shopimg/', 0);
+commit;

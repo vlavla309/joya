@@ -11,14 +11,14 @@ import com.joya.common.exception.MallException;
 
 /**
  * 
- * @author ê¹?ê¸°ì •
+ * @author ï¿½?ê¸°ì •
  */
 public class DaoFactory {
 	
 	private static DaoFactory instance = new DaoFactory();
 	
 	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private static final String URL = "jdbc:oracle:thin:@192.168.0.86:1521";
+	private static final String URL = "jdbc:oracle:thin:@localhost:1521";
 	private static final String USER = "a";
 	private static final String PASSWORD = "a";
 	private static final int INIT_SIZE = 1;
@@ -58,12 +58,12 @@ public class DaoFactory {
 			//JdbcXXXDao dao = (JdbcXXXDao)dao;
 			//dao.setDataSource(dataSource);
 			
-			// ?™?  ë©”ì†Œ?“œ?˜¸ì¶?
+			// ?ï¿½ï¿½?ï¿½ï¿½ ë©”ì†Œ?ï¿½ï¿½?ï¿½ï¿½ï¿½?
 			Method method =  cls.getMethod("setDataSource", DataSource.class);
 			method.invoke(dao, dataSource);
 			
 		} catch (Exception e) {
-			throw new MallException("DaoFactory.getDao(String className) ÀÍ¼Á¼Ç ¹ß»ı!", e);
+			throw new MallException("DaoFactory.getDao(String className) ï¿½Í¼ï¿½ï¿½ï¿½ ï¿½ß»ï¿½!", e);
 		}
 		return dao;
 	}
