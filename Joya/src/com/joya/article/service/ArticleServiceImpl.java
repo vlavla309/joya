@@ -18,62 +18,47 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public void review(Article article) {
-
-	}
-
-	@Override
 	public List<Article> listAll() {
-		return null;
+		return dao.listAll();
 	}
 
 	@Override
 	public Article read(int articleId) {
-		return null;
+		return dao.read(articleId);
 	}
 
 	@Override
-	public void edit(Article article) {
-
+	public boolean edit(Article article) {
+		return dao.edit(article);
 	}
 
 	@Override
-	public void delete(Article article) {
-
+	public void delete(int articleId) {
+		dao.delete(articleId);
 	}
 
 	@Override
 	public void reply(Article article) {
-
+		dao.reply(article);
 	}
 
 	@Override
 	public void count(int articleId) {
-
+		dao.count(articleId);
+		
 	}
 
 	@Override
-	public List<Article> listByParams(Params params) {
-		return null;
+	public List<Article> listByParams(Params params, int boardId) {
+		return dao.listByParams(params, boardId);
 	}
 
 	@Override
 	public int pageCount(Params params) {
-		return 0;
+		return dao.pageCount(params);
 	}
 	
-	/**
-	public static void main(String[] args) {
-		ArticleService service = new ArticleServiceImpl();
-		Article article = new Article();
-		article.setEmail("joa@joa");
-		article.setTitle("질문있음");
-		article.setContents("반지 재입고 언제됨?");
-		article.setPasswd("1111");
-		service.create(article);
-		System.out.println(article.toString());
-		
-	}
-	*/
+	
+	
 
 }
