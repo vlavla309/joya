@@ -357,7 +357,7 @@ public class JdbcArticleDao implements ArticleDao {
 
 	/** 선택페이지, 검색유형, 검색값, 한페이지당 출력 행수에 대한 글목록 반환 */
 	@Override
-	public List<Article> listByParams(Params params) {
+	public List<Article> listByParams(Params params, int articleId) {
 		List<Article> list = null;
 		
 		Connection con = null;
@@ -365,8 +365,89 @@ public class JdbcArticleDao implements ArticleDao {
 		ResultSet rs = null;
 		
 		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT article_id, ");
+		sb.append("       email,");
+		sb.append("       board_id,");
+		sb.append("       title, ");
+		sb.append("       contents,");
+		sb.append("       regdate,");
+		sb.append("       writer,");
+		sb.append("       passwd,");
+		sb.append("       group_no,");
+		sb.append("       type,");
+		sb.append("       hitcount,");
+		sb.append("       file_path,");
+		sb.append("       product_id");
+		sb.append("FROM   (SELECT Ceil(rownum / ?) request_page, ");
+		sb.append("               article_id, ");
+		sb.append("               email,");
+		sb.append("               board_id,");
+		sb.append("               title,");
+		sb.append("               contents,");
+		sb.append("               regdate,");
+		sb.append("               writer,");
+		sb.append("               passwd,");
+		sb.append("               group_no,");
+		sb.append("               type,");
+		sb.append("               hitcount,");
+		sb.append("               file_path,");
+		sb.append("               product_id ");
+		sb.append("        FROM   (SELECT article_id,");
+		sb.append("                       email,");
+		sb.append("                       board_id,");
+		sb.append("                       title,");
+		sb.append("                       contents,");
+		sb.append("                       regdate,");
+		sb.append("                       writer,");
+		sb.append("                       passwd,");
+		sb.append("                       group_no,");
+		sb.append("                       type,");
+		sb.append("                       hitcount,");
+		sb.append("                       file_path,");
+		sb.append("                       product_id");
+		sb.append("                FROM   articles");
+		sb.append("                WHERE  board_id = (SELECT board_id");
+		sb.append("                                   FROM   articles");
+		sb.append("                                   WHERE  article_id = ?)");
 		
-		return null;
+		String type = params.getType();
+		String value = params.getValue();
+		if(type != null) {
+			switch(params.getType()) {
+			case "title":
+				sb.append("                       AND title LIKE ?");
+				value = "%" + value + "%";
+				break;
+			case "contents":
+				sb.append("                       AND contents LIKE ?");
+				value = "%" + value + "%";
+				break;
+			case "writer":
+				sb.append("                       AND writer = ?");
+				break;
+			}
+		}
+		sb.append("                ORDER  BY group_no DESC, ");
+		sb.append("                          type ASC))");
+		sb.append("WHERE  request_page = ?");
+		
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, params.getPageSize());
+			pstmt.setInt(2, articleId);
+			
+			if(type != null) {
+				pstmt.setString(3, value);
+				pstmt.set
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		
+		return list;
 	}
 
 	/** 출력페이지 계산을 위한 검색유형, 검색값에 대한 행의 수 반환 */

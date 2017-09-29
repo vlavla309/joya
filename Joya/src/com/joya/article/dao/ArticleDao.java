@@ -32,7 +32,7 @@ public interface ArticleDao {
 	public void count(int articleId);
 	
 	/** 선택페이지, 검색유형, 검색값, 한페이지당 출력 행수에 대한 글목록 반환 */
-	public List<Article> listByParams(Params params);
+	public List<Article> listByParams(Params params, int articleId);
 	
 	/** 출력페이지 계산을 위한 검색유형, 검색값에 대한 행의 수 반환 */
 	public int pageCount(Params params);
