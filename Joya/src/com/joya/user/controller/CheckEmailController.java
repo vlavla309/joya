@@ -1,5 +1,5 @@
 package com.joya.user.controller;
 
-public class UserListController {
+public class CheckEmailController {
 
 }
