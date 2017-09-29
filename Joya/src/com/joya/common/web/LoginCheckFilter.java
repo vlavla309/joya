@@ -13,7 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * ?š”ì²??ŒŒ?¼ë©”í„° ?•œê¸??¸ì½”ë”© ì²˜ë¦¬ ?•„?„°
+ * ?ï¿½ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ë©”í„° ?ï¿½ï¿½ï¿½??ï¿½ï¿½ì½”ë”© ì²˜ë¦¬ ?ï¿½ï¿½?ï¿½ï¿½
  */
 public class LoginCheckFilter implements Filter {
 	
@@ -30,6 +30,7 @@ public class LoginCheckFilter implements Filter {
 
 		Cookie[] cookies = req.getCookies();
 		if (cookies != null) {
+			
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equalsIgnoreCase("user")) {
 					user = URLDecoder.decode(cookie.getValue(), "utf-8");
