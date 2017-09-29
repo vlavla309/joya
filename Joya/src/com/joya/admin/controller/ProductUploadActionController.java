@@ -117,14 +117,7 @@ public class ProductUploadActionController implements Controller {
 					imgService.create(image);
 				}
 				
-				System.out.println("상품정보");
-				System.out.println("상품이름 : "+ productName);
-				System.out.println("제조사 : "+ maker);
-				System.out.println("가격 : "+ price);
-				System.out.println("재고량 : "+ amount);
-				System.out.println("카테고리 : "+ categoryName);
-				System.out.println("상품정보 : "+ productDesc);
-				
+			
 				
 				
 				
