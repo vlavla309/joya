@@ -6,6 +6,7 @@
 	<!-- admin -->
 	<bean name="/admin/userlist" class="com.joya.admin.controller.UserListController" />
 	<bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
+	<bean name="/admin/productadd" class="com.joya.admin.controller.ProductUploadFormController" />
 	
 	<!-- product -->
 	<bean name="/product/list" class="com.joya.product.controller.ProductlistController" />

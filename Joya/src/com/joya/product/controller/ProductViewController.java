@@ -52,10 +52,8 @@ public class ProductViewController implements Controller{
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");
 			PrintWriter out;
-			
 			try {
 				out = response.getWriter();
-				System.out.println(str);
 				out.print(str);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -65,7 +63,7 @@ public class ProductViewController implements Controller{
 			
 		}else {
 			mav.addObject("product", product);
-			mav.setView("/product/list.jsp");
+			mav.setView("/product/product.jsp");
 			return mav;
 		}
 		
