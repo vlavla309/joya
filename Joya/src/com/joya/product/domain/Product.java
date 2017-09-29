@@ -11,6 +11,7 @@ public class Product {
 	private int price;
 	private int amount;
 	private int hitcount;
+	
 	public Product() {}
 	
 	public Product(int productId, String productName, String categoryName, String maker, String productDesc, String regdate, int price,

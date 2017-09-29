@@ -28,8 +28,8 @@ public class ProductlistController implements Controller{
 			throws ServletException, UnsupportedEncodingException {
 		
 		ModelAndView mav = new ModelAndView();
-		int pageSize = 10;
-		int pageNum =10;
+		int pageSize = 16;
+		int pageNum = 5;
 		String page = request.getParameter("page");
 		if(page==null) page = "1";
 		int pageCount = Integer.parseInt(page);
@@ -52,26 +52,13 @@ public class ProductlistController implements Controller{
 		param.setPage(pageCount);
 		param.setPageNum(pageNum);
 		param.setPageSize(pageSize);
-		
-		
-		
-		if(value ==null) {
-			param = new Params();
-		}else {
+
+		if(value!=null) {
 			param.setType("name");
 			param.setValue(value);
 		}
-		System.out.println(type + ":"+value);
-		
-		
-		
 		
 		List<Product> productlist = productservice.listByParams(param, "반지",  type);
-		
-		for (Product product : productlist) {
-			System.out.println(product);
-		}
-		
 		List<Images> imglist = imgService.listAll();
 		
 		int rowCount = productservice.pageCount(param, "반지", type);
