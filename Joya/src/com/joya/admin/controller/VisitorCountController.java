@@ -2,6 +2,7 @@ package com.joya.admin.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -26,34 +27,49 @@ public class VisitorCountController implements Controller {
 	VisitLogService visitServ=new VisitLogServiceImpl();
 	String format="yyyy-MM-dd";
 
-	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
 		ModelAndView mav = new ModelAndView();
-		//String date=request.getParameter("date");
-		String date=null;
-		if(date==null) {
-			
+		
+		
+		
+		String prevPrevDate=null;
+		String prevDate=null;
+		String stdDate=null;
+		String nextNextDate=null;
+		String nextDate=null;
+
+		stdDate=request.getParameter("date");
+		
+		if(stdDate==null) {
+			stdDate=dateToString(new Date());
 		}
 
-		date="2011-12-12";
 		
 			try {
-				System.out.println(calcDate(date, -2));
-				System.out.println(calcDate(date, -1));
-				System.out.println(calcDate(date, 1));
-				System.out.println(calcDate(date, 2));
+				prevPrevDate=calcDate(stdDate, -2);
+				prevDate=calcDate(stdDate, -1);
+				nextDate=calcDate(stdDate, 1);
+				nextNextDate =calcDate(stdDate, 2);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
+			
+		String datas="[";
+		datas+="{y: '"+prevPrevDate+"', a: "+visitServ.countVisitor(prevPrevDate)+"},";
+		datas+="{y: '"+prevDate+"', a: "+visitServ.countVisitor(prevDate)+"},";
+		datas+="{y: '"+stdDate+"', a: "+visitServ.countVisitor(stdDate)+"},";
+		datas+="{y: '"+nextDate+"', a: "+visitServ.countVisitor(nextDate)+"},";
+		datas+="{y: '"+nextNextDate+"', a: "+visitServ.countVisitor(nextNextDate)+"},";
+		datas+="]";
 		
+		//System.out.println(datas);
+		 
 		
-		
-		Map<String, Integer> datas=new LinkedHashMap<String, Integer>();
-		
-		mav.addObject("date", date);
+		mav.addObject("date", stdDate);
+		mav.addObject("datas",datas);
 		
 		mav.setView("/admin/pages/visitor_count.jsp");
 

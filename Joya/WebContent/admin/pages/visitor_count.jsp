@@ -421,8 +421,16 @@
     <script src="${pageContext.servletContext.contextPath}/admin/data/morris-data.js"></script>
     <script src="${pageContext.servletContext.contextPath}/admin/dist/js/visitor_count.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="${pageContext.servletContext.contextPath}/admin/dist/js/sb-admin-2.js"></script>
+	<script type="text/javascript">
+	
+		$(function() {
+			setData(${datas})
+		});
+	</script>
+
+	<!-- Custom Theme JavaScript -->
+	<script
+		src="${pageContext.servletContext.contextPath}/admin/dist/js/sb-admin-2.js"></script>
 
 </body>
 
