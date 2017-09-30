@@ -3,48 +3,40 @@ package com.joya.visitlog.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.sql.DataSource;
 
-import com.joya.category.domain.Categories;
 import com.joya.common.db.DaoFactory;
 import com.joya.common.exception.MallException;
 
-public class JdbcVisitLog implements VisitLogDao{
+public class JdbcVisitLogDao implements VisitLogDao{
 	private DataSource dataSource;
 
-
-
-	public JdbcVisitLog() {
+	public JdbcVisitLogDao() {
 	}
 
-
-
-	public JdbcVisitLog(DataSource dataSource) {
+	public JdbcVisitLogDao(DataSource dataSource) {
 		super();
 		this.dataSource = dataSource;
 	}
-
-
 
 	public DataSource getDataSource() {
 		return dataSource;
 	}
 
-
-
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
-
+	
+	@Override
+	public void create(String ip) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public int countVisitor(String date) {
 		int count =0;
-			
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -55,8 +47,6 @@ public class JdbcVisitLog implements VisitLogDao{
 		sb.append(" FROM visitlog");
 		sb.append(" where visitdate = ?");
 
-
-		//		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -83,7 +73,7 @@ public class JdbcVisitLog implements VisitLogDao{
 	}
 	
 	public static void main(String[] args) {
-		JdbcVisitLog vDao = (JdbcVisitLog) DaoFactory.getInstance().getDao(JdbcVisitLog.class);
+		JdbcVisitLogDao vDao = (JdbcVisitLogDao) DaoFactory.getInstance().getDao(JdbcVisitLogDao.class);
 		System.out.println(vDao.countVisitor("2011-12-27"));
 	}
 }

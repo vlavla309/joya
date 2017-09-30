@@ -1,6 +1,6 @@
-package com.joya.visitlog.dao;
+package com.joya.visitlog.service;
 
-public interface VisitLogDao {
+public interface VisitLogService {
 	public void create(String ip);
 	public int countVisitor(String date);
 }
