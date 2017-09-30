@@ -19,4 +19,7 @@
 	<bean name="/mypage/wishlist" class="com.joya.wishlist.controller.WishlistController" />
 	<bean name="/mypage/wishlistdelete" class="com.joya.wishlist.controller.WishlistDeleteController" />
 	
+	<!-- board -->
+	<bean name="/board/qna" class="com.joya.board.controller.QnAController" />
+	
 </beans>

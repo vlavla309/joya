@@ -6,6 +6,7 @@
 <!-- Mirrored from demo.designshopify.com/html_jewelry/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 08:51:45 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
@@ -66,7 +67,7 @@
 							<div class="container">
 								<div class="row">
 									<div class="left-block col-md-12" >
-										<form method="post" action="http://demo.designshopify.com/contact" class="contact-form" accept-charset="UTF-8">
+										<form method="post" action="${pageContext.servletContext.contextPath}/board/qna.joya" class="contact-form" accept-charset="UTF-8">
 											<input type="hidden" value="contact" name="form_type"><input type="hidden" name="utf8" value="â">
                                                <div class="midivision2">
                                                 <label class="control-label" for="name">제목<span class="req">*</span></label>
