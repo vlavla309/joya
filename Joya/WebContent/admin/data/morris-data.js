@@ -11,7 +11,7 @@ function setData(datas){
 		labels: ['방문자수'],
 		gridTextSize:'9',
 		hideHover: 'auto',
-		yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+		yLabelFormat: function(y){return y != Math.round(y)?'':y+"명";},
 		resize: true,
 		parseTime:false
 	});

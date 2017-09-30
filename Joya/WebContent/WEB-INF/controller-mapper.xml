@@ -4,11 +4,11 @@
 	<bean name="/hello" class="com.joya.test.HelloController" />
 	
 	<!-- admin -->
-	<bean name="/admin/userlist" class="com.joya.admin.controller.UserListController" />
+	<bean name="/admin/users" class="com.joya.admin.controller.UserListController" />
 	<bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
-	<bean name="/admin/productadd" class="com.joya.admin.controller.ProductUploadFormController" />
+	<bean name="/admin/product_add" class="com.joya.admin.controller.ProductUploadFormController" />
 	<bean name="/admin/product_add_action" class="com.joya.admin.controller.ProductUploadActionController" />
-	<bean name="/admin/visitorcount" class="com.joya.admin.controller.VisitorCountController" />
+	<bean name="/admin/visitors" class="com.joya.admin.controller.VisitorCountController" />
 	
 	<!-- product -->
 	<bean name="/product/list" class="com.joya.product.controller.ProductlistController" />
