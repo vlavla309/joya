@@ -52,7 +52,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 통계<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="${pageContext.servletContext.contextPath}/admin/visits.joya">접속자 수 통계</a>
+                                    <a href="${pageContext.servletContext.contextPath}/admin/visitors.joya">접속자 수 통계</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
