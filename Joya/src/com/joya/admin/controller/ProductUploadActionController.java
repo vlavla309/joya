@@ -65,13 +65,17 @@ public class ProductUploadActionController implements Controller {
 		int productId=0;
 		String path="/shopimg/";
 
+		
 		try {
 			fileList = fileUpload.parseRequest(request);
+		
+			System.out.println("업로드 사이즈"+fileList.size());
 			for (int i=0; i<fileList.size(); i++) {
 				FileItem item=fileList.get(i);
+				System.out.println("아이템"+item.toString());
 				if (item.isFormField()) {
 					String param=item.getString("utf-8");
-					System.out.println(param);
+//					System.out.println(param);
 					switch(i) {
 					case 0:
 						productName=item.getString("utf-8");
@@ -92,17 +96,15 @@ public class ProductUploadActionController implements Controller {
 						productDesc=item.getString("utf-8");
 						break;
 					}
-					System.out.println(item.getString("utf-8"));
 				}else {
 					imageName = item.getName();
 					images.add(new Images(imageName, productId, path, 0));
-					String[] tokens = imageName.split("\\\\");
 
 					// 업로드된 파일을 서버의 특정 디렉토리에 저장
 					File saveFile = new File(fileRepository + imageName);
-					//item.write(saveFile);
+					item.write(saveFile);
 				}
-
+			}
 				Product product =new Product(0, productName, categoryName, maker, productDesc, "", price, amount, 0);
 				System.out.println(product);
 
@@ -111,12 +113,12 @@ public class ProductUploadActionController implements Controller {
 
 				int orderImage=0;
 				for (Images image : images) {
-					image.setOrder(++orderImage);
+					image.setOrder(orderImage++);
 					image.setProductId(productId);
 					imgService.create(image);
 				}
 
-			}
+			
 		}catch (Exception e) {}
 		mav.setView("/admin/pages/product_form.jsp");
 

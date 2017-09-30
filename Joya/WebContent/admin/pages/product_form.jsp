@@ -390,12 +390,12 @@
                                    		<h1>상품 정보</h1>
                                         <div class="form-group">
                                             <label>상품이름</label>
-                                            <input class="form-control" maxlength="30" name="productName">
+                                            <input type='text' class="form-control" maxlength="30" name="productName">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
                                             <label>제조사</label>
-                                            <input class="form-control" maxlength="30" name="maker">
+                                            <input type='text'  class="form-control" maxlength="30" name="maker">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
