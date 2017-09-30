@@ -47,7 +47,7 @@ public class JdbcImageDao implements ImageDao{
 					   "             ? )";
 		try {
 			con = dataSource.getConnection();
-			con.setAutoCommit(false);
+			con.setAutoCommit(true);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, image.getImageName());
 			pstmt.setInt(2, image.getProductId());
