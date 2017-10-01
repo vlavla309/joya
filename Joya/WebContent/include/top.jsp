@@ -32,18 +32,18 @@
                     </li>
                     <li class="clearfix">
                       <label for="customer_email_box" class="control-label">Email Address <span class="req">*</span></label>
-                      <input type="email" value="" name="email" id="customer_email_box" class="form-control">
+                      <input type="email" value="" name="email" id="customer_email_box" class="form-control" required="required">
                       <input id="referer" type="hidden" name="referer" >
                     </li>            
                     <li class="clearfix">
                       <label for="customer_password_box" class="control-label">Password <span class="req">*</span></label>
-                      <input type="password" value="" name="passwd" id="customer_password_box" class="form-control password">
+                      <input type="password" value="" name="passwd" id="customer_password_box" class="form-control password" required="required">
                     </li>             
                     <li class="clearfix">
                       <button class="action btn btn-1" type="submit">Login</button>
                     </li>
                     <li class="clearfix">
-                      <button class="action btn btn-1" type="button">Create an account</button>
+                      <a class="action btn btn-1" href="/user/register.joya">Create an account</a>
                     </li>
                   </ul>
                 </div>

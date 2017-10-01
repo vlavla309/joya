@@ -10,3 +10,9 @@
       margin-top: 5px;
       margin-bottom: 5px;
     }
+	#acc-close {
+		float: right;
+		position: relative;
+		right: 180px; 
+		margin-left: 5px;
+	}

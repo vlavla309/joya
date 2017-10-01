@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
-  <title>Register Page</title>
+  <title>Register Result</title>
   
   <!-- css 적용 영역 시작 -->
     <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
@@ -24,20 +24,13 @@
    <link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
    <link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
    <link href="../assets/stylesheets/registResult.css" rel="stylesheet" type="text/css" media="all">
+   <link href="../assets/stylesheets/regist_result.css" rel="stylesheet" type="text/css" media="all">
    
    <script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
    <script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
    <script src="../assets/javascripts/postcode.js" type="text/javascript"></script>
     
-    <style type="text/css">
-      .thanks-bg {
-        float: left;
-        position: relative;
-        left: 22%;
-        margin-top: 30px;
-      }
-    </style>
     <!-- css 적용 영역 종료 -->
 </head>
 
@@ -57,9 +50,9 @@
                <div itemprop="breadcrumb" class="container">
                   <div class="row">
                      <div class="col-md-24">
-                        <a href="index-2.html" class="homepage-link" title="Back to the frontpage">Home</a>
+                        <a href="/index.joya" class="homepage-link" title="Back to the frontpage">Home</a>
                         <span>/</span>
-                        <span class="page-title">Regist</span>
+                        <span class="page-title">Register Result</span>
                      </div>
                   </div>
                </div>
@@ -75,6 +68,7 @@
                                    <div class="thanks-img wow fadeIn"><img src="../assets/images/thanks.png" alt="" title="" class="img-responsive"></div>
                                    <div class="thanks-text" >
                                     <h2 id="ji-h2" class="wow fadeIn"><strong>회원가입이 완료되었습니다</strong></h2>
+                                    <br> 
                                     <div id="ji-userInfo">
                                        <span class="wow fadeIn"><strong class="kind">이메일</strong>${user.email }</span><br>
                                        <span class="wow fadeIn"><strong class="kind">이름</strong>${user.name }</span><br>
@@ -82,7 +76,8 @@
                                        <span class="wow fadeIn"><strong class="kind">주소</strong>${address1 } ${address2 } ${address3 }</span><br>
                                        <span class="wow fadeIn"><strong class="kind">생년월일</strong>${user.birthdate }</span><br>
                                      </div>
-                                   <div id="ji-buttons"><a href="#"  id="ji-gohomeB" class="wow fadeInLeft">Go Home</a>&nbsp;&nbsp; <a href="#" id="ji-gologinB"class="wow fadeInRight">Login</a> </div>
+                                     <br>
+                                   <div id="ji-buttons"><a href="/index.joya"  id="ji-gohomeB" class="wow fadeInLeft">홈으로</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/user/login.joya" id="ji-gologinB"class="wow fadeInRight">로그인</a> </div>
                                    </div>
                                  </div>
                      </div>   

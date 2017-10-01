@@ -370,6 +370,8 @@ public class JdbcUserDao implements UserDao{
 
 	public static void main(String[] args) {
 		JdbcUserDao userDao=(JdbcUserDao) DaoFactory.getInstance().getDao(JdbcUserDao.class);
+		
+		/*System.out.println(userDao.read("ema232il@gmail.com"));*/
 
 		/*userDao.create(new User("dsf@gmail.com", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
 		System.out.println("가입 성공");*/
