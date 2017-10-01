@@ -7,6 +7,6 @@
 $(function() {
 	
 	$("#visitDate").change(function(){
-		location.href="/admin/visitorcount.joya?date="+$(this).val();
+		location.href="/admin/visitors.joya?date="+$(this).val();
 	})
 });
