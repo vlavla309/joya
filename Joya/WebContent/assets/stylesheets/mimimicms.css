@@ -99,4 +99,8 @@
 	font-weight: normal;
 }
 
+.warning {
+	display: none;
+}
+
 </style>

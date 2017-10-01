@@ -12,8 +12,7 @@ public class ImageServiceImpl implements ImageService {
 	
 	@Override
 	public void create(Images image) {
-		// TODO Auto-generated method stub
-
+		imgdao.create(image);
 	}
 
 	@Override
