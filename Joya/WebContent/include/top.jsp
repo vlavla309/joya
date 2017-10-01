@@ -1,6 +1,7 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="container">
       <div class="top row">
       <div class="col-md-6 phone-shopping">
@@ -14,7 +15,7 @@
           <c:when test="${empty cookie.user}">
               <ul id="accounts" class="list-inline">
             <li class="my-account">
-              <a href="account.html">My Account</a>
+              <a href="account.html">Order List</a>
             </li>  
             <li class="login">    
               <span id="loginButton" class="dropdown-toggle" data-toggle="dropdown">
@@ -31,17 +32,18 @@
                     </li>
                     <li class="clearfix">
                       <label for="customer_email_box" class="control-label">Email Address <span class="req">*</span></label>
-                      <input type="email" value="" name="email" id="customer_email_box" class="form-control">
+                      <input type="email" value="" name="email" id="customer_email_box" class="form-control" required="required">
+                      <input id="referer" type="hidden" name="referer" >
                     </li>            
                     <li class="clearfix">
                       <label for="customer_password_box" class="control-label">Password <span class="req">*</span></label>
-                      <input type="password" value="" name="passwd" id="customer_password_box" class="form-control password">
+                      <input type="password" value="" name="passwd" id="customer_password_box" class="form-control password" required="required">
                     </li>             
                     <li class="clearfix">
                       <button class="action btn btn-1" type="submit">Login</button>
                     </li>
                     <li class="clearfix">
-                      <button class="action btn btn-1" type="button">Create an account</button>
+                      <a class="action btn btn-1" href="/user/register.joya">Create an account</a>
                     </li>
                   </ul>
                 </div>
@@ -50,20 +52,20 @@
             </li>
             <li>/</li>   
             <li class="register">
-              <a href="register.html" id="customer_register_link">Create an account</a>
+              <a href="/user/register.joya" id="customer_register_link">Create an account</a>
             </li>  
           </ul>
           </c:when>
           <c:otherwise>
             <ul id="accounts" class="list-inline">
-             <li class="my-account">
-                <a href="account.html">My Account</a>
-             </li> 
              <li>
-                <label>${cookie.user.value}님 환영합니다.</label>  
+                <label>${user}님 환영합니다.&nbsp;&nbsp;&nbsp;</label>  
              </li>
              <li class="my-account">
-                <a href="account.html">로그아웃</a>
+                <a href="account.html">마이페이지</a>
+             </li> 
+             <li class="my-account">
+                <a href="/user/login_action.joya">로그아웃</a>
              </li> 
             </ul>
           </c:otherwise>

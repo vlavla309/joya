@@ -12,17 +12,17 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void create(User user) {
-		
+		userDao.create(user);
 	}
 
 	@Override
 	public void delete(String email) {
-		
+		userDao.delete(email);
 	}
 	
 	@Override
 	public void modify(User user) {
-		
+		userDao.modify(user);
 	}
 	
 	@Override
