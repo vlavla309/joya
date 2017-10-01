@@ -31,7 +31,7 @@ public class ProductUploadFormController implements Controller {
 			System.out.println(categories2);
 		}
 		mav.addObject("categories", categories);
-		mav.setView("/admin/pages/product_form.jsp");
+		mav.setView("/admin/product_form.jsp");
 		
 		return mav;
 	}
