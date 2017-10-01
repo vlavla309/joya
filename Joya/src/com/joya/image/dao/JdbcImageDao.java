@@ -10,6 +10,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.joya.common.db.DaoFactory;
+import com.joya.common.exception.MallException;
 import com.joya.image.domain.Images;
 import com.sun.prism.Image;
 
@@ -33,8 +34,40 @@ public class JdbcImageDao implements ImageDao{
 
 	@Override
 	public void create(Images image) {
-		// TODO Auto-generated method stub
-		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO images " + 
+					   "            (image_name, " + 
+					   "             product_id, " + 
+					   "             path, " + 
+					   "             order_no) " + 
+					   "VALUES      (?, " + 
+					   "             ?, " + 
+					   "             ?, " + 
+					   "             ? )";
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, image.getImageName());
+			pstmt.setInt(2, image.getProductId());
+			pstmt.setString(3, image.getPath());
+			pstmt.setInt(4, image.getOrder());
+			
+			pstmt.executeQuery();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+				throw new MallException("JdbcImageDao.create(Image image)실행 중 예외 발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch(SQLException e) {}
+		}
 	}
 
 	@Override
