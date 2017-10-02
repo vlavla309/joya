@@ -33,18 +33,18 @@ public class AdminAuthController implements Controller {
 			User user = userService.isMember(email, passwd);
 			if(user != null){
 				if(user.getType()==USER_ADMIN){	
-					String userInfo = null;
+					String adminInfo = null;
 					try {
-						userInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName(), "utf-8");
+						adminInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName(), "utf-8");
 					} catch (UnsupportedEncodingException e) {
 						throw new ServletException("AdminAuthController.handleRequest() 중 예외 발생", e);
 					}
-					Cookie loginCookie = new Cookie("admin", userInfo);
+					Cookie loginCookie = new Cookie("admin", adminInfo);
 					loginCookie.setPath("/");
 					response.addCookie(loginCookie);
 				}
 			} else {
-				location = "/user/login.joya";
+				location = "/admin/login.joya?status=err";
 			}
 		}else {// Get 방식일 경우 로그아웃
 			Cookie[] cookies = request.getCookies();

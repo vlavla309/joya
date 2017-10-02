@@ -19,6 +19,8 @@
 
     <!-- Custom CSS -->
     <link href="${pageContext.servletContext.contextPath}/admin/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${pageContext.servletContext.contextPath}/admin/dist/css/login.css" rel="stylesheet">
+
 
     <!-- Custom Fonts -->
     <link href="${pageContext.servletContext.contextPath}/admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -42,15 +44,15 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form role="form" action="/admin/admin_check.joya" method="post">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
+                                    <input class="form-control" placeholder="Password" name="passwd" type="password" value="" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="err">
                                     <p>해당 관리자계정이 존재하지 않습니다.</p>
                                 </div>
                                 
@@ -80,7 +82,18 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="${pageContext.servletContext.contextPath}/admin/dist/js/sb-admin-2.js"></script>
-
+	<script type="text/javascript">
+	$(function(){
+		if($.urlParam("status")){
+			$("#err").show();
+		}	
+	})
+	
+	$.urlParam = function(name){
+	    var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+	    return results[1] || 0;
+	}
+	</script>
 </body>
 
 </html>
