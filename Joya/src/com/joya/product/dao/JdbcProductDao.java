@@ -55,7 +55,7 @@ public class JdbcProductDao implements ProductDao{
 				"             ?) ";
 		try {
 			con = dataSource.getConnection();
-			con.setAutoCommit(false);
+			con.setAutoCommit(true);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, product.getCategoryName());
 			pstmt.setString(2, product.getProductName());

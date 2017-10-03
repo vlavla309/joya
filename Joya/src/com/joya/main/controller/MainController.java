@@ -14,6 +14,8 @@ import com.joya.common.controller.ControllerFactory;
 import com.joya.common.controller.ModelAndView;
 import com.joya.common.view.View;
 import com.joya.common.view.ViewResolver;
+import com.joya.visitlog.service.VisitLogService;
+import com.joya.visitlog.service.VisitLogServiceImpl;
 
 /**
  * 
@@ -42,12 +44,8 @@ public class MainController extends HttpServlet {
 
 	public void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		/** 모든 세부 컨트롤러들에 대한 공통 기능 처리 */
 
-		// 모든 요청파라메터에 대한 한글 인코딩 처리
-		//request.setCharacterEncoding("utf-8");
-
-		// #1.웹 클라이언트 요청(브라우저 명령) 분석
+		
 		String uri = request.getRequestURI();
 
 		// 확장자 형식 매핑시..
@@ -66,9 +64,16 @@ public class MainController extends HttpServlet {
 		controller = controllerFactory.getController(uri);
 		
 		if(controller == null){
-//			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-//			return;
 			// 등록된 세부 컨트롤러가 없을 경우 uri에 해당하는 jsp로 단순 포워드
+			
+			//메인페이지 로드 일 경우 접속기록
+			if(uri.equals("/index")) {
+				System.out.println("메인 화면임");
+				VisitLogService vServe=new VisitLogServiceImpl();
+				String ip=request.getRemoteHost();
+				System.out.println(ip);
+				vServe.create(ip);
+			}
 			view = viewResolver.resolve(uri+".jsp");
 			view.execute(request, response);
 			return;

@@ -4,11 +4,11 @@
 	<bean name="/hello" class="com.joya.test.HelloController" />
 	
 	<!-- admin -->
-	<bean name="/admin/userlist" class="com.joya.admin.controller.UserListController" />
+	<bean name="/admin/users" class="com.joya.admin.controller.UserListController" />
 	<bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
-	<bean name="/admin/productadd" class="com.joya.admin.controller.ProductUploadFormController" />
+	<bean name="/admin/product_add" class="com.joya.admin.controller.ProductUploadFormController" />
 	<bean name="/admin/product_add_action" class="com.joya.admin.controller.ProductUploadActionController" />
-	<bean name="/admin/visitorcount" class="com.joya.admin.controller.VisitorCountController" />
+	<bean name="/admin/visitors" class="com.joya.admin.controller.VisitorCountController" />
 	
 	<!-- product -->
 	<bean name="/product/list" class="com.joya.product.controller.ProductlistController" />
@@ -26,5 +26,9 @@
 	<!-- 마이페이지 관련 -->
 	<bean name="/mypage/wishlist" class="com.joya.wishlist.controller.WishlistController" />
 	<bean name="/mypage/wishlistdelete" class="com.joya.wishlist.controller.WishlistDeleteController" />
+	
+	<!-- board -->
+	<bean name="/boards/qnawrite" class="com.joya.board.controller.QnAWriteController" />
+	<bean name="/boards/qnalist" class="com.joya.board.controller.QnAListController" />
 	
 </beans>
