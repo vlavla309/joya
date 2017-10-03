@@ -12,14 +12,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import com.joya.user.domain.User;
-import com.joya.user.service.UserService;
-import com.joya.user.service.UserServiceImpl;
-
 /**
  * ?���??��?��메터 ?���??��코딩 처리 ?��?��
  */
-public class LoginCheckFilter implements Filter {
+public class LoginCheckFilterBackup implements Filter {
 	
 	private String encoding;
 	
@@ -39,18 +35,11 @@ public class LoginCheckFilter implements Filter {
 			
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equalsIgnoreCase("user")) {
-					
 					String user = URLDecoder.decode(cookie.getValue(), "utf-8");
 	                String[] tokens = user.split("###");
 	                email = tokens[0];
-	                /*name = tokens[1];
-	                passwd = tokens[2];*/
-					
-					UserService userService = new UserServiceImpl();
-					
-					User userinfo = userService.read(email);
-					name = userinfo.getName();
-					passwd = userinfo.getPasswd();
+	                name = tokens[1];
+	                passwd = tokens[2];
 				}
 			}
 		}

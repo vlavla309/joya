@@ -34,7 +34,7 @@ public class CertificationController implements Controller {
 			if(user != null){
 				String userInfo = null;
 				try {
-					userInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName(), "utf-8");
+					userInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName() + "###" + user.getPasswd(), "utf-8");
 				} catch (UnsupportedEncodingException e) {
 					throw new ServletException("UserAuthController.handleRequest() 실행중 예외 발생", e);
 				}
@@ -42,14 +42,20 @@ public class CertificationController implements Controller {
 				loginCookie.setPath("/");
 				response.addCookie(loginCookie);
 				if(referer != null) {
-					if(referer.contains("/user/login.joya")) {
+					if(referer.contains("/user/login3") || referer.contains("/user/login2") || referer.contains("/user/login")) {
 						location = "/index.joya";
 					} else {
 						location = referer;
 					}
 					}
 				} else {
-					location = "/user/login.joya";
+					if (referer.contains("/user/login.joya")) {
+						location = "/user/login.joya";
+					} else if(referer.contains("/user/login2.joya")) {
+						location = "/user/login2.joya";
+					} else {
+						location = "/user/login3.joya";
+					}
 				}
 			}else {// 로그아웃
 				Cookie[] cookies = request.getCookies();

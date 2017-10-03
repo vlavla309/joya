@@ -26,7 +26,14 @@
 #register-form button {
 	float: right;
 	position: relative;
-	right: 180px; 
+	right: 185px; 
+	margin-left: 5px;
+}
+
+#register-form #done {
+	float: right;
+	position: relative;
+	right: 371px; 
 	margin-left: 5px;
 }
 
@@ -34,7 +41,7 @@
     width: 30%;
 }
 #register-form .address2 {
-    width: 20%;
+    width: 20.2%;
 }
 #postalbtn {
 	background-color: white;
@@ -50,5 +57,16 @@
 	float: left;
 	position: relative;
 	left: 185px;
+}
+#joinmessage {
+	float:right;
+	position:relative;
+	right: 200px;
+	font-weight: bold;
+	color: red;
+}
+#joinguide {
+    position:relative;
+    left: 200px;
 }
 </style>
