@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+  .my-account button {
+    font-style: normal;
+    color: #202020;
+    font-weight: 400;
+    font-size: 11px;
+    background-color: transparent;
+    border: none;
+    }

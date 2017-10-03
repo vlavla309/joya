@@ -3,10 +3,14 @@ package com.joya.user.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
+import org.json.simple.JSONObject;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
@@ -14,7 +18,7 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
-public class CheckPasswdController implements Controller{
+public class BridgeController implements Controller{
 	
 	private UserService userService = new UserServiceImpl();
 	
@@ -22,26 +26,24 @@ public class CheckPasswdController implements Controller{
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
 		
+		ModelAndView mav = new ModelAndView();
+		
 		String email = request.getParameter("email");
-		String passwd = request.getParameter("passwd");
+		String cancel = request.getParameter("cancel");
+		User user = userService.read(email);
+		String[] tokens = user.getAddress().split("###");
 		
-		response.setContentType("text/plain;charset=utf-8");
-		User user = null;
-		PrintWriter out;
-		
-		try {
-			user = userService.isMember(email, passwd);
-			out = response.getWriter();
-			if (user != null) {
-				out.println("true");
-			} else {
-				out.println("false");
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (cancel != null) {
+			mav.setView(request.getContextPath() + "/mypage/main.joya");
+		} else {
+			mav.setView(request.getContextPath() + "/mypage/modify_user.joya");
 		}
 		
-		return null;
+		mav.addObject("user", user);
+		mav.addObject("address1", tokens[0]);
+		mav.addObject("address2", tokens[1]);
+		mav.addObject("address3", tokens[2]);
+		
+		return mav;
 	}
 }

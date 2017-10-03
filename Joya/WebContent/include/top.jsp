@@ -33,7 +33,7 @@
                     <li class="clearfix">
                       <label for="customer_email_box" class="control-label">Email Address <span class="req">*</span></label>
                       <input type="email" value="" name="email" id="customer_email_box" class="form-control" required="required">
-                      <input id="referer" type="hidden" name="referer" >
+                      <input class="referer" type="hidden" name="referer" >
                     </li>            
                     <li class="clearfix">
                       <label for="customer_password_box" class="control-label">Password <span class="req">*</span></label>
@@ -57,17 +57,42 @@
           </ul>
           </c:when>
           <c:otherwise>
+          <script type="text/javascript">
+          	function fwemail() {
+          		var form = document.createElement("form");
+          		form.setAttribute("action", "/user/mypage_action.joya");
+          		form.setAttribute("method", "post");
+          		
+          		var hidden = document.createElement("input");
+          		hidden.setAttribute("type", "hidden");
+          		hidden.setAttribute("name", "email");
+          		hidden.setAttribute("value", "${email}");
+          		
+          		form.appendChild(hidden);
+          		document.body.appendChild(form);
+          		form.submit();
+			}
+          </script>
+          <form action="/user/mypage_action.joya" method="post">
             <ul id="accounts" class="list-inline">
              <li>
-                <label>${user}님 환영합니다.&nbsp;&nbsp;&nbsp;</label>  
+               <c:choose>
+               <c:when test="${empty user }">
+                 <label id="welcomebro">${name}(${email})님 환영합니다.&nbsp;&nbsp;&nbsp;</label>
+               </c:when>
+               <c:otherwise>
+                  <label id="welcomebro">${user.name}(${email})님 환영합니다.&nbsp;&nbsp;&nbsp;</label>               
+               </c:otherwise> 
+               </c:choose> 
              </li>
              <li class="my-account">
-                <a href="account.html">마이페이지</a>
+                <a href="javascript:fwemail();">마이페이지</a>
              </li> 
              <li class="my-account">
                 <a href="/user/login_action.joya">로그아웃</a>
              </li> 
             </ul>
+            </form>
           </c:otherwise>
         </c:choose>
         
