@@ -28,7 +28,7 @@ public class ArticleTest {
 		article.setTitle("질문합니다");
 		article.setContents("목걸이 언제 들어오나요?");
 		article.setPasswd("1111");
-		dao.create(article);
+		dao.create(article, "qna");
 		System.out.println("회원가입됨");
 		System.out.println(article.toString());
 	}

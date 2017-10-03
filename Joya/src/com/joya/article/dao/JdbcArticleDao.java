@@ -32,6 +32,7 @@ public class JdbcArticleDao implements ArticleDao {
 		this.dataSource = dataSource;
 	}
 	
+	
 	/** 
 	@Override
 	public void create(Article article) {
@@ -137,106 +138,110 @@ public class JdbcArticleDao implements ArticleDao {
 
 	}
 	
-	*/
-	
-	
-	/**Q&A, 공지 게시글 등록 */
-	   @Override
-	   public void create(Article article) {
-	      String sql = "INSERT INTO articles \r\n" + 
-	                        "            (article_id, \r\n" + 
-	                        "             email, \r\n" + 
-	                        "             board_id, \r\n" + 
-	                        "             title, \r\n" + 
-	                        "             contents, \r\n" + 
-	                        "             writer, \r\n" + 
-	                        "             passwd, \r\n" + 
-	                        "             group_no, \r\n" + 
-	                        "             type, \r\n" + 
-	                        "             file_path) \r\n" + 
-	                        "VALUES      (articles_seq.nextval, \r\n" + 
-	                        "             ?, \r\n" + 
-	                        "             2, \r\n" + 
-	                        "             ?, \r\n" + 
-	                        "             ?, \r\n" + 
-	                        "             ?, \r\n" + 
-	                        "             ?, \r\n" + 
-	                        "             articles_seq.currval, \r\n" + 
-	                        "             0, \r\n" + 
-	                        "             ?)";
 
-	      Connection con = null;
-	      PreparedStatement pstmt = null;
-	      try {
-	         con = dataSource.getConnection();
-	         pstmt = con.prepareStatement(sql);
-	         pstmt.setString(1, article.getEmail());
-	         //pstmt.setInt(2, article.getArticleId());
-	         pstmt.setString(2, article.getTitle());
-	         pstmt.setString(3, article.getContents());
-	         pstmt.setString(4, article.getWriter());
-	         pstmt.setString(5, article.getPasswd());
-	         pstmt.setString(6, article.getFilePath());
-	         
-	         pstmt.executeQuery();
-	         con.commit();
-	         
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	         try {
-	            con.rollback();
-	         } catch (SQLException e1) {
-	            e1.printStackTrace();
-	         }
-	      } finally {
-	         try {
-	            if(pstmt != null)pstmt.close();
-	            if(con != null)con.close();
-	         } catch (SQLException e) {
-	            e.printStackTrace();
-	         }
-	      }
-	   }
+	   */
 	   
-	   /** A/S, 상품평 게시글 등록 */
+
+	   
+	   /** 공지사항, QnA, A/S, 상품평 게시글 등록 */
 	   public void create(Article article, String articleType) {
 	      StringBuilder sb = new StringBuilder();
 	      
-	      sb.append(" INSERT INTO articles ");
-	      sb.append("(article_id, ");
-	      sb.append(" email, ");
-	      sb.append("board_id, ");
-	      sb.append("title, ");
-	      sb.append("contents, ");
-	      sb.append(" writer, ");
-	      sb.append("passwd, ");
-	      sb.append("group_no, ");
-	      sb.append("type, ");
-	      sb.append("file_path, ");
-	      sb.append("product_id) ");
-	      sb.append("VALUES      (articles_seq.nextval, ");
-	      sb.append("?, "); //email
+	      String productId = Integer.toString(article.getProductId());
 	      
-	      //글 종류(A/S or 상품평)
-	      if(articleType != null) {
-	         switch(articleType) {
-	         case "as":
-	            sb.append("2, "); // board_id
-	            break;
-	         case "review":
-	            sb.append("4, "); // 상품평
-	            break;
-	         }
-	      }
+	      sb.append("INSERT INTO articles ");
+	      sb.append("            (article_id,");
+	      sb.append("             email, ");
+	      sb.append("             board_id, ");
+	      sb.append("             title, ");
+	      sb.append("             contents, ");
+	      sb.append("             writer, ");
+	      sb.append("             passwd, ");
+	      sb.append("             group_no, ");
+	      sb.append("             type, ");
+	      
+	      if(productId != null) {
+	    	  
+	    	  sb.append("             file_path, ");
+	    	  sb.append(" 			  product_id) ");
+		      sb.append(" VALUES      (articles_seq.nextval, ");
+		      sb.append(" ?, ");  // email
+		      
+		      //글 종류
+		      if(articleType != null) {   //board_id
+		         switch(articleType) {
+		         case "notice":
+		        	sb.append("1, "); // 공지사항
+		        	break;
+		         case "qna":
+		        	sb.append("2, "); // QnA
+		        	break;
+		         case "review":
+		            sb.append("3, "); // 상품평
+		            break;
+		         case "as":
+		            sb.append("4, "); // A/S
+		            break;
+		         }
+		      }
 
-	      sb.append("?, "); // title
-	      sb.append("?, "); // contents
-	      sb.append("?, "); // writer
-	      sb.append("?, "); // passwd
-	      sb.append("articles_seq.currval, ");
-	      sb.append("0, ");
-	      sb.append("?, "); // filePath
-	      sb.append("?) "); // product_id
+		      sb.append("?, "); // title
+		      sb.append("?, "); // contents
+		      sb.append("?, "); // writer
+		      sb.append("?, "); // passwd
+		      sb.append("articles_seq.currval, ");
+		      
+		      if(articleType == "notice") {
+		    	  sb.append("1, ");  
+		      }else {
+		    	  sb.append("0, "); 
+		      }
+		      
+		      sb.append("?, "); // filePath
+		      sb.append("?) "); // product_id
+	    	  
+	      } else {
+	    	  
+	    	  sb.append("             file_path) ");
+		      sb.append(" VALUES      (articles_seq.nextval, ");
+		      sb.append(" ?, "); //email
+		      
+		      //글 종류
+		      if(articleType != null) {   //board_id
+		         switch(articleType) {
+		         case "notice":
+		        	sb.append("1, "); // 공지사항
+		        	break;
+		         case "qna":
+		        	sb.append("2, "); // QnA
+		        	break;
+		         case "review":
+		            sb.append("3, "); // 상품평
+		            break;
+		         case "as":
+		            sb.append("4, "); // A/S
+		            break;
+		         }
+		      }
+
+		      sb.append("?, "); // title
+		      sb.append("?, "); // contents
+		      sb.append("?, "); // writer
+		      sb.append("?, "); // passwd
+		      sb.append("articles_seq.currval, ");
+		      
+		      if(articleType == "notice") {
+		    	  sb.append("1, ");  
+		      }else {
+		    	  sb.append("0, "); 
+		      }
+		      
+		      sb.append("?) "); // filePath
+	    	  
+	      }
+	      
+	      
+
 
 	      Connection con = null;
 	      PreparedStatement pstmt = null;

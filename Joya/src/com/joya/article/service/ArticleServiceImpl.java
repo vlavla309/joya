@@ -13,11 +13,6 @@ public class ArticleServiceImpl implements ArticleService {
 	ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
 
 	@Override
-	public void create(Article article) {
-		dao.create(article);
-	}
-	
-	@Override
 	public void create(Article article, String articleType) {
 		dao.create(article, articleType);
 	}

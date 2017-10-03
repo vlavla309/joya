@@ -41,7 +41,7 @@ public class QnAWriteController implements Controller {
 		article.setPasswd(passwd);
 		article.setContents(contents);
 		
-		articleService.create(article);
+		articleService.create(article, "qna");
 		
 		mav.addObject("article", article);
 		mav.setView("redirect:/boards/qnalist.joya");
