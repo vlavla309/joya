@@ -43,37 +43,45 @@
 <!-- css 적용 부분 종료 -->
 
 <%
-  String user = null;
-  String email = null;
-  String name = null;
+	String user = null;
+	String email = null;
+	String name = null;
 
-  Cookie[] cookies = request.getCookies();
-  if (cookies != null) {
-    for (Cookie cookie : cookies) {
-      if (cookie.getName().equalsIgnoreCase("user")) {
-        user = URLDecoder.decode(cookie.getValue(), "utf-8");
-        String[] tokens = user.split("###");
-        email = tokens[0];
-        name = tokens[1];
-      }
-    }
-  }
+	Cookie[] cookies = request.getCookies();
+	if (cookies != null) {
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equalsIgnoreCase("user")) {
+				user = URLDecoder.decode(cookie.getValue(), "utf-8");
+				String[] tokens = user.split("###");
+				email = tokens[0];
+				name = tokens[1];
+			}
+		}
+	}
+%>
+
+<%
+	email = "joa@joa";
+	name = "조아조";
+
+	request.setAttribute("email", email);
+	request.setAttribute("name", name);
 %>
 
 
 </head>
 
- <%-- 회원삭제 modal --%>
-  <div class="modal" id="titleModal">
+<%-- 회원삭제 modal --%>
+<div class="modal" id="titleModal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
         <h4 class="modal-title">해당 게시글은 본인만 읽을 수 있습니다.</h4>
       </div>
-      <div class="modal-body">
-        fine body&hellip;
-      </div>
+      <div class="modal-body">fine body&hellip;</div>
     </div>
   </div>
 </div>
@@ -134,7 +142,11 @@
                           varStatus="status">
                           <tr class="odd" value="">
                             <td>${(pb.totalRowCount - ((params.page - 1) * params.pageSize)) - status.index}</td>
-                            <td><a class="titlebtn" href="">${article.title} </a></td>
+                            <td>
+                              <c:if test="${article.writer eq '관리자'}">
+                               <img src="../assets/images/replying.png"> &nbsp;
+                              </c:if> 
+                            <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id=${article.articleId}">${article.title}</a></td>
                             <td class="writertd">${article.writer}</td>
                             <td>${article.regdate}</td>
                             <td>${article.hitcount}</td>
@@ -146,13 +158,10 @@
                 </table>
 
                 <div id="ji-writeD">
-                  <form
-                    action="${pageContext.servletContext.contextPath}/boards/writingqna.jsp"
-                    method="post">
-                    <button type="button" class="btn">
-                      <a
-                        href="${pageContext.servletContext.contextPath}/boards/writingqna.jsp">글쓰기</a>
-                    </button>
+
+                  <button type="button" class="btn">
+                    <a href="${pageContext.servletContext.contextPath}/boards/writingqna.jsp">글쓰기</a>
+                  </button>
                   </form>
                 </div>
 
