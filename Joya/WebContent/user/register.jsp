@@ -39,37 +39,55 @@
 				url: "/user/email_action.joya",
 				data: {"email" : useremail},
 				success: function(data) {
-					if (data.trim() != "true") {
+					if ($("#email").val().length == 0) {
+						$("#emailmessage").html("");
+					} else if (data.trim() != "true") {
+						$("#emailmessage").css("color", "blue");
 						$("#emailmessage").html("사용 가능한 아이디 입니다.");
+						$("#signupup").attr("value", "1");
+						setTimeout(function() {
+							$("#emailmessage").html("");	
+						}, 10000)
 					} else {
+						$("#emailmessage").css("color", "red");
 						$("#emailmessage").html("이미 존재하는 아이디 입니다.");
+						$("#signupup").attr("value", "0");
+						setTimeout(function() {
+							$("#emailmessage").html("");	
+						}, 10000)
 					}
 				}
 			});
 		});
+		
 	});
     
-	function checkpasswd() {
+	function checkinfo() {
+		
 		var pw1 = $("#password").val();
 		var pw2 = $("#password2").val();
 		
+		if ($("#signupup").attr("value") == "0") {
+			$("#joinmessage").html("중복되지 않는 아이디(이메일)를 입력해 주세요.");
+			return false; 
+		}
+		
 		if (pw1 != pw2) {
+			$("#pwmessage").css("color", "red");
 			$("#pwmessage").html("비밀번호가 일치하지 않습니다.");
+			setTimeout(function() {
+				$("#pwmessage").html("");	
+			}, 10000)
 			return false;
 		} else {
-			return true;
+			$("#pwmessage").html("");
 		}
+		
+		return true;
+		
 	}
+	
     </script>
-    
-    <style type="text/css">
-      #pwmessage{
-        color: red;
-      }
-      #emailmessage{
-        color: blue;
-      }
-    </style>
     
 </head>
 
@@ -98,10 +116,10 @@
 					<div class="container">
 						<div class="row">
 							<div id="page-header" class="col-md-24">
-								<h1 id="page-title">회원 가입</h1> 
+								<h1 id="page-title">회원 가입</h1><span id="joinguide" class="req">*표는 필수 입력사항입니다.</span> 
 							</div>
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="/user/register_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpasswd();">
+								<form method="post" action="/user/register_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkinfo();">
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">
@@ -125,7 +143,7 @@
   										<input name="phone" id="phone" class="form-control " type="text" pattern="^01\d{1}-\d{3,4}-\d{4}$" title="010-111(1)-1111 형태로 입력해 주세요" required="required">
                                        </div>
                                        <div class="half-ms-div">
-                                        <label class="control-label" for="birthdate">생년월일<span class="req">*</span></label>
+                                        <label class="control-label" for="birthdate">생년월일</label>
                                         <input value="" name="birthdate" id="birthdate" class="form-control password" type="text" pattern="^\d{8}$" title="19940101의 형태로 입력해 주세요.">
                                         </div>
                                         <div class="ms_div">
@@ -136,7 +154,7 @@
                                         <input name="address3" type="text" id="sample6_address2" class="address2 form-control" placeholder="상세주소" >
                                         </div>
                                         <a id="acc-close" class="btn" type="reset" href="/index.joya">취소</a>
-                                        <button id="signupup" class="btn signup" type="submit">가입</button>
+                                        <button id="signupup" class="btn signup" type="submit" value="0">가입</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="joinmessage"></span>
 									</div>
 								</form>
 							</div>   
