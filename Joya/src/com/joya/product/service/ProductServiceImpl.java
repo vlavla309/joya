@@ -14,8 +14,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void create(Product product) {
-		// TODO Auto-generated method stub
-
+		productDao.create(product);
 	}
 
 	@Override
@@ -41,6 +40,10 @@ public class ProductServiceImpl implements ProductService {
 	public Product read(int productId) {
 		// TODO Auto-generated method stub
 		return productDao.read(productId);
+	}
+	
+	public int getNewProductId() {
+		return productDao.getNewProductId();
 	}
 	
 	public static void main(String[] args) {

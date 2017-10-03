@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 
-public class CloseController implements Controller  {
+public class CheckPasswdController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {

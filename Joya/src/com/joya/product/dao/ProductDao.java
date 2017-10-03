@@ -17,4 +17,6 @@ public interface ProductDao {
 	
 	
 	public int pageCount(Params params, String cateforyName, String orderType);
+	
+	public int getNewProductId();
 }

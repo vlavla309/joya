@@ -25,6 +25,7 @@
 	<%@ include file="../assets/stylesheets/mimimicms.css" %>
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
+    <script src="../assets/javascripts/referer.js" type="text/javascript"></script>
   
 </head>
 
@@ -42,7 +43,7 @@
 					<div itemprop="breadcrumb" class="container">
 						<div class="row">
 							<div class="col-md-24">
-								<a href="index-2.html" class="homepage-link" title="Back to the frontpage">Home</a>
+								<a href="/index.joya" class="homepage-link" title="Back to the frontpage">Home</a>
 								<span>/</span>
 								<span class="page-title">Login</span>
 							</div>
@@ -63,10 +64,10 @@
 											<div class="checkout-title">
 												<span class="general-title">회원 로그인</span> 
 											</div>
-											<form method="post" action="http://demo.designshopify.com/html_jewelry/login.html" id="customer_login" accept-charset="UTF-8">
+											<form method="post" action="/user/login_action.joya" id="customer_login" accept-charset="UTF-8">
 												<input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
 												<div class="col-md-21 login-alert">
-													<div class="alert alert-danger">
+													<div class="alert alert-danger warning" >
 														<button type="button" class="close btooltip" data-toggle="tooltip" data-placement="top" title="" data-dismiss="alert" data-original-title="Close">x</button>
 														<div class="errors">
 															<ul>
@@ -79,12 +80,12 @@
 													<li class="clearfix"></li>
 													<li id="login_email" class="col-md-21">
 													<label class="control-label" for="customer_email">아이디(이메일) <span class="req">*</span></label>
-													<input type="email" value="" name="customer[email]" id="customer_email" class="form-control">
+													<input type="email" value="" name="customer[email]" id="customer_email" class="form-control" required="required">
 													</li>
 													<li class="clearfix"></li>
 													<li id="login_password" class="col-md-21">
 													<label class="control-label" for="customer_password">비밀번호 <span class="req">*</span></label>
-													<input type="password" value="" name="customer[password]" id="customer_password" class="form-control password">
+													<input type="password" value="" name="customer[password]" id="customer_password" class="form-control password" required="required">
 													</li>
 													<li class="col-md-21 unpadding-top">
 													<ul class="login-wrapper list-unstyled">

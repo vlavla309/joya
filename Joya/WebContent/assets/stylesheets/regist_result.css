@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+   .thanks-bg {
+        float: left;
+        position: relative;
+        left: 22%;
+        margin-top: 30px;
+      }
+      #ji-userInfo {
+        width: 60%;
+        position: relative;
+        left: 140px;
+      }
+      #ji-buttons {
+        text-align: center;
+      }
