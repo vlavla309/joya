@@ -13,6 +13,13 @@
 	#acc-close {
 		float: right;
 		position: relative;
-		right: 180px; 
+		right: 185px; 
+		margin-left: 5px;
+	}
+	
+	#register-form #acc-cancel {
+		float: right;
+		position: relative;
+		right: 371px; 
 		margin-left: 5px;
 	}

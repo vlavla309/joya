@@ -193,7 +193,7 @@ public class JdbcUserDao implements UserDao{
 				"       address, " + 
 				"       point, " + 
 				"       type, " + 
-				"       TO_CHAR(birthdate, 'YYYY-MM-DD HH24:MI:SS') birthdate, " + 
+				"       TO_CHAR(birthdate, 'YYYYMMDD') birthdate, " + 
 				"       TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:SS') regdate " + 
 				"		FROM   users " + 
 				"		WHERE  email = ?";

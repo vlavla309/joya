@@ -33,51 +33,61 @@
     
     <script>
         $(document).ready(function () {
-            //start of the document ready function
-            //delcaring global variable to hold primary key value.
-            var pryEmpId;
-            $('#acc-close').click(function () {
-                pryEmpId = $(this).attr('id');
-                $('#myModal').modal('show');
-            });
-
-            $('.delete-confirm').click(function () {
-                if (pryEmpId != '') {
-                    $.ajax({
-                        url: '/Home/RemoveEmployee',
-                        data: { 'employeeId': pryEmpId },
-                        type: 'get',
-                        success: function (data) {
-                            if (data) {
-                                //now re-using the boostrap modal popup to show success message.
-                                //dynamically we will change background colour 
-                                if ($('.modal-header').hasClass('alert-danger')) {
-                                    $('.modal-header').removeClass('alert-danger').addClass('alert-success');
-                                    //hide ok button as it is not necessary
-                                    $('.delete-confirm').css('display', 'none');
-                                }
-                                $('.success-message').html('Record deleted successfully');
-                            }
-                        }, error: function (err) {
-                            if (!$('.modal-header').hasClass('alert-danger')) {
-                                $('.modal-header').removeClass('alert-success').addClass('alert-danger');
-                                $('.delete-confirm').css('display', 'none');
-                            }
-                            $('.success-message').html(err.statusText);
-                        }
-                    });
-                }
-            });
-
-            //function to reset bootstrap modal popups
-            $("#myModal").on("hidden.bs.modal", function () {
-                $(".modal-header").removeClass(' ').addClass('alert-danger');
-                $('.delete-confirm').css('display', 'inline-block');
-                $('.success-message').html('').html('정말 탈퇴하시겠습니까?');
-            });
-
-            //end of the docuement ready function
+        	
+        	$("#password").keyup(function() {
+    			var useremail = $("#email").val();
+    			var userpasswd = $(this).val(); 
+    			$.ajax({
+    				url: "/user/passwd_action.joya",
+    				data: {"email" : useremail, "passwd" : userpasswd},
+    				success: function(data) {
+    					if ($("#password").val().length == 0) {
+    						$("#pwmessage1").html("");
+    					} else if (data.trim() == "true") {
+    						$("#pwmessage1").css("color", "blue");
+    						$("#pwmessage1").html("가입 시 입력된 비밀번호와 일치합니다.");
+    						$("#done").attr("value", "1");
+    						setTimeout(function() {
+    							$("#pwmessage1").html("");	
+    						}, 10000)
+    					} else {
+    						$("#pwmessage1").css("color", "red");
+    						$("#pwmessage1").html("가입 시 입력하신 비밀번호와 다릅니다.");
+    						$("#done").attr("value", "0");
+    						setTimeout(function() {
+    							$("#pwmessage1").html("");	
+    						}, 10000)
+    					}
+    				}
+    			});
+    		});
         });
+        	
+        function checkpw() {
+    		
+    		var pw1 = $("#password").val();
+    		var pw2 = $("#password2").val();
+    		
+    		if ($("#done").attr("value") == "0") {
+    			$("#pwmessage1").html("가입 시 입력된 비밀번호와 다릅니다.");
+    			return false; 
+    		}
+    		
+    		if (pw1 != pw2) {
+    			$("#pwmessage2").css("color", "red");
+    			$("#pwmessage2").html("비밀번호가 일치하지 않습니다.");
+    			setTimeout(function() {
+    				$("#pwmessage2").html("");	
+    			}, 10000)
+    			return false;
+    		} else {
+    			$("#pwmessage2").html("");
+    		}
+    		
+    		return true;
+    		
+    	};
+    	
     </script>
     
 </head>
@@ -107,39 +117,28 @@
 					<div class="container">
 						<div class="row">
 							<div id="page-header" class="col-md-24">
-								<h1 id="page-title">회원 정보 수정</h1> 
+								<h1 id="page-title">비밀번호 확인</h1> 
 							</div>
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="http://demo.designshopify.com/account" id="create_customer" accept-charset="UTF-8">
+								<form method="post" action="/user/bridge_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">
-  										<label class="control-label" for="last_name">아이디<span class="req">*</span></label>
-  										<input name="customer[last_name]" id="last_name" class="form-control " type="text">
-  										<label class="control-label" for="password">비밀번호<span class="req">*</span></label>
-                                        <input value="" name="customer[password]" id="password" class="form-control password" type="password">
-  										<label class="control-label" for="email">전화번호<span class="req">*</span></label>
-  										<input name="customer[email]" id="email" class="form-control " type="email">
+                                        <input value="${user.email }" name="email" id="email" class="form-control " type="hidden" readonly="readonly">
+  										<label class="control-label" for="password">비밀번호<span class="req">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="pwmessage1"></span></label>
+                                        <input value="" name="passwd" id="password" class="form-control password" type="password" pattern="^[a-zA-Z0-9]{4,20}$" title="영문/숫자 4~20 자리로 입력해 주세요." required="required">
                                        </div>
                                        <div class="half-ms-div">
-                                        <label class="control-label" for="password">이름<span class="req">*</span></label>
-                                        <input value="" name="customer[password]" id="password" class="form-control password" type="password">
-                                        <label class="control-label" for="password">비밀번호 확인<span class="req">*</span></label>
-                                        <input value="" name="customer[password]" id="password" class="form-control password" type="password">
-                                        <label class="control-label" for="password">생년월일<span class="req">*</span></label>
-                                        <input value="" name="customer[password]" id="password" class="form-control password" type="password">
+                                        <label class="control-label" for="password">비밀번호 확인<span class="req">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="pwmessage2"></span></label>
+                                        <input value="" name="passwd2" id="password2" class="form-control password" type="password" pattern="^[a-zA-Z0-9]{4,20}$" title="영문/숫자 4~20 자리로 동일하게 입력해 주세요." required="required">
                                         </div>
-                                        <div class="ms_div">
-                                        <label class="control-label" for="password">주소<span class="req">*</span></label>
-                                        <input type="text" id="sample6_postcode" class="postcode form-control" placeholder="우편번호">
-                                        <input id="postalbtn" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-                                        <input type="text" id="sample6_address" class="address1 form-control" placeholder="주소">
-                                        <input type="text" id="sample6_address2" class="address2 form-control" placeholder="상세주소">
+                                        <div class="full-ms-div">
+                                        <button id="acc-cancel" class="btn" type="submit" name="cancel" value="0">취소</button>
+                                        <button id="done" class="btn" type="submit" value="0" >확인</button>
                                         </div>
-                                        <button id="acc-close" class="btn" type="button">회원 탈퇴</button>
-                                        <button class="btn" type="button">수정 완료</button>
 									</div>
-                  
+								</form>
+                                <form action="">                  
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -159,8 +158,7 @@
                                        </div>
                                       </div>
                                      </div>
-                  
-								</form>
+                                 </form>
 							</div>   
 						</div>
 					</div>
