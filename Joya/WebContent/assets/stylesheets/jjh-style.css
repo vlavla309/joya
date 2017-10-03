@@ -8,6 +8,10 @@
 	width:15px;
 }
 
+.ji_title{
+	width:250px;
+}
+
 .ji-writerS{
 	width:100px;
 }
@@ -16,5 +20,19 @@
 	margin-top: 20px;
 	margin-right:10px;
 	float: right;
+}
+
+.jiji_div{
+	text-align: center;
+}
+
+.jiji_div1{
+	align-content: center;
+}
+
+.pagination{
+	text-align: center;
+	margin-left : 45%;
+	margin-bottom : 2%
 }
 
