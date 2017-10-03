@@ -32,7 +32,7 @@ public class JdbcArticleDao implements ArticleDao {
 		this.dataSource = dataSource;
 	}
 	
-	/** 글 등록 */
+	/** 
 	@Override
 	public void create(Article article) {
 		String sql = "";
@@ -51,9 +51,7 @@ public class JdbcArticleDao implements ArticleDao {
 					"             file_path) \r\n" + 
 					"VALUES      (articles_seq.nextval, \r\n" + 
 					"             ?, \r\n" + 
-					"             (SELECT board_id \r\n" + 
-					"              FROM   articles \r\n" + 
-					"              WHERE  article_id = ?), \r\n" + 
+					"             2, \r\n" + 
 					"             ?, \r\n" + 
 					"             ?, \r\n" + 
 					"             ?, \r\n" + 
@@ -76,9 +74,7 @@ public class JdbcArticleDao implements ArticleDao {
 					"             product_id) \r\n" + 
 					"VALUES      (articles_seq.nextval, \r\n" + 
 					"             ?, \r\n" + 
-					"             (SELECT board_id \r\n" + 
-					"              FROM   articles \r\n" + 
-					"              WHERE  article_id = ?), \r\n" + 
+					"             4, \r\n" + 
 					"             ?, \r\n" + 
 					"             ?, \r\n" + 
 					"             ?, \r\n" + 
@@ -86,7 +82,7 @@ public class JdbcArticleDao implements ArticleDao {
 					"             articles_seq.currval, \r\n" + 
 					"             0, \r\n" + 
 					"             ?, \r\n" + 
-					"             ?)";;
+					"             ?)";
 		}
 			
 		
@@ -94,26 +90,31 @@ public class JdbcArticleDao implements ArticleDao {
 		PreparedStatement pstmt = null;
 		try {
 			con = dataSource.getConnection();
+			System.out.println("sddsdsdsd");
 			pstmt = con.prepareStatement(sql);
+			System.out.println("121212121");
 			if(productId == null) {
 				pstmt.setString(1, article.getEmail());
-				pstmt.setInt(2, article.getArticleId());
-				pstmt.setString(3, article.getTitle());
-				pstmt.setString(4, article.getContents());
-				pstmt.setString(5, article.getWriter());
-				pstmt.setString(6, article.getPasswd());
-				pstmt.setString(7, article.getFilePath());
+				//pstmt.setInt(2, article.getArticleId());
+				pstmt.setString(2, article.getTitle());
+				pstmt.setString(3, article.getContents());
+				pstmt.setString(4, article.getWriter());
+				pstmt.setString(5, article.getPasswd());
+				pstmt.setString(6, article.getFilePath());
+				System.out.println("222222222");
 			}else {
 				pstmt.setString(1, article.getEmail());
-				pstmt.setInt(2, article.getArticleId());
-				pstmt.setString(3, article.getTitle());
-				pstmt.setString(4, article.getContents());
-				pstmt.setString(5, article.getWriter());
-				pstmt.setString(6, article.getPasswd());
-				pstmt.setString(7, article.getFilePath());	
-				pstmt.setInt(8, article.getProductId());
+				//pstmt.setInt(2, article.getArticleId());
+				pstmt.setString(2, article.getTitle());
+				pstmt.setString(3, article.getContents());
+				pstmt.setString(4, article.getWriter());
+				pstmt.setString(5, article.getPasswd());
+				pstmt.setString(6, article.getFilePath());	
+				pstmt.setInt(7, article.getProductId());
 			}
+			System.out.println("3333333333");
 			pstmt.executeQuery();
+			System.out.println("4444444444");
 			con.commit();
 			
 		} catch (SQLException e) {
@@ -135,6 +136,140 @@ public class JdbcArticleDao implements ArticleDao {
 		
 
 	}
+	
+	*/
+	
+	
+	/**Q&A, 공지 게시글 등록 */
+	   @Override
+	   public void create(Article article) {
+	      String sql = "INSERT INTO articles \r\n" + 
+	                        "            (article_id, \r\n" + 
+	                        "             email, \r\n" + 
+	                        "             board_id, \r\n" + 
+	                        "             title, \r\n" + 
+	                        "             contents, \r\n" + 
+	                        "             writer, \r\n" + 
+	                        "             passwd, \r\n" + 
+	                        "             group_no, \r\n" + 
+	                        "             type, \r\n" + 
+	                        "             file_path) \r\n" + 
+	                        "VALUES      (articles_seq.nextval, \r\n" + 
+	                        "             ?, \r\n" + 
+	                        "             2, \r\n" + 
+	                        "             ?, \r\n" + 
+	                        "             ?, \r\n" + 
+	                        "             ?, \r\n" + 
+	                        "             ?, \r\n" + 
+	                        "             articles_seq.currval, \r\n" + 
+	                        "             0, \r\n" + 
+	                        "             ?)";
+
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      try {
+	         con = dataSource.getConnection();
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, article.getEmail());
+	         //pstmt.setInt(2, article.getArticleId());
+	         pstmt.setString(2, article.getTitle());
+	         pstmt.setString(3, article.getContents());
+	         pstmt.setString(4, article.getWriter());
+	         pstmt.setString(5, article.getPasswd());
+	         pstmt.setString(6, article.getFilePath());
+	         
+	         pstmt.executeQuery();
+	         con.commit();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         try {
+	            con.rollback();
+	         } catch (SQLException e1) {
+	            e1.printStackTrace();
+	         }
+	      } finally {
+	         try {
+	            if(pstmt != null)pstmt.close();
+	            if(con != null)con.close();
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	   }
+	   
+	   /** A/S, 상품평 게시글 등록 */
+	   public void create(Article article, String articleType) {
+	      StringBuilder sb = new StringBuilder();
+	      
+	      sb.append(" INSERT INTO articles ");
+	      sb.append("(article_id, ");
+	      sb.append(" email, ");
+	      sb.append("board_id, ");
+	      sb.append("title, ");
+	      sb.append("contents, ");
+	      sb.append(" writer, ");
+	      sb.append("passwd, ");
+	      sb.append("group_no, ");
+	      sb.append("type, ");
+	      sb.append("file_path, ");
+	      sb.append("product_id) ");
+	      sb.append("VALUES      (articles_seq.nextval, ");
+	      sb.append("?, "); //email
+	      
+	      //글 종류(A/S or 상품평)
+	      if(articleType != null) {
+	         switch(articleType) {
+	         case "as":
+	            sb.append("2, "); // board_id
+	            break;
+	         case "review":
+	            sb.append("4, "); // 상품평
+	            break;
+	         }
+	      }
+
+	      sb.append("?, "); // title
+	      sb.append("?, "); // contents
+	      sb.append("?, "); // writer
+	      sb.append("?, "); // passwd
+	      sb.append("articles_seq.currval, ");
+	      sb.append("0, ");
+	      sb.append("?, "); // filePath
+	      sb.append("?) "); // product_id
+
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      try {
+	         con = dataSource.getConnection();
+	         pstmt = con.prepareStatement(sb.toString());
+	         pstmt.setString(1, article.getEmail());
+	         pstmt.setString(2, article.getTitle());
+	         pstmt.setString(3, article.getContents());
+	         pstmt.setString(4, article.getWriter());
+	         pstmt.setString(5, article.getPasswd());
+	         pstmt.setString(6, article.getFilePath());
+	         pstmt.setInt(7, article.getProductId());
+	         
+	         pstmt.executeQuery();
+	         con.commit();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	         try {
+	            con.rollback();
+	         } catch (SQLException e1) {
+	            e1.printStackTrace();
+	         }
+	      } finally {
+	         try {
+	            if(pstmt != null)pstmt.close();
+	            if(con != null)con.close();
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	   }
 	
 
 	/** 전체 글 목록 */
@@ -420,6 +555,7 @@ public class JdbcArticleDao implements ArticleDao {
 	/** 선택페이지, 검색유형, 검색값, 한페이지당 출력 행수에 대한 글목록 반환 */
 	@Override
 	public List<Article> listByParams(Params params, int boardId) {
+		System.out.println("jdbc 들어옴");
 		List<Article> list = null;
 		
 		Connection con = null;
@@ -473,7 +609,7 @@ public class JdbcArticleDao implements ArticleDao {
 		String type = params.getType();
 		String value = params.getValue();
 		if(type != null) {
-			switch(params.getType()) {
+			switch(type) {
 			case "title":
 				sb.append("                       AND title LIKE ?");
 				value = "%" + value + "%";
@@ -501,26 +637,17 @@ public class JdbcArticleDao implements ArticleDao {
 			if(type != null) {
 				pstmt.setString(3, value);
 				pstmt.setInt(4, params.getPage());
-				System.out.println("151515151515");
 			}else {
 				pstmt.setInt(3, params.getPage());
 			}
 			
-			System.out.println("010101010");
 			rs = pstmt.executeQuery();
-			System.out.println("11111");
 			list = new ArrayList<Article>();
-			
-			
-			
 			
 			while(rs.next()) {
 				Article article = createArticle(rs);
 				list.add(article);
-				System.out.println("22222");
 			}
-			
-			System.out.println("+++++++++++++++++");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -539,7 +666,7 @@ public class JdbcArticleDao implements ArticleDao {
 
 	/** 출력페이지 계산을 위한 검색유형, 검색값에 대한 행의 수 반환 */
 	@Override
-	public int pageCount(Params params) {
+	public int pageCount(Params params, int boardId) {
 		int count = 0;
 		
 		Connection con = null;
@@ -549,21 +676,22 @@ public class JdbcArticleDao implements ArticleDao {
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT Count(article_id) count ");
 		sb.append("FROM   articles ");
+		sb.append("WHERE  board_id = ? ");
 		
 		String type = params.getType();
 		String value = params.getValue();
 		if(type != null) {
 			switch(params.getType()) {
 			case "title":
-				sb.append("WHERE  title LIKE ?");
+				sb.append("       AND title LIKE ? ");
 				value = "%" + value + "%";
 				break;
 			case "contents":
-				sb.append("WHERE  contents LIKE ?");
+				sb.append("       AND content LIKE ? ");
 				value = "%" + value + "%";
 				break;
 			case "writer":
-				sb.append("WHERE  writer = ?");
+				sb.append("       AND writer = ? ");
 				break;
 			}
 		}
@@ -571,10 +699,10 @@ public class JdbcArticleDao implements ArticleDao {
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, boardId);
 			if(type != null) {
-				pstmt.setString(1, value);
+				pstmt.setString(2, value);
 			}
-			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count = rs.getInt("count");
@@ -587,7 +715,6 @@ public class JdbcArticleDao implements ArticleDao {
 				if(pstmt != null)pstmt.close();
 				if(con != null)con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

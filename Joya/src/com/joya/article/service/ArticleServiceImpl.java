@@ -16,6 +16,11 @@ public class ArticleServiceImpl implements ArticleService {
 	public void create(Article article) {
 		dao.create(article);
 	}
+	
+	@Override
+	public void create(Article article, String articleType) {
+		dao.create(article, articleType);
+	}
 
 	@Override
 	public List<Article> listAll() {
@@ -54,9 +59,11 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public int pageCount(Params params) {
-		return dao.pageCount(params);
+	public int pageCount(Params params, int boardId) {
+		return dao.pageCount(params, boardId);
 	}
+
+
 	
 	
 	

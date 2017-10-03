@@ -7,8 +7,11 @@ import com.joya.common.web.Params;
 
 public interface ArticleService {
 	
-	/** 글 등록 */
+	/**Q&A, 공지 게시글 등록 */
 	public void create(Article article);
+	
+	/** A/S, 상품평 게시글 등록 */
+	public void create(Article article, String articleType);
 	
 	/** 전체 글 목록 */
 	public List<Article> listAll();
@@ -32,6 +35,6 @@ public interface ArticleService {
 	public List<Article> listByParams(Params params, int boardId);
 	
 	/** 출력페이지 계산을 위한 검색유형, 검색값에 대한 행의 수 반환 */
-	public int pageCount(Params params);
+	public int pageCount(Params params, int boardId);
 
 }

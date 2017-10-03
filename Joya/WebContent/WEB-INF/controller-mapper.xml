@@ -20,6 +20,7 @@
 	<bean name="/mypage/wishlistdelete" class="com.joya.wishlist.controller.WishlistDeleteController" />
 	
 	<!-- board -->
-	<bean name="/board/qna" class="com.joya.board.controller.QnAController" />
+	<bean name="/boards/qnawrite" class="com.joya.board.controller.QnAWriteController" />
+	<bean name="/boards/qnalist" class="com.joya.board.controller.QnAListController" />
 	
 </beans>

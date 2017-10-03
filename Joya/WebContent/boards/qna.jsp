@@ -1,10 +1,10 @@
+<%@page import="java.net.URLDecoder"%>
 <%@ page contentType="text/html; charset=utf-8"%>
-<!doctype html>
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- Mirrored from demo.designshopify.com/html_jewelry/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 08:51:03 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<!doctype html>
+<html lang="en" class="no-js">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -15,7 +15,6 @@
   
    <!-- css 적용 부분 시작 -->
     <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
-  
 	<link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 	
 	<link href="../assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
@@ -52,7 +51,6 @@
             </div>
           </div>
         </div>          
-            
         <section class="content">
           <div class="container">
             <div class="row">
@@ -64,27 +62,95 @@
                 <table class="table-hover" >
                 <thead>
                   <tr>
-                    <th class="ji-size">No.</th><th>Title</th><th class="ji-writerS">Writer</th><th class="ji-size">Date</th><th class="ji-size">Hit</th>
+                    <th class="ji-size">No.</th>
+                    <th class="ji_title">Title</th>
+                    <th class="ji-writerS">Writer</th>
+                    <th class="ji-size">Date</th>
+                    <th class="ji-size">Hit</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class="odd">
-                  <td>3</td><td style="text-align: left;"><a href="#">환불해주세용</a></td><td>surinim</td><td>2018.11.11</td><td>2</td>
-                  </tr>
-                  <tr class="odd">
-                  <td>2</td><td style="text-align: left;"><a href="#">환불해주세용</a></td><td>surinim</td><td>2018.11.11</td><td>2</td>
-                  </tr>
-                  <tr class="odd">
-                  <td>1</td><td style="text-align: left;"><a href="#">환불해주세용</a></td><td>surinim</td><td>2018.11.11</td><td>2</td>
-                  </tr>
+                  <c:choose>
+                    <c:when test="${empty list }">
+                       <tr class="odd">
+                        <td></td><td>검색된 글이 존재하지 않습니다.</a></td><td></td><td></td><td></td>
+                       </tr>
+                    </c:when>
+                    <c:otherwise>
+                      <c:forEach items="${list }" var="article" varStatus="status">
+                        <tr class="odd" value="">
+                          <td>${(pb.totalRowCount - ((params.page - 1) * params.pageSize)) - status.index}</td>
+                          <td><a href="#">${article.title} </a></td>
+                          <td>${article.writer}</td>
+                          <td>${article.regdate}</td>
+                          <td>${article.hitcount}</td>
+                        </tr>
+                      </c:forEach>
+                    </c:otherwise>
+                  </c:choose>
                   </tbody>
                 </table>
+                
                 <div id="ji-writeD">
-                <button id="" class="btn" type="button">Write</button>
+                <form action="${pageContext.servletContext.contextPath}/boards/writingqna.jsp" method="post">
+                <button type="button" class="btn" ><a href="${pageContext.servletContext.contextPath}/boards/writingqna.jsp">글쓰기</a></button>
+                </form>
               </div>
+              
               </div>  
             </div>
           </div>
+          
+          
+      <div class="row">
+        <ul class="pagination">
+          <c:if test="${pb.isShowFirst()}">
+            <li><a href="${pb.getQueryString(1)}">처음으로</a></li>
+          </c:if>
+
+          <c:if test="${pb.isShowPrevious()}">
+            <li class="prev"><a
+              href="${pb.getQueryString(pb.previousStartPage)}">이전목록</a></li>
+          </c:if>
+
+          <c:forEach var="i" varStatus="status"
+            begin="${pb.currentStartPage}" end="${pb.currentEndPage}">
+            <c:choose>
+              <c:when test="${params.page==i}">
+                <li class="active"><a>${i}</a></li>
+              </c:when>
+              <c:otherwise>
+                <li><a href="${pb.getQueryString(i)}">${i}</a></li>
+              </c:otherwise>
+            </c:choose>
+          </c:forEach>
+
+          <c:if test="${pb.isShowNext()}">
+            <li class="next"><a
+              href="${pb.getQueryString(pb.nextStartPage) }">다음목록</a></li>
+          </c:if>
+
+          <c:if test="${pb.isShowLast()}">
+            <li><a href="${pb.getQueryString(pb.totalPageCount) }">끝으로</a></li>
+          </c:if>
+        </ul>
+        
+        
+        <%-- 검색 --%>
+        <div class="jiji_div">
+        <form name="search" class="form-inline" role="form" method="get" action="${pageContext.servletContext.contextPath}/boards/qnalist.joya">
+          <div class="form-group">
+            <select class="form-control" id="type" name="type">
+              <option value="title">제목</option>
+              <option value="contents">내용</option>
+              <option value="writer">작성자</option>
+            </select> <input type="text" class="form-control" id="value"
+              name="value" required>
+          </div>
+          <button type="submit" class="btn btn-default">검색</button>
+        </form>
+      </div>
+    </div>
         </section>        
       </div>
     </div>
