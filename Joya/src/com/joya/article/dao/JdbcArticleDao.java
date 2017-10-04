@@ -431,9 +431,10 @@ public class JdbcArticleDao implements ArticleDao {
 	@Override
 	public void delete(int articleId) {
 		
-		String sql = "UPDATE articles " + 
-                "SET    title = '삭제된 글입니다.' " + 
-                "WHERE  article_id = ? ";
+		String sql = "UPDATE articles \r\n" + 
+				"SET    title = '삭제된 글입니다.', \r\n" + 
+				"       contents = '삭제' \r\n" + 
+				"WHERE  article_id = ?";
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;

@@ -18,7 +18,7 @@
 		<servlet-class>com.joya.main.controller.MainController</servlet-class>
 		<init-param>
 			<param-name>controllerMapperLocation</param-name>
-			<param-value>c:/workspace/eclipse/Joya/WebContent/WEB-INF/controller-mapper.xml</param-value>
+			<param-value>C:/kosta164/1Team/Joya/WebContent/WEB-INF/controller-mapper.xml</param-value>
 		</init-param>
 
 		<load-on-startup>1</load-on-startup> <!-- was가 구동될 때 미리 실행되어 만들어짐 -->
