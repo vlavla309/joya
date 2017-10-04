@@ -71,7 +71,7 @@ public class VisitorCountController implements Controller {
 		mav.addObject("date", stdDate);
 		mav.addObject("datas",datas);
 		
-		mav.setView("/admin/visitor_count.jsp");
+		mav.setView("/admin/pages/visitor_count.jsp");
 
 		return mav;
 

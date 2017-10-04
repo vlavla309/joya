@@ -26,4 +26,9 @@ public class ImageServiceImpl implements ImageService {
 		return null;
 	}
 
+	@Override
+	public List<Images> listByProductid(int productid) {
+		return imgdao.listByProductid(productid);
+	}
+
 }

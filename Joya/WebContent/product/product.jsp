@@ -1,9 +1,6 @@
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-
-<!-- Mirrored from demo.designshopify.com/html_jewelry/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 08:51:23 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -12,438 +9,45 @@
   <meta name="description" content="" />
   <title>Product Full Width</title>
   
-    <link href="assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
-  
-	<link href="assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 
-	<link href="assets/stylesheets/jquery.camera.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.animate.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/application.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/swatch.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/jquery.owl.carousel.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/jquery.bxslider.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/spr.css" rel="stylesheet" type="text/css" media="all">
-	<link href="assets/stylesheets/addthis.css" rel="stylesheet" type="text/css" media="all">
-	
-	<script src="assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.easing.1.3.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.camera.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.mobile.customized.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/cookies.js" type="text/javascript"></script>
-	<script src="assets/javascripts/modernizr.js" type="text/javascript"></script>  
-	<script src="assets/javascripts/application.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.owl.carousel.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.bxslider.js" type="text/javascript"></script>
-	<script src="assets/javascripts/skrollr.min.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
-	<script src="assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
-	<script src="assets/javascripts/cs.script.js" type="text/javascript"></script>
+    	<link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
+	<link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 
+	<link href="../assets/stylesheets/jquery.camera.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.animate.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/application.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/swatch.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/jquery.owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/jquery.bxslider.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/spr.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/addthis.css" rel="stylesheet" type="text/css" media="all">
+	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.easing.1.3.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.camera.min.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.mobile.customized.min.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/cookies.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/modernizr.js" type="text/javascript"></script>  
+	<script src="../assets/javascripts/application.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.owl.carousel.min.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.bxslider.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/skrollr.min.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
+	<script src="../assets/javascripts/cs.script.js" type="text/javascript"></script>
 </head>
 
 <body style="height: 2671px;" itemscope="" itemtype="http://schema.org/WebPage" class="templateProduct notouch">
   
 	<!-- Header -->
-	<!-- Header -->
-	<header id="top" class="clearfix">
-		<!--top-->
-		<div class="container">
-		  <div class="top row">
-			<div class="col-md-6 phone-shopping">
-			  <span>PHONE SHOPING (01) 123 456 UJ</span>
-			</div>
-			<div class="col-md-18">
-			  <ul class="text-right">
-				<li class="customer-links hidden-xs">
-					<ul id="accounts" class="list-inline">
-						<li class="my-account">
-							<a href="account.html">My Account</a>
-						</li>  
-						<li class="login">    
-							<span id="loginButton" class="dropdown-toggle" data-toggle="dropdown">
-								<a href="login.html">Login</a>
-								<i class="sub-dropdown1"></i>
-								<i class="sub-dropdown"></i>
-							</span>
-							<!-- Customer Account Login -->
-							<div id="loginBox" class="dropdown-menu text-left">
-							<form method="post" action="#" id="customer_login" accept-charset="UTF-8"><input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
-								<div id="bodyBox">
-									<ul class="control-container customer-accounts list-unstyled">
-										<li class="clearfix">
-											<label for="customer_email_box" class="control-label">Email Address <span class="req">*</span></label>
-											<input type="email" value="" name="customer[email]" id="customer_email_box" class="form-control">
-										</li>						 
-										<li class="clearfix">
-											<label for="customer_password_box" class="control-label">Password <span class="req">*</span></label>
-											<input type="password" value="" name="customer[password]" id="customer_password_box" class="form-control password">
-										</li>						  
-										<li class="clearfix">
-											<a class="action btn btn-1" href="login.html">Login</a>
-										</li>
-										<li class="clearfix">
-											<a class="action btn btn-1" href="register.html">Create an account</a>
-										</li>
-									</ul>
-								</div>
-							</form>
-							</div>    
-						</li>
-						<li>/</li>   
-						<li class="register">
-							<a href="register.html" id="customer_register_link">Create an account</a>
-						</li> 
-					</ul>
-				</li>      
-				<li id="widget-social">
-				  <ul class="list-inline">            
-					<li><a target="_blank" href="#" class="btooltip swing" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-					<li><a target="_blank" href="#" class="btooltip swing" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>                        
-					<li><a target="_blank" href="#" class="btooltip swing" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>           
-				  </ul>
-				</li>        
-			  </ul>
-			</div>
-		  </div>
-		</div>
-		<!--End top-->
-		<div class="line"></div>
-		<!-- Navigation -->
-		<div class="container">
-			<div class="top-navigation">
-				<ul class="list-inline">
-					<li class="top-logo">
-						<a id="site-title" href="index-2.html" title="Jewelry - HTML Template theme">          
-						<img class="img-responsive" src="assets/images/logo.png" alt="Jewelry - HTML Template theme">          
-						</a>
-					</li>
-					<li class="navigation">			
-						<nav class="navbar">
-							<div class="clearfix">
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-									<span class="sr-only">Toggle main navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									</button>
-								</div>
-								<div class="is-mobile visible-xs">
-									<ul class="list-inline">
-										<li class="is-mobile-menu">
-										<div class="btn-navbar" data-toggle="collapse" data-target=".navbar-collapse">
-											<span class="icon-bar-group">
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-											</span>
-										</div>
-										</li>
-										<li class="is-mobile-login">
-										<div class="btn-group">
-											<div class="dropdown-toggle" data-toggle="dropdown">
-												<i class="fa fa-user"></i>
-											</div>
-											<ul class="customer dropdown-menu">
-												<li class="logout">
-												<a href="#">Login</a>
-												</li>
-												<li class="account last">
-												<a href="register.html">Register</a>
-												</li>
-											</ul>
-										</div>
-										</li>
-										<li class="is-mobile-wl">
-										<a href="#"><i class="fa fa-heart"></i></a>
-										</li>
-										<li class="is-mobile-cart">
-										<a href="#"><i class="fa fa-shopping-cart"></i></a>
-										</li>
-									</ul>
-								</div>
-								<div class="collapse navbar-collapse">
-									<ul class="nav navbar-nav hoverMenuWrapper">
-										<li class="nav-item active">
-										<a href="#">
-										<span>Home</span>
-										</a>
-										</li>
-										<li class="dropdown mega-menu">
-										<a href="collection.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-										<span>Collections</span>
-										<i class="fa fa-caret-down"></i>
-										<i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
-										<i class="sub-dropdown visible-sm visible-md visible-lg"></i>
-										</a>
-										<div class="megamenu-container megamenu-container-1 dropdown-menu banner-bottom mega-col-4" style="">
-											<ul class="sub-mega-menu">
-												<li>
-												<ul>
-													<li class="list-title">Collection Links</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Dolorem Sed </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Proident Nulla </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Phasellus Leo <span class="megamenu-label hot-label">Hot</span>
-													</a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Tristique Amet <span class="megamenu-label feature-label">Featured</span>
-													</a>
-													</li>
-												</ul>
-												</li>
-												<li>
-												<ul>
-													<li class="list-title">Collection Links</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Dolorem Sed </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Proident Nulla <span class="megamenu-label new-label">New</span>
-													</a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Phasellus Leo </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Tristique Amet </a>
-													</li>
-												</ul>
-												</li>
-												<li>
-												<ul>
-													<li class="list-title">Collection Links</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Dolorem Sed </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Proident Nulla </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Phasellus Leo <span class="megamenu-label sale-label">Sale</span>
-													</a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Tristique Amet </a>
-													</li>
-												</ul>
-												</li>
-												<li>
-												<ul>
-													<li class="list-title">Collection Links</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Dolorem Sed <span class="megamenu-label new-label">New</span>
-													</a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="#">Proident Nulla </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="product.html">Phasellus Leo </a>
-													</li>
-													<li class="list-unstyled li-sub-mega last">
-													<a href="product.html">Tristique Amet <span class="megamenu-label hot-label">Hot</span>
-													</a>
-													</li>
-												</ul>
-												</li>
-											</ul>
-										</div>
-										</li>
-										<li class="dropdown mega-menu">
-										<a href="collection.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-										<span>Pages</span>
-										<i class="fa fa-caret-down"></i>
-										<i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
-										<i class="sub-dropdown visible-sm visible-md visible-lg"></i>
-										</a>
-										<div class="megamenu-container megamenu-container-2 dropdown-menu banner-right mega-col-2" style="display: none;">
-											<ul class="sub-mega-menu">
-												<li>
-												<ul>
-													<li class="list-title">Page Layout</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="collection.html">Collection full width </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="collection-left.html">Collection - left sidebar </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="collection-right.html">Collection - right sidebar </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="product.html">Product full width </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="product-left.html">Product - left sidebar </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="product-right.html">Product - right sidebar </a>
-													</li>
-												</ul>
-												</li>
-												<li>
-												<ul>
-													<li class="list-title">Page Content</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="about-us.html">About </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="price-table.html">Price table </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="faqs.html">FAQs </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="testimonials.html">Testimonial </a>
-													</li>
-													<li class="list-unstyled li-sub-mega">
-													<a href="collection.html">New product introduction </a>
-													</li>
-													<li class="list-unstyled li-sub-mega last">
-													<a href="contact.html"> Contact </a>
-													</li>
-												</ul>
-												</li>
-											</ul>
-										</div>
-										</li>
-										<li class="nav-item dropdown">
-										<a href="blog-full.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-										<span>Blog</span>
-										<i class="fa fa-caret-down"></i>
-										<i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
-										<i class="sub-dropdown visible-sm visible-md visible-lg"></i>
-										</a>
-										<ul class="dropdown-menu">
-											<li class=""><a tabindex="-1" href="blog-3-col.html">Blog grid 3 columns</a></li>
-											<li class=""><a tabindex="-1" href="blog-2-col.html">Blog grid 2 columns</a></li>
-											<li class=""><a tabindex="-1" href="blog.html">Blog grid full width</a></li>
-											<li class=""><a tabindex="-1" href="blog-left.html">Blog - left sidebar</a></li>
-											<li class=""><a tabindex="-1" href="blog-right.html">Blog - right sidebar</a></li>
-											<li class=""><a tabindex="-1" href="article.html">Post full width</a></li>
-											<li class=""><a tabindex="-1" href="article-left.html"> Post - left sidebar</a></li>
-											<li class="last"><a tabindex="-1" href="article-right.html">Post - right sidebar</a></li>
-										</ul>
-										</li>
-										<li class="nav-item">
-										<a href="contact.html">
-										<span>Contact</span>
-										</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</nav>
-					</li>		  
-					<li class="top-search hidden-xs">
-						<div class="header-search">
-							<a href="#">
-							<span data-toggle="dropdown">
-							<i class="fa fa-search"></i>
-							<i class="sub-dropdown1"></i>
-							<i class="sub-dropdown"></i>
-							</span>
-							</a>
-							<form id="header-search" class="search-form dropdown-menu" action="http://demo.designshopify.com/html_jewelry/search.html" method="get">
-								<input type="hidden" name="type" value="product">
-								<input type="text" name="q" value="" accesskey="4" autocomplete="off" placeholder="Search something...">
-								<button type="submit" class="btn">Search</button>
-							</form>
-						</div>
-					</li>					
-					<li class="umbrella hidden-xs">
-						<div id="umbrella" class="list-inline unmargin">
-							<div class="cart-link">
-								<a href="cart.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-									<i class="sub-dropdown1"></i>
-									<i class="sub-dropdown"></i>
-									<div class="num-items-in-cart">
-										<span class="icon">
-										  Cart
-										  <span class="number">1</span>
-										</span>
-									</div>
-								</a>
-								<div id="cart-info" class="dropdown-menu" style="display: none;">
-									<div id="cart-content">
-										<div class="items control-container">
-											<div class="row items-wrapper">
-												<a class="cart-close" title="Remove" href="javascript:void(0);"><i class="fa fa-times"></i></a>
-												<div class="col-md-8 cart-left">
-													<a class="cart-image" href="product.html"><img src="assets/images/1_grande.jpg" alt="" title=""></a>
-												</div>
-												<div class="col-md-16 cart-right">
-													<div class="cart-title">
-														<a href="product.html">Product with left sidebar - black / small</a>
-													</div>
-													<div class="cart-price">
-														$200.00<span class="x"> x </span>1
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="subtotal">
-											<span>Subtotal:</span><span class="cart-total-right">$200.00</span>
-										</div>
-										<div class="action">
-											<button class="btn" onclick="window.location='cart.html'">CHECKOUT</button><a class="btn btn-1" href="cart.html">View Cart</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>		  		 
-					<li class="mobile-search visible-xs">
-						<form id="mobile-search" class="search-form" action="http://demo.designshopify.com/html_jewelry/search.html" method="get">
-							<input type="hidden" name="type" value="product">
-							<input type="text" class="" name="q" value="" accesskey="4" autocomplete="off" placeholder="Search something...">
-							<button type="submit" class="search-submit" title="search"><i class="fa fa-search"></i></button>
-						</form>
-					</li>		  
-				</ul>
-			</div>
-			<!--End Navigation-->
-			<script>
-			  function addaffix(scr){
-				if($(window).innerWidth() >= 1024){
-				  if(scr > $('#top').innerHeight()){
-					if(!$('#top').hasClass('affix')){
-					  $('#top').addClass('affix').addClass('animated');
-					}
-				  }
-				  else{
-					if($('#top').hasClass('affix')){
-					  $('#top').prev().remove();
-					  $('#top').removeClass('affix').removeClass('animated');
-					}
-				  }
-				}
-				else $('#top').removeClass('affix');
-			  }
-			  $(window).scroll(function() {
-				var scrollTop = $(this).scrollTop();
-				addaffix(scrollTop);
-			  });
-			  $( window ).resize(function() {
-				var scrollTop = $(this).scrollTop();
-				addaffix(scrollTop);
-			  });
-			</script>
-		</div>
-    </header>
-  
+	<jsp:include page="../include/header.jsp" />
+  	<!-- end of Header -->  
+	
 	<div id="content-wrapper-parent">
 		<div id="content-wrapper">  
 			<!-- Content -->
@@ -456,7 +60,7 @@
 								<span>/</span>
 								<a href="collection.html" title="">Bracelets</a>
 								<span>/</span>
-								<span class="page-title">Donec condime fermentum</span>
+								<span class="page-title">${product.productName}</span>
 							</div>
 						</div>
 					</div>
@@ -469,72 +73,66 @@
 									<meta itemprop="url" content="/products/donec-condime-fermentum">
 									<div id="product" class="content clearfix">      
 										<h1 id="page-title" class="text-center">
-											<span itemprop="name">Donec condime fermentum</span>
+											<span itemprop="name">${product.productName}</span>
 										</h1>
+										
 										<div id="product-image" class="product-image row ">     
 											<div id="detail-left-column" class="hidden-xs left-coloum col-sm-6 col-sm-6 fadeInRight not-animated" data-animate="fadeInRight">
 												<div id="gallery_main" class="product-image-thumb thumbs full_width ">
-													<ul class="slide-product-image">													
-														<li class="image">
-															<a href="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_1024x1024.jpg" class="cloud-zoom-gallery active">
-																<img src="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_compact.jpg" alt="Donec condime fermentum">
-															</a>
-														</li>
-														<li class="image">
-															<a href="assets/images/5_9c4bb547-32eb-42ea-bed5-2f1fc3832c2e_1024x1024.html" class="cloud-zoom-gallery">
-																<img src="assets/images/5_9c4bb547-32eb-42ea-bed5-2f1fc3832c2e_compact.jpg" alt="Donec condime fermentum">
-															</a>
-														</li>
-														<li class="image">
-															<a href="assets/images/6_2b8df768-6599-4e41-ae4c-2d6afd2b1d95_1024x1024.html" class="cloud-zoom-gallery">
-																<img src="assets/images/6_2b8df768-6599-4e41-ae4c-2d6afd2b1d95_compact.jpg" alt="Donec condime fermentum">
-															</a>
-														</li>
-														<li class="image">
-															<a href="assets/images/7_1024x1024.html" class="cloud-zoom-gallery">
-																<img src="assets/images/7_compact.jpg" alt="Donec condime fermentum">
-															</a>
-														</li>
-														<li class="image">
-															<a href="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_1024x1024.jpg" class="cloud-zoom-gallery active">
-																<img src="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_compact.jpg" alt="Donec condime fermentum">
-															</a>
-														</li>
-														<li class="image">
-															<a href="assets/images/5_9c4bb547-32eb-42ea-bed5-2f1fc3832c2e_1024x1024.html" class="cloud-zoom-gallery">
-																<img src="assets/images/5_9c4bb547-32eb-42ea-bed5-2f1fc3832c2e_compact.jpg" alt="Donec condime fermentum">
-															</a>
-														</li>
+													<ul class="slide-product-image">		
+														<c:forEach items="${imglist}" var="img" varStatus="status">									
+															<c:choose>
+																<c:when test="${status.first}">
+																	<li class="image">
+																		<a href="${img.path}${img.imageName}" class="cloud-zoom-gallery active">
+																			<img src="${img.path}${img.imageName}" alt="slide1">
+																		</a>
+																	</li>
+																</c:when>
+																<c:otherwise>
+																	<li class="image">
+																		<a href="${img.path}${img.imageName}" class="cloud-zoom-gallery">
+																			<img src="${img.path}${img.imageName}" alt="slide2">
+																		</a>
+																	</li>
+																</c:otherwise>
+															</c:choose>
+														</c:forEach>
 													</ul>
 												</div>
 											</div>      
+											<!--  누르면 보여져야하는 이미지... main image -->
 											<div class="image featured col-smd-12 col-sm-12 fadeInUp not-animated" data-animate="fadeInUp"> 
-												<img src="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_1024x1024.jpg" alt="Donec condime fermentum">
+												<c:forEach items="${imglist}" var="img" varStatus="status">
+													<c:if test="${status.first}">
+														<img src="${img.path}${img.imageName}" alt="main image1">
+													</c:if>
+												</c:forEach>
 											</div>
+											<!-- slide-product-image과 갯수가 비슷해야함 main mobile -->
 											<div id="gallery_main_mobile" class="visible-xs product-image-thumb thumbs mobile_full_width ">
 												<ul style="opacity: 0; display: block;" class="slide-product-image owl-carousel owl-theme">
-													<li class="image">
-														<a href="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_1024x1024.jpg" class="cloud-zoom-gallery active">
-															<img src="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_compact.jpg" alt="Donec condime fermentum">
-														</a>
-													</li>
-													<li class="image">
-														<a href="assets/images/5_9c4bb547-32eb-42ea-bed5-2f1fc3832c2e_1024x1024.html" class="cloud-zoom-gallery">
-															<img src="assets/images/5_9c4bb547-32eb-42ea-bed5-2f1fc3832c2e_compact.jpg" alt="Donec condime fermentum">
-														</a>
-													</li>
-													<li class="image">
-														<a href="assets/images/6_2b8df768-6599-4e41-ae4c-2d6afd2b1d95_1024x1024.html" class="cloud-zoom-gallery">
-															<img src="assets/images/6_2b8df768-6599-4e41-ae4c-2d6afd2b1d95_compact.jpg" alt="Donec condime fermentum">
-														</a>
-													</li>
-													<li class="image">
-														<a href="assets/images/7_1024x1024.html" class="cloud-zoom-gallery">
-															<img src="assets/images/7_compact.jpg" alt="Donec condime fermentum">
-														</a>
-													</li>
+													<c:forEach items="${imglist}" var="img" varStatus="status">									
+														<c:choose>
+															<c:when test="${status.first}">
+																<li class="image">
+																	<a href="${img.path}${img.imageName}" class="cloud-zoom-gallery active">
+																		<img src="${img.path}${img.imageName}" alt="slide1">
+																	</a>
+																</li>
+															</c:when>
+															<c:otherwise>
+																<li class="image">
+																	<a href="${img.path}${img.imageName}" class="cloud-zoom-gallery">
+																		<img src="${img.path}${img.imageName}" alt="slide2">
+																	</a>
+																</li>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
 												</ul>
-											</div>        
+											</div>
+										
 											<div id="detail-right-column" class="right-coloum col-sm-6 fadeInLeft not-animated" data-animate="fadeInLeft">
 												<div class="addthis_sharing_toolbox" data-url="#" data-title="Donec aliquam ante non | Jewelry - HTML Template">
 													<div id="atstbx" class="at-share-tbx-element addthis_32x32_style addthis-smartlayers addthis-animated at4-show">
@@ -549,10 +147,7 @@
 													<div class="description">
 														<span>Product Descriptions</span>
 														<p>
-															Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum.
-														</p>
-														<p>
-															Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, ut aliquid ex ea commodi consequatur.
+															${product.productDesc}
 														</p>
 													</div>
 													<div class="relative">
@@ -585,98 +180,6 @@
 																  #product-select-option-0 { display: none; }
 																  #product-select-option-0 + .custom-style-select-box { display: none !important; }
 																</style>																
-																<div class="swatch color clearfix" data-option-index="0">
-																	<div class="header">
-																		Color
-																	</div>
-																	<div data-value="black" class="swatch-element color black available">
-																		<div class="tooltip">
-																			black
-																		</div>
-																		<input id="swatch-0-black" name="option-0" value="black" checked="checked" type="radio">
-																		<label for="swatch-0-black" style="background-color: black; background-image: url(assets/images/black.png)">
-																		<img class="crossed-out" src="assets/images/soldout.png" alt="">
-																		</label>
-																	</div>
-																	<div data-value="red" class="swatch-element color red available">
-																		<div class="tooltip">
-																			red
-																		</div>
-																		<input id="swatch-0-red" name="option-0" value="red" type="radio">
-																		<label for="swatch-0-red" style="background-color: red; background-image: url(assets/images/red.png)">
-																		<img class="crossed-out" src="assets/images/soldout.png" alt="">
-																		</label>
-																	</div>
-																	<div data-value="white" class="swatch-element color white available">
-																		<div class="tooltip">
-																			white
-																		</div>
-																		<input id="swatch-0-white" name="option-0" value="white" type="radio">
-																		<label for="swatch-0-white" style="background-color: white; background-image: url(assets/images/white.png)">
-																		<img class="crossed-out" src="assets/images/soldout.png" alt="">
-																		</label>
-																	</div>
-																	<div data-value="blue" class="swatch-element color blue available">
-																		<div class="tooltip">
-																			blue
-																		</div>
-																		<input id="swatch-0-blue" name="option-0" value="blue" type="radio">
-																		<label for="swatch-0-blue" style="background-color: blue; background-image: url(assets/images/blue.png)">
-																		<img class="crossed-out" src="assets/images/soldout.png" alt="">
-																		</label>
-																	</div>																	
-																</div>
-																<div class="swatch clearfix" data-option-index="1">
-																	<div class="header">
-																		Size
-																	</div>
-																	<div data-value="small" class="swatch-element small available">
-																		<input id="swatch-1-small" name="option-1" value="small" checked="checked" type="radio">
-																		<label for="swatch-1-small">
-																		small <img class="crossed-out" src="assets/images/soldout.png" alt="">
-																		</label>
-																	</div>
-																	<div data-value="medium" class="swatch-element medium available">
-																		<input id="swatch-1-medium" name="option-1" value="medium" type="radio">
-																		<label for="swatch-1-medium">
-																		medium <img class="crossed-out" src="assets/images/soldout.png" alt="">
-																		</label>
-																	</div>
-																</div>
-																<div class="variants-wrapper clearfix">
-																	<div class="selector-wrapper">
-																		<label for="product-select-1293235843-option-0">Color</label>
-																		<div class="wrapper">
-																			<select style="z-index: 1000; position: absolute; opacity: 0; font-size: 15px;" id="product-select-1293235843-option-0" data-option="option1" class="single-option-selector">
-																				<option selected="selected" value="black">black</option>
-																				<option value="red">red</option>
-																				<option value="white">white</option>
-																				<option value="blue">blue</option>
-																			</select>
-																			<button style="display: block; overflow: hidden;" type="button" class="custom-style-select-box changed"><span style="width: 219px; display: inline-block;" class="custom-style-select-box-inner">black</span></button><i class="fa fa-caret-down"></i>
-																		</div>
-																	</div>
-																	<div class="selector-wrapper">
-																		<label for="product-select-1293235843-option-1">Size</label>
-																		<div class="wrapper">
-																			<select style="z-index: 1000; position: absolute; opacity: 0; font-size: 15px;" id="product-select-1293235843-option-1" data-option="option2" class="single-option-selector">
-																				<option selected="selected" value="small">small</option>
-																				<option value="medium">medium</option>
-																			</select>
-																			<button style="display: block; overflow: hidden;" type="button" class="custom-style-select-box changed"><span style="width: 219px; display: inline-block;" class="custom-style-select-box-inner">small</span></button><i class="fa fa-caret-down"></i>
-																		</div>
-																	</div>
-																	<select id="product-select-1293235843" name="id" style="display: none;">
-																		<option selected="selected" value="3947646083">black / small</option>
-																		<option value="3947646147">red / small</option>
-																		<option value="3947646211">white / small</option>
-																		<option value="3947646275">blue / small</option>
-																		<option value="3947646339">black / medium</option>
-																		<option value="3947646403">red / medium</option>
-																		<option value="3947646467">blue / medium</option>
-																		<option value="3947646531">white / medium</option>
-																	</select>
-																</div>
 																<div class="quantity-wrapper clearfix">
 																	<label class="wrapper-title">Quantity</label>
 																	<div class="wrapper">
@@ -695,7 +198,7 @@
 																</div>
 																<div id="purchase-1293235843">
 																	<div class="detail-price" itemprop="price">
-																		<span class="price">$200.00</span>
+																		<span class="price">${product.price}</span>
 																	</div>
 																</div>
 																<div class="others-bottom clearfix">
@@ -704,7 +207,8 @@
 															</div>
 														</form>
 														<div class="wls">
-															<a class="wish-list" href="login.html"><i class="fa fa-heart"></i> Wish list</a>
+															<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}&email=${cookie.user.value}"><i class="fa fa-heart"></i> Wish list
+															</a>
 															<span>|</span>
 															<a href="mailto:info@yourdomain.com"><i class="fa fa-envelope"></i> SEND EMAIL</a>
 														</div>                                          
@@ -1135,120 +639,8 @@
 				</section>	
 			</div>
 	    </div>
-	</div>  
-	<footer id="footer">      
-		<div id="footer-content">
-			<h6 class="general-title contact-footer-title">Newsletter</h6>  
-			<div id="widget-newsletter">
-				<div class="container">            
-				  <div class="newsletter col-md-24">
-					<form action="http://codespot.us5.list-manage.com/subscribe/post?u=ed73bc2d2f8ae97778246702e&amp;id=c63b4d644d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-					  <span class="news-desc">We promise only send the good things</span>
-					  <div class="group_input">
-						<input class="form-control" type="email" placeholder="Your Email Address" name="Email" id="email-input">
-						<div class="unpadding-top"><button class="btn btn-1" type="submit"><i class="fa fa-paper-plane"></i></button></div>
-					  </div>              
-					</form>
-				  </div>						
-				</div>
-			</div>
-			
-			<div class="footer-content footer-content-top clearfix">
-				<div class="container">
-					<div class="footer-link-list col-md-6">
-					  <div class="group">
-						<h5 class="general-title">About Us</h5>						
-						<ul class="list-unstyled list-styled">						  
-						  <li class="list-unstyled">
-							<a href="account.html">Store Locations</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Whosesalers</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Map Site</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Contact Us</a>
-						  </li>						  
-						</ul>
-					  </div>
-					</div>   
-					<div class="footer-link-list col-md-6">
-					  <div class="group">
-						<h5 class="general-title">Information</h5>						
-						<ul class="list-unstyled list-styled">						  
-						  <li class="list-unstyled">
-							<a href="account.html">Help &amp; FAQs</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Advance Search</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Gift Cards</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Shop By Brands</a>
-						  </li>						  
-						</ul>
-					  </div>
-					</div>
-					<div class="footer-link-list col-md-6">
-					  <div class="group">
-						<h5 class="general-title">Account</h5>						
-						<ul class="list-unstyled list-styled">						  
-						  <li class="list-unstyled">
-							<a href="account.html">Preferences</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Order History</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Cart Page</a>
-						  </li>						  
-						  <li class="list-unstyled">
-							<a href="account.html">Sign In</a>
-						  </li>						  
-						</ul>
-					  </div>
-					</div>
-					<div class="footer-link-list col-md-6">
-					  <div class="group">
-						<h5 class="general-title">Customer</h5>						
-						<ul class="list-unstyled list-styled">						  
-							<li class="list-unstyled">
-								<a href="search.html">Search Advanced</a>
-							</li>						  
-							<li class="list-unstyled">
-								<a href="#">Return Policy</a>
-							</li>						  
-							<li class="list-unstyled">
-								<a href="#">Privacy Policy</a>
-							</li>						  
-							<li class="list-unstyled">
-								<a href="#">Help &amp; Contact</a>
-							</li>						  
-						</ul>
-					  </div>
-					</div>   
-				</div>
-			</div>
-			<div class="footer-content footer-content-bottom clearfix">
-				<div class="container">
-					<div class="copyright col-md-12">
-						© 2015 <a href="about-us.html">Jewelry - HTML template</a>. All Rights Reserved.
-					</div>
-					<div id="widget-payment" class="col-md-12">
-						<ul id="payments" class="list-inline animated">
-							<li class="btooltip tada" data-toggle="tooltip" data-placement="top" title="" data-original-title="Visa"><a href="#" class="icons visa"></a></li>
-							<li class="btooltip tada" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mastercard"><a href="#" class="icons mastercard"></a></li>
-							<li class="btooltip tada" data-toggle="tooltip" data-placement="top" title="" data-original-title="American Express"><a href="#" class="icons amex"></a></li>
-							<li class="btooltip tada" data-toggle="tooltip" data-placement="top" title="" data-original-title="Paypal"><a href="#" class="icons paypal"></a></li>
-							<li class="btooltip tada" data-toggle="tooltip" data-placement="top" title="" data-original-title="Moneybookers"><a href="#;" class="icons moneybookers"></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>   
-	</footer>
+	</div>  	
+	<!-- footer -->
+		<jsp:include page="../include/footer.jsp" />
+	<!-- end of footer -->
 </body>

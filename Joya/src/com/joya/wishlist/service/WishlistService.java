@@ -13,6 +13,9 @@ public interface WishlistService {
 	/** 위시리스트 전체 목록 반환 */
 	public List<Wishlist> listAll(String userEmail);
 	
+	/** 상품 목록에 위시리스트 전체 목록 반환 */
+	public List<Wishlist> listAll();
+	
 	/** 위시리스트 목록에서 삭제 */
 	public boolean delete(String userEmail,  int productId);
 	

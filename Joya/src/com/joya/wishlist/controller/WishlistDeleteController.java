@@ -17,7 +17,6 @@ import com.joya.wishlist.domain.Wishlist;
 import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
-
 /**
  * 위시리스트 삭제 컨트롤러
  *
@@ -49,7 +48,9 @@ public class WishlistDeleteController implements Controller {
 			e.printStackTrace();
 		}
 		
-		mav.setView("redirect:/mypage/wishlist.joya?page=" + page);
+		String url = request.getHeader("REFERER");
+		System.out.println("[삭제 이전페이지 경로] : "+ url);
+		mav.setView("redirect:"+url);
 		return mav;
 	}
 }
