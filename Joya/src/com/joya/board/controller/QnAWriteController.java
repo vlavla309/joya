@@ -37,12 +37,13 @@ public class QnAWriteController implements Controller {
 		String passwd = request.getParameter("passwd");
 		String contents = request.getParameter("contents");
 		
+		
 		Article article = new Article();
 		article.setEmail(email);
 		article.setTitle(title);
 		article.setWriter(writer);
 		article.setPasswd(passwd);
-		article.setContents(contents);
+		article.setContents(contents.replace("\r\n", "<br>"));
 		
 		articleService.create(article, "qna");
 		

@@ -429,34 +429,45 @@ public class JdbcArticleDao implements ArticleDao {
 
 	/** 글 삭제 */
 	@Override
-	public void delete(int articleId) {
-		
+	public boolean delete(Article article) {
+		boolean result = false;
 		String sql = "UPDATE articles \r\n" + 
 				"SET    title = '삭제된 글입니다.', \r\n" + 
 				"       contents = '삭제' \r\n" + 
-				"WHERE  article_id = ?";
-		
+				"WHERE  article_id = (SELECT article_id \r\n" + 
+				"					  FROM   articles \r\n" + 
+				"					  WHERE  article_id = ?) ";
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		
 		try {
 			con = dataSource.getConnection();
+			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, articleId);
-			rs = pstmt.executeQuery();
+			pstmt.setInt(1, article.getArticleId());
+			
+			int flag = pstmt.executeUpdate();
+			if(flag > 0) {
+				result = true;
+				con.commit();
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		} finally {
 			try {
-				if(rs != null)rs.close();
 				if(pstmt != null)pstmt.close();
 				if(con != null)con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
+		return result;
 	}
 
 
@@ -561,7 +572,6 @@ public class JdbcArticleDao implements ArticleDao {
 	/** 선택페이지, 검색유형, 검색값, 한페이지당 출력 행수에 대한 글목록 반환 */
 	@Override
 	public List<Article> listByParams(Params params, int boardId) {
-		System.out.println("jdbc 들어옴");
 		List<Article> list = null;
 		
 		Connection con = null;

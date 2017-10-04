@@ -19,19 +19,26 @@ public class DeleteArticleController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
-		
+		System.out.println("삭제 컨트롤러*******************");
 		request.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView();
 		
 		int articleId = Integer.parseInt(request.getParameter("article_id"));
 		
 		Article article = new Article();
-		articleService.delete(articleId);
+		article.setArticleId(articleId);
+		
+		articleService.delete(article);
+		System.out.println("삭제11111111111");
+		
+		mav.addObject("article", article);
+		mav.setView("redirect:/boards/qnalist.joya");
+		
+		System.out.println("삭제2222222222222");
+		
+		return mav;
 		
 		
-		
-		
-		return null;
 	}
 
 }

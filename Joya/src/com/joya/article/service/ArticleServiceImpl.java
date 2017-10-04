@@ -33,9 +33,10 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public void delete(int articleId) {
-		dao.delete(articleId);
+	public boolean delete(Article article) {
+		return dao.delete(article);
 	}
+
 
 	@Override
 	public void reply(Article article) {
@@ -57,6 +58,8 @@ public class ArticleServiceImpl implements ArticleService {
 	public int pageCount(Params params, int boardId) {
 		return dao.pageCount(params, boardId);
 	}
+
+
 
 
 	

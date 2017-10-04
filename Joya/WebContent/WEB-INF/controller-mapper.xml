@@ -37,5 +37,6 @@
 	<bean name="/boards/replyarticle" class="com.joya.board.controller.ReplyArticleController" />
 	<bean name="/boards/updatearticle" class="com.joya.board.controller.UpdateArticleController" />
 	<bean name="/boards/updateaction" class="com.joya.board.controller.UpdateActionController" />
+	<bean name="/boards/deletearticle" class="com.joya.board.controller.DeleteArticleController" />
 	
 </beans>

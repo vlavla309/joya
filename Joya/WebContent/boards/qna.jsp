@@ -127,6 +127,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                  
                     <c:choose>
                       <c:when test="${empty list }">
                         <tr class="odd">
@@ -142,14 +143,30 @@
                           varStatus="status">
                           <tr class="odd" value="">
                             <td>${(pb.totalRowCount - ((params.page - 1) * params.pageSize)) - status.index}</td>
-                            <td>
-                              <c:if test="${article.writer eq '관리자'}">
-                               <img src="../assets/images/replying.png"> &nbsp;
-                              </c:if> 
-                            <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id=${article.articleId}">${article.title}</a></td>
-                            <td class="writertd">${article.writer}</td>
-                            <td>${article.regdate}</td>
-                            <td>${article.hitcount}</td>
+                            
+                            <c:choose>
+                              <c:when test="${article.contents eq '삭제' }">
+                                <td>
+                                  <c:if test="${article.writer eq '관리자'}">
+                                  <img src="../assets/images/replying.png"> &nbsp;
+                                  </c:if> 
+                                  <a class="titlebtn" >${article.title}</a></td>
+                                  <td colspan='3'></td>
+                                  
+                              </c:when>
+                              <c:otherwise>
+                                   <td>
+                                   <c:if test="${article.writer eq '관리자'}">
+                                   <img src="../assets/images/replying.png"> &nbsp;
+                                   </c:if> 
+                                   <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id=${article.articleId}">${article.title}</a></td>
+                                   <td class="writertd">${article.writer}</td>
+                                   <td>${article.regdate}</td>
+                                   <td>${article.hitcount}</td>
+                              </c:otherwise>
+                            </c:choose>
+                            
+                            
                           </tr>
                         </c:forEach>
                       </c:otherwise>

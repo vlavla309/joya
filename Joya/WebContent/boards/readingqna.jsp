@@ -68,11 +68,43 @@
   request.setAttribute("name", name);
 %>
 
+<%-- 
+<script type="text/javascript">
+	$(function(){
+		$(".yes").on("click", function(event){
+			$.ajax({
+				url : "${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}",
+				success : function(data){
+					location.href="${pageContext.servletContext.contextPath}/boards/qnalist.joya";
+				}
+			});
+		});
+	})
+
+</script>
+--%>
+
 
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templateCustomersRegister notouch">
+  
+    <%-- 회원삭제 modal --%>
+  <div class="modal" id="deleteModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">삭제하시겠습니까?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="yes" data-dismiss="modal" name="">삭제</button>
+        <button type="reset" class="no" data-dismiss="modal" name="">취소</button>
+      </div>
+    </div>
+  </div>
+ </div>
 
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
@@ -120,8 +152,10 @@
                 <tr>
                   <%--
                   	String con = article.getContent().replace("\r\n", "<br>");
+                    <td colspan="6" >${article.contents }</td>
                   --%>
-                  <td colspan="6" >${article.contents }</td>
+                  
+                  <td colspan="6" >${article.contents.replace('\\r\\n','<br>')}</td>
                 </tr>
                 </table>
 
@@ -133,10 +167,11 @@
                   </c:if>
                    <input class="btn" type="submit" value="수정" >
                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/">삭제</a>
+                    <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
+                   <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
                   </button>
                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/">글목록</a>
+                    <a class="deletebtn">글목록</a>
                   </button>
                 </div>
 

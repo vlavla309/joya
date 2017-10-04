@@ -20,7 +20,7 @@ public interface ArticleService {
 	public boolean edit(Article article);
 	
 	/** 글 삭제 */
-	public void delete(int articleId);
+	public boolean delete(Article article);
 	
 	/** 답글등록(관리자) */
 	public void reply(Article article);
