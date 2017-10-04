@@ -54,12 +54,46 @@
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
 
+<script>
+  $(function() {
+    
+    $("#editbutton").on("click",function(event) {
+    	
+    });
+    
+    $(".yes").on("click", function(){
+    	var atcId = $(".articleId").attr("value");
+    	console.log(atcId);
+      $.ajax({
+        url : "${pageContext.servletContext.contextPath}/boards/updatearticle.joya",
+        data : {articleId : atcId},
+        method : "post"
+      });
+    });
+  })
+  
+</script>
 
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
-
+  
+  <%-- 회원삭제 modal --%>
+  <div class="modal" id="editModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">수정하시겠습니까?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="yes" data-dismiss="modal" name="">예</button>
+        <button type="reset" class="no" data-dismiss="modal" name="">아니오</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <%
   	email = "joa@joa";
@@ -86,7 +120,7 @@
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
                 <span>/</span> <span class="page-title">Q&A -
-                  Replying</span>
+                  Edit</span>
               </div>
             </div>
           </div>
@@ -105,9 +139,6 @@
               <div class="container">
                 <div class="row">
 
-                  <form
-                    action="${pageContext.servletContext.contextPath}/boards/qnawrite.joya"
-                    method="post">
                     <div class="left-block col-md-12">
                       <input type="hidden" value="contact"
                         name="form_type"><input type="hidden"
@@ -117,10 +148,12 @@
                         <label class="control-label" for="name">제목<span
                           class="req">*</span></label>
                       </div>
-                      <input type="text" id="name" value=""
-                        class="form-control" name="title"> <input
-                        type="hidden" value="${email}" name="email">
-
+                      <input type="text" id="name" value="${article.title}"
+                        class="form-control" name="title"> 
+                        
+                        <input type="hidden" value="${email}" name="email">
+                        <input type="hidden" name="articleId" value="${param.article_id}">
+ 
                       <c:choose>
                         <c:when test="${not empty email}">
                           <div>
@@ -158,10 +191,11 @@
                         <span class="req">*</span>
                       </label>
                       <textarea id="message" rows="5"
-                        class="form-control" name="contents"></textarea>
+                        class="form-control" name="contents">${article.contents}</textarea>
                       <br>
                       <div class="midivision6">
-                        <button class="btn">올리기</button>
+                        <input class="btn" type="submit" value="수정하기" id="editbutton" data-toggle="modal" data-target="#editModal">
+                        <button class="btn"><a>글목록</a></button>
                       </div>
                     </div>
                   </form>

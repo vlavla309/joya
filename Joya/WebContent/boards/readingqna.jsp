@@ -99,7 +99,8 @@
               <div id="page-header" class="col-md-24">
                 <h1 id="page-title">Q&A</h1>
               </div>
-              
+              <form action="${pageContext.servletContext.contextPath}/boards/updateaction.joya?article_id=${article.articleId}"
+                    method="post">
               <div id="ji-tableM">
                 <table>
                 <tr>
@@ -127,12 +128,10 @@
                 <div id="ji-writeD">
                   <c:if test="${name eq '관리자'}">
                    <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/">답글쓰기</a>
+                    <a href="${pageContext.servletContext.contextPath}/boards/replyingqna.jsp?article_id=${article.articleId}">답글쓰기</a>
                    </button>
                   </c:if>
-                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/">수정</a>
-                  </button>
+                   <input class="btn" type="submit" value="수정" >
                   <button type="button" class="btn">
                     <a href="${pageContext.servletContext.contextPath}/boards/">삭제</a>
                   </button>
@@ -142,6 +141,7 @@
                 </div>
 
               </div>
+              </form>
             </div>
           </div>
 

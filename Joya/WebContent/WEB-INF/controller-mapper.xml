@@ -33,5 +33,8 @@
 	<bean name="/boards/qnawrite" class="com.joya.board.controller.QnAWriteController" />
 	<bean name="/boards/qnalist" class="com.joya.board.controller.QnAListController" />
 	<bean name="/boards/readingarticle" class="com.joya.board.controller.ReadArticleController" />
+	<bean name="/boards/replyarticle" class="com.joya.board.controller.ReplyArticleController" />
+	<bean name="/boards/updatearticle" class="com.joya.board.controller.UpdateArticleController" />
+	<bean name="/boards/updateaction" class="com.joya.board.controller.UpdateActionController" />
 	
 </beans>

@@ -54,12 +54,10 @@
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
 
-
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
-
 
   <%
   	email = "joa@joa";
@@ -86,7 +84,7 @@
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
                 <span>/</span> <span class="page-title">Q&A -
-                  Replying</span>
+                  Edit</span>
               </div>
             </div>
           </div>
@@ -105,8 +103,7 @@
               <div class="container">
                 <div class="row">
 
-                  <form
-                    action="${pageContext.servletContext.contextPath}/boards/qnawrite.joya"
+                  <form action="${pageContext.servletContext.contextPath}/boards/updatearticle.joya"
                     method="post">
                     <div class="left-block col-md-12">
                       <input type="hidden" value="contact"
@@ -117,10 +114,12 @@
                         <label class="control-label" for="name">제목<span
                           class="req">*</span></label>
                       </div>
-                      <input type="text" id="name" value=""
-                        class="form-control" name="title"> <input
-                        type="hidden" value="${email}" name="email">
-
+                      <input type="text" id="name" value="${article.title}"
+                        class="form-control" name="title"> 
+                        
+                        <input type="hidden" value="${email}" name="email">
+                        <input type="hidden" name="articleId" value="${param.article_id}">
+ 
                       <c:choose>
                         <c:when test="${not empty email}">
                           <div>
@@ -158,10 +157,11 @@
                         <span class="req">*</span>
                       </label>
                       <textarea id="message" rows="5"
-                        class="form-control" name="contents"></textarea>
+                        class="form-control" name="contents">${article.contents}</textarea>
                       <br>
                       <div class="midivision6">
-                        <button class="btn">올리기</button>
+                        <input class="btn" type="submit" value="수정하기">
+                        <button class="btn"><a>글목록</a></button>
                       </div>
                     </div>
                   </form>
