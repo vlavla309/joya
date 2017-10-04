@@ -140,7 +140,7 @@ $(document).ready(function(){
                                        <input type="hidden" name="productId" value="${wishlist.productId }">
                                        <input type="hidden" name="email" value="${wishlist.email }">
                                        <input type="hidden" name="page" value="${params.page }">
-                                       <li class="ji-post-action"><input class="wishlistDeleteBtn"  type="image" src="../assets/images/wishlistDelete.png" alt="Submit"></li>
+                                       <li class="ji-post-action"><input class="wishlistDeleteBtn"  type="image" src="../assets/images/jiDelete.png" alt="Submit"></li>
                                     <!--목록에서 삭제하는 form 종료 -->
                                   </ul>
                                  </form>
