@@ -24,6 +24,11 @@ public class WishlistServiceImpl implements WishlistService {
 	}
 	
 	@Override
+	public List<Wishlist> listAll() {
+		return wishlistDao.listAll();
+	}
+	
+	@Override
 	public boolean delete(String userEmail, int productId) {
 		return wishlistDao.delete(userEmail, productId);
 	}
@@ -37,5 +42,6 @@ public class WishlistServiceImpl implements WishlistService {
 	public List<Wishlist> listByParams(String userEmail, Params params) {
 		return wishlistDao.listByParams(userEmail, params);
 	}
+
 
 }

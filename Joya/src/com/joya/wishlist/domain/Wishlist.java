@@ -16,6 +16,11 @@ public class Wishlist {
 	
 	public Wishlist() {	}
 	
+	public Wishlist(int productId, String email) {
+		this.productId = productId;
+		this.email = email;
+	}
+
 	public Wishlist(int productId, String email, String productName, String imgName, String imgPath) {
 		this(productId, email, null, productName, imgName, imgPath);
 	}

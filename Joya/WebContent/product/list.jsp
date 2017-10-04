@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <head>
@@ -175,7 +175,7 @@
 																	<a href="${pageContext.servletContext.contextPath }/product/view.joya?productid=${product.productId}&type=view" class="container_item">
 																		<img src="${img.path}${img.imageName}" class="img-responsive" alt="Curabitur cursus dignis">
 																	</a>
-																	<div class="hbw">
+																	<div class="hbw"> 
 																		<span class="hoverBorderWrapper"></span>
 																	</div>
 																	</li>
@@ -209,7 +209,21 @@
 																					<a class="clickid" value="${product.productId }"><i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span></a>																		
 																				</div>
 																		</div>
-																		<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
+																		<!-- fa fa-heart-o -->
+																		<c:set var="doneLoop" value="false"/>
+																		<c:set var="find" value="false"/>
+																		<c:forEach items="${wishlist}" var="wish" varStatus="status">
+																			<c:if test="${not doneLoop}">
+																				<c:if test="${(wish.productId==product.productId)&&(wish.email==cookie.user.value)}">
+																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}&userEmail=${cookie.user.value}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
+																					<c:set var="doneLoop" value="true"/>
+																					<c:set var="find" value="true"/>
+																				</c:if>
+																			</c:if>
+																		</c:forEach>
+																		<c:if test="${not find}">
+																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}&email=${cookie.user.value}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
+																		</c:if>
 																	</div>
 																	</li>
 																</ul>

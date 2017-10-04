@@ -48,6 +48,11 @@ public class WishlistDeleteController implements Controller {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		
+		String url = request.getHeader("REFERER");
+		System.out.println("[삭제 이전페이지 경로] : "+ url);
+		mav.setView("redirect:"+url);
+		
+		return mav;
 	}
 }
