@@ -23,6 +23,12 @@ import com.joya.wishlist.domain.Wishlist;
 import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
+/**
+ * 상품리스트 컨트롤러
+ *
+ * @author 한수진
+ *
+ */
 public class ProductlistController implements Controller{
    private ImageService imgService= new ImageServiceImpl();
    private ProductService productservice = new ProductServiceImpl();

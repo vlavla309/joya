@@ -42,34 +42,6 @@
                 $('#myModal').modal('show');
             });
 
-            $('.delete-confirm').click(function () {
-                if (pryEmpId != '') {
-                    $.ajax({
-                        url: '/Home/RemoveEmployee',
-                        data: { 'employeeId': pryEmpId },
-                        type: 'get',
-                        success: function (data) {
-                            if (data) {
-                                //now re-using the boostrap modal popup to show success message.
-                                //dynamically we will change background colour 
-                                if ($('.modal-header').hasClass('alert-danger')) {
-                                    $('.modal-header').removeClass('alert-danger').addClass('alert-success');
-                                    //hide ok button as it is not necessary
-                                    $('.delete-confirm').css('display', 'none');
-                                }
-                                $('.success-message').html('Record deleted successfully');
-                            }
-                        }, error: function (err) {
-                            if (!$('.modal-header').hasClass('alert-danger')) {
-                                $('.modal-header').removeClass('alert-success').addClass('alert-danger');
-                                $('.delete-confirm').css('display', 'none');
-                            }
-                            $('.success-message').html(err.statusText);
-                        }
-                    });
-                }
-            });
-
             //function to reset bootstrap modal popups
             $("#myModal").on("hidden.bs.modal", function () {
                 $(".modal-header").removeClass(' ').addClass('alert-danger');
@@ -161,11 +133,12 @@
                                         <button id="complete" class="btn" type="submit">수정 완료</button>
 									</div>
 								</form>
-                                <form action="">                  
+                                <form action="/user/close_action.joya" method="post">                  
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                          <div class="modal-header alert alert-danger">
+                                           <input value="${user.email }" name="email" type="hidden">
                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                            <span aria-hidden="true">&times;</span>
                                            </button>
@@ -175,7 +148,7 @@
                                            <label class="success-message">정말 탈퇴하시겠습니까?</label>
                                          </div>
                                          <div class="modal-footer">
-                                           <button class="btn btn-success delete-confirm">탈퇴</button>
+                                           <button class="btn btn-success delete-confirm" type="submit">탈퇴</button>
                                            <button class="btn btn-default" data-dismiss="modal">취소</button>
                                          </div>
                                        </div>

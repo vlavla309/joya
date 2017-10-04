@@ -22,7 +22,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/admin/login.joya"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -46,7 +46,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="/admin/index.joya"><i class="fa fa-dashboard fa-fw"></i> 대시보드</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 통계<span class="fa arrow"></span></a>
@@ -63,6 +63,9 @@
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>상품관리<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level"> 
+                                <li>
+                                    <a href="${pageContext.servletContext.contextPath}/admin/product_add.joya"><i class="fa fa-edit fa-fw"></i>상품목록</a>
+                                </li>
                                 <li>
                                     <a href="${pageContext.servletContext.contextPath}/admin/product_add.joya"><i class="fa fa-edit fa-fw"></i>상품등록</a>
                                 </li>

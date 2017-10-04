@@ -22,6 +22,12 @@ import com.joya.product.domain.Product;
 import com.joya.product.service.ProductService;
 import com.joya.product.service.ProductServiceImpl;
 
+/**
+ * 상품 상세보기 컨트롤러
+ *
+ * @author 한수진
+ *
+ */
 public class ProductViewController implements Controller{
 	private ProductService productservice = new ProductServiceImpl();
 	private ImageService ImageService = new ImageServiceImpl();

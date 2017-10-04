@@ -1,5 +1,11 @@
 package com.joya.product.domain;
 
+/**
+ * 상품 도메인
+ *
+ * @author 한수진
+ *
+ */
 public class Product {
 	
 	private int productId;
