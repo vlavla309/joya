@@ -34,7 +34,7 @@ public class CertificationController implements Controller {
 			if(user != null){
 				String userInfo = null;
 				try {
-					userInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName() + "###" + user.getPasswd(), "utf-8");
+					userInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName(), "utf-8");
 				} catch (UnsupportedEncodingException e) {
 					throw new ServletException("UserAuthController.handleRequest() 실행중 예외 발생", e);
 				}
