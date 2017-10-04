@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 import com.joya.common.db.DaoFactory;
 import com.joya.common.exception.MallException;
 import com.joya.image.domain.Images;
-import com.sun.prism.Image;
 
 public class JdbcImageDao implements ImageDao{
 	private DataSource dataSource;
@@ -104,6 +103,41 @@ public class JdbcImageDao implements ImageDao{
 		return list;
 	}
 	
+	public  List<Images> listByProductid(int productid){
+		List<Images> list = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select IMAGE_NAME, PRODUCT_ID, PATH, ORDER_NO from images where PRODUCT_ID=?";
+
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, productid);
+			
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Images>();
+			while (rs.next()) {
+				Images image = setimage(rs);
+				list.add(image);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e) {}
+			
+		}
+		return list;
+	}
+	
 	private Images setimage(ResultSet rs) throws SQLException {
 		String imageName = rs.getString("IMAGE_NAME");
 		int productId = rs.getInt("PRODUCT_ID");
@@ -126,10 +160,15 @@ public class JdbcImageDao implements ImageDao{
 	
 	public static void main(String[] args) {
 		JdbcImageDao articledao = (JdbcImageDao) DaoFactory.getInstance().getDao(JdbcImageDao.class);
-		List<Images> img = articledao.listAll();
+		//List<Images> img = articledao.listAll();
+		/*for (Images images : img) {
+			System.out.println(images);
+		}*/
+		
+		/*List<Images> img = articledao.listByProductid(1);
 		for (Images images : img) {
 			System.out.println(images);
-		}
+		}*/
 	}
 	
 	

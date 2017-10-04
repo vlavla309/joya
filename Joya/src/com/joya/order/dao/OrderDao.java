@@ -8,11 +8,6 @@ import com.joya.order.domain.Orders;
 public interface OrderDao {
 	
 	public void create(Orders order);
-	public void update(Orders order);
-	public void delete(int orderId);
-	
-	public int getNewOrderId();
-	
 	public  List<Orders> listAll(Params param);
 	public  Orders search(String orderid);
 

@@ -17,9 +17,8 @@ import com.joya.wishlist.domain.Wishlist;
 import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
-
 /**
- * 위시리스트 컨트롤러
+ * 위시리스트 삭제 컨트롤러
  *
  * @author 정지현
  *
@@ -32,10 +31,10 @@ public class WishlistDeleteController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 		
-		String userEmail = request.getParameter("userEmail");
+		String userEmail = request.getParameter("email");
 		String id = request.getParameter("productId");
+		String page = request.getParameter("page");
 		int productId = Integer.parseInt(id);
-		System.out.println("!!!!!" + productId + "!!!!!" + userEmail + "????");
 		
 		PrintWriter out;
 		response.setContentType("text/plain;charset=utf-8");
@@ -48,6 +47,11 @@ public class WishlistDeleteController implements Controller {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		
+		String url = request.getHeader("REFERER");
+		System.out.println("[삭제 이전페이지 경로] : "+ url);
+		mav.setView("redirect:"+url);
+		return mav;
 	}
 }
+

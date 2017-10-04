@@ -111,6 +111,34 @@ public class JdbcWishlistDao implements WishlistDao {
 		}
 		return list;
 	}
+	
+	public List<Wishlist> listAll() {
+		List<Wishlist> list = null;
+		Connection con = null; 
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select product_id, email from wishlist";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Wishlist>();
+			while(rs.next()) {
+				Wishlist wishlist = setWishlist(rs);
+				list.add(wishlist);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("JdbcWishlistDao.listAll() 실행 중 예외발생");
+		}finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return list;
+	}
 
 	@Override
 	/** 위시리스트 목록에서 삭제 */
@@ -301,6 +329,15 @@ public class JdbcWishlistDao implements WishlistDao {
 		return wishlist;
 	}
 	
+	public Wishlist setWishlist(ResultSet rs) throws SQLException {
+		String email = rs.getString("email");
+		int productId = rs.getInt("product_id");	
+		Wishlist wishlist = new Wishlist();
+		wishlist.setEmail(email);
+		wishlist.setProductId(productId);
+		return wishlist;
+	}
+	
 	public static void main(String[] args) {
 		JdbcWishlistDao wishlistDao=(JdbcWishlistDao) DaoFactory.getInstance().getDao(JdbcWishlistDao.class);
 
@@ -308,7 +345,15 @@ public class JdbcWishlistDao implements WishlistDao {
 		for (Wishlist wishlist : list) {
 			System.out.println(wishlist);
 		}*/
+		/*System.out.println("gk");
 		
+		List<Wishlist> list = wishlistDao.ProductlistAll(userEmail);
+		
+		for (Wishlist wishlist : list) {
+			System.out.println(wishlist);
+		}
+		*/
+		/*
 		List<Wishlist> pageList = wishlistDao.listByPage("joa@joa", 2);
 		for (Wishlist wishlist : pageList) {
 			System.out.println(wishlist);
@@ -316,7 +361,7 @@ public class JdbcWishlistDao implements WishlistDao {
 		
 		System.out.println("----------");
 		
-		/*System.out.println(wishlistDao.delete("joa@joa", 1));*/
+		System.out.println(wishlistDao.delete("joa@joa", 1));
 		
 		System.out.println("----------");
 		
@@ -325,7 +370,7 @@ public class JdbcWishlistDao implements WishlistDao {
 			System.out.println(wishlist);
 		}
 		
-		/*wishlistDao.insert("joa@joa", 1);*/
+		wishlistDao.insert("joa@joa", 1);
 		
 		System.out.println("----------");
 		
@@ -333,5 +378,7 @@ public class JdbcWishlistDao implements WishlistDao {
 		for (Wishlist wishlist : pageList) {
 			System.out.println(wishlist);
 		}
+		*/
+		
 	}
 }
