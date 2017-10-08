@@ -14,6 +14,12 @@
 	<!-- product -->
 	<bean name="/product/list" class="com.joya.product.controller.ProductlistController" />
 	<bean name="/product/view" class="com.joya.product.controller.ProductViewController" />
+
+	<!-- order -->
+	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
+
+
+
 	
 	<!-- 회원 관련 -->
 	<bean name="/user/login_action" class="com.joya.user.controller.CertificationController" />
