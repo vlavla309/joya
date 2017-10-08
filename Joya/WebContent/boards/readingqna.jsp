@@ -61,8 +61,8 @@
 %>
 
 <%
-  email = "joa@joa";
-  name = "관리자";
+  email = "miso@daum.net";
+  name = "김미소";
 
   request.setAttribute("email", email);
   request.setAttribute("name", name);
@@ -151,11 +151,9 @@
 
                 <tr>
                   <%--
-                  	String con = article.getContent().replace("\r\n", "<br>");
-                    <td colspan="6" >${article.contents }</td>
+                    <td colspan="6" >${article.contents.replace('\\r\\n','<br>')}</td>
                   --%>
-                  
-                  <td colspan="6" >${article.contents.replace('\\r\\n','<br>')}</td>
+                  <td colspan="6" >${article.contents }</td>
                 </tr>
                 </table>
 
@@ -163,17 +161,28 @@
                   <c:if test="${name eq '관리자'}">
                    <button type="button" class="btn">
                     <a href="${pageContext.servletContext.contextPath}/boards/replyingqna.jsp?article_id=${article.articleId}">답글쓰기</a>
+                    <input class="btn" type="submit" value="수정" >
+                      <button type="button" class="btn">
+                      <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
+                      <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
+                      </button>
                    </button>
                   </c:if>
-                   <input class="btn" type="submit" value="수정" >
-                  <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
-                   <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
-                  </button>
-                  <button type="button" class="btn">
-                    <a class="deletebtn">글목록</a>
-                  </button>
-                </div>
+                  <c:choose>
+                    <c:when test="${name eq article.writer}">
+                      <input class="btn" type="submit" value="수정" >
+                      <button type="button" class="btn">
+                      <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
+                      <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
+                      </button>
+                    </c:when>
+                    <c:otherwise>
+                     <button type="button" class="btn">
+                     <a class="deletebtn">글목록</a>
+                     </button>
+                     </div>
+                    </c:otherwise>
+                  </c:choose>
 
               </div>
               </form>
