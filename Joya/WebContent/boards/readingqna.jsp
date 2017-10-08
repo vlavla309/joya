@@ -61,8 +61,8 @@
 %>
 
 <%
-  email = "miso@daum.net";
-  name = "김미소";
+  email = "joa@joa";
+  name = "조아조";
 
   request.setAttribute("email", email);
   request.setAttribute("name", name);
@@ -161,12 +161,16 @@
                   <c:if test="${name eq '관리자'}">
                    <button type="button" class="btn">
                     <a href="${pageContext.servletContext.contextPath}/boards/replyingqna.jsp?article_id=${article.articleId}">답글쓰기</a>
+                    </button>
                     <input class="btn" type="submit" value="수정" >
                       <button type="button" class="btn">
                       <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
                       <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
                       </button>
-                   </button>
+                      <button type="button" class="btn">
+                      <a class="deletebtn">글목록</a>
+                      </button>
+                      </div>
                   </c:if>
                   <c:choose>
                     <c:when test="${name eq article.writer}">
@@ -175,6 +179,10 @@
                       <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
                       <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
                       </button>
+                      <button type="button" class="btn">
+                      <a class="deletebtn">글목록</a>
+                      </button>
+                      </div>
                     </c:when>
                     <c:otherwise>
                      <button type="button" class="btn">

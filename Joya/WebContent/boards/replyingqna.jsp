@@ -31,7 +31,7 @@
   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
-<title>Q&A - Writing</title>
+<title>Q&A - Replying</title>
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
   type='text/css'>
 <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet"
@@ -87,7 +87,7 @@
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
                 <span>/</span> <span class="page-title">Q&A -
-                  Writing</span>
+                  Replying</span>
               </div>
             </div>
           </div>

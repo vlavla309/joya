@@ -31,7 +31,7 @@
   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
-<title>Q&A - Writing</title>
+<title>A/S - Writing</title>
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
   type='text/css'>
 <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet"
@@ -53,20 +53,7 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-  
 
-<script>
-  $(function() {
-    $("input[type='radio']").click(function(){
-          var radioValue = $("input[name='articleType']:checked").val();
-          if(radioValue == "secret"){
-          	$("input[name='title']").attr("value","비밀글입니다.");
-          }
-          
-      });
-  })
-  
-</script>
 
 </head>
 
@@ -98,7 +85,7 @@
               <div class="col-md-24">
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
-                <span>/</span> <span class="page-title">Q&A -
+                <span>/</span> <span class="page-title">A/S -
                   Writing</span>
               </div>
             </div>
@@ -108,7 +95,7 @@
           <div class="container">
             <div class="row">
               <div id="page-header">
-                <h1 id="page-title">Q&A</h1>
+                <h1 id="page-title">A/S</h1>
               </div>
             </div>
           </div>
@@ -120,25 +107,20 @@
 
                   <form
                     action="${pageContext.servletContext.contextPath}/boards/qnawrite.joya"
-                    method="post" id="form">
+                    method="post" enctype="multipart/form-data">
                     <div class="left-block col-md-12">
                       <input type="hidden" value="contact"
                         name="form_type"><input type="hidden"
                         name="utf8" value="â">
-                      <input type="hidden" name="board_id" value="2">  
-                      
-                      <div class="typediv">
-                        <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
-                      </div>
-                      <br>
+                      <input type="hidden" name="board_id" value="4"> 
 
                       <div class="midivision2">
-                      <label class="control-label" for="name">제목<span
+                        <label class="control-label" for="name">제목<span
                           class="req">*</span></label>
                       </div>
-                       <input type="text" value=""
-                        class="form-control" name="title"> 
-                      <input type="hidden" value="${email}" name="email">
+                      <input type="text" id="name" value=""
+                        class="form-control" name="title"> <input
+                        type="hidden" value="${email}" name="email">
 
                       <c:choose>
                         <c:when test="${not empty email}">
@@ -179,6 +161,9 @@
                       <textarea id="message" rows="5"
                         class="form-control" name="contents"></textarea>
                       <br>
+                      <div class="midivision7">
+                      <input type="file">
+                      </div>
                       <div class="midivision6">
                         <button class="btn">올리기</button>
                       </div>

@@ -68,23 +68,87 @@
 	request.setAttribute("name", name);
 %>
 
+<script>
+  $(function() {
+    
+    $(".secrettitle").on("click",function(event) {
+      var articleId = $(event.target).attr("name");
+      var id = $(".yes").attr("name", articleId);
+    });
+      
+   	$(".yes").on("click", function(){
+      var id = $(".yes").attr("name");
+      console.log("articleId "+id);
+      var secretPw = $(".secretpasswd").val();
+  	  var password = $(".pw").val();
+  	  console.log("모달창비번 "+secretPw);
+  	  console.log("원래비번 "+password);
+  	  
+  	  if(secretPw == password){
+    	$.ajax({
+    		success: function(){
+          		location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id="+id;
+          	}
+        });
+  	 } else {
+	     $(".yes").attr("data-dismiss", " ");
+	     $(".yes").on("click", function(){
+	         $(".errorpasswd").text("비밀번호가 일치하지 않습니다.");
+	    	 $(".secretpasswd").val("");
+	     });
+	  }	
+    	 
+     });
+   	 
+	 
+      
+    
+  /**  
+    $(".yes").on("click", function(){
+      
+      var id = $(".yes").attr("name");
+      console.log(secretPw);
+      console.log(password);
+      console.log(id);
+      	if(secretPw == password){
+      		$.ajax({
+        		//url : "${pageContext.servletContext.contextPath}/boards/readingarticle.joya",
+              	//data : {article_id : id},
+              	//dataType : "text",
+        		//method : "post",
+        		success: function(){
+        			location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id="+id;
+        		}
+      	 });
+      	} else {
+      			$(".errorpasswd").attr("value","비밀번호가 일치하지 않습니다.");
+      			$(".secretpasswd").val("");
+      	} 
+     
+    });
+  */
+  })
+  
+</script>
 
 </head>
-
-<%-- 회원삭제 modal --%>
-<div class="modal" id="titleModal">
+  <%-- 비밀글일때 비밀번호 확인 modal --%>
+  <div class="modal" id="checkModal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title">해당 게시글은 본인만 읽을 수 있습니다.</h4>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">비밀글을 읽으시려면 비밀번호를 입력해주세요.</h4>
       </div>
-      <div class="modal-body">fine body&hellip;</div>
+      <div class="modal-footer">
+        <span class="errorpasswd" value=""></span>
+        <input type="text" class="secretpasswd" name="">
+        <button type="button" class="yes" data-dismiss="modal" value="">확인</button>
+      </div>
     </div>
   </div>
 </div>
+
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templateCustomersRegister notouch">
@@ -158,11 +222,21 @@
                                    <td>
                                    <c:if test="${article.writer eq '관리자'}">
                                    <img src="../assets/images/replying.png"> &nbsp;
-                                   </c:if> 
-                                   <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id=${article.articleId}">${article.title}</a></td>
+                                   </c:if>
+                                     <c:choose>
+                                        <c:when test="${article.title eq '비밀글입니다.' }">
+                                          <img src="../assets/images/secret_lock.png"> &nbsp;
+                                          <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                           <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id=${article.articleId}">${article.title}</a>
+                                        </c:otherwise>
+                                     </c:choose>
+                                   </td>
                                    <td class="writertd">${article.writer}</td>
                                    <td>${article.regdate}</td>
                                    <td>${article.hitcount}</td>
+                                   <input type="hidden" class="pw" name="passwd" value="${article.passwd }">
                               </c:otherwise>
                             </c:choose>
                             
