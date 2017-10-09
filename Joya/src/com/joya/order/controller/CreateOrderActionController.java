@@ -55,12 +55,14 @@ public class CreateOrderActionController implements Controller {
 		for (Cookie cookie : cookies) {
 			if(cookie.getName().equalsIgnoreCase("cart")) {
 				String cartInfo = URLDecoder.decode(cookie.getValue(), "utf-8");
+				System.out.println(cartInfo);
 				orderItems=makeOrderItems(orderId, cartInfo);
 			}
 		}
 		
 		
 		for (OrderItems orderItem : orderItems) {
+			System.out.println(orderItem);
 			int productId=orderItem.getProductId();
 			Product product=productServ.read(productId);
 			price+=orderItem.getAmount()*product.getPrice();
@@ -84,7 +86,8 @@ public class CreateOrderActionController implements Controller {
 
 		
 	//	mav.setView("/product/list.jsp");
-		return mav;
+	//	return mav;
+		return null;
 	}
 	
 	private List<OrderItems> makeOrderItems(int orderId, String cookieValue){
