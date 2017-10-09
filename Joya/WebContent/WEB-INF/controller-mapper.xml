@@ -18,8 +18,9 @@
 	<!-- order -->
 	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
 
-
-
+	<!-- cart -->
+	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
+	
 	
 	<!-- 회원 관련 -->
 	<bean name="/user/login_action" class="com.joya.user.controller.CertificationController" />
