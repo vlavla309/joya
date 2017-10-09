@@ -88,6 +88,21 @@
     		
     	};
     	
+    	function goBack() {
+			var form = document.createElement("form");
+			form.setAttribute("action", "/user/mypage_action.joya");
+			form.setAttribute("method", "post");
+			
+			var email = document.createElement("input");
+			email.setAttribute("type", "hidden");
+			email.setAttribute("name", "email");
+			email.setAttribute("value", "${user.email }");
+			
+			form.appendChild(email);
+			document.body.appendChild(form);
+			form.submit();
+		}
+    	
     </script>
     
 </head>
@@ -133,32 +148,11 @@
                                         <input value="" name="passwd2" id="password2" class="form-control password" type="password" pattern="^[a-zA-Z0-9]{4,20}$" title="영문/숫자 4~20 자리로 동일하게 입력해 주세요." required="required">
                                         </div>
                                         <div class="full-ms-div">
-                                        <button id="acc-cancel" class="btn" type="submit" name="cancel" value="0">취소</button>
+                                        <button id="acc-cancel" class="btn" type="button" onclick="location.href='javascript:goBack();'">취소</button>
                                         <button id="done" class="btn" type="submit" value="0" >확인</button>
                                         </div>
 									</div>
 								</form>
-                                <form action="">                  
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                         <div class="modal-header alert alert-danger">
-                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                           <span aria-hidden="true">&times;</span>
-                                           </button>
-                                           <h4 class="modal-title" id="myModalLabel">회원 탈퇴 확인</h4>
-                                         </div>
-                                         <div class="modal-body">
-                                           <label class="success-message">정말 탈퇴하시겠습니까?</label>
-                                         </div>
-                                         <div class="modal-footer">
-                                           <button class="btn btn-success delete-confirm">탈퇴</button>
-                                           <button class="btn btn-default" data-dismiss="modal">취소</button>
-                                         </div>
-                                       </div>
-                                      </div>
-                                     </div>
-                                 </form>
 							</div>   
 						</div>
 					</div>

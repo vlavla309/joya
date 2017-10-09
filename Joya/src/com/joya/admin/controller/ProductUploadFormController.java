@@ -27,9 +27,6 @@ public class ProductUploadFormController implements Controller {
 		
 		List<Categories> categories=categoryService.listAll();
 		
-		for (Categories categories2 : categories) {
-			System.out.println(categories2);
-		}
 		mav.addObject("categories", categories);
 		mav.setView("/admin/pages/product_form.jsp");
 		
