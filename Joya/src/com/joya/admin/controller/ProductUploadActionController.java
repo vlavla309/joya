@@ -113,7 +113,7 @@ public class ProductUploadActionController implements Controller {
 
 				int orderImage=0;
 				for (Images image : images) {
-					image.setOrder(orderImage++);
+					image.setOrderNo(orderImage++);
 					image.setProductId(productId);
 					imgService.create(image);
 				}

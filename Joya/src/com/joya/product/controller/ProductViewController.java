@@ -73,7 +73,7 @@ public class ProductViewController implements Controller{
 				obj = new JSONObject();
 				obj.put("path", image.getPath());
 				obj.put("filename", image.getImageName());
-				obj.put("order", image.getOrder());
+				obj.put("order", image.getOrderNo());
 				jArray.add(count, obj);
 				count++;
 			}
