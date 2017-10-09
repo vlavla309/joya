@@ -83,7 +83,8 @@ public class JdbcUserDao implements UserDao{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String query = "DELETE FROM users " + 
+		String query = "UPDATE users " + 
+					   "SET    NAME = '@deleted' " + 
 					   "WHERE  email = ? ";
 		try {
 			con = dataSource.getConnection();
@@ -157,7 +158,7 @@ public class JdbcUserDao implements UserDao{
 					 "       To_char(regdate, 'YYYY/MM/DD') regdate " + 
 					 "FROM   users " + 
 					 "WHERE  email = ? " + 
-					 "       AND passwd = ? ";
+					 "       AND passwd = ? AND name != '@deleted' ";
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);

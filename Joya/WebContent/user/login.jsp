@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
@@ -73,14 +74,16 @@
 											<form method="post" action="/user/login_action.joya" id="customer_login" accept-charset="UTF-8">
 												<input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
 												<div class="col-md-21 login-alert">
+                                                    <c:choose>
+                                                    <c:when test="${not empty param.err }">
 													<div class="alert alert-danger warning">
 														<button type="button" class="close btooltip" data-toggle="tooltip" data-placement="top" title="" data-dismiss="alert" data-original-title="Close">x</button>
 														<div class="errors">
-															<ul>
-																<li>존재하지 않음</li>
-															</ul>
+															<span>아이디와 비밀번호를 확인해 주세요.</span>
 														</div>
 													</div>
+                                                    </c:when>
+                                                    </c:choose>
 												</div>
 												<ul id="login-form" class="list-unstyled">
 													<li class="clearfix"></li>
