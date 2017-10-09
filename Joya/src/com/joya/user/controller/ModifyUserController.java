@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.Delimiter;
 import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
@@ -30,7 +31,7 @@ public class ModifyUserController implements Controller {
 		String address1 = request.getParameter("address1");
 		String address2 = request.getParameter("address2");
 		String address3 = request.getParameter("address3");
-		String address = address1 + "###" + address2 + "###" + address3;
+		String address = address1 + Delimiter.USER_INFO + address2 + Delimiter.USER_INFO + address3;
 		
 		User user = new User(email, phone, name, passwd, address, birthdate);
 		

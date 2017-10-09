@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.Delimiter;
 import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
@@ -29,15 +30,10 @@ public class BridgeController implements Controller{
 		ModelAndView mav = new ModelAndView();
 		
 		String email = request.getParameter("email");
-		String cancel = request.getParameter("cancel");
 		User user = userService.read(email);
-		String[] tokens = user.getAddress().split("###");
+		String[] tokens = user.getAddress().split(Delimiter.USER_INFO);
 		
-		if (cancel != null) {
-			mav.setView(request.getContextPath() + "/mypage/main.joya");
-		} else {
 			mav.setView(request.getContextPath() + "/mypage/modify_user.joya");
-		}
 		
 		mav.addObject("user", user);
 		mav.addObject("address1", tokens[0]);
