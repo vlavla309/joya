@@ -35,7 +35,6 @@ public class WishlistDeleteController implements Controller {
 		String id = request.getParameter("productId");
 		String page = request.getParameter("page");
 		int productId = Integer.parseInt(id);
-		
 		PrintWriter out;
 		response.setContentType("text/plain;charset=utf-8");
 		

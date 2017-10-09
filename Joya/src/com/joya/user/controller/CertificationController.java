@@ -39,6 +39,12 @@ public class CertificationController implements Controller {
 				//} catch (UnsupportedEncodingException e) {
 					//throw new ServletException("UserAuthController.handleRequest() 실행중 예외 발생", e);
 				//}
+				/*try {
+					userInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName(), "utf-8");
+				} catch (UnsupportedEncodingException e) {
+					throw new ServletException("UserAuthController.handleRequest() 실행중 예외 발생", e);
+				}*/
+				
 				Cookie loginCookie = new Cookie("user", userInfo);
 				loginCookie.setPath("/");
 				response.addCookie(loginCookie);

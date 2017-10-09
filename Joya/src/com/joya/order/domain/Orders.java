@@ -4,6 +4,7 @@ public class Orders {
 	private int orderId;
 	private String email;
 	private int price;
+	private String orderer;
 	private String receiver;
 	private String address;
 	private String phone;
@@ -58,6 +59,14 @@ public class Orders {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	public String getOrderer() {
+		return orderer;
+	}
+
+	public void setOrderer(String orderer) {
+		this.orderer = orderer;
 	}
 
 	public String getReceiver() {
