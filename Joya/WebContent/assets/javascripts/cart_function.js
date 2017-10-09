@@ -16,7 +16,7 @@ var DELIMITER_CART_ITEM_INFO="#@#";
 $(document).ready(function(){
 	//장바구니 쿠키 체크
 	checkCartCookie();
-
+/*
 	addCartItem("1", 10);
 	addCartItem("2", 10);
 	addCartItem("3", 10);
@@ -25,7 +25,7 @@ $(document).ready(function(){
 	
 	removeCartItem("2");
 //	updateCartItem("3", 30);
-	console.log($.cookie("cart"));
+*/	console.log($.cookie("cart"));
 })
 
 
