@@ -62,15 +62,6 @@ $(document).ready(function(){
         }
     })
     
-    /*   $("#ji-orderB").click(function(){
-    	var checked_val = "";
-    	$("input[name=ji-chk]:checked").each(function() {
-    		var value = $(this).val();
-    		checked_val += value + ",";
-    	})
-    	$(this).val(checked_val);
-    	alert(checked_val);
-    })  */
 })
 </script>
 </head>
@@ -172,12 +163,12 @@ $(document).ready(function(){
               
               <!-- 페이지 리스트 영역 시작 -->
               <div>
-                <div class="col-md-6" >
-                  <nav aria-label="Page navigation">
+                <div class="col-md-6"">
+                  <nav aria-label="Page navigation"">
                     <ul class="ji-pagination">
                       <c:if test="${pageBuilder.showPrevious }">
                         <li><a
-                          href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}"
+                          href="${pageBuilder.getQueryString(pageBuilder.previousStartPage)}""
                           aria-label="Previous"> <span
                             aria-hidden="true">&laquo;</span>
                         </a></li>
@@ -189,13 +180,13 @@ $(document).ready(function(){
                             <li class="active"><a>${i }</a></li>
                           </c:when>
                           <c:otherwise>
-                            <li><a href="${pageBuilder.getQueryString(i)}">${i }</a></li>
+                            <li><a href="${pageBuilder.getQueryString(i)}"">${i }</a></li>
                           </c:otherwise>
                         </c:choose>
                       </c:forEach>
 
                       <c:if test="${pageBuilder.showNext }">
-                        <li><a href="${pageBuilder.getQueryString(pageBuilder.nextStartPage)}" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+                        <li><a href="${pageBuilder.getQueryString(pageBuilder.nextStartPage)}"  aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                         </a></li>
                       </c:if>
                     </ul>

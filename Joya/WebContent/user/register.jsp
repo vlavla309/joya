@@ -123,7 +123,7 @@
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">
-  										<label class="control-label" for="email">아이디<span class="req">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="emailmessage"></span></label>
+  										<label class="control-label" for="email">이메일<span class="req">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="emailmessage"></span></label>
   										<input name="email" id="email" class="form-control " type="text" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$" title="이메일을 올바르게 입력해 주세요." required="required">
                                        </div>
                                        <div class="half-ms-div">
