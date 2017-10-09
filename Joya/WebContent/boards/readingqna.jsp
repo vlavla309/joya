@@ -68,7 +68,7 @@
   request.setAttribute("name", name);
 %>
 
-<%-- 
+
 <script type="text/javascript">
 	$(function(){
 		$(".yes").on("click", function(event){
@@ -82,7 +82,7 @@
 	})
 
 </script>
---%>
+
 
 
 </head>
@@ -164,8 +164,8 @@
                     </button>
                     <input class="btn" type="submit" value="수정" >
                       <button type="button" class="btn">
-                      <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
-                      <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
+                      <!--<a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a>-->  
+                      <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> 
                       </button>
                       <button type="button" class="btn">
                       <a class="deletebtn">글목록</a>
@@ -176,8 +176,8 @@
                     <c:when test="${name eq article.writer}">
                       <input class="btn" type="submit" value="수정" >
                       <button type="button" class="btn">
-                      <a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> 
-                      <!--<a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> --> 
+                      <!--<a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> --> 
+                      <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> 
                       </button>
                       <button type="button" class="btn">
                       <a class="deletebtn">글목록</a>
