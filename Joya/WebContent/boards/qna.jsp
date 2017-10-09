@@ -85,48 +85,16 @@
   	  console.log("원래비번 "+password);
   	  
   	  if(secretPw == password){
-    	$.ajax({
-    		success: function(){
           		location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id="+id;
-          	}
-        });
-  	 } else {
-	     $(".yes").attr("data-dismiss", " ");
-	     $(".yes").on("click", function(){
+    	
+  	  } else {
 	         $(".errorpasswd").text("비밀번호가 일치하지 않습니다.");
 	    	 $(".secretpasswd").val("");
-	     });
 	  }	
     	 
      });
    	 
-	 
-      
-    
-  /**  
-    $(".yes").on("click", function(){
-      
-      var id = $(".yes").attr("name");
-      console.log(secretPw);
-      console.log(password);
-      console.log(id);
-      	if(secretPw == password){
-      		$.ajax({
-        		//url : "${pageContext.servletContext.contextPath}/boards/readingarticle.joya",
-              	//data : {article_id : id},
-              	//dataType : "text",
-        		//method : "post",
-        		success: function(){
-        			location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?article_id="+id;
-        		}
-      	 });
-      	} else {
-      			$(".errorpasswd").attr("value","비밀번호가 일치하지 않습니다.");
-      			$(".secretpasswd").val("");
-      	} 
-     
-    });
-  */
+
   })
   
 </script>
@@ -143,7 +111,7 @@
       <div class="modal-footer">
         <span class="errorpasswd" value=""></span>
         <input type="text" class="secretpasswd" name="">
-        <button type="button" class="yes" data-dismiss="modal" value="">확인</button>
+        <button type="button" class="yes"  value="">확인</button>
       </div>
     </div>
   </div>
