@@ -23,6 +23,8 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
+	
+	
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
@@ -38,6 +40,9 @@
 	<script src="../assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="../assets/javascripts/cs.script.js" type="text/javascript"></script>
+	
+	<script src="../assets/javascripts/cart_function.js" type="text/javascript"></script>
+	
 	
 	<script>
 	$(function() {
@@ -79,14 +84,26 @@
 			$("#description").text(data.Product[0].discription);
 			$(".price_sale").text(data.Product[0].price);
 			$(".maker").text(data.Product[0].maker);
+			$(".add-to-cart2").val(data.Product[0].productid);
 			$.each(data.images, function(index,  image) {
 				var pathname = image.path + image.filename
-				if(image.order=="0"){
+				if(image.orderNo=="0"){
 				$(".imagemain").attr("src",pathname);
 					alert($(".imagemain").attr("src"));
 				} 
 			});
 		} 
+		
+		$(".add-to-cart").click(function(){
+			var productId=$(this).val();
+			addCartItem(productId, "1");
+		});
+		
+		$(".add-to-cart2").click(function(){
+			var productId=$(this).val();
+			var amount=$("#qs-quantity").val();
+			addCartItem(productId, amount);
+		});
 		
 		
 	});
@@ -167,7 +184,7 @@
 											<ul id="sandBox" class="list-unstyled">
 												<c:forEach items="${productlist}" var="product" varStatus="status">
 													<c:forEach items="${imglist}" var="img" varStatus="status">
-														<c:if test="${(product.productId eq img.productId)&&(img.order eq 0)}">
+														<c:if test="${(product.productId eq img.productId)&&(img.orderNo eq 0)}">
 															<li class="element no_full_width" data-alpha="Curabitur cursus dignis" data-price="20000">
 																<ul class="row-container list-unstyled clearfix">
 																	<li class="row-left">
@@ -200,8 +217,8 @@
 																	<div class="hover-appear">
 																		<form action="#" method="post">						
 																			<div class="effect-ajax-cart">
-																				<input name="quantity" value="1" type="hidden">
-																				<button class="add-to-cart" type="submit" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
+																				<input  name="quantity" value="1" type="hidden">
+																				<button class="add-to-cart" value="${product.productId }" type="button" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
 																			</div>
 																		</form>
 																		<div class="product-ajax-qs hidden-xs hidden-sm">
@@ -359,7 +376,7 @@
 											<p class ="maker"></p>
 										</div>
 										<div class="others-bottom">
-											<input id="quick-shop-add" class="btn small add-to-cart" type="submit" name="add" value="Add to Cart" style="opacity: 1;">
+											<button id="quick-shop-add" class="btn small add-to-cart2" type="button" name="add" value="" style="opacity: 1;">Add to Cart</button>
 										</div>
 									</form>
 								</div>
