@@ -14,6 +14,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 비밀번호 일치 확인 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class CheckPasswdController implements Controller{
 	
 	private UserService userService = new UserServiceImpl();

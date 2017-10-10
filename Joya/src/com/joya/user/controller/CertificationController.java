@@ -15,6 +15,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 회원 인증 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class CertificationController implements Controller {
 
 	private UserService userService = new UserServiceImpl();
