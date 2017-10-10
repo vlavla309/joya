@@ -30,6 +30,7 @@
     <script src="../assets/javascripts/referer.js" type="text/javascript"></script>
   
      <script type="text/javascript">
+     /* 메뉴별 페이지 이동 메소드 */
             function go2modify(where) {
               var form = document.createElement("form");
               form.setAttribute("action", "/user/mypageaction.joya");
@@ -85,6 +86,7 @@
 								<div class="group_sidebar">
 									<div class="row sb-wrapper unpadding-top">
 										<span class="mini-line"></span>
+                                        <!-- 사용자 정보 출력 -->
 										<ul id="customer_detail" class="list-unstyled sb-content">
 											<li>
 											<address class="clearfix">
@@ -110,6 +112,7 @@
 									</div>
 								</div>
 							</div>
+                            <!-- 마이페이지 메뉴 -->
 							<div id="col-main" class="account-page col-sm-18 col-md-18 clearfix">
 									<a href="javascript:go2modify('1');">
                                      <div class="orderselect_mimi">
