@@ -62,11 +62,14 @@ public class CartListController implements Controller {
 	}
 
 	private Map<String, String> getCartMap(String cartCookieVal) {
+		System.out.println(cartCookieVal);
+		
 		Map<String, String> cartMap=new HashMap<>();
 
 		String[] cartItems=cartCookieVal.split(Delimiter.CART_ITEM);
 
 		for (String item : cartItems) {
+			System.out.println(item);
 			String productId=item.split(Delimiter.CART_ITEM_INFO)[0];
 			String amount=item.split(Delimiter.CART_ITEM_INFO)[1];
 			cartMap.put(productId, amount);
