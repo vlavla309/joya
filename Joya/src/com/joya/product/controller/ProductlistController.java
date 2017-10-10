@@ -76,7 +76,6 @@ public class ProductlistController implements Controller{
       PageBuilder pageBuilder = new PageBuilder(param, rowCount);
       pageBuilder.build();
       
-      System.out.println("login email : "+ (String)request.getAttribute("email"));
       mav.addObject("loginuser", (String)request.getAttribute("email"));
       mav.addObject("imglist", imglist);
       mav.addObject("wishlist", wishlist);

@@ -22,11 +22,14 @@ import com.joya.orderitem.service.OrderItemServiceImpl;
 import com.joya.product.domain.Product;
 import com.joya.product.service.ProductService;
 import com.joya.product.service.ProductServiceImpl;
+import com.joya.user.service.UserService;
+import com.joya.user.service.UserServiceImpl;
 
 public class CreateOrderActionController implements Controller {
 	OrderService orderServ=new OrderServiceImpl();
 	OrderItemService orderItemServ=new OrderItemServiceImpl();
 	ProductService productServ=new ProductServiceImpl();
+	UserService userServ = new UserServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -34,21 +37,46 @@ public class CreateOrderActionController implements Controller {
 		ModelAndView mav = new ModelAndView();
 		
 		int orderId=orderServ.getNewOrderId();
-		
-		String email=request.getParameter("email");
 		int price=0;
-		String orderer=request.getParameter("orderer");
-		String receiver=request.getParameter("receiver");
-		String address = request.getParameter("address");
-		String phone = request.getParameter("phone");
-		String status = "�ֹ�����";
-		String paymentType=request.getParameter("paymentType");
 		
+//주문자 정보
+		String email=request.getParameter("email");
+		String orderer=request.getParameter("ordername");
+		String orderphone=request.getParameter("orderphone");
+		String paymentType=request.getParameter("paymentType");
 		int usedpoint=0;
-		String usedpointStr=request.getParameter("usedpoint");
+		//주문자의 전체 포인트
+		String totalpoint = request.getParameter("totalpoint");
+		//주문자가 주문할 때 사용한 포인트
+		String usedpointStr = request.getParameter("used_point");
 		if(usedpointStr!=null) {
 			usedpoint=Integer.parseInt(usedpointStr);
 		}
+		//주문하고 남은 포인트
+		String rest_point = request.getParameter("rest_point");
+		String payment = request.getParameter("payment");
+		//주소 
+		String address1 = request.getParameter("address1"); //postcode
+		String address2 = request.getParameter("address2");
+		String address3 = request.getParameter("address3");
+		String orderaddress = address1+"###"+address2+"###"+address3;
+		
+// 배송지 정보
+		
+		// 받는사람 이름
+		String receiver=request.getParameter("receiver");
+		// 받는사람 전화번호
+		String receivephone = request.getParameter("receivephone");
+		// 배송지 주소
+		String receiveaddress1 = request.getParameter("receiveaddress1"); //postcode
+		String receiveaddress2 = request.getParameter("receiveaddress2");
+		String receiveaddress3 = request.getParameter("receiveaddress3");
+		String receiveaddress = receiveaddress1+"###"+receiveaddress2+"###"+receiveaddress3;
+		// 배송메세지
+		String deliverymsg = request.getParameter("deliverymsg");
+		
+		//주문접수, 주문취소, 결제완료, 배송중, 배송완료
+		String status = "주문접수";
 		
 		List<OrderItems> orderItems=null;
 		Cookie[] cookies=request.getCookies();
@@ -59,7 +87,6 @@ public class CreateOrderActionController implements Controller {
 				orderItems=makeOrderItems(orderId, cartInfo);
 			}
 		}
-		
 		
 		for (OrderItems orderItem : orderItems) {
 			System.out.println(orderItem);

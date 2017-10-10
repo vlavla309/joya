@@ -38,7 +38,7 @@ function checkCartCookie(){
 	//쿠키의 값이 비어있으면 cart 쿠키를 신규로 생성 (유효기간2일, 패스:/)
 	if(!cartInfo){
 		//expired 단위 2일
-		$.cookie("cart", "", {expired:2, path:'/'} );
+		$.cookie("cart", " ", {expired:2, path:'/'} );
 	}
 }
 

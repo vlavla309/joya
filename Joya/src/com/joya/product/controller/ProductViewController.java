@@ -82,7 +82,6 @@ public class ProductViewController implements Controller{
 			String str = jsonMain.toJSONString();
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");
-			System.out.println(str);
 			
 			PrintWriter out;
 			try {

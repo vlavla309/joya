@@ -50,7 +50,6 @@ public class WishlistDeleteController implements Controller {
 		}
 		
 		String url = request.getHeader("REFERER");
-		System.out.println("[���� ���������� ���] : "+ url);
 		mav.setView("redirect:"+url);
 		return mav;
 	}
