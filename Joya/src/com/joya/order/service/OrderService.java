@@ -12,6 +12,7 @@ public interface OrderService {
 	
 	public int getNewOrderId();
 	
-	public  List<Orders> listAll(Params param);
+	public  List<Orders> listByParam(Params param, String status);
 	public  Orders search(String orderid);
+	public int pageCount(Params param, String status);
 }

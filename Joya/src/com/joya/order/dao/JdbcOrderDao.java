@@ -42,6 +42,7 @@ public class JdbcOrderDao implements OrderDao {
 				"             phone, " + 
 				"             payment_type, " + 
 				"             status, " + 
+				"             message, " + 
 				"             usedpoint) " + 
 				"VALUES      (?, " + 
 				"             ?, " + 
@@ -50,6 +51,7 @@ public class JdbcOrderDao implements OrderDao {
 				"             ?, " + 
 				"             ?, " + 
 				"             ?, " + 
+				"             ?, " +
 				"             ?, " +
 				"             ?, " +
 				"             ?) ";
@@ -66,12 +68,13 @@ public class JdbcOrderDao implements OrderDao {
 			pstmt.setString(7, order.getPhone());
 			pstmt.setString(8, order.getPaymentType());
 			pstmt.setString(9, order.getStatus());
-			pstmt.setInt(10, order.getUsedPoint());
+			pstmt.setString(10, order.getMassage());
+			pstmt.setInt(11, order.getUsedPoint());
 
 			rs=pstmt.executeQuery();
 		}catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcOrderDao.create(Orders order) ¿¡·¯ ¹ß»ý", e);
+			throw new MallException("JdbcOrderDao.create(Orders order) ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½", e);
 		}finally {
 			try {
 				if(rs != null)    rs.close();
@@ -110,7 +113,7 @@ public class JdbcOrderDao implements OrderDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcUserDao.read(String id) ¿¡·¯ ¹ß»ý", e);
+			throw new MallException("JdbcUserDao.read(String id) ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½", e);
 		}finally {
 			try {
 				if(rs != null)    rs.close();
@@ -122,7 +125,7 @@ public class JdbcOrderDao implements OrderDao {
 	}
 
 	@Override
-	public List<Orders> listAll(Params param) {
+	public List<Orders> listByParam(Params param, String status) {
 		String type=param.getType();
 		String value=param.getValue();
 		Connection con = null;
@@ -163,9 +166,18 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("               order_date ");
 		sb.append("        FROM   (SELECT * ");
 		sb.append("                FROM   orders");
-		if(type!=null) {
-			sb.append("   WHERE  email = ? ");
+		
+		if(type!=null&&status!=null) {
+			sb.append("   WHERE  email = ? AND status = ? ");
+		}else {
+			if(type!=null) {
+				sb.append("   WHERE  email = ? ");
+			}
+			if(status!=null) {
+				sb.append("   WHERE  status = ? ");
+			}
 		}
+		
 		sb.append("                ORDER  BY order_id DESC)) ");
 		sb.append(" WHERE  request_page = ?");
 		
@@ -174,13 +186,24 @@ public class JdbcOrderDao implements OrderDao {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
 			
-			if(type!=null) {
-				pstmt.setInt(1, param.getPageNum());
+			
+			pstmt.setInt(1, param.getPageSize());
+			
+			
+			if(type!=null&&status!=null) {
 				pstmt.setString(2, value);
-				pstmt.setInt(3, param.getPage());
+				pstmt.setString(3, status);
+				pstmt.setInt(4, param.getPage());
 			}else {
-				pstmt.setInt(1, param.getPageNum());
 				pstmt.setInt(2, param.getPage());
+				if(type!=null) {
+					pstmt.setString(2, value);
+					pstmt.setInt(3, param.getPage());
+				}
+				if(status!=null) {
+					pstmt.setString(2, status);
+					pstmt.setInt(3, param.getPage());
+				}
 			}
 			
 			rs = pstmt.executeQuery();
@@ -232,19 +255,29 @@ public class JdbcOrderDao implements OrderDao {
 		return order;
 		
 	}
+	
+	@Override
+	public int pageCount(Params param, String status) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	public static void main(String[] args) {
 		JdbcOrderDao dao=(JdbcOrderDao) DaoFactory.getInstance().getDao(JdbcOrderDao.class);
 		
-		//dao.create(new Orders(2, "joa@joa", 50000, "±èÇüÁÖ","±è¼ºÁÖ", "¿©±âÀú±â", "010", "ÁÖ¹®»óÅÂ", "½Å¿ëÄ«µå", 0, null, 0, 0, 0, null));
+		Params param=new Params();
+		param.setPageSize(50);
+		List<Orders> orders=new ArrayList<Orders>();
 		
-		Params p=new Params();
-		
-		List<Orders> orders=dao.listAll(p);
+		orders=dao.listByParam(param, "ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½");
+		System.out.println(param.toString());
 		for (Orders order : orders) {
 			System.out.println(order);
 		}
-		//System.out.println(dao.getNewOrderId());
-
+		
+		
+		
+		
 	}
 
 }

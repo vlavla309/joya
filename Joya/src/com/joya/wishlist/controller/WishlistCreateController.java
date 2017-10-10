@@ -35,7 +35,6 @@ public class WishlistCreateController implements Controller{
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		wishlistService.insert((String) request.getAttribute("email"), productId);
 		String url = request.getHeader("REFERER");
-		System.out.println("[이전페이지 경로] : "+ url);
 		mav.setView("redirect:"+url);
 		return mav;
 	}
