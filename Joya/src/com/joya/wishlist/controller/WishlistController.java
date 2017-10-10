@@ -7,8 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.junit.runners.Parameterized.Parameters;
-
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 import com.joya.common.web.PageBuilder;

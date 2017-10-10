@@ -15,5 +15,7 @@ public interface OrderDao {
 	
 	public  List<Orders> listAll(Params param);
 	public  Orders search(String orderid);
-
+	public int getNewOrderId();
+	public void delete(int orderId);
+	public void update(Orders order);
 }

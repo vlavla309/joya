@@ -43,20 +43,15 @@ public class LoginCheckFilter implements Filter {
 					String user = URLDecoder.decode(cookie.getValue(), "utf-8");
 	                String[] tokens = user.split("###");
 	                email = tokens[0];
-	                /*name = tokens[1];
-	                passwd = tokens[2];*/
-					
 					UserService userService = new UserServiceImpl();
 					
 					User userinfo = userService.read(email);
 					name = userinfo.getName();
-					passwd = userinfo.getPasswd();
 				}
 			}
 		}
 		request.setAttribute("email", email);
 		request.setAttribute("name", name);
-		request.setAttribute("passwd", passwd);
 		chain.doFilter(request, response);
 		
 	}

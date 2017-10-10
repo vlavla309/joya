@@ -207,7 +207,7 @@
 															</div>
 														</form>
 														<div class="wls">
-															<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}&email=${cookie.user.value}"><i class="fa fa-heart"></i> Wish list
+															<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}"><i class="fa fa-heart"></i> Wish list
 															</a>
 															<span>|</span>
 															<a href="mailto:info@yourdomain.com"><i class="fa fa-envelope"></i> SEND EMAIL</a>

@@ -15,16 +15,20 @@ public class Orders {
 	private int payment;
 	private int cardNo;
 	private int approvalNo;
-	
+	private String orderDate;
 	
 	public Orders() {}
 	
-	public Orders(int orderId, String email, int price, String receiver, String address, String phone, String status,
-			String paymentType, int usedPoint, String paymentDate, int payment, int cardNo, int approvalNo) {
+	
+	
+	public Orders(int orderId, String email, int price, String orderer, String receiver, String address, String phone,
+			String status, String paymentType, int usedPoint, String paymentDate, int payment, int cardNo,
+			int approvalNo, String orderDate) {
 		super();
 		this.orderId = orderId;
 		this.email = email;
 		this.price = price;
+		this.orderer = orderer;
 		this.receiver = receiver;
 		this.address = address;
 		this.phone = phone;
@@ -35,7 +39,10 @@ public class Orders {
 		this.payment = payment;
 		this.cardNo = cardNo;
 		this.approvalNo = approvalNo;
+		this.orderDate=orderDate;
 	}
+
+
 
 	public int getOrderId() {
 		return orderId;
@@ -61,6 +68,14 @@ public class Orders {
 		this.price = price;
 	}
 	
+	public String getOrderer() {
+		return orderer;
+	}
+
+	public void setOrderer(String orderer) {
+		this.orderer = orderer;
+	}
+
 	public String getOrderer() {
 		return orderer;
 	}
@@ -148,14 +163,32 @@ public class Orders {
 	public void setApprovalNo(int approvalNo) {
 		this.approvalNo = approvalNo;
 	}
+	
+	
+
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Orders [orderId=" + orderId + ", email=" + email + ", price=" + price + ", receiver=" + receiver
-				+ ", address=" + address + ", phone=" + phone + ", status=" + status + ", paymentType=" + paymentType
-				+ ", usedPoint=" + usedPoint + ", paymentDate=" + paymentDate + ", payment=" + payment + ", cardNo="
-				+ cardNo + ", approvalNo=" + approvalNo + "]";
+		return "Orders [orderId=" + orderId + ", email=" + email + ", price=" + price + ", orderer=" + orderer
+				+ ", receiver=" + receiver + ", address=" + address + ", phone=" + phone + ", status=" + status
+				+ ", paymentType=" + paymentType + ", usedPoint=" + usedPoint + ", paymentDate=" + paymentDate
+				+ ", payment=" + payment + ", cardNo=" + cardNo + ", approvalNo=" + approvalNo + ", orderDate="
+				+ orderDate + "]";
 	}
+
+
+
 	
 	
 }

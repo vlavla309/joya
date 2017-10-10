@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.Delimiter;
 import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
@@ -31,7 +32,7 @@ public class MyPageController implements Controller{
 		String email = request.getParameter("email");
 		String referer = request.getParameter("referer");
 		User user = userService.read(email);
-		String[] tokens = user.getAddress().split("###");
+		String[] tokens = user.getAddress().split(Delimiter.USER_INFO);
 		
 		if (referer != null) {
 			switch (referer) {

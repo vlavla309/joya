@@ -214,15 +214,15 @@
 																		<c:set var="find" value="false"/>
 																		<c:forEach items="${wishlist}" var="wish" varStatus="status">
 																			<c:if test="${not doneLoop}">
-																				<c:if test="${(wish.productId==product.productId)&&(wish.email==cookie.user.value)}">
-																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}&email=${cookie.user.value}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
+																				<c:if test="${(wish.productId==product.productId)&&(wish.email==loginuser)}">
+																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
 																					<c:set var="doneLoop" value="true"/>
 																					<c:set var="find" value="true"/>
 																				</c:if>
 																			</c:if>
 																		</c:forEach>
 																		<c:if test="${not find}">
-																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}&email=${cookie.user.value}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
+																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
 																		</c:if>
 																	</div>
 																	</li>
