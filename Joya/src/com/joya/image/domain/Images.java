@@ -41,12 +41,12 @@ public class Images {
 		this.path = path;
 	}
 
-	public int getOrder() {
+	public int getOrderNo() {
 		return orderNo;
 	}
 
-	public void setOrder(int order) {
-		this.orderNo = order;
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
 	}
 
 	@Override

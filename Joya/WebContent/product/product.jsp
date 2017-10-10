@@ -40,6 +40,19 @@
 	<script src="../assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="../assets/javascripts/cs.script.js" type="text/javascript"></script>
+
+	<script src="../assets/javascripts/cart_function.js" type="text/javascript"></script>
+	
+	<script>
+	$(function(){
+		$(".add-to-cart").click(function(){
+			var productId=$(this).val();
+			var amount=$("#quantity").val();
+			alert(productId+" "+amount);
+			addCartItem(productId, amount);
+		});
+	})
+	</script>
 </head>
 
 <body style="height: 2671px;" itemscope="" itemtype="http://schema.org/WebPage" class="templateProduct notouch">
@@ -202,7 +215,7 @@
 																	</div>
 																</div>
 																<div class="others-bottom clearfix">
-																	<button id="add-to-cart" class="btn btn-1 add-to-cart" data-parent=".product-information" type="submit" name="add">Add to Cart</button>
+																	<button id="add-to-cart" class="btn btn-1 add-to-cart" data-parent=".product-information" value="${product.productId}" type="button" name="add">Add to Cart</button>
 																</div>
 															</div>
 														</form>

@@ -63,11 +63,11 @@ public class CertificationController implements Controller {
 					}
 				} else {
 					if (referer.contains("/user/login.joya")) {
-						location = "/user/login.joya";
+						location = "/user/login.joya?err=failed";
 					} else if(referer.contains("/user/login2.joya")) {
-						location = "/user/login2.joya";
+						location = "/user/login2.joya?err=failed";
 					} else {
-						location = "/user/login3.joya";
+						location = "/user/login3.joya?err=failed";
 					}
 				}
 			}else {// 로그아웃
@@ -83,7 +83,7 @@ public class CertificationController implements Controller {
 					}
 				} 
 		}
-		mav.setView("redirect:"+request.getContextPath() + location);
+		mav.setView("redirect:" + request.getContextPath() + location);
 		return mav;
 	}
 }
