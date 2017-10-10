@@ -42,9 +42,9 @@ public class OrderListController implements Controller {
 		params.setPageNum(pagiSize);
 		
 		String type=request.getParameter("type");
-		String value=request.getParameter("value");
+		String value=request.getParameter("target");
 		String status=request.getParameter("status");
-		
+		if(status!=null&&status.equals("전체"))status=null;
 		if(type!=null)params.setType(type);
 		if(value!=null)params.setValue(value);
 		
@@ -57,6 +57,9 @@ public class OrderListController implements Controller {
 			System.out.println(order);
 		}
 		
+		if(status!=null) {
+			mav.addObject("status", status);
+		}else mav.addObject("status", "전체");
 		mav.addObject("orders", orders);
 		mav.addObject("pageBuilder", pageBuilder);
 		mav.addObject("params", params);;
