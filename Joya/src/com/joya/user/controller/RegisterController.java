@@ -37,7 +37,7 @@ public class RegisterController implements Controller{
 		
 		userService.create(user);
 		
-		mav.setView(request.getContextPath() + "/user/regist_result.joya");
+		mav.setView(request.getContextPath() + "/user/registresult.joya");
 		mav.addObject("user", user);
 		mav.addObject("address1", address1);
 		mav.addObject("address2", address2);
