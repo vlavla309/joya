@@ -20,6 +20,7 @@
 
 	<!-- cart -->
 	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
+	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
 	
 	
 	<!-- 회원 관련 -->
