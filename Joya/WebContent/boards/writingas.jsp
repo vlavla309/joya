@@ -54,6 +54,18 @@
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
 
+<script>
+  $(function() {
+    $("input[type='radio']").click(function(){
+          var radioValue = $("input[name='articleType']:checked").val();
+          if(radioValue == "secret"){
+            $("input[name='title']").attr("value","비밀글입니다.");
+          }
+          
+      });
+  })
+  
+</script>
 
 </head>
 
@@ -62,8 +74,8 @@
 
 
   <%
-  	email = "joa@joa";
-  	name = "조아조";
+  	email = "admin@joa";
+  	name = "관리자";
 
   	request.setAttribute("email", email);
   	request.setAttribute("name", name);
@@ -106,13 +118,16 @@
                 <div class="row">
 
                   <form
-                    action="${pageContext.servletContext.contextPath}/boards/qnawrite.joya"
+                    action="${pageContext.servletContext.contextPath}/boards/writearticle.joya?board_id=4"
                     method="post" enctype="multipart/form-data">
                     <div class="left-block col-md-12">
-                      <input type="hidden" value="contact"
-                        name="form_type"><input type="hidden"
-                        name="utf8" value="â">
+                      <!-- <input type="hidden" value="contact" name="form_type"> -->
                       <input type="hidden" name="board_id" value="4"> 
+                      
+                      <div class="typediv">
+                        <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
+                      </div>
+                      <br>
 
                       <div class="midivision2">
                         <label class="control-label" for="name">제목<span
@@ -162,10 +177,10 @@
                         class="form-control" name="contents"></textarea>
                       <br>
                       <div class="midivision7">
-                      <input type="file">
+                      <input type="file" name="filepath" value="5">
                       </div>
                       <div class="midivision6">
-                        <button class="btn">올리기</button>
+                        <button class="btn" type="">올리기</button>
                       </div>
                     </div>
                   </form>

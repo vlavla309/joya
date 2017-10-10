@@ -32,114 +32,7 @@ public class JdbcArticleDao implements ArticleDao {
 		this.dataSource = dataSource;
 	}
 	
-	
-	/** 
-	@Override
-	public void create(Article article) {
-		String sql = "";
-		String productId = Integer.toString(article.getProductId());
-		if(productId == null) {
-			sql = "INSERT INTO articles \r\n" + 
-					"            (article_id, \r\n" + 
-					"             email, \r\n" + 
-					"             board_id, \r\n" + 
-					"             title, \r\n" + 
-					"             contents, \r\n" + 
-					"             writer, \r\n" + 
-					"             passwd, \r\n" + 
-					"             group_no, \r\n" + 
-					"             type, \r\n" + 
-					"             file_path) \r\n" + 
-					"VALUES      (articles_seq.nextval, \r\n" + 
-					"             ?, \r\n" + 
-					"             2, \r\n" + 
-					"             ?, \r\n" + 
-					"             ?, \r\n" + 
-					"             ?, \r\n" + 
-					"             ?, \r\n" + 
-					"             articles_seq.currval, \r\n" + 
-					"             0, \r\n" + 
-					"             ?)";
-		}else {
-			sql = "INSERT INTO articles \r\n" + 
-					"            (article_id, \r\n" + 
-					"             email, \r\n" + 
-					"             board_id, \r\n" + 
-					"             title, \r\n" + 
-					"             contents, \r\n" + 
-					"             writer, \r\n" + 
-					"             passwd, \r\n" + 
-					"             group_no, \r\n" + 
-					"             type, \r\n" + 
-					"             file_path, \r\n" + 
-					"             product_id) \r\n" + 
-					"VALUES      (articles_seq.nextval, \r\n" + 
-					"             ?, \r\n" + 
-					"             4, \r\n" + 
-					"             ?, \r\n" + 
-					"             ?, \r\n" + 
-					"             ?, \r\n" + 
-					"             ?, \r\n" + 
-					"             articles_seq.currval, \r\n" + 
-					"             0, \r\n" + 
-					"             ?, \r\n" + 
-					"             ?)";
-		}
-			
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		try {
-			con = dataSource.getConnection();
-			System.out.println("sddsdsdsd");
-			pstmt = con.prepareStatement(sql);
-			System.out.println("121212121");
-			if(productId == null) {
-				pstmt.setString(1, article.getEmail());
-				//pstmt.setInt(2, article.getArticleId());
-				pstmt.setString(2, article.getTitle());
-				pstmt.setString(3, article.getContents());
-				pstmt.setString(4, article.getWriter());
-				pstmt.setString(5, article.getPasswd());
-				pstmt.setString(6, article.getFilePath());
-				System.out.println("222222222");
-			}else {
-				pstmt.setString(1, article.getEmail());
-				//pstmt.setInt(2, article.getArticleId());
-				pstmt.setString(2, article.getTitle());
-				pstmt.setString(3, article.getContents());
-				pstmt.setString(4, article.getWriter());
-				pstmt.setString(5, article.getPasswd());
-				pstmt.setString(6, article.getFilePath());	
-				pstmt.setInt(7, article.getProductId());
-			}
-			System.out.println("3333333333");
-			pstmt.executeQuery();
-			System.out.println("4444444444");
-			con.commit();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-		} finally {
-			try {
-				if(pstmt != null)pstmt.close();
-				if(con != null)con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
 
-	}
-	
-
-	   */
 	   
 
 	   
@@ -619,30 +512,39 @@ public class JdbcArticleDao implements ArticleDao {
 		sb.append("                       hitcount,");
 		sb.append("                       file_path,");
 		sb.append("                       product_id");
-		sb.append("                FROM   articles");
-		sb.append("                WHERE  board_id = ? ");
+		
+		System.out.println("111111111111111");
+		
+		sb.append("                FROM   articles ");
+		sb.append("                WHERE  group_no IN (SELECT group_no ");
+		sb.append("                                    FROM   articles ");
+		sb.append("                                    WHERE  board_id = ? ");
+		
+		System.out.println("122222222222222222");
 		
 		String type = params.getType();
 		String value = params.getValue();
 		if(type != null) {
-			switch(type) {
+			switch(params.getType()){
 			case "title":
-				sb.append("                       AND title LIKE ?");
+				sb.append("                                           AND title LIKE ? ");
 				value = "%" + value + "%";
 				break;
 			case "contents":
-				sb.append("                       AND contents LIKE ?");
+				sb.append("                                           AND contents LIKE ? ");
 				value = "%" + value + "%";
 				break;
 			case "writer":
-				sb.append("                       AND writer = ?");
-				System.out.println("00000000");
+				sb.append("                                           AND writer = ? ");
 				break;
 			}
 		}
+		
+		sb.append("				    ) ");
 		sb.append("                ORDER  BY group_no DESC, ");
-		sb.append("                          type ASC))");
-		sb.append(" WHERE  request_page = ?");
+		sb.append("                          type ASC)) ");
+		sb.append(" WHERE  request_page = ? ");
+		
 		
 		try {
 			con = dataSource.getConnection();
@@ -692,6 +594,8 @@ public class JdbcArticleDao implements ArticleDao {
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT Count(article_id) count ");
 		sb.append("FROM   articles ");
+		sb.append("WHERE  group_no IN (SELECT group_no ");
+		sb.append("FROM   articles ");
 		sb.append("WHERE  board_id = ? ");
 		
 		String type = params.getType();
@@ -703,7 +607,7 @@ public class JdbcArticleDao implements ArticleDao {
 				value = "%" + value + "%";
 				break;
 			case "contents":
-				sb.append("       AND content LIKE ? ");
+				sb.append("       AND contents LIKE ? ");
 				value = "%" + value + "%";
 				break;
 			case "writer":
@@ -711,6 +615,8 @@ public class JdbcArticleDao implements ArticleDao {
 				break;
 			}
 		}
+		sb.append("				    ) ");
+
 		
 		try {
 			con = dataSource.getConnection();

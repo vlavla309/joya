@@ -18,6 +18,7 @@
 			}
 		}
 	}
+ 
 %>
 
 <!doctype html>
@@ -31,7 +32,7 @@
   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
-<title>Q&A - Writing</title>
+<title>A/S - Writing</title>
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
   type='text/css'>
 <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet"
@@ -53,24 +54,19 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-
-<script>
+  
+  <script>
   $(function() {
-    
-    $("#editbutton").on("click",function(event) {
-    	
-    });
-    
-    $(".yes").on("click", function(){
-    	var atcId = $(".articleId").attr("value");
-    	console.log(atcId);
-      $.ajax({
-        url : "${pageContext.servletContext.contextPath}/boards/updatearticle.joya",
-        data : {articleId : atcId},
-        method : "post"
+    $("input[type='radio']").click(function(){
+          var radioValue = $("input[name='articleType']:checked").val();
+          if(radioValue == "secret"){
+            $("input[name='title']").attr("value","비밀글입니다.");
+          }
+          
       });
-    });
   })
+  
+  console.log(${param.articleid});
   
 </script>
 
@@ -78,22 +74,7 @@
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
-  
-  <%-- 회원삭제 modal --%>
-  <div class="modal" id="editModal">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">수정하시겠습니까?</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="yes" data-dismiss="modal" name="">예</button>
-        <button type="reset" class="no" data-dismiss="modal" name="">아니오</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
   <%
   	email = "joa@joa";
@@ -119,8 +100,8 @@
               <div class="col-md-24">
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
-                <span>/</span> <span class="page-title">Q&A -
-                  Edit</span>
+                <span>/</span> <span class="page-title">A/S -
+                  Editing</span>
               </div>
             </div>
           </div>
@@ -129,7 +110,7 @@
           <div class="container">
             <div class="row">
               <div id="page-header">
-                <h1 id="page-title">Q&A</h1>
+                <h1 id="page-title">A/S</h1>
               </div>
             </div>
           </div>
@@ -139,10 +120,14 @@
               <div class="container">
                 <div class="row">
 
+                  <form action="${pageContext.servletContext.contextPath}/boards/updatearticle.joya?boardid=4"
+                    method="post" enctype="multipart/form-data">
                     <div class="left-block col-md-12">
-                      <input type="hidden" value="contact"
-                        name="form_type"><input type="hidden"
-                        name="utf8" value="â">
+                      
+                      <div class="typediv">
+                        <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
+                      </div>
+                      <br>
 
                       <div class="midivision2">
                         <label class="control-label" for="name">제목<span
@@ -152,8 +137,9 @@
                         class="form-control" name="title"> 
                         
                         <input type="hidden" value="${email}" name="email">
-                        <input type="hidden" name="articleId" value="${param.article_id}">
- 
+                        <input type="hidden" name="articleId" value="${param.articleid}">
+                        <input type="hidden" name="boardId" value="4">
+
                       <c:choose>
                         <c:when test="${not empty email}">
                           <div>
@@ -193,9 +179,12 @@
                       <textarea id="message" rows="5"
                         class="form-control" name="contents">${article.contents}</textarea>
                       <br>
+                      <div class="midivision7">
+                      <input type="file" name="filepath" value="5">
+                      </div>
                       <div class="midivision6">
-                        <input class="btn" type="submit" value="수정하기" id="editbutton" data-toggle="modal" data-target="#editModal">
-                        <button class="btn"><a>글목록</a></button>
+                        <input class="btn" type="submit" value="수정하기">
+                        <button class="btn"><a href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a></button>
                       </div>
                     </div>
                   </form>

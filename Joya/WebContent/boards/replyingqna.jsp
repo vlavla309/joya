@@ -119,7 +119,8 @@
                       <input type="text" id="name" value="[RE]"
                         class="form-control" name="title"> <input
                         type="hidden" value="${email}" name="email">
-                        <input type="hidden" name="articleId" value="${param.article_id}">
+                        <input type="hidden" name="articleid" value="${param.articleid}">
+                        <input type="hidden" name="boardid" value="${param.boardid}">
                       <div>
                         <div class="midivision left-block col-md-12">
                           <label class="control-label" for="email">이름

@@ -24,8 +24,9 @@ public class ReadArticleController implements Controller {
 		
 		request.setCharacterEncoding("utf-8");
 		System.out.println("readingarticle 컨트롤러--------------");
-		System.out.println(request.getParameter("article_id"));
-		int articleId = Integer.parseInt(request.getParameter("article_id"));
+		System.out.println(request.getParameter("articleid"));
+		int articleId = Integer.parseInt(request.getParameter("articleid"));
+		String boardId = request.getParameter("boardid");
 		
 		Article article = new Article();
 		
@@ -33,8 +34,22 @@ public class ReadArticleController implements Controller {
 		article = articleService.read(articleId);
 		
 		mav.addObject("article", article);
-		mav.setView("/boards/readingqna.jsp");
-		
+		if(boardId != null) {
+			switch(boardId) {
+			case "1":
+				mav.setView("/boards/readingqna.jsp");
+				break;
+			case "2":
+				mav.setView("/boards/readingqna.jsp");
+				break;
+			case "3":
+				mav.setView("/boards/readingas.jsp");
+				break;
+			case "4":
+				mav.setView("/boards/readingas.jsp");
+				break;	
+			}
+		}
 		return mav;
 	}
 

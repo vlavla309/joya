@@ -15,7 +15,7 @@ import com.joya.common.controller.ModelAndView;
 import com.joya.common.web.PageBuilder;
 import com.joya.common.web.Params;
 
-public class QnAListController implements Controller {
+public class ASListController implements Controller {
 	
 	private ArticleService articleService = new ArticleServiceImpl();
 
@@ -23,7 +23,7 @@ public class QnAListController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
 		
-		System.out.println("---controller들어옴-----");
+		System.out.println("---aslistcontroller들어옴-----");
 		ModelAndView mav = new ModelAndView();
 		
 		int pageSize = 10;
@@ -45,21 +45,21 @@ public class QnAListController implements Controller {
 		
 		
 		//페이징 처리 및 검색 처리
-		List<Article> list = articleService.listByParams(params, 2);
-		int rowCount = articleService.pageCount(params, 2);
+		List<Article> list = articleService.listByParams(params, 4);
+		int rowCount = articleService.pageCount(params, 4);
 		
 		//페이징 계산 유틸리티 생성 및 실행
 		PageBuilder pb = new PageBuilder(params, rowCount);
 		pb.build();
 		
-		System.out.println(list);
+		System.out.println("article리스트" + list);
 		
 		mav.addObject("list", list);
 		mav.addObject("params", params);
 		mav.addObject("pb", pb);
 		
 		
-		mav.setView("/boards/qna.jsp");
+		mav.setView("/boards/as.jsp");
 		return mav;
 	}
 

@@ -53,6 +53,19 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
+  
+  <script>
+  $(function() {
+    $("input[type='radio']").click(function(){
+          var radioValue = $("input[name='articleType']:checked").val();
+          if(radioValue == "secret"){
+            $("input[name='title']").attr("value","비밀글입니다.");
+          }
+          
+      });
+  })
+  
+</script>
 
 </head>
 
@@ -103,12 +116,17 @@
               <div class="container">
                 <div class="row">
 
-                  <form action="${pageContext.servletContext.contextPath}/boards/updatearticle.joya"
+                  <form action="${pageContext.servletContext.contextPath}/boards/updatearticle.joya?boardid=2"
                     method="post">
                     <div class="left-block col-md-12">
                       <input type="hidden" value="contact"
                         name="form_type"><input type="hidden"
                         name="utf8" value="â">
+                        
+                        <div class="typediv">
+                        <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
+                      </div>
+                      <br>
 
                       <div class="midivision2">
                         <label class="control-label" for="name">제목<span
@@ -118,7 +136,8 @@
                         class="form-control" name="title"> 
                         
                         <input type="hidden" value="${email}" name="email">
-                        <input type="hidden" name="articleId" value="${param.article_id}">
+                        <input type="hidden" name="articleId" value="${param.articleid}">
+                        <input type="hidden" name="boardid" value="2">
  
                       <c:choose>
                         <c:when test="${not empty email}">
@@ -161,7 +180,7 @@
                       <br>
                       <div class="midivision6">
                         <input class="btn" type="submit" value="수정하기">
-                        <button class="btn"><a>글목록</a></button>
+                        <button class="btn"><a href="${pageContext.servletContext.contextPath}/boards/qnalist.joya">글목록</a></button>
                       </div>
                     </div>
                   </form>

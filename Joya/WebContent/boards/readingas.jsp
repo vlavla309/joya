@@ -40,6 +40,8 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
+  
+ 
 <!-- css 적용 부분 종료 -->
 
 <%
@@ -62,7 +64,7 @@
 
 <%
   email = "admin@joa";
-  name = "관리자";
+  name = "조아조";
 
   request.setAttribute("email", email);
   request.setAttribute("name", name);
@@ -73,14 +75,14 @@
 	$(function(){
 		$(".yes").on("click", function(event){
 			$.ajax({
-				url : "${pageContext.servletContext.contextPath}/boards/deletearticle.joya?articleid=${article.articleId}",
+				url : "${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}",
 				success : function(data){
-					location.href="${pageContext.servletContext.contextPath}/boards/qnalist.joya";
+					location.href="${pageContext.servletContext.contextPath}/boards/aslist.joya";
 				}
 			});
 		});
+		
 	})
-
 </script>
 
 
@@ -105,6 +107,24 @@
     </div>
   </div>
  </div>
+ 
+     <%-- 이미지 modal --%>
+ <div class="modal" id="imageModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+        <h4 class="modal-title">Image</h4>
+      </div>
+      <div class="modal-body">
+       <image src="${article.filePath }">
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
@@ -120,7 +140,7 @@
               <div class="col-md-24">
                 <a href="index-2.html" class="homepage-link"
                   title="Back to the frontpage">Home</a> <span>/</span>
-                <span class="page-title">Q&A</span>
+                <span class="page-title">A/S</span>
               </div>
             </div>
           </div>
@@ -129,9 +149,9 @@
           <div class="container">
             <div class="row">
               <div id="page-header" class="col-md-24">
-                <h1 id="page-title">Q&A</h1>
+                <h1 id="page-title">A/S</h1>
               </div>
-              <form action="${pageContext.servletContext.contextPath}/boards/updateaction.joya?articleid=${article.articleId}&boardid=2"
+              <form action="${pageContext.servletContext.contextPath}/boards/updateaction.joya?articleid=${article.articleId}&boardid=4"
                     method="post">
               <div id="ji-tableM">
                 <table>
@@ -148,6 +168,10 @@
                   <td><strong>조회수</strong></td>
                   <td class="textleft">${article.hitcount }</td>
                 </tr>
+                <tr>
+                  <td><strong>첨부파일</strong></td>
+                  <td colspan="5" class="textleft"><a style="cursor: pointer;" data-toggle="modal" data-target="#imageModal"><img class="fileimage" src="${article.filePath }"></a></td>
+                </tr>
 
                 <tr>
                   <%--
@@ -162,7 +186,7 @@
                 <c:choose>
                   <c:when test="${name eq '관리자'}">
                    <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/replyingqna.jsp?articleid=${article.articleId}&boardid=2">답글쓰기</a>
+                    <a href="${pageContext.servletContext.contextPath}/boards/replyingqna.jsp?articleid=${article.articleId}&boardid=4">답글쓰기</a>
                     </button>
                     <input class="btn" type="submit" value="수정" >
                      <button type="button" class="btn">
@@ -170,7 +194,7 @@
                      <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> 
                      </button>
                       <button type="button" class="btn">
-                      <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/qnalist.joya">글목록</a>
+                      <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
                       </button>
                       </div>
                     </c:when>
@@ -182,13 +206,13 @@
                       <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> 
                       </button>
                       <button type="button" class="btn">
-                      <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/qnalist.joya">글목록</a>
+                      <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
                       </button>
                       </div>
                     </c:when>
                     <c:otherwise>
                      <button type="button" class="btn">
-                     <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/qnalist.joya">글목록</a>
+                     <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
                      </button>
                      </div>
                     </c:otherwise>

@@ -56,6 +56,46 @@
 	color:red;
 }
 
-#checkModal{
-	
+.modal-dialog{
+	width:32%;
+	margin-top: 20%;
 }
+
+.modal-header{
+	text-align: center;
+}
+
+.modal-title{
+	font-size: 11pt;
+}
+
+#yesbtn{
+	border: none;
+	background-color: white;
+	font-size: 10pt;
+}
+
+.fileimage{
+	max-width: 200px;
+}
+
+.modal-content{
+	position: relative;
+	top: -200px;
+	left: -100px;
+	width: 150%;
+}
+
+/* cart.jsp */
+.ji-productSelect{
+	width:24px;
+	height:24px;
+}
+
+.ji-cart-deleteBtn{
+	width:25px;
+	height:25px;
+}
+
+
+

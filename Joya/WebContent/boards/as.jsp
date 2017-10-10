@@ -12,7 +12,7 @@
   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
-<title>Q&A</title>
+<title>A/S</title>
 
 <!-- css 적용 부분 시작 -->
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
@@ -85,7 +85,7 @@
   	  console.log("원래비번 "+password);
   	  
   	  if(secretPw == password){
-          		location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid="+id+"&boardid=2";
+          		location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid="+id+"&boardid=4";
     	
   	  } else {
 	         $(".errorpasswd").text("비밀번호가 일치하지 않습니다.");
@@ -137,7 +137,7 @@
               <div class="col-md-24">
                 <a href="index-2.html" class="homepage-link"
                   title="Back to the frontpage">Home</a> <span>/</span>
-                <span class="page-title">Q&A</span>
+                <span class="page-title">A/S</span>
               </div>
             </div>
           </div>
@@ -146,7 +146,7 @@
           <div class="container">
             <div class="row">
               <div id="page-header" class="col-md-24">
-                <h1 id="page-title">Q&A</h1>
+                <h1 id="page-title">A/S</h1>
               </div>
 
               <div id="ji-tableD">
@@ -199,7 +199,7 @@
                                           <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
                                         </c:when>
                                         <c:otherwise>
-                                           <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=2">${article.title}</a>
+                                           <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=4">${article.title}</a>
                                         </c:otherwise>
                                      </c:choose>
                                    </td>
@@ -221,7 +221,7 @@
                 <div id="ji-writeD">
 
                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/writingqna.jsp">글쓰기</a>
+                    <a href="${pageContext.servletContext.contextPath}/boards/writingas.jsp">글쓰기</a>
                   </button>
                   </form>
                 </div>
@@ -271,7 +271,7 @@
             <div class="jiji_div">
               <form name="search" class="form-inline" role="form"
                 method="get"
-                action="${pageContext.servletContext.contextPath}/boards/qnalist.joya">
+                action="${pageContext.servletContext.contextPath}/boards/aslist.joya">
                 <div class="form-group">
                   <select class="form-control" id="type" name="type">
                     <option value="title">제목</option>

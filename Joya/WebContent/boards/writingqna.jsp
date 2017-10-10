@@ -57,8 +57,8 @@
 
 <script>
   $(function() {
-    $("input[type='radio']").click(function(){
-          var radioValue = $("input[name='articleType']:checked").val();
+    $("input[type='checkbox']").click(function(){
+          var radioValue = $("input[name='radio']:checked").val();
           if(radioValue == "secret"){
           	$("input[name='title']").attr("value","비밀글입니다.");
           }
@@ -119,7 +119,7 @@
                 <div class="row">
 
                   <form
-                    action="${pageContext.servletContext.contextPath}/boards/qnawrite.joya"
+                    action="${pageContext.servletContext.contextPath}/boards/writearticle.joya"
                     method="post" id="form">
                     <div class="left-block col-md-12">
                       <input type="hidden" value="contact"

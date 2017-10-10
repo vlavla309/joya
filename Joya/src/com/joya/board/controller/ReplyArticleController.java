@@ -28,7 +28,9 @@ public class ReplyArticleController implements Controller {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		int articleId = Integer.parseInt(request.getParameter("articleId"));
+		int articleId = Integer.parseInt(request.getParameter("articleid"));
+		
+		String boardId = request.getParameter("boardid");
 		
 		String email = request.getParameter("email");
 		String title = request.getParameter("title");
@@ -47,8 +49,23 @@ public class ReplyArticleController implements Controller {
 		articleService.reply(article);
 		
 		mav.addObject("article", article);
-		mav.setView("redirect:/boards/qnalist.joya");
-		
+		if(boardId != null) {
+			switch(boardId) {
+			case "1":
+				mav.setView("redirect:/boards/qnalist.joya");
+				break;
+			case "2":
+				mav.setView("redirect:/boards/qnalist.joya");
+				break;
+			case "3":
+				mav.setView("redirect:/boards/aslist.joya");
+				break;
+			case "4":
+				mav.setView("redirect:/boards/aslist.joya");
+				break;	
+			}
+		}
+
 		return mav;
 	}
 
