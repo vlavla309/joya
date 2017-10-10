@@ -53,7 +53,7 @@
               <div class="col-md-24">
                 <a href="index-2.html" class="homepage-link" title="Back to the frontpage">Home</a>
                 <span>/</span>
-                <span class="page-title">Order List</span>
+                <span class="page-title">Review</span>
               </div>
             </div>
           </div>
@@ -68,9 +68,14 @@
                   <h6 class="sb-title">Review</h6>
                   <span class="mini-line"></span>
                   <div class="row wrap-table">
-                  <form>
+                  <form action="${pageContext.servletContext.contextPath}/boards/writearticle.joya?board_id=3"
+                    method="post" enctype="multipart/form-data">
                     <table class="table-hover">
                     <!-- 테이블 헤더 시작 -->
+                    <input type="hidden" name="title" value="상품평">
+                    <input type="hidden" name="email" value="${email}">
+                    <input type="hidden" name="writer" value="${name}">
+                    <input type="hidden" name="passwd" value="상품평비번">
                     <thead>
                     <tr>
                       <th class="order_number" id="mi_review_1">
@@ -90,7 +95,7 @@
                         <a href="order_detail.jsp" title=""><img src="../boards/asimages/join.png"></a>
                       </td>
                       <td colspan="4">
-                        <textarea rows="10" cols="80" id="m_reviewtxt"></textarea>
+                        <textarea rows="10" cols="80" name="contents" id="m_reviewtxt"></textarea>
                       </td>
                     </tr>
                     </tbody>
@@ -98,7 +103,7 @@
                      
                     </table> 
                     <div id="reviewfile_m">
-                    <input type="file">
+                    <input type="file" name="filepath" value="5">
                     </div>
                     <div id="reviewsubmit_m">
                     <input type="submit" id="reviewbtn" value="Write">
