@@ -35,7 +35,7 @@ public class CartListController implements Controller {
 
 
 		Cookie[] cookies=request.getCookies();
-		String cartCookieVal="";
+		String cartCookieVal=" ";
 		if(cookies!=null){
 			for(Cookie cookie:cookies) {
 				if(cookie.getName().equalsIgnoreCase("cart")) {
@@ -69,9 +69,8 @@ public class CartListController implements Controller {
 	private Map<String, String> getCartMap(String cartCookieVal) {
 		Map<String, String> cartMap=new HashMap<>();
 
-		String[] cartItems=cartCookieVal.split(Delimiter.CART_ITEM);
-		
-		if(!cartItems[0].equals("")) {
+		if(!cartCookieVal.equals(" ")) {
+			String[] cartItems=cartCookieVal.split(Delimiter.CART_ITEM);
 			for (String item : cartItems) {
 				String productId=item.split(Delimiter.CART_ITEM_INFO)[0];
 				String amount=item.split(Delimiter.CART_ITEM_INFO)[1];
