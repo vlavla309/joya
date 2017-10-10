@@ -76,14 +76,6 @@ public class Orders {
 		this.orderer = orderer;
 	}
 
-	public String getOrderer() {
-		return orderer;
-	}
-
-	public void setOrderer(String orderer) {
-		this.orderer = orderer;
-	}
-
 	public String getReceiver() {
 		return receiver;
 	}
