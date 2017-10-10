@@ -156,11 +156,11 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("               status,");
 		sb.append("               payment_type,");
 		sb.append("               payment,");
-		sb.append("               payment_date,");
+		sb.append("               To_char(payment_date, 'YYYY/MM/DD') payment_date,");
 		sb.append("               usedpoint,");
 		sb.append("               card_no,");
 		sb.append("               approval_no,");
-		sb.append("               order_date ");
+		sb.append("               To_char(order_date, 'YYYY/MM/DD') order_date ");
 		sb.append("        FROM   (SELECT * ");
 		sb.append("                FROM   orders");
 		

@@ -1,7 +1,6 @@
 package com.joya.wishlist.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -10,14 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
-import com.joya.common.web.Delimiter;
 import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
 /**
- * ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ìƒì„± ì»¨íŠ¸ë¡¤ëŸ¬
+ * À§½Ã¸®½ºÆ® »ı¼º ÄÁÆ®·Ñ·¯
  *
- * @author í•œìˆ˜ì§„
+ * @author ÇÑ¼öÁø
  *
  */
 public class WishlistCreateController implements Controller{
@@ -35,7 +33,7 @@ public class WishlistCreateController implements Controller{
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		wishlistService.insert((String) request.getAttribute("email"), productId);
 		String url = request.getHeader("REFERER");
-		System.out.println("[ì´ì „í˜ì´ì§€ ê²½ë¡œ] : "+ url);
+		System.out.println("[ÀÌÀüÆäÀÌÁö °æ·Î] : "+ url);
 		mav.setView("redirect:"+url);
 		return mav;
 	}
