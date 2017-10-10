@@ -34,6 +34,9 @@
     <script>
         $(document).ready(function () {
         	
+        	$("#cancel_modify").click(function() {
+        		goBack();
+			});
             //start of the document ready function
             //delcaring global variable to hold primary key value.
             var pryEmpId;
@@ -71,6 +74,21 @@
     		return true;
     		
     	}
+        
+        function goBack() {
+			var form = document.createElement("form");
+			form.setAttribute("action", "/user/mypage_action.joya");
+			form.setAttribute("method", "post");
+			
+			var email = document.createElement("input");
+			email.setAttribute("type", "hidden");
+			email.setAttribute("name", "email");
+			email.setAttribute("value", "${user.email }");
+			
+			form.appendChild(email);
+			document.body.appendChild(form);
+			form.submit();
+		}
     </script>
     
 </head>
@@ -129,6 +147,7 @@
                                         <input value="${address2 }" name="address2" type="text" id="sample6_address" class="address1 form-control" placeholder="주소" required="required">
                                         <input value="${address3 }" name="address3" id="sample6_address2" class="address2 form-control" placeholder="상세주소" required="required">
                                         </div>
+                                        <button id="cancel_modify" class="btn" type="button">취소</button>
                                         <button id="acc-close" class="btn" type="button">회원 탈퇴</button>
                                         <button id="complete" class="btn" type="submit">수정 완료</button>
 									</div>

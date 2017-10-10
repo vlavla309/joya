@@ -18,9 +18,9 @@ import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
 /**
- * ìœ„ì‹œë¦¬ìŠ¤íŠ¸ ì‚­ì œ ì»¨íŠ¸ë¡¤ëŸ¬
+ * À§½Ã¸®½ºÆ® »èÁ¦ ÄÁÆ®·Ñ·¯
  *
- * @author ì •ì§€í˜„
+ * @author Á¤ÁöÇö
  *
  */
 public class WishlistDeleteController implements Controller {
@@ -49,9 +49,8 @@ public class WishlistDeleteController implements Controller {
 		}
 		
 		String url = request.getHeader("REFERER");
-		System.out.println("[ì‚­ì œ ì´ì „í˜ì´ì§€ ê²½ë¡œ] : "+ url);
+		System.out.println("[»èÁ¦ ÀÌÀüÆäÀÌÁö °æ·Î] : "+ url);
 		mav.setView("redirect:"+url);
 		return mav;
 	}
 }
-

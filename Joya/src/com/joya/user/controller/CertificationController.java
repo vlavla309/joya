@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.Delimiter;
 import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
@@ -33,12 +34,11 @@ public class CertificationController implements Controller {
 			User user = userService.isMember(email, passwd);
 			if(user != null){
 				String userInfo = null;
-				//try {
-					//userInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName(), "utf-8");
-					userInfo = user.getEmail() + "@@@" + user.getName();
-				//} catch (UnsupportedEncodingException e) {
-					//throw new ServletException("UserAuthController.handleRequest() 실행중 예외 발생", e);
-				//}
+				try {
+					userInfo = URLEncoder.encode(user.getEmail() + Delimiter.USER_INFO + user.getName(), "utf-8");
+				} catch (UnsupportedEncodingException e) {
+					throw new ServletException("UserAuthController.handleRequest() 실행중 예외 발생", e);
+				}
 				Cookie loginCookie = new Cookie("user", userInfo);
 				loginCookie.setPath("/");
 				response.addCookie(loginCookie);

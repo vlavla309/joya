@@ -43,8 +43,4 @@ public class OrderItems {
 	public String toString() {
 		return "OrderItems [productId=" + productId + ", orderId=" + orderId + ", amount=" + amount + "]";
 	}
-	
-	
-	
-
 }

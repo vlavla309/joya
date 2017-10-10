@@ -41,7 +41,7 @@
 <link href="../assets/stylesheets/wishlist.css" rel="stylesheet"
   type="text/css" media="all">
 
-<script src="../assets/javascripts/jquery-1.9.1.min.js"
+<script src="../assets/stylesheets/javascripts/jquery-1.9.1.min.js"
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
@@ -61,12 +61,21 @@ $(document).ready(function(){
             $("input[name=ji-chk]").prop("checked",false);
         }
     })
+    
+    /*   $("#ji-orderB").click(function(){
+    	var checked_val = "";
+    	$("input[name=ji-chk]:checked").each(function() {
+    		var value = $(this).val();
+    		checked_val += value + ",";
+    	})
+    	$(this).val(checked_val);
+    	alert(checked_val);
+    })  */
 })
 </script>
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage"
-  class="templateBlog notouch">
+<body itemscope="" itemtype="http://schema.org/WebPage" class="templateBlog notouch">
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
   <!-- Header 영역 종료 -->
@@ -100,10 +109,6 @@ $(document).ready(function(){
 
               <div id="page-header" class="col-md-24">
                 <h1 id="page-title">Wish List</h1>
-                <div class="ji-totalD">
-                  <input class="ji-totalselect"  id="ji-totalchk" type="checkbox"> 
-                  <label  class="ji-totalselectL" for="ji-totalchk">전체 선택하기</label>
-                 </div>
               </div>
 
               <div id="col-main"class="blog blog-page col-sm-24 col-md-24 blog-full-width blog-3-col ">  
@@ -112,6 +117,11 @@ $(document).ready(function(){
                     <h2 class="ji-wishlistEmpty" >위시리스트가 존재하지 않습니다</h2>
                   </c:when>
                   <c:otherwise>
+                  
+                    <div class="ji-totalD">
+                    <input class="ji-totalselect"  id="ji-totalchk" type="checkbox"> 
+                    <label  class="ji-totalselectL" for="ji-totalchk">전체 선택하기</label>
+                   </div>
                   
                   <!--for  -->
                     
@@ -140,7 +150,7 @@ $(document).ready(function(){
                                        <input type="hidden" name="productId" value="${wishlist.productId }">
                                        <input type="hidden" name="email" value="${wishlist.email }">
                                        <input type="hidden" name="page" value="${params.page }">
-                                       <li class="ji-post-action"><input class="wishlistDeleteBtn"  type="image" src="../assets/images/wishlistDelete.png" alt="Submit"></li>
+                                       <li class="ji-post-action"><input class="wishlistDeleteBtn"  type="image" src="../assets/images/jiDelete.png" alt="Submit"></li>
                                     <!--목록에서 삭제하는 form 종료 -->
                                   </ul>
                                  </form>
@@ -200,7 +210,7 @@ $(document).ready(function(){
                   </c:when>
                   <c:otherwise>
                      <div>
-                       <button id="ji-orderB" class="btn" type="button" alt>Order</button>
+                       <a href="wishlistTest.jsp?orderlist="${checked_val }><button id="ji-orderB" class="btn" type="button" name="orderlist">Order</button></a>
                      </div>
                   </c:otherwise>
                   </c:choose>
