@@ -100,7 +100,7 @@ function setCartCookie(cartMap){
 			cartCookieValue+=DELIMITER_CART_ITEM;
 		}
 	})
-	$.cookie("cart", cartCookieValue);
+	$.cookie("cart", cartCookieValue, {expired:2, path:'/'});
 }
 
 /**카트 맵의 사이즈 즉 장바구니 품목 개수 반환*/
