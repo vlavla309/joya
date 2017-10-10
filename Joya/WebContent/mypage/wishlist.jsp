@@ -56,7 +56,7 @@ $(document).ready(function(){
             //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
             $("input[name=ji-chk]").prop("checked",true);
             //클릭이 안되있으면
-        }else{
+        }else{11
             //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
             $("input[name=ji-chk]").prop("checked",false);
         }
