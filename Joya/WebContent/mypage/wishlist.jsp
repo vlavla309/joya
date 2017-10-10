@@ -201,7 +201,7 @@ $(document).ready(function(){
                   </c:when>
                   <c:otherwise>
                      <div>
-                       <a href="wishlistTest.jsp?orderlist="${checked_val }><button id="ji-orderB" class="btn" type="button" name="orderlist">Order</button></a>
+                       <a href="wishlistTest.jsp?orderlist="${checked_val }><button id="ji-orderB" class="btn" type="button" name="orderlist">Add to Cart</button></a>
                      </div>
                   </c:otherwise>
                   </c:choose>
