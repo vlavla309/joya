@@ -30,13 +30,20 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Orders> listAll(Params param) {
-		return dao.listAll(param);
+	public List<Orders> listByParam(Params param, String status) {
+		return dao.listByParam(param, status);
 	}
 
 	@Override
 	public Orders search(String orderid) {
 		return dao.search(orderid);
 	}
+
+	@Override
+	public int pageCount(Params param, String status) {
+		return dao.pageCount(param, status);
+	}
+	
+	
 
 }

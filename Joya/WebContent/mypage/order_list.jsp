@@ -23,11 +23,12 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/orders.css" rel="stylesheet" type="text/css" media="all">
   
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
   <!-- css 적용 부분 종료 -->
-  
+    </style>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" class="templateCustomersRegister notouch">
@@ -46,50 +47,15 @@
               <div class="col-md-24">
                 <a href="index-2.html" class="homepage-link" title="Back to the frontpage">Home</a>
                 <span>/</span>
-                <span class="page-title">My Account</span>
+                <span class="page-title">Order List</span>
               </div>
             </div>
           </div>
         </div>              
         <section class="content">
+        <br>
           <div class="container">
             <div class="row">
-              <div id="page-header" class="col-md-24">
-                <h1 id="page-title">My Account</h1> 
-              </div>
-              <!-- 사용자 정보 영역 시작 -->
-              <div class="col-sm-6 col-md-6 sidebar">
-                <div class="group_sidebar">
-                  <div class="row sb-wrapper unpadding-top">
-                    <h6 class="sb-title">Account Details</h6>
-                    <span class="mini-line"></span>
-                    <ul id="customer_detail" class="list-unstyled sb-content">
-                      <li>
-                      <address class="clearfix">
-                      <div class="info">
-                        <i class="fa fa-user"></i>
-                        <span class="address-group">
-                        <span class="author">Jin Alkaid</span>
-                        <span class="email">jin@gmail.com</span>
-                        </span>
-                      </div>
-                      <div class="address">
-                        <span class="address-group">
-                        <span class="address1">point : #######<span class="phone-number"></span></span>
-                        <span class="address1">address : ~~~~~~<span class="phone-number"></span></span>
-                        </span>
-                      </div>
-                      </address>
-                      </li>
-                      <li>
-                      <button class="btn btn-1" id="view_address" onclick="window.location='address.html'">Manager Address (1)</button>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- 사용자 정보 영역 종료 -->
-              
               <!-- 주문 내역 조회 영역 시작 -->
               <div id="col-main" class="account-page col-sm-18 col-md-18 clearfix">
                 <div id="customer_orders">
