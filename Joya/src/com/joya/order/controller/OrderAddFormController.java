@@ -20,8 +20,13 @@ public class OrderAddFormController implements Controller{
 		
 		ModelAndView mav = new ModelAndView();
 		UserService userserv=new UserServiceImpl();
+		String loginuser = (String)request.getAttribute("email");
+		User user=null;
 		
-		User user = userserv.read((String)request.getAttribute("email"));
+		if(loginuser !=null) {
+			user = userserv.read(loginuser);
+		}
+		
 		System.out.println("[user] : "+ user);
 		mav.addObject("user", user);
 	    mav.setView("/order/order_form.jsp");

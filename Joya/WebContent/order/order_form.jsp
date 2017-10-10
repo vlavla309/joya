@@ -1,10 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-
-<!-- Mirrored from demo.designshopify.com/html_jewelry/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 08:51:04 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -32,6 +28,12 @@
     
     <script type="text/javascript">
 	    $(function(){
+	    	//로그인한 사용자 정보 읽어들임.
+	    	$("#sample6_postcode").val("${user.address}".split("###")[0])
+	    	$("#sample6_address").val("${user.address}".split("###")[1])
+	    	$("#sample6_address2").val("${user.address}".split("###")[2])
+	    	
+	    	//주문자 정보와 동일함 라디오 버튼을 누르면, 배송지 정보가 자동으로 채워짐
 	    	$("#same").change(function(){
 	            $("#receiver").val($("#ordername").val())
 	            $("#receivephone").val($("#orderphone").val())
@@ -80,19 +82,26 @@
 									<div id="register-form" class="row list-unstyled">
                                        <div class="half-ms-div">
   										<label class="control-label" for="sender">주문하시는 분<span class="req">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="emailmessage"></span></label>
-  										<input name="ordername" id="ordername" class="form-control " type="text" required="required">
+  										<input name="ordername" id="ordername" class="form-control " type="text" required="required" value="${user.name}">
                                        </div>
                                        <div class="half-ms-div">
   										<label class="control-label" for="email">이메일<span class="req">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="emailmessage"></span></label>
-  										<input name="email" id="email" class="form-control " type="text" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$" title="이메일을 올바르게 입력해 주세요." required="required">
+  										<input name="email" id="email" class="form-control " type="text" value="${user.email}" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z]+)+$" title="이메일을 올바르게 입력해 주세요." required="required">
                                        </div>
                                        <div class="half-ms-div"> 
   										<label class="control-label" for="phone">전화번호<span class="req">*</span></label>
-  										<input name="orderphone" id="orderphone" class="form-control " type="text" pattern="^01\d{1}-\d{3,4}-\d{4}$" title="010-111(1)-1111 형태로 입력해 주세요" required="required">
+  										<input name="orderphone" id="orderphone" class="form-control " value="${user.phone}" type="text" pattern="^01\d{1}-\d{3,4}-\d{4}$" title="010-111(1)-1111 형태로 입력해 주세요" required="required">
                                        </div>
                                        <div class="half-ms-div"> 
-  										<label class="control-label" for="phone">사용 가능한 포인트<span class="req">*</span></label>
-  										<input type="number" name="quantity" min="1" max="${user.point}" value="${user.point}">
+	  										<label class="control-label" for="phone">사용 가능한 포인트<span class="req">*</span></label>
+											<c:choose>
+											    <c:when test="${empty user.email}">
+											    	<input type="number" name="quantity" disabled="disabled">
+											    </c:when>
+											    <c:otherwise>
+											    	<input type="number" name="quantity" min="0" max="${user.point}" value="${user.point}">
+											    </c:otherwise>
+											</c:choose>
                                        </div>
                                        <div class="half-ms-div"> 
   										<label class="control-label" for="phone">결제 수단<span class="req" >*</span></label>

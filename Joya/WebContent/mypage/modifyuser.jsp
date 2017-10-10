@@ -34,27 +34,28 @@
     <script>
         $(document).ready(function () {
         	
+        	/* 취소 버튼 이벤트 */
         	$("#cancel_modify").click(function() {
         		goBack();
 			});
-            //start of the document ready function
-            //delcaring global variable to hold primary key value.
+        	
+        	/* 탈퇴 확인 모달 취소 버튼 이벤트 */
             var pryEmpId;
             $('#acc-close').click(function () {
                 pryEmpId = $(this).attr('id');
                 $('#myModal').modal('show');
             });
 
-            //function to reset bootstrap modal popups
+            /* 탈퇴 확인 모달창 메세지 */	
             $("#myModal").on("hidden.bs.modal", function () {
                 $(".modal-header").removeClass(' ').addClass('alert-danger');
                 $('.delete-confirm').css('display', 'inline-block');
                 $('.success-message').html('').html('정말 탈퇴하시겠습니까?');
             });
 
-            //end of the docuement ready function
         });
         
+        /* 비밀번호 일치 여부 메세지 출력 */
         function checkpw() {
     		
     		var pw1 = $("#password").val();
@@ -75,6 +76,7 @@
     		
     	}
         
+        /* 취소 버튼 클릭 시 페이지 이동*/
         function goBack() {
 			var form = document.createElement("form");
 			form.setAttribute("action", "/user/mypageaction.joya");
