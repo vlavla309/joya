@@ -19,6 +19,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 마이페이지 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class MyPageController implements Controller{
 	
 	private UserService userService = new UserServiceImpl();

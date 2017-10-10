@@ -33,6 +33,7 @@
     <script type="text/javascript">
     
     $(document).ready(function() {
+    	/* DB와 아이디 중복 체크 이벤트 처리 */
 		$("#email").keyup(function() {
 			var useremail = $(this).val();
 			$.ajax({
@@ -62,6 +63,7 @@
 		
 	});
     
+    /* submit 전 이메일 및 입력한 비밀번호 일치 확인 메소드 */
 	function checkinfo() {
 		
 		var pw1 = $("#password").val();

@@ -13,6 +13,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 회원가입 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class RegisterController implements Controller{
 
 	private UserService userService = new UserServiceImpl();
