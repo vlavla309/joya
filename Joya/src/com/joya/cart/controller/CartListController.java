@@ -35,7 +35,7 @@ public class CartListController implements Controller {
 
 
 		Cookie[] cookies=request.getCookies();
-		String cartCookieVal="";
+		String cartCookieVal=" ";
 		if(cookies!=null){
 			for(Cookie cookie:cookies) {
 				if(cookie.getName().equalsIgnoreCase("cart")) {
