@@ -90,7 +90,7 @@
     <!-- Morris Charts JavaScript -->
     <script src="${pageContext.servletContext.contextPath}/admin/vendor/raphael/raphael.min.js"></script>
     <script src="${pageContext.servletContext.contextPath}/admin/vendor/morrisjs/morris.min.js"></script>
-    <script src="${pageContext.servletContext.contextPath}/admin/data/morris-data.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/admin/data/visitcount-data.js"></script>
     <script src="${pageContext.servletContext.contextPath}/admin/dist/js/visitor_count.js"></script>
 
 	<script type="text/javascript">
