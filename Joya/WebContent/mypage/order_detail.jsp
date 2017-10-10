@@ -24,6 +24,7 @@
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/orderList.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../assets/stylesheets/orders.css" rel="stylesheet" type="text/css" media="all">
   
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
@@ -47,54 +48,19 @@
               <div class="col-md-24">
                 <a href="index-2.html" class="homepage-link" title="Back to the frontpage">Home</a>
                 <span>/</span>
-                <span class="page-title">My Account</span>
+                <span class="page-title">Order Detail</span>
               </div>
             </div>
           </div>
         </div>              
         <section class="content">
           <div class="container">
+          <br> 
             <div class="row">
-              <div id="page-header" class="col-md-24">
-                <h1 id="page-title">My Account</h1> 
-              </div>
-              <!-- 사용자 정보 영역 시작 -->
-              <div class="col-sm-6 col-md-6 sidebar">
-                <div class="group_sidebar">
-                  <div class="row sb-wrapper unpadding-top">
-                    <h6 class="sb-title">Account Details</h6>
-                    <span class="mini-line"></span>
-                    <ul id="customer_detail" class="list-unstyled sb-content">
-                      <li>
-                      <address class="clearfix">
-                      <div class="info">
-                        <i class="fa fa-user"></i>
-                        <span class="address-group">
-                        <span class="author">Jin Alkaid</span>
-                        <span class="email">jin@gmail.com</span>
-                        </span>
-                      </div>
-                      <div class="address">
-                        <span class="address-group">
-                        <span class="address1">point : #######<span class="phone-number"></span></span>
-                        <span class="address1">address : ~~~~~~<span class="phone-number"></span></span>
-                        </span>
-                      </div>
-                      </address>
-                      </li>
-                      <li>
-                      <button class="btn btn-1" id="view_address" onclick="window.location='address.html'">Manager Address (1)</button>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- 사용자 정보 영역 종료 -->
-              
               <!-- 주문 내역 조회 영역 시작 -->
               <div id="col-main" class="account-page col-sm-18 col-md-18 clearfix">
                 <div id="customer_orders">
-                  <h6 class="sb-title">선택한 주문 번호</h6>
+                  <h6 class="sb-title">주문 상세 정보</h6>
                   <span class="mini-line"></span>
                   <div class="row wrap-table">
                     <table class="table-hover">
@@ -109,6 +75,9 @@
                       </th>
                       <th class="payment_status">
                         제품명
+                      </th>
+                      <th class="fulfillment_status">
+                        수량
                       </th>
                       <th class="fulfillment_status">
                         금액
@@ -132,6 +101,9 @@
                         <span class="status_authorized">빨리깨져 커플링</span>
                       </td>
                       <td>
+                        <span class="status_unfulfilled">10</span>
+                      </td>
+                      <td>
                         <span class="status_unfulfilled">20000</span>
                       </td>
                       <td>
@@ -147,6 +119,9 @@
                       </td>
                       <td>
                         <span class="status_authorized">하하하 커플링</span>
+                      </td>
+                      <td>
+                        <span class="status_unfulfilled">20</span>
                       </td>
                       <td>
                         <span class="status_unfulfilled">20000</span>
