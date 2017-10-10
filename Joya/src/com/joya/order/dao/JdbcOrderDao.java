@@ -122,7 +122,7 @@ public class JdbcOrderDao implements OrderDao {
 	}
 
 	@Override
-	public List<Orders> listAll(Params param) {
+	public List<Orders> listByParam(Params param, String status) {
 		String type=param.getType();
 		String value=param.getValue();
 		Connection con = null;
@@ -163,9 +163,18 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("               order_date ");
 		sb.append("        FROM   (SELECT * ");
 		sb.append("                FROM   orders");
-		if(type!=null) {
-			sb.append("   WHERE  email = ? ");
+		
+		if(type!=null&&status!=null) {
+			sb.append("   WHERE  email = ? AND status = ? ");
+		}else {
+			if(type!=null) {
+				sb.append("   WHERE  email = ? ");
+			}
+			if(status!=null) {
+				sb.append("   WHERE  status = ? ");
+			}
 		}
+		
 		sb.append("                ORDER  BY order_id DESC)) ");
 		sb.append(" WHERE  request_page = ?");
 		
@@ -174,13 +183,24 @@ public class JdbcOrderDao implements OrderDao {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
 			
-			if(type!=null) {
-				pstmt.setInt(1, param.getPageNum());
+			
+			pstmt.setInt(1, param.getPageSize());
+			
+			
+			if(type!=null&&status!=null) {
 				pstmt.setString(2, value);
-				pstmt.setInt(3, param.getPage());
+				pstmt.setString(3, status);
+				pstmt.setInt(4, param.getPage());
 			}else {
-				pstmt.setInt(1, param.getPageNum());
 				pstmt.setInt(2, param.getPage());
+				if(type!=null) {
+					pstmt.setString(2, value);
+					pstmt.setInt(3, param.getPage());
+				}
+				if(status!=null) {
+					pstmt.setString(2, status);
+					pstmt.setInt(3, param.getPage());
+				}
 			}
 			
 			rs = pstmt.executeQuery();
@@ -232,19 +252,29 @@ public class JdbcOrderDao implements OrderDao {
 		return order;
 		
 	}
+	
+	@Override
+	public int pageCount(Params param, String status) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	public static void main(String[] args) {
 		JdbcOrderDao dao=(JdbcOrderDao) DaoFactory.getInstance().getDao(JdbcOrderDao.class);
 		
-		//dao.create(new Orders(2, "joa@joa", 50000, "김형주","김성주", "여기저기", "010", "주문상태", "신용카드", 0, null, 0, 0, 0, null));
+		Params param=new Params();
+		param.setPageSize(50);
+		List<Orders> orders=new ArrayList<Orders>();
 		
-		Params p=new Params();
-		
-		List<Orders> orders=dao.listAll(p);
+		orders=dao.listByParam(param, "주문접수");
+		System.out.println(param.toString());
 		for (Orders order : orders) {
 			System.out.println(order);
 		}
-		//System.out.println(dao.getNewOrderId());
-
+		
+		
+		
+		
 	}
 
 }
