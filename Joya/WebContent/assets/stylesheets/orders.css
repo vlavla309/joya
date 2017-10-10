@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+#col-main {
+      left: 150px;    
+    }
+    
+#mi_review_1{
+	width:150px;
+
+    }
+    
+#m_reviewtxt{
+	border: 1px solid rgb(227,227,227);
+	border-color : none;
+	background-color: RGB(247, 247, 247);
+	resize: none;
+}
+
+#m_reviewtxt:focus{
+	outline : none;
+}
+
+#reviewsubmit_m{
+	float: right;
+	margin-top: 3%;
+	margin-right: 5%;
+}
+
+#reviewbtn{
+	width:150%;
+	height:30px;
+	background-color: white;
+	border:1px solid rgb(227,227,227);
+}
+
+#reviewfile_m{
+	float:left;
+	margin-top: 3%;
+	
+}

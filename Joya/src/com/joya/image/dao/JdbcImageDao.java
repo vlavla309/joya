@@ -30,7 +30,7 @@ public class JdbcImageDao implements ImageDao{
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
+	
 	@Override
 	public void create(Images image) {
 		Connection con = null;
@@ -51,7 +51,7 @@ public class JdbcImageDao implements ImageDao{
 			pstmt.setString(1, image.getImageName());
 			pstmt.setInt(2, image.getProductId());
 			pstmt.setString(3, image.getPath());
-			pstmt.setInt(4, image.getOrder());
+			pstmt.setInt(4, image.getOrderNo());
 			
 			pstmt.executeQuery();
 			con.commit();
@@ -146,7 +146,7 @@ public class JdbcImageDao implements ImageDao{
 		Images image = new Images();
 
 		image.setImageName(imageName);
-		image.setOrder(order);
+		image.setOrderNo(order);
 		image.setPath(path);
 		image.setProductId(productId);
 		return image;

@@ -13,6 +13,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 회원가입 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class RegisterController implements Controller{
 
 	private UserService userService = new UserServiceImpl();
@@ -37,7 +43,7 @@ public class RegisterController implements Controller{
 		
 		userService.create(user);
 		
-		mav.setView(request.getContextPath() + "/user/regist_result.joya");
+		mav.setView(request.getContextPath() + "/user/registresult.joya");
 		mav.addObject("user", user);
 		mav.addObject("address1", address1);
 		mav.addObject("address2", address2);

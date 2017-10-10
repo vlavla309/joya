@@ -32,9 +32,8 @@ public class WishlistController implements Controller {
 		
 		int pageSize = 3; // 한페이지에 출력될 위시리스트 수
 		int pageNum = 3; // 페이지 그룹 크기
-		
-		/*String userEmail = request.getParameter("email");*/
-		String userEmail = "joa@joa";
+	      
+		String userEmail = (String) request.getAttribute("email");
 		String page = request.getParameter("page");
 		if(page == null)  page = "1";
 		int pageCount = Integer.parseInt(page);
@@ -52,11 +51,6 @@ public class WishlistController implements Controller {
 		
 		// 페이징
 		List<Wishlist> list = wishlistService.listByParams(userEmail, params);
-		/*for (Wishlist wishlist : list) {
-			System.out.println(wishlist);
-			System.out.println(wishlist.getEmail());
-			System.out.println(wishlist.getProductId());
-		}*/
 		
 		// 페이징 계산 유틸리티 생성 및 실행
 		PageBuilder pageBuilder = new PageBuilder(params, totalCount);

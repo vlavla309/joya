@@ -38,6 +38,8 @@
 	<script src="../assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="../assets/javascripts/cs.script.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/cart_function.js" type="text/javascript"></script>
+	
 	
 	<script>
 	$(function() {
@@ -79,14 +81,26 @@
 			$("#description").text(data.Product[0].discription);
 			$(".price_sale").text(data.Product[0].price);
 			$(".maker").text(data.Product[0].maker);
+			$(".add-to-cart2").val(data.Product[0].productid);
 			$.each(data.images, function(index,  image) {
 				var pathname = image.path + image.filename
-				if(image.order=="0"){
+				if(image.orderno=="0"){
 				$(".imagemain").attr("src",pathname);
 					alert($(".imagemain").attr("src"));
 				} 
 			});
 		} 
+		
+		$(".add-to-cart").click(function(){
+			var productId=$(this).val();
+			addCartItem(productId, "1");
+		});
+		
+		$(".add-to-cart2").click(function(){
+			var productId=$(this).val();
+			var amount=$("#qs-quantity").val();
+			addCartItem(productId, amount);
+		});
 		
 		
 	});
@@ -167,7 +181,7 @@
 											<ul id="sandBox" class="list-unstyled">
 												<c:forEach items="${productlist}" var="product" varStatus="status">
 													<c:forEach items="${imglist}" var="img" varStatus="status">
-														<c:if test="${(product.productId eq img.productId)&&(img.order eq 0)}">
+														<c:if test="${(product.productId eq img.productId)&&(img.orderNo eq 0)}">
 															<li class="element no_full_width" data-alpha="Curabitur cursus dignis" data-price="20000">
 																<ul class="row-container list-unstyled clearfix">
 																	<li class="row-left">
@@ -200,8 +214,8 @@
 																	<div class="hover-appear">
 																		<form action="#" method="post">						
 																			<div class="effect-ajax-cart">
-																				<input name="quantity" value="1" type="hidden">
-																				<button class="add-to-cart" type="submit" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
+																				<input  name="quantity" value="1" type="hidden">
+																				<button class="add-to-cart" value="${product.productId }" type="button" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
 																			</div>
 																		</form>
 																		<div class="product-ajax-qs hidden-xs hidden-sm">
@@ -214,15 +228,15 @@
 																		<c:set var="find" value="false"/>
 																		<c:forEach items="${wishlist}" var="wish" varStatus="status">
 																			<c:if test="${not doneLoop}">
-																				<c:if test="${(wish.productId==product.productId)&&(wish.email==cookie.user.value)}">
-																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}&email=${cookie.user.value}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
+																				<c:if test="${(wish.productId==product.productId)&&(wish.email==loginuser)}">
+																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
 																					<c:set var="doneLoop" value="true"/>
 																					<c:set var="find" value="true"/>
 																				</c:if>
 																			</c:if>
 																		</c:forEach>
 																		<c:if test="${not find}">
-																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}&email=${cookie.user.value}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
+																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
 																		</c:if>
 																	</div>
 																	</li>
@@ -359,7 +373,7 @@
 											<p class ="maker"></p>
 										</div>
 										<div class="others-bottom">
-											<input id="quick-shop-add" class="btn small add-to-cart" type="submit" name="add" value="Add to Cart" style="opacity: 1;">
+											<button id="quick-shop-add" class="btn small add-to-cart2" type="button" name="add" value="" style="opacity: 1;">Add to Cart</button>
 										</div>
 									</form>
 								</div>

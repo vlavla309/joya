@@ -100,7 +100,7 @@
 }
 
 .warning {
-	display: none;
+	color: red;
 }
 
 #login-form ul.login-wrapper > li > a.return{

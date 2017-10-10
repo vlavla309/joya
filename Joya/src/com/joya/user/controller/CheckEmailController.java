@@ -17,6 +17,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 이메일 중복 체크 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class CheckEmailController implements Controller{
 	
 	private UserService userService = new UserServiceImpl();

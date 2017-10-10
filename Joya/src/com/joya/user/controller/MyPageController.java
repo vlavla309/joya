@@ -19,6 +19,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 마이페이지 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class MyPageController implements Controller{
 	
 	private UserService userService = new UserServiceImpl();
@@ -37,13 +43,13 @@ public class MyPageController implements Controller{
 		if (referer != null) {
 			switch (referer) {
 			case "1":
-				mav.setView(request.getContextPath() + "/mypage/order_list.joya");
+				mav.setView("redirect:" + request.getContextPath() + "/mypage/orderlist.joya");
 				break;
 			case "2":
-				mav.setView(request.getContextPath() + "/mypage/pw_check.joya");
+				mav.setView(request.getContextPath() + "/mypage/pwcheck.joya");
 				break;
 			default:
-				mav.setView(request.getContextPath() + "/mypage/wishlist.joya");
+				mav.setView("redirect:" + request.getContextPath() + "/mypage/wishlist.joya");
 				break;
 			}
 		} else {
@@ -52,8 +58,8 @@ public class MyPageController implements Controller{
 		
 		mav.addObject("user", user);
 		mav.addObject("address1", tokens[0]);
-		mav.addObject("address2", tokens[1]);
-		mav.addObject("address3", tokens[2]);
+//		mav.addObject("address2", tokens[1]);
+//		mav.addObject("address3", tokens[2]);
 		
 		return mav;
 	}

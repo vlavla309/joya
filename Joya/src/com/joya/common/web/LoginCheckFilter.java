@@ -41,8 +41,9 @@ public class LoginCheckFilter implements Filter {
 				if (cookie.getName().equalsIgnoreCase("user")) {
 					
 					String user = URLDecoder.decode(cookie.getValue(), "utf-8");
-	                String[] tokens = user.split("###");
+	                String[] tokens = user.split(Delimiter.USER_INFO);
 	                email = tokens[0];
+	                System.out.println(email);
 	                /*name = tokens[1];
 	                passwd = tokens[2];*/
 					
@@ -51,12 +52,12 @@ public class LoginCheckFilter implements Filter {
 					User userinfo = userService.read(email);
 					name = userinfo.getName();
 					passwd = userinfo.getPasswd();
+					System.out.println(name);
 				}
 			}
 		}
 		request.setAttribute("email", email);
 		request.setAttribute("name", name);
-		request.setAttribute("passwd", passwd);
 		chain.doFilter(request, response);
 		
 	}
