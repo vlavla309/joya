@@ -77,7 +77,7 @@
         
         function goBack() {
 			var form = document.createElement("form");
-			form.setAttribute("action", "/user/mypage_action.joya");
+			form.setAttribute("action", "/user/mypageaction.joya");
 			form.setAttribute("method", "post");
 			
 			var email = document.createElement("input");
@@ -121,7 +121,7 @@
 								<h1 id="page-title">회원 정보 수정</h1> 
 							</div>
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="/user/modify_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
+								<form method="post" action="/user/modifyaction.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">
@@ -152,7 +152,7 @@
                                         <button id="complete" class="btn" type="submit">수정 완료</button>
 									</div>
 								</form>
-                                <form action="/user/close_action.joya" method="post">                  
+                                <form action="/user/closeaction.joya" method="post">                  
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">

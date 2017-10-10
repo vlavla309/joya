@@ -66,7 +66,7 @@
 											<div class="checkout-title">
 												<span class="general-title">회원 로그인</span> 
 											</div>
-											<form method="post" action="/user/login_action.joya" id="customer_login" accept-charset="UTF-8">
+											<form method="post" action="/user/loginaction.joya" id="customer_login" accept-charset="UTF-8">
 												<input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
 												<div class="col-md-21 login-alert">
                                                     <c:choose>

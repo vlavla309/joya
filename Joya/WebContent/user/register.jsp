@@ -36,7 +36,7 @@
 		$("#email").keyup(function() {
 			var useremail = $(this).val();
 			$.ajax({
-				url: "/user/email_action.joya",
+				url: "/user/emailaction.joya",
 				data: {"email" : useremail},
 				success: function(data) {
 					if ($("#email").val().length == 0) {
@@ -119,7 +119,7 @@
 								<h1 id="page-title">회원 가입</h1><span id="joinguide" class="req">*표는 필수 입력사항입니다.</span> 
 							</div>
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="/user/register_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkinfo();">
+								<form method="post" action="/user/registeraction.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkinfo();">
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">
