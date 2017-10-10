@@ -58,7 +58,6 @@ public class LoginCheckFilter implements Filter {
 		}
 		request.setAttribute("email", email);
 		request.setAttribute("name", name);
-		request.setAttribute("passwd", passwd);
 		chain.doFilter(request, response);
 		
 	}

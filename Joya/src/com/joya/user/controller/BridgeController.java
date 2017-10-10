@@ -19,6 +19,12 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 비밀번호/회원정보 연결 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class BridgeController implements Controller{
 	
 	private UserService userService = new UserServiceImpl();
@@ -33,7 +39,7 @@ public class BridgeController implements Controller{
 		User user = userService.read(email);
 		String[] tokens = user.getAddress().split(Delimiter.USER_INFO);
 		
-			mav.setView(request.getContextPath() + "/mypage/modify_user.joya");
+			mav.setView(request.getContextPath() + "/mypage/modifyuser.joya");
 		
 		mav.addObject("user", user);
 		mav.addObject("address1", tokens[0]);

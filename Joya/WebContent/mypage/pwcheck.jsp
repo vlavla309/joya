@@ -33,12 +33,12 @@
     
     <script>
         $(document).ready(function () {
-        	
+        	/* DB에 있는 비밀번호와 일치 확인 이벤트 처리 */
         	$("#password").keyup(function() {
     			var useremail = $("#email").val();
     			var userpasswd = $(this).val(); 
     			$.ajax({
-    				url: "/user/passwd_action.joya",
+    				url: "/user/passwdaction.joya",
     				data: {"email" : useremail, "passwd" : userpasswd},
     				success: function(data) {
     					if ($("#password").val().length == 0) {
@@ -62,7 +62,8 @@
     			});
     		});
         });
-        	
+        
+        /* 입력한 비밀번호 일치 확인 */
         function checkpw() {
     		
     		var pw1 = $("#password").val();
@@ -88,9 +89,10 @@
     		
     	};
     	
+    	/* 취소 버튼 클릭 시 페이지 이동 메소드 */
     	function goBack() {
 			var form = document.createElement("form");
-			form.setAttribute("action", "/user/mypage_action.joya");
+			form.setAttribute("action", "/user/mypageaction.joya");
 			form.setAttribute("method", "post");
 			
 			var email = document.createElement("input");
@@ -135,7 +137,8 @@
 								<h1 id="page-title">비밀번호 확인</h1> 
 							</div>
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="/user/bridge_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
+                            <!-- 비밀번호 체크 폼 -->
+								<form method="post" action="/user/bridgeaction.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">

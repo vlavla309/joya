@@ -1,14 +1,14 @@
 package com.joya.cart.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.collections4.map.HashedMap;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
@@ -19,65 +19,77 @@ import com.joya.wishlist.service.WishlistServiceImpl;
 
 
 public class WishListToCartActionController implements Controller {
-	
+
 	private WishlistService wishlistService = new WishlistServiceImpl();
-	
-	
+
+
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
-		
-		String[] productIds = request.getParameterValues("");
-		String email=null;
+
+		String[] productIds = request.getParameterValues("ji-chk");
+		String email=(String)request.getAttribute("email");
 		Map<String, String> cartMap=null;
 
 		Cookie[] cookies=request.getCookies();
-		for(Cookie cookie:cookies) {
-			if(cookie.getName().equalsIgnoreCase("cart")) {
-				cartMap=getCartMap(cookie.getValue());
-				break;
+		String cartCookieVal="";
+		if(cookies!=null){
+			System.out.println("ÄíÅ°ÀÇ °¹¼ö"+cookies.length);
+
+			for(Cookie cookie:cookies) {
+				System.out.println("ÄíÅ°ÀÌ¸§ "+cookie.getName());
+				if(cookie.getName().equalsIgnoreCase("cart")) {
+					System.out.println("Ä«Æ® ÄíÅ° ÀÖÀ½?");
+					cartCookieVal=URLDecoder.decode(cookie.getValue(), "utf-8");
+					break;
+				}
 			}
 		}
-		
-		for (String productId : productIds) {
-			cartMap.put(productId, "1");
-			wishlistService.delete(email, Integer.parseInt(productId));
+
+		cartMap=getCartMap(cartCookieVal);
+
+
+		if(productIds!=null) {
+			for (String productId : productIds) {
+				cartMap.put(productId, "1");
+				wishlistService.delete(email, Integer.parseInt(productId));
+			}
 		}
-		
-		
 		String cartInfo=mapToStrCart(cartMap);
 		cookies=request.getCookies();
 		for(Cookie cookie:cookies) {
 			if(cookie.getName().equalsIgnoreCase("cart")) {
+				System.out.println("Ä«Æ® ÄíÅ° ÀÖ°í °ª ³ÖÀ»°Å :"+cartInfo);
 				cookie.setValue(cartInfo);
 				response.addCookie(cookie);
 				break;
 			}
 		}
-		
-		
-		mav.setView("/product/list.jsp");
-		
+
+		mav.setView("redirect:/cart.joya");
+
 		return mav;
 	}
-	
+
 	private Map<String, String> getCartMap(String cartCookieVal) {
-		Map<String, String> cartMap=new HashedMap<>();
+		Map<String, String> cartMap=new HashMap<String, String>();
 		String[] cartItems=cartCookieVal.split(Delimiter.CART_ITEM);
-		
-		for (String item : cartItems) {
-			String productId=item.split(Delimiter.CART_ITEM_INFO)[0];
-			String amount=item.split(Delimiter.CART_ITEM_INFO)[1];
-			cartMap.put(productId, amount);
+
+		if(!cartCookieVal.equals(" ")) {
+			for (String item : cartItems) {
+				String productId=item.split(Delimiter.CART_ITEM_INFO)[0];
+				String amount=item.split(Delimiter.CART_ITEM_INFO)[1];
+				cartMap.put(productId, amount);
+			}
 		}
-		
 		return cartMap;
 	}
 
-	int i=0;
+	
 	private String mapToStrCart(Map<String, String> cartMap) {
 		String cartInfo="";
+		int i=0;
 		for(Map.Entry<String, String> entry:cartMap.entrySet()) {
 			String productId=entry.getKey();
 			String amount=entry.getValue();

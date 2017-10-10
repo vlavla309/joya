@@ -1,14 +1,17 @@
 package com.joya.product.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.Delimiter;
 import com.joya.common.web.PageBuilder;
 import com.joya.common.web.Params;
 import com.joya.image.domain.Images;
@@ -73,6 +76,8 @@ public class ProductlistController implements Controller{
       PageBuilder pageBuilder = new PageBuilder(param, rowCount);
       pageBuilder.build();
       
+      System.out.println("login email : "+ (String)request.getAttribute("email"));
+      mav.addObject("loginuser", (String)request.getAttribute("email"));
       mav.addObject("imglist", imglist);
       mav.addObject("wishlist", wishlist);
       mav.addObject("productlist", productlist);

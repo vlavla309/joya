@@ -23,8 +23,6 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	
-	
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
@@ -40,7 +38,6 @@
 	<script src="../assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="../assets/javascripts/cs.script.js" type="text/javascript"></script>
-	
 	<script src="../assets/javascripts/cart_function.js" type="text/javascript"></script>
 	
 	
@@ -87,7 +84,7 @@
 			$(".add-to-cart2").val(data.Product[0].productid);
 			$.each(data.images, function(index,  image) {
 				var pathname = image.path + image.filename
-				if(image.orderNo=="0"){
+				if(image.orderno=="0"){
 				$(".imagemain").attr("src",pathname);
 					alert($(".imagemain").attr("src"));
 				} 
@@ -231,15 +228,15 @@
 																		<c:set var="find" value="false"/>
 																		<c:forEach items="${wishlist}" var="wish" varStatus="status">
 																			<c:if test="${not doneLoop}">
-																				<c:if test="${(wish.productId==product.productId)&&(wish.email==cookie.user.value)}">
-																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}&email=${cookie.user.value}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
+																				<c:if test="${(wish.productId==product.productId)&&(wish.email==loginuser)}">
+																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
 																					<c:set var="doneLoop" value="true"/>
 																					<c:set var="find" value="true"/>
 																				</c:if>
 																			</c:if>
 																		</c:forEach>
 																		<c:if test="${not find}">
-																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}&email=${cookie.user.value}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
+																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
 																		</c:if>
 																	</div>
 																	</li>

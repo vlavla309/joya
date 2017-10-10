@@ -34,27 +34,28 @@
     <script>
         $(document).ready(function () {
         	
+        	/* 취소 버튼 이벤트 */
         	$("#cancel_modify").click(function() {
         		goBack();
 			});
-            //start of the document ready function
-            //delcaring global variable to hold primary key value.
+        	
+        	/* 탈퇴 확인 모달 취소 버튼 이벤트 */
             var pryEmpId;
             $('#acc-close').click(function () {
                 pryEmpId = $(this).attr('id');
                 $('#myModal').modal('show');
             });
 
-            //function to reset bootstrap modal popups
+            /* 탈퇴 확인 모달창 메세지 */	
             $("#myModal").on("hidden.bs.modal", function () {
                 $(".modal-header").removeClass(' ').addClass('alert-danger');
                 $('.delete-confirm').css('display', 'inline-block');
                 $('.success-message').html('').html('정말 탈퇴하시겠습니까?');
             });
 
-            //end of the docuement ready function
         });
         
+        /* 비밀번호 일치 여부 메세지 출력 */
         function checkpw() {
     		
     		var pw1 = $("#password").val();
@@ -75,9 +76,10 @@
     		
     	}
         
+        /* 취소 버튼 클릭 시 페이지 이동*/
         function goBack() {
 			var form = document.createElement("form");
-			form.setAttribute("action", "/user/mypage_action.joya");
+			form.setAttribute("action", "/user/mypageaction.joya");
 			form.setAttribute("method", "post");
 			
 			var email = document.createElement("input");
@@ -121,7 +123,8 @@
 								<h1 id="page-title">회원 정보 수정</h1> 
 							</div>
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="/user/modify_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
+                            <!-- 회원 정보 폼-->
+								<form method="post" action="/user/modifyaction.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">
@@ -152,7 +155,8 @@
                                         <button id="complete" class="btn" type="submit">수정 완료</button>
 									</div>
 								</form>
-                                <form action="/user/close_action.joya" method="post">                  
+                                <!-- 회원 탈퇴 확인 모달창 -->
+                                <form action="/user/closeaction.joya" method="post">                  
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog" role="document">
                                         <div class="modal-content">

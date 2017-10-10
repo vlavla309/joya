@@ -8,9 +8,10 @@ import com.joya.order.domain.Orders;
 public interface OrderDao {
 	
 	public void create(Orders order);
-	public  List<Orders> listAll(Params param);
-	public  Orders search(String orderid);
-	public int getNewOrderId();
-	public void delete(int orderId);
 	public void update(Orders order);
+	public void delete(int orderId);
+	public int getNewOrderId();
+	public  List<Orders> listByParam(Params param, String status);
+	public  Orders search(String orderid);
+	public int pageCount(Params param, String status);
 }

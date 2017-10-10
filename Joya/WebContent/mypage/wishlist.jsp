@@ -41,12 +41,12 @@
 <link href="../assets/stylesheets/wishlist.css" rel="stylesheet"
   type="text/css" media="all">
 
-<script src="../assets/stylesheets/javascripts/jquery-1.9.1.min.js"
-  type="text/javascript"></script>
-<script src="../assets/javascripts/bootstrap.min.3x.js"
-  type="text/javascript"></script>
+<script src="/assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
 
+<script src="/assets/javascripts/cookies.js" type="text/javascript"></script>
+<script src="/assets/javascripts/cart_function.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     //최상단 체크박스 클릭
@@ -97,7 +97,7 @@ $(document).ready(function(){
           <!-- 아이템 시작 -->
           <div class="container">
             <div class="row">
-
+				 <form name="wishlist" action="/wishtocart.joya" method="post">
               <div id="page-header" class="col-md-24">
                 <h1 id="page-title">Wish List</h1>
               </div>
@@ -117,6 +117,7 @@ $(document).ready(function(){
                   <!--for  -->
                     
                     <div class="blog-content-wrapper ji-contentBox">
+                   
                     <c:forEach items="${list}" var="wishlist" varStatus="status">
                       <div class="blogs col-sm-8 col-md-8 clearfix" >
                         <article class="blogs-item">
@@ -132,19 +133,12 @@ $(document).ready(function(){
                                     </ul>
                                   </div>
                                   
-                                  <form class="form-wishlistdelete" action="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya" method="post">
                                   <ul class="ji-post list-inline">
                                     <li class="select"><input class="ji-selectC " id="ji-${wishlist.productId }"  type="checkbox" value="${wishlist.productId }" name="ji-chk"></li>
 
-                                   <!--목록에서 삭제하는 form 시작 -->
                                     <label class="ji-contentL" for="ji-${wishlist.productId }"><li class="ji-productName">${wishlist.productName }</li></label>
-                                       <input type="hidden" name="productId" value="${wishlist.productId }">
-                                       <input type="hidden" name="email" value="${wishlist.email }">
-                                       <input type="hidden" name="page" value="${params.page }">
-                                       <li class="ji-post-action"><input class="wishlistDeleteBtn"  type="image" src="../assets/images/jiDelete.png" alt="Submit"></li>
-                                    <!--목록에서 삭제하는 form 종료 -->
+                                       <li class="ji-post-action"><a href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${wishlist.productId}&page=${params.page }"><image class="wishlistDeleteBtn"  type="image" src="../assets/images/jiDelete.png" alt="Del"/></a></li>
                                   </ul>
-                                 </form>
                                   
 
                                 </div>
@@ -201,13 +195,15 @@ $(document).ready(function(){
                   </c:when>
                   <c:otherwise>
                      <div>
-                       <a href="wishlistTest.jsp?orderlist="${checked_val }><button id="ji-orderB" class="btn" type="button" name="orderlist">Order</button></a>
+                       <button id="ji-orderB" class="btn" type="submit" name="orderlist">Add to Cart</button>
                      </div>
                   </c:otherwise>
                   </c:choose>
               <!-- 주문하기 버튼 영역 시작 -->
               <!-- End of layout -->
-            </div>
+			</form>
+			</div>
+            
           </div>
         </section>
         <!-- 본문 영역 종료 -->

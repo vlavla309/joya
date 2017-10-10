@@ -67,7 +67,7 @@ public class Orders {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	
 	public String getOrderer() {
 		return orderer;
 	}

@@ -24,7 +24,7 @@
                 <i class="sub-dropdown"></i>
               </span>
               <div id="loginBox" class="dropdown-menu text-left">
-              <form method="post" action="/user/login_action.joya" id="customer_login" accept-charset="UTF-8"><input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
+              <form method="post" action="/user/loginaction.joya" id="customer_login" accept-charset="UTF-8"><input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
                 <div id="bodyBox">
                   <ul class="control-container customer-accounts list-unstyled">
                     <li>
@@ -60,7 +60,7 @@
           <script type="text/javascript">
           	function fwemail() {
           		var form = document.createElement("form");
-          		form.setAttribute("action", "/user/mypage_action.joya");
+          		form.setAttribute("action", "/user/mypageaction.joya");
           		form.setAttribute("method", "post");
           		
           		var hidden = document.createElement("input");
@@ -89,7 +89,7 @@
                 <a href="javascript:fwemail();">마이페이지</a>
              </li> 
              <li class="my-account">
-                <a href="/user/login_action.joya">로그아웃</a>
+                <a href="/user/loginaction.joya">로그아웃</a>
              </li> 
             </ul>
             </form>

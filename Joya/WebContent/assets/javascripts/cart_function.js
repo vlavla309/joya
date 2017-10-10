@@ -38,7 +38,7 @@ function checkCartCookie(){
 	//쿠키의 값이 비어있으면 cart 쿠키를 신규로 생성 (유효기간2일, 패스:/)
 	if(!cartInfo){
 		//expired 단위 2일
-		$.cookie("cart", "", {expired:2, path:'/'} );
+		$.cookie("cart", " ", {expired:2, path:'/'} );
 	}
 }
 
@@ -100,7 +100,7 @@ function setCartCookie(cartMap){
 			cartCookieValue+=DELIMITER_CART_ITEM;
 		}
 	})
-	$.cookie("cart", cartCookieValue);
+	$.cookie("cart", cartCookieValue, {expired:2, path:'/'});
 }
 
 /**카트 맵의 사이즈 즉 장바구니 품목 개수 반환*/
