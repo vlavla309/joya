@@ -42,7 +42,7 @@
   type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
 
-<%
+<%--
 	String user = null;
 	String email = null;
 	String name = null;
@@ -58,15 +58,15 @@
 			}
 		}
 	}
-%>
+--%>
 
-<%
+<%--
   email = "admin@joa";
   name = "관리자";
 
   request.setAttribute("email", email);
   request.setAttribute("name", name);
-%>
+--%>
 
 
 <script type="text/javascript">

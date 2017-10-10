@@ -5,11 +5,11 @@
 }
 
 .ji-size{
-	width:15px;
+	width:25px;
 }
 
 .ji_title{
-	width:250px;
+	width:230px;
 }
 
 .ji-writerS{
@@ -56,10 +56,22 @@
 	color:red;
 }
 
-.modal-dialog{
+.modal-dialog12{
 	width:32%;
 	margin-top: 20%;
 }
+
+#secretm{
+	width:45%;
+	height: 45%;
+	margin-top: 20%;
+	margin-left:20%;
+}
+
+#secretf{
+	text-align: center;
+}
+
 
 .modal-header{
 	text-align: center;
@@ -79,11 +91,30 @@
 	max-width: 200px;
 }
 
-.modal-content{
+.imginmodal{
+	max-width: 700px;
+	margin : auto;
+}
+
+#imagebody{
+	text-align: center;
+}
+
+.imagem{
 	position: relative;
 	top: -200px;
 	left: -100px;
-	width: 150%;
+	width: 70%;
+	
+}
+
+.secrettitle{
+	cursor: pointer;
+	
+}
+
+.titletd{
+	text-align: left;
 }
 
 /* cart.jsp */

@@ -44,7 +44,7 @@
  
 <!-- css 적용 부분 종료 -->
 
-<%
+<%--
 	String user = null;
 	String email = null;
 	String name = null;
@@ -60,15 +60,7 @@
 			}
 		}
 	}
-%>
-
-<%
-  email = "admin@joa";
-  name = "조아조";
-
-  request.setAttribute("email", email);
-  request.setAttribute("name", name);
-%>
+--%>
 
 
 <script type="text/javascript">
@@ -111,13 +103,13 @@
      <%-- 이미지 modal --%>
  <div class="modal" id="imageModal" role="dialog">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" id="imagem">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
         <h4 class="modal-title">Image</h4>
       </div>
-      <div class="modal-body">
-       <image src="${article.filePath }">
+      <div class="modal-body" id="imagebody">
+       <span><image class="imginmodal" src="${article.filePath }"></span>
       </div>
       <div class="modal-footer">
          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 

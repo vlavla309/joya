@@ -2,7 +2,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
+<%--
 	String user = null;
 	String email = null;
 	String name = null;
@@ -18,7 +18,7 @@
 			}
 		}
 	}
-%>
+--%>
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -59,16 +59,6 @@
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
-
-
-  <%
-  	email = "joa@joa";
-  	name = "관리자";
-
-  	request.setAttribute("email", email);
-  	request.setAttribute("name", name);
-    
-  %>
 
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />

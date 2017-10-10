@@ -42,7 +42,7 @@
   type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
 
-<%
+<%--
 	String user = null;
 	String email = null;
 	String name = null;
@@ -58,15 +58,8 @@
 			}
 		}
 	}
-%>
+--%>
 
-<%
-	email = "joa@joa";
-	name = "조아조";
-
-	request.setAttribute("email", email);
-	request.setAttribute("name", name);
-%>
 
 <script>
   $(function() {
@@ -102,13 +95,13 @@
 
   <%-- 비밀글일때 비밀번호 확인 modal --%>
   <div class="modal" id="checkModal">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
+  <div class="modal-dialog modal-sm" >
+    <div class="modal-content" id="secretm">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <span class="modal-title">비밀글을 읽으시려면 비밀번호를 입력해주세요.</span>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="secretf">
         <div class="mimodal">
         <input type="text" class="secretpasswd" name="">
         <button type="button" class="yes" id="yesbtn" value="">확인</button>
@@ -180,7 +173,7 @@
                             
                             <c:choose>
                               <c:when test="${article.contents eq '삭제' }">
-                                <td>
+                                <td class="titletd">
                                   <c:if test="${article.writer eq '관리자'}">
                                   <img src="../assets/images/replying.png"> &nbsp;
                                   </c:if> 
@@ -189,7 +182,7 @@
                                   
                               </c:when>
                               <c:otherwise>
-                                   <td>
+                                   <td class="titletd">
                                    <c:if test="${article.writer eq '관리자'}">
                                    <img src="../assets/images/replying.png"> &nbsp;
                                    </c:if>
