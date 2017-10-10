@@ -12,6 +12,12 @@ import com.joya.common.controller.ModelAndView;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 회원탈퇴 컨트롤러
+ *
+ * @author 최명승
+ *
+ */
 public class CloseAccountController implements Controller  {
 	
 	private UserService userService = new UserServiceImpl();

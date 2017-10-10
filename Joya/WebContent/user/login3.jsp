@@ -106,77 +106,44 @@
 											</form>
 										</div>
 									</div>
-                    <div class="col-md-12 row-right">
-                    <!-- Customer Account Login -->
-                    <div id="customer-login">
-                      <div class="checkout-title">
-                        <span class="general-title">비회원</span>
-                      </div>
-                      <br>
-                        <input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
-                        <div class="col-md-21 login-alert">
-                          <div class="alert alert-danger">
-                            <label id="notice1">※ 회원 가입을 하시면 더 많은 서비스를 이용하실 수 있습니다.</label>
-                          </div>
-                        </div>
-                        <ul id="login-form" class="list-unstyled">
-                          <li class="col-md-21 unpadding-top">
-                          <ul class="login-wrapper list-unstyled">
-                            <li>
-                              <a href="http://www.naver.com">
-                              <div class="orderselect_mimi1">
-                              <div class="minimi">
-                              <h1>ORDER <br>for Guest</h1> 
-                              <image src="../assets/images/guest_cart.png" align="center" class="mi_user">
-                              </div>
-                              </div>
-                              </a>
-                              <a href="/user/register.joya">
-                              <div class="orderselect_mimi2">
-                              <div class="minimi">
-                              <h1>SIGN UP</h1>
-                              <image src="../assets/images/join.png" align="center" class="mi_wish"></image>
-                              </div>
-                              </div>
-                              </a>
-                            </li> 
-                          </ul>
-                          </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Password Recovery -->
-                    <div id="recover-password" style="display: none;">
-                      <div class="checkout-title">
-                        <span class="general-title">Reset Password</span>
-                        <span class="line"></span>
-                      </div>
-                      <p class="note">
-                        We will send you an email to reset your password.
-                      </p>
-                      <form method="post" action="http://demo.designshopify.com/account/recover" accept-charset="UTF-8">
-                        <input type="hidden" value="recover_customer_password" name="form_type"><input type="hidden" name="utf8" value="✓">
-                        <ul id="recover-form" class="list-unstyled clearfix">
-                          <li class="clearfix"></li>
-                          <li id="recover_email" class="col-md-21">
-                          <label class="control-label">Email Address <span class="req">*</span></label>
-                          <input type="email" value="" name="email" id="recover-email" class="form-control">
-                          </li>
-                          <li class="col-md-21 unpadding-top">
-                          <ul class="login-wrapper list-unstyled">
-                            <li>
-                            <a class="action" href="javascript:;" onclick="hideRecoverPasswordForm()">Return to login?</a>
-                            or <a class="return" href="index-2.html">Return to store</a>
-                            </li>
-                            <li>
-                            <button class="btn btn-1" type="submit">Submit</button>
-                            </li>
-                          </ul>
-                          </li>
-                        </ul>
-                      </form>
-                    </div>
-                  </div>
+                                <div class="col-md-12 row-right">
+                                  <!-- Nonmember Login -->
+                                  <div id="customer-login">
+                                    <div class="checkout-title">
+                                      <span class="general-title">비회원</span>
+                                    </div>
+                                    <br>
+                                      <input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
+                                      <div class="col-md-21 login-alert">
+                                        <div class="alert alert-danger">
+                                          <label id="notice1">※ 회원 가입을 하시면 더 많은 서비스를 이용하실 수 있습니다.</label>
+                                        </div>
+                                      </div>
+                                      <ul id="login-form" class="list-unstyled">
+                                        <li class="col-md-21 unpadding-top">
+                                        <ul class="login-wrapper list-unstyled">
+                                          <li>
+                                            <a href="http://www.naver.com">
+                                            <div class="orderselect_mimi1">
+                                            <div class="minimi">
+                                            <h1>ORDER <br>for Guest</h1> 
+                                            <image src="../assets/images/guest_cart.png" align="center" class="mi_user">
+                                            </div>
+                                            </div>
+                                            </a>
+                                            <a href="/user/register.joya">
+                                            <div class="orderselect_mimi2">
+                                            <div class="minimi">
+                                            <h1>SIGN UP</h1>
+                                            <image src="../assets/images/join.png" align="center" class="mi_wish"></image>
+                                            </div>
+                                            </div>
+                                            </a>
+                                          </li> 
+                                        </ul>
+                                        </li>
+                                      </ul>
+                                  </div>
 								</div>
 							</div>   
 						</div>
