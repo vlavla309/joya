@@ -42,6 +42,7 @@ public class JdbcOrderDao implements OrderDao {
 				"             phone, " + 
 				"             payment_type, " + 
 				"             status, " + 
+				"             message, " + 
 				"             usedpoint) " + 
 				"VALUES      (?, " + 
 				"             ?, " + 
@@ -50,6 +51,7 @@ public class JdbcOrderDao implements OrderDao {
 				"             ?, " + 
 				"             ?, " + 
 				"             ?, " + 
+				"             ?, " +
 				"             ?, " +
 				"             ?, " +
 				"             ?) ";
@@ -66,12 +68,13 @@ public class JdbcOrderDao implements OrderDao {
 			pstmt.setString(7, order.getPhone());
 			pstmt.setString(8, order.getPaymentType());
 			pstmt.setString(9, order.getStatus());
-			pstmt.setInt(10, order.getUsedPoint());
+			pstmt.setString(10, order.getMassage());
+			pstmt.setInt(11, order.getUsedPoint());
 
 			rs=pstmt.executeQuery();
 		}catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcOrderDao.create(Orders order) ¿¡·¯ ¹ß»ý", e);
+			throw new MallException("JdbcOrderDao.create(Orders order) ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½", e);
 		}finally {
 			try {
 				if(rs != null)    rs.close();
@@ -110,7 +113,7 @@ public class JdbcOrderDao implements OrderDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcUserDao.read(String id) ¿¡·¯ ¹ß»ý", e);
+			throw new MallException("JdbcUserDao.read(String id) ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½", e);
 		}finally {
 			try {
 				if(rs != null)    rs.close();
@@ -266,7 +269,7 @@ public class JdbcOrderDao implements OrderDao {
 		param.setPageSize(50);
 		List<Orders> orders=new ArrayList<Orders>();
 		
-		orders=dao.listByParam(param, "ÁÖ¹®Á¢¼ö");
+		orders=dao.listByParam(param, "ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½");
 		System.out.println(param.toString());
 		for (Orders order : orders) {
 			System.out.println(order);

@@ -212,7 +212,7 @@
 							</div>
 							 
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="/order/orderaction" accept-charset="UTF-8">
+								<form method="post" action="/order/orderaction.joya" accept-charset="UTF-8">
 									<h4>주문자 정보</h4>
 									<hr/><br/>
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
@@ -231,7 +231,7 @@
                                        </div>
                                        <div class="half-ms-div">
                                        		<input type ="hidden" id = "totalpoint"  >
-                                       		<input type ="hidden" id = "used_point"  value="0">
+                                       		<input type ="hidden" name = "used_point" id = "used_point"  value="0">
 	  										<input type ="hidden" id = "rest_point">
 	  										<label class="control-label" for="phone">사용 가능한 포인트 : <span id="restpoint">${user.point}</span> point</label>
 											<c:choose>

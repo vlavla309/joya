@@ -16,14 +16,13 @@ public class Orders {
 	private int cardNo;
 	private int approvalNo;
 	private String orderDate;
+	private String massage;
 	
 	public Orders() {}
-	
-	
-	
+
 	public Orders(int orderId, String email, int price, String orderer, String receiver, String address, String phone,
 			String status, String paymentType, int usedPoint, String paymentDate, int payment, int cardNo,
-			int approvalNo, String orderDate) {
+			int approvalNo, String orderDate, String massage) {
 		super();
 		this.orderId = orderId;
 		this.email = email;
@@ -39,9 +38,9 @@ public class Orders {
 		this.payment = payment;
 		this.cardNo = cardNo;
 		this.approvalNo = approvalNo;
-		this.orderDate=orderDate;
+		this.orderDate = orderDate;
+		this.massage = massage;
 	}
-
 
 
 	public int getOrderId() {
@@ -169,6 +168,13 @@ public class Orders {
 	}
 
 
+	public String getMassage() {
+		return massage;
+	}
+
+	public void setMassage(String massage) {
+		this.massage = massage;
+	}
 
 	@Override
 	public String toString() {
@@ -176,11 +182,8 @@ public class Orders {
 				+ ", receiver=" + receiver + ", address=" + address + ", phone=" + phone + ", status=" + status
 				+ ", paymentType=" + paymentType + ", usedPoint=" + usedPoint + ", paymentDate=" + paymentDate
 				+ ", payment=" + payment + ", cardNo=" + cardNo + ", approvalNo=" + approvalNo + ", orderDate="
-				+ orderDate + "]";
+				+ orderDate + ", massage=" + massage + "]";
 	}
 
-
-
-	
 	
 }

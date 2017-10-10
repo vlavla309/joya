@@ -43,12 +43,13 @@ public class CreateOrderActionController implements Controller {
 		String email=request.getParameter("email");
 		String orderer=request.getParameter("ordername");
 		String orderphone=request.getParameter("orderphone");
-		String paymentType=request.getParameter("paymentType");
+		String paymentType=request.getParameter("payment");
 		int usedpoint=0;
 		//주문자의 전체 포인트
 		String totalpoint = request.getParameter("totalpoint");
 		//주문자가 주문할 때 사용한 포인트
 		String usedpointStr = request.getParameter("used_point");
+		System.out.println("[usedpointStr] : "+usedpointStr);
 		if(usedpointStr!=null) {
 			usedpoint=Integer.parseInt(usedpointStr);
 		}
@@ -102,15 +103,16 @@ public class CreateOrderActionController implements Controller {
 		order.setPrice(price);
 		order.setOrderer(orderer);
 		order.setReceiver(receiver);
-		order.setAddress(address);
-		order.setPhone(phone);
+		order.setAddress(receiveaddress);
+		order.setPhone(orderphone);
 		order.setStatus(status);
 		order.setPaymentType(paymentType);
 		order.setUsedPoint(usedpoint);
+		order.setMassage(deliverymsg);
 		
+		System.out.println(order);
 		
-		//orderServ.create(order);
-
+		orderServ.create(order);
 		
 	//	mav.setView("/product/list.jsp");
 	//	return mav;
