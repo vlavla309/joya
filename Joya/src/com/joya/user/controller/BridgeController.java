@@ -33,7 +33,7 @@ public class BridgeController implements Controller{
 		User user = userService.read(email);
 		String[] tokens = user.getAddress().split(Delimiter.USER_INFO);
 		
-			mav.setView(request.getContextPath() + "/mypage/modify_user.joya");
+			mav.setView(request.getContextPath() + "/mypage/modifyuser.joya");
 		
 		mav.addObject("user", user);
 		mav.addObject("address1", tokens[0]);

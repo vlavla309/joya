@@ -38,7 +38,7 @@
     			var useremail = $("#email").val();
     			var userpasswd = $(this).val(); 
     			$.ajax({
-    				url: "/user/passwd_action.joya",
+    				url: "/user/passwdaction.joya",
     				data: {"email" : useremail, "passwd" : userpasswd},
     				success: function(data) {
     					if ($("#password").val().length == 0) {
@@ -90,7 +90,7 @@
     	
     	function goBack() {
 			var form = document.createElement("form");
-			form.setAttribute("action", "/user/mypage_action.joya");
+			form.setAttribute("action", "/user/mypageaction.joya");
 			form.setAttribute("method", "post");
 			
 			var email = document.createElement("input");
@@ -135,7 +135,7 @@
 								<h1 id="page-title">비밀번호 확인</h1> 
 							</div>
 							<div id="col-main" class="col-md-24 register-page clearfix">
-								<form method="post" action="/user/bridge_action.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
+								<form method="post" action="/user/bridgeaction.joya" id="create_customer" accept-charset="UTF-8" onsubmit="return checkpw();">
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">
 									<div id="register-form" class="row list-unstyled">
                                       <div class="half-ms-div">

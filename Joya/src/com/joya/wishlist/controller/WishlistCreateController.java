@@ -4,11 +4,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.Delimiter;
 import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
@@ -27,10 +29,11 @@ public class WishlistCreateController implements Controller{
 			throws ServletException, UnsupportedEncodingException {
 		
 		ModelAndView mav = new ModelAndView();
-		String userEmail = request.getParameter("email");
-		int productId = Integer.parseInt(request.getParameter("productId"));
-		wishlistService.insert(userEmail, productId);
 		
+		String userEmail = request.getParameter("email");
+		
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		wishlistService.insert((String) request.getAttribute("email"), productId);
 		String url = request.getHeader("REFERER");
 		System.out.println("[이전페이지 경로] : "+ url);
 		mav.setView("redirect:"+url);

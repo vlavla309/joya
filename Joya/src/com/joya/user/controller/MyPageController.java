@@ -37,10 +37,10 @@ public class MyPageController implements Controller{
 		if (referer != null) {
 			switch (referer) {
 			case "1":
-				mav.setView("redirect:" + request.getContextPath() + "/mypage/order_list.joya");
+				mav.setView("redirect:" + request.getContextPath() + "/mypage/orderlist.joya");
 				break;
 			case "2":
-				mav.setView(request.getContextPath() + "/mypage/pw_check.joya");
+				mav.setView(request.getContextPath() + "/mypage/pwcheck.joya");
 				break;
 			default:
 				mav.setView("redirect:" + request.getContextPath() + "/mypage/wishlist.joya");

@@ -32,7 +32,7 @@
      <script type="text/javascript">
             function go2modify(where) {
               var form = document.createElement("form");
-              form.setAttribute("action", "/user/mypage_action.joya");
+              form.setAttribute("action", "/user/mypageaction.joya");
               form.setAttribute("method", "post");
               
               var email = document.createElement("input");

@@ -22,6 +22,7 @@
 	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
 	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
 	
+	<bean name="/order/order_add" class="com.joya.order.controller.OrderAddFormController" />
 	
 	<!-- 회원 관련 -->
 	<bean name="/user/login_action" class="com.joya.user.controller.CertificationController" />
