@@ -18,15 +18,21 @@
 	<bean name="/product/view" class="com.joya.product.controller.ProductViewController" />
 
 	<!-- order -->
-	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
+	<bean name="/order/orderaction" class="com.joya.order.controller.CreateOrderActionController" />
+	<bean name="/order/orderadd" class="com.joya.order.controller.OrderAddFormController" />
 
 	<!-- cart -->
 	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
-	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
-	
-	<bean name="/order/order_add" class="com.joya.order.controller.OrderAddFormController" />
 	
 	<!-- 회원 관련 -->
+	<bean name="/user/login_action" class="com.joya.user.controller.CertificationController" />
+	<bean name="/user/email_action" class="com.joya.user.controller.CheckEmailController" />
+	<bean name="/user/passwd_action" class="com.joya.user.controller.CheckPasswdController" />
+	<bean name="/user/close_action" class="com.joya.user.controller.CloseAccountController" />
+	<bean name="/user/modify_action" class="com.joya.user.controller.ModifyUserController" />
+	<bean name="/user/register_action" class="com.joya.user.controller.RegisterController" />
+	<bean name="/user/mypage_action" class="com.joya.user.controller.MyPageController" />
+	<bean name="/user/bridge_action" class="com.joya.user.controller.BridgeController" />
 	<bean name="/user/loginaction" class="com.joya.user.controller.CertificationController" />
 	<bean name="/user/emailaction" class="com.joya.user.controller.CheckEmailController" />
 	<bean name="/user/passwdaction" class="com.joya.user.controller.CheckPasswdController" />

@@ -123,13 +123,13 @@
                                         <li class="col-md-21 unpadding-top">
                                         <ul class="login-wrapper list-unstyled">
                                           <li>
-                                            <a href="http://www.naver.com">
-                                            <div class="orderselect_mimi1">
-                                            <div class="minimi">
-                                            <h1>ORDER <br>for Guest</h1> 
-                                            <image src="../assets/images/guest_cart.png" align="center" class="mi_user">
-                                            </div>
-                                            </div>
+                                            <a href="${pageContext.servletContext.contextPath}/order/order_form.joya">
+	                                            <div class="orderselect_mimi1">
+	                                            <div class="minimi">
+	                                            <h1>ORDER <br>for Guest</h1> 
+	                                            <image src="../assets/images/guest_cart.png" align="center" class="mi_user">
+	                                            </div>
+	                                            </div>
                                             </a>
                                             <a href="/user/register.joya">
                                             <div class="orderselect_mimi2">
