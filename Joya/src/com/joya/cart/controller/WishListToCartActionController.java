@@ -1,16 +1,14 @@
 package com.joya.cart.controller;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.collections4.map.HashedMap;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
@@ -75,7 +73,7 @@ public class WishListToCartActionController implements Controller {
 	}
 
 	private Map<String, String> getCartMap(String cartCookieVal) {
-		Map<String, String> cartMap=new HashedMap<>();
+		Map<String, String> cartMap=new HashMap<String, String>();
 		String[] cartItems=cartCookieVal.split(Delimiter.CART_ITEM);
 
 		if(!cartCookieVal.equals(" ")) {
@@ -88,9 +86,10 @@ public class WishListToCartActionController implements Controller {
 		return cartMap;
 	}
 
-	int i=0;
+	
 	private String mapToStrCart(Map<String, String> cartMap) {
 		String cartInfo="";
+		int i=0;
 		for(Map.Entry<String, String> entry:cartMap.entrySet()) {
 			String productId=entry.getKey();
 			String amount=entry.getValue();
