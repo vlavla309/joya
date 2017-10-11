@@ -24,7 +24,7 @@ $(document).ready(function(){
 	
 	$("#checkout").click(function(){
 		updateCartList();
-		location.href="/order/order_add.joya"
+		location.href="/order/orderadd.joya"
 	})
 	
 })
