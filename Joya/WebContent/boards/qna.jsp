@@ -83,7 +83,7 @@
       </div>
       <div class="modal-footer" id="secretf">
         <div class="mimodal">
-          <input type="text" class="secretpasswd" name="">
+          <input type="password" class="secretpasswd" name="" maxlength="4">
           <button type="button" class="yes" id="yesbtn" value="">확인</button>
         </div>
         <span class="errorpasswd" value=""></span>
@@ -171,7 +171,14 @@
                                   <%-- 비밀글인 경우 --%>
                                    <c:when test="${article.title eq '비밀글입니다.' }">
                                      <img src="../assets/images/secret_lock.png"> &nbsp;
-                                       <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
+                                       <c:choose>
+                                        <c:when test="${name eq '관리자' }">
+                                          <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=2">${article.title}</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                          <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
+                                        </c:otherwise>
+                                       </c:choose>
                                     </c:when>
                                    <c:otherwise>
                                    <%-- 일반게시글인 경우 --%>
@@ -194,7 +201,7 @@
                 
                 <div id="ji-writeD">
                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/writingqna.jsp">글쓰기</a>
+                    <a href="${pageContext.servletContext.contextPath}/boards/writingqna.joya">글쓰기</a>
                   </button>
                   </form>
                 </div>
