@@ -37,11 +37,8 @@ public class OrderDetailController implements Controller{
 		Map<Integer,Images> images=new HashMap<Integer,Images>();
 		
 		for (OrderItems orderItems : itemlist) {
-			System.out.println(orderItems);
 			Product product = productservice.read(orderItems.getProductId());
-			System.out.println(product);
 			products.put(orderItems.getProductId(),product);
-			System.out.println("해쉬테이블"+products.get(orderItems.getProductId()));
 			List<Images> imgs=imgService.listByProductid(orderItems.getProductId());
 			for (Images img:imgs) {
 				if(img.getOrderNo()==0) {
@@ -51,6 +48,7 @@ public class OrderDetailController implements Controller{
 			}
 		}
 		
+		mav.addObject("status", request.getParameter("status"));
 		mav.addObject("products", products);
 		mav.addObject("images", images);
 		mav.addObject("itemlist", itemlist);

@@ -131,6 +131,10 @@
                                         <label class="control-label" for="customer_email">주문번호<span class="req">*</span></label>
                                         <input type="email" value="" name="customer[email]" id="customer_email" class="form-control" required="required">
                                         </li>
+                                        <li id="login_email" class="col-md-21">
+                                        <label class="control-label" for="customer_email">이메일<span class="req">*</span></label>
+                                        	<input type="email" value="" name="email" id="customer_email" class="form-control" required="required">
+                                        </li>
                                         <li class="col-md-21 unpadding-top">
                                         <ul class="login-wrapper list-unstyled">
                                           <li>

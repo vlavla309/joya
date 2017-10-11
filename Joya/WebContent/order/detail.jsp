@@ -33,7 +33,15 @@
 	  
   	}
  </style>
- 
+ <script type="text/javascript">
+ 	$(function() {
+ 		var status = "${status}"
+	 	if(status != "배송완료"){
+	 		alert(status)
+	 		$("input[type=button]").attr("disabled", "disabled");
+	 	}
+	})
+ </script>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" class="templateCustomersRegister notouch">
@@ -113,7 +121,7 @@
 			                        <span class="status_unfulfilled">${products[item.productId].price * item.amount}</span>
 			                      </td>
 			                      <td>
-			                        <a href="/mypage/review.joya?productid=${item.productId}&orderid=${item.orderId}"><input class="btn btn-default" type="button" value="상품평"></a>
+			                        <input class="btn btn-default reviewbtn" type="button" value="상품평" onclick="location.href='/mypage/review.joya?productid=${item.productId}&orderid=${item.orderId}'">
 			                      </td>
 			                    </tr>
 		                </c:forEach>

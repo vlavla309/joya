@@ -64,7 +64,7 @@
                     <thead>
                     <tr>
                       <th class="order_number">
-                        No.
+                        주문번호
                       </th>
                       <th class="date">
                         주문일
@@ -90,13 +90,13 @@
                     <c:forEach items="${orders}" var="order" varStatus="status">
 	                    <tr class="odd ">
 	                      <td>
-	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}" title="">${order.orderId}</a>
+	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}&status=${order.status}" title="">${order.orderId}</a>
 	                      </td>
 	                      <td>
-	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}" title=""><span class="note"> ${order.orderDate}</span></a>
+	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}&status=${order.status}" title=""><span class="note"> ${order.orderDate}</span></a>
 	                      </td>
 	                      <td>
-	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}" title=""><span class="status_authorized">${order.paymentType}</span></a>
+	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}&status=${order.status}" title=""><span class="status_authorized">${order.paymentType}</span></a>
 	                      </td>
 	                      <td>
 	                        <span class="status_unfulfilled">${order.status}</span>
