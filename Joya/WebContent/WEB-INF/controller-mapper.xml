@@ -16,7 +16,6 @@
 	
 	<!-- cart -->
 	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
-	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
 	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
 	
 	<!-- 회원 관련 -->
@@ -33,6 +32,7 @@
 	
 	<!-- order -->
 	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
+	<bean name="/order/orderadd" class="com.joya.order.controller.OrderAddFormController" />
 	
 	<!-- 위시리스트 관련 -->
 	<bean name="/mypage/wishlist" class="com.joya.wishlist.controller.WishlistController" />
