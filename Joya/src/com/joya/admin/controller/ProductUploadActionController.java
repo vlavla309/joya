@@ -69,10 +69,10 @@ public class ProductUploadActionController implements Controller {
 		try {
 			fileList = fileUpload.parseRequest(request);
 		
-			System.out.println("업로드 사이즈"+fileList.size());
+			System.out.println("파일사이즈"+fileList.size());
 			for (int i=0; i<fileList.size(); i++) {
 				FileItem item=fileList.get(i);
-				System.out.println("아이템"+item.toString());
+//				System.out.println("아이템"+item.toString());
 				if (item.isFormField()) {
 					String param=item.getString("utf-8");
 //					System.out.println(param);
@@ -100,7 +100,7 @@ public class ProductUploadActionController implements Controller {
 					imageName = item.getName();
 					images.add(new Images(imageName, productId, path, 0));
 
-					// 업로드된 파일을 서버의 특정 디렉토리에 저장
+					// 실제 경로에 파일 쓰긴
 					File saveFile = new File(fileRepository + imageName);
 					item.write(saveFile);
 				}
@@ -117,15 +117,11 @@ public class ProductUploadActionController implements Controller {
 					image.setProductId(productId);
 					imgService.create(image);
 				}
-
 			
 		}catch (Exception e) {}
 		mav.setView("/admin/pages/product_form.jsp");
 
 		return mav;
-
-
-
 	}
 
 }
