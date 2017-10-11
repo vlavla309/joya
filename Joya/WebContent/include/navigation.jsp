@@ -60,7 +60,7 @@
                     </a>
                     </li>
                     <li class="dropdown mega-menu">
-                    <a href="#" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
+                    <a href="/product/list.joya" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
                     <span>Product</span>
                     <i class="fa fa-caret-down"></i>
                     <i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>

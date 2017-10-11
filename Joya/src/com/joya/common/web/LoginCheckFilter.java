@@ -55,6 +55,15 @@ public class LoginCheckFilter implements Filter {
 			}
 			
 		}
+<<<<<<< HEAD
+=======
+		
+		if(userinfo==null) {
+			System.out.println("À¯Àú°¡ ¾ø¾û");
+			req.getRequestDispatcher("/user/login3.joya").forward(req, res);
+			
+		}else {
+>>>>>>> 4c0dc8d78eaf3a6425f8b7028f2a6c308d852793
 			request.setAttribute("email", email);
 			request.setAttribute("name", name);
 			chain.doFilter(request, response);
