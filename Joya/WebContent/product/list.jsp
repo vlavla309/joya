@@ -9,37 +9,37 @@
   <meta name="description" content="" />
   <title>Collection Full Width Page</title>
   
-	<link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
-	<link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 
-	<link href="../assets/stylesheets/jquery.camera.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/cs.animate.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/application.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/swatch.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/jquery.owl.carousel.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/jquery.bxslider.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	<script src="../assets/stylesheets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.easing.1.3.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.camera.min.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.mobile.customized.min.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/cookies.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/modernizr.js" type="text/javascript"></script>  
-	<script src="../assets/stylesheets/javascripts/application.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.owl.carousel.min.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.bxslider.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/skrollr.min.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
-	<script src="../assets/stylesheets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
-	<script src="../assets/stylesheets/javascripts/cs.script.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/cart_function.js" type="text/javascript"></script>
-    <link href="../assets/stylesheets/jjh-style.css" rel='stylesheet' type='text/css'>
+	<link href="/assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
+	<link href="/assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 
+	<link href="/assets/stylesheets/jquery.camera.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/cs.animate.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/application.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/swatch.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/jquery.owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/jquery.bxslider.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
+	<link href="/assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
+	<script src="/assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.easing.1.3.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.camera.min.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.mobile.customized.min.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/cookies.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/modernizr.js" type="text/javascript"></script>  
+	<script src="/assets/javascripts/application.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.owl.carousel.min.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.bxslider.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/skrollr.min.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
+	<script src="/assets/javascripts/cs.script.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/cart_function.js" type="text/javascript"></script>
+    <link href="/assets/stylesheets/jjh-style.css" rel='stylesheet' type='text/css'>
 	
 	<script>
 	$(function() {
