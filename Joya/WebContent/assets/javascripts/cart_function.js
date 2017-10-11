@@ -77,7 +77,7 @@ function getCartMap(){
 	var cartMap=new Map();
 
 	
-	if(cartCookieValue!=" "){//쿠키값이 비어있을경우 빈 Map 반환
+	if(cartCookieValue!=""){//쿠키값이 비어있을경우 빈 Map 반환
 		//쿠키값을 구획문자로 파싱(품목별로 나눔)
 		var cartItems=cartCookieValue.split(DELIMITER_CART_ITEM);
 		//배열을 foreach 문으로 수행

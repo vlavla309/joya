@@ -14,8 +14,7 @@ public class WishlistServiceImpl implements WishlistService {
 	
 	@Override
 	public void insert(String userEmail, int productId) {
-		wishlistDao.insert(userEmail, productId);
-		
+		wishlistDao.insert(userEmail, productId);	
 	}
 	
 	@Override
@@ -42,7 +41,5 @@ public class WishlistServiceImpl implements WishlistService {
 	public List<Wishlist> listByParams(String userEmail, Params params) {
 		return wishlistDao.listByParams(userEmail, params);
 	}
-
-
 }
 

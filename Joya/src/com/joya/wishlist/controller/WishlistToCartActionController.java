@@ -13,8 +13,6 @@ import com.joya.image.domain.Images;
 import com.joya.image.service.ImageService;
 import com.joya.image.service.ImageServiceImpl;
 
-
-
 public class WishlistToCartActionController implements Controller {
 	
 	private ImageService imgService= new ImageServiceImpl();

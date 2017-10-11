@@ -54,20 +54,6 @@
                                 <li>
                                     <a href="${pageContext.servletContext.contextPath}/admin/visitors.joya">접속자 수 통계</a>
                                 </li>
-                                <li>
-                                <a href="#">매출액 통계 <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">일 매출액</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">월 매출액</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">연 매출액</a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -90,7 +76,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>주문관리<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/admin/orders.joya">주문목록</a>
+                                    <a href="#">주문목록</a>
                                 </li>
                                 <li>
                                     <a href="#">주문수정</a>
