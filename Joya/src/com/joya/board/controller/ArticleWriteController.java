@@ -32,7 +32,7 @@ public class ArticleWriteController implements Controller {
 	
 	private ArticleService articleService = new ArticleServiceImpl();
 	private ImageService imgService = new ImageServiceImpl();
-	private String fileRepository = "C:/Users/kosta/Desktop/joya/Joya/WebContent/boards/asimages/";
+	private String fileRepository = "C:/kosta164/1Team/Joya/WebContent/boards/asimages/";
 	String fileName;
 	
 
@@ -119,29 +119,37 @@ public class ArticleWriteController implements Controller {
 						switch(item.getFieldName()) {
 						case "board_id" :
 							boardNo = item.getString("utf-8");
+							System.out.println("as게시판보드넘:"+boardNo);
 							break;
 						case "title":
 							title = item.getString("utf-8");
+							System.out.println("as제목:"+title);
 							break;
 						case "articleType":
 							articleType = item.getString("utf-8");
+							System.out.println("as비밀글타입:"+articleType);
 							break;
 						case "email":
 							email = item.getString("utf-8");
+							System.out.println("as게시판이메일:"+email);
 							break;
 						case "writer":
 							writer = item.getString("utf-8");
+							System.out.println("as글쓴이:"+writer);
 							break;
 						case "passwd":
 							passwd = item.getString("utf-8");
+							System.out.println("as비번:"+passwd);
 							break;
 						case "contents":
 							contents = item.getString("utf-8");
+							System.out.println("as내용:"+contents);
 							break;
 						
 						}
 					}else {
 						imageName = item.getName();
+						System.out.println("이미지네임:"+imageName);
 						File saveFile = new File(fileRepository + imageName);
 						try {
 							item.write(saveFile);
@@ -157,16 +165,16 @@ public class ArticleWriteController implements Controller {
 					article.setPasswd(passwd);
 					article.setContents(contents.replace("\r\n", "<br>"));
 					article.setFilePath(path + imageName);
+					System.out.println("AS게시판11111111111111 : " + path + imageName);
 					
 					if(boardId != null) {
 						switch(boardId) {
 						case "3":
 							articleService.create(article, "review");
-							mav.setView("redirect:"+request.getHeader("REFERER"));
 							break;
 						case "4":
 							articleService.create(article, "as");
-							mav.setView("redirect:/boards/aslist.joya");
+							System.out.println("AS게시판22222222222");
 							break;
 							
 						}
@@ -182,7 +190,7 @@ public class ArticleWriteController implements Controller {
 			} catch (FileUploadException e) {
 				e.printStackTrace();
 			}
-			
+			mav.setView("redirect:/boards/aslist.joya");
 			System.out.println("AS게시판33333333333");
 			
 		}
