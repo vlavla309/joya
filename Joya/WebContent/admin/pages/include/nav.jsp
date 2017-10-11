@@ -78,10 +78,10 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>상품관리<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level"> 
                                 <li>
-                                    <a href="${pageContext.servletContext.contextPath}/admin/product_add.joya"><i class="fa fa-edit fa-fw"></i>상품목록</a>
+                                    <a href="#"><i class="fa fa-edit fa-fw"></i>상품목록</a>
                                 </li>
                                 <li>
-                                    <a href="${pageContext.servletContext.contextPath}/admin/product_add.joya"><i class="fa fa-edit fa-fw"></i>상품등록</a>
+                                    <a href="${pageContext.servletContext.contextPath}/admin/productadd.joya"><i class="fa fa-edit fa-fw"></i>상품등록</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

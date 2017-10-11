@@ -1393,3 +1393,8 @@ ul#price-table{display:block;width:100%;height:auto;margin-top:40px;}
     background: transparent;
     border: none;
 }
+
+#top nav.navbar .dropdown-menu .list-title{
+	font-size:1em;
+	font-weight: bold;
+}
