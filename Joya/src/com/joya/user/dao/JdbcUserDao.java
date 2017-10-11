@@ -109,7 +109,8 @@ public class JdbcUserDao implements UserDao{
 					   "SET    name = ?, " + 
 					   "       passwd = ?, " + 
 					   "       phone = ?, " + 
-					   "       address = ? " + 
+					   "       address = ?, " + 
+					   "       point = ? " + 
 					   "WHERE  email = ? ";
 		try {
 			con = dataSource.getConnection();
@@ -119,7 +120,9 @@ public class JdbcUserDao implements UserDao{
 			pstmt.setString(2, user.getPasswd());
 			pstmt.setString(3, user.getPhone());
 			pstmt.setString(4, user.getAddress());
-			pstmt.setString(5, user.getEmail());
+			pstmt.setInt(5, user.getPoint());
+			pstmt.setString(6, user.getEmail());
+			
 			pstmt.executeQuery();
 			con.commit();
 		} catch (SQLException e) {
