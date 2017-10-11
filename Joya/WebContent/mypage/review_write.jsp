@@ -12,7 +12,6 @@
  
      <!-- css 적용 부분 시작 -->
     <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
-  
 	<link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 	
 	<link href="../assets/stylesheets/bootstrap.min.3x.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.bootstrap.3x.css" rel="stylesheet" type="text/css" media="all">
@@ -21,9 +20,11 @@
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/orders.css" rel="stylesheet" type="text/css" media="all">
+  	<link href="../assets/stylesheets/jasny-bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
   
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
+	<script src="../assets/javascripts/jasny-bootstrap.min.js" type="text/javascript"></script>
   <!-- css 적용 부분 종료 -->
     </style>
     
@@ -79,14 +80,14 @@
                     <input type="hidden" name="productid" value="${productid}">
                     <input type="hidden" name="orderid" value="${orderid}">
                     <thead>
-                    <tr>
-                      <th class="order_number" id="mi_review_1">
-                        File
-                      </th>
-                      <th class="payment_status" colspan="4" id="mi_review_2">
-                        Please Write Your Comment
-                      </th>
-                    </tr>
+	                    <tr>
+	                      <th class="order_number" id="mi_review_1">
+	                        	Image file
+	                      </th>
+	                      <th class="payment_status" colspan="4" id="mi_review_2">
+	                        Please Write Your Comment
+	                      </th>
+	                    </tr>
                     </thead>
                     <!-- 테이블 헤더 종료 -->
                     
@@ -94,21 +95,26 @@
                     <tbody>
                     <tr class="odd ">
                       <td id="">
-                        <a href="order_detail.jsp" title=""><img src="../boards/asimages/join.png"></a>
+                      	<div class="fileinput fileinput-new" data-provides="fileinput">
+					      <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+					      </div>
+					      <div>
+					        <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+					        <input type="file" name="filepath" value="5"></span>
+					        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+					      </div>
+					  	</div>
                       </td>
                       <td colspan="4">
-                        <textarea rows="10" cols="80" name="contents" id="m_reviewtxt"></textarea>
+                        <textarea rows="10" cols="60" name="contents" id="m_reviewtxt"></textarea>
                       </td>
                     </tr>
                     </tbody>
                     <!-- 테이블 바디 종료 -->
-                     
                     </table> 
-                    <div id="reviewfile_m">
-                    <input type="file" name="filepath" value="5">
-                    </div>
+                    <br>
                     <div id="reviewsubmit_m">
-                    <input type="submit" id="reviewbtn" value="Write">
+                    <center><input class="btn" type="submit" id="reviewbtn" value="Write"></center>
                     </div>
                     </form>
                   </div>

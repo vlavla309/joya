@@ -22,10 +22,12 @@ import com.joya.user.service.UserServiceImpl;
  */
 public class LoginCheckFilter implements Filter {
 	
-	private String encoding;
+	private int status;
 	
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException{ 
+	public void init(FilterConfig filterConfig) throws ServletException{
+		status = Integer.parseInt(filterConfig.getInitParameter("status"));
+		System.out.println("[status] : "+status);
 	}
 	
 	@Override
@@ -53,16 +55,10 @@ public class LoginCheckFilter implements Filter {
 			}
 			
 		}
-		
-		if(userinfo==null) {
-			req.getRequestDispatcher("/user/login3.joya");
-			
-		}else {
 			request.setAttribute("email", email);
 			request.setAttribute("name", name);
-			System.out.println(email + ": "+name);
-		}
 			chain.doFilter(request, response);
+			
 	}
 
 	@Override
