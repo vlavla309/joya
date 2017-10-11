@@ -13,9 +13,9 @@ import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
 /**
- * À§½Ã¸®½ºÆ® »ý¼º ÄÁÆ®·Ñ·¯
+ * ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½
  *
- * @author ÇÑ¼öÁø
+ * @author ï¿½Ñ¼ï¿½ï¿½ï¿½
  *
  */
 public class WishlistCreateController implements Controller{
@@ -27,15 +27,18 @@ public class WishlistCreateController implements Controller{
 			throws ServletException, UnsupportedEncodingException {
 		
 		ModelAndView mav = new ModelAndView();
-		
-		String userEmail = request.getParameter("email");
-		
 		int productId = Integer.parseInt(request.getParameter("productId"));
-		wishlistService.insert((String) request.getAttribute("email"), productId);
-		String url = request.getHeader("REFERER");
-		System.out.println("[ÀÌÀüÆäÀÌÁö °æ·Î] : "+ url);
+		
+		
+		if(request.getAttribute("email")==null) {
+			mav.setView("redirect:"+url);
+		}else {
+			wishlistService.insert((String) request.getAttribute("email"), productId);
+			String url = request.getHeader("REFERER");
+			mav.setView("redirect:"+url);
+		}
 
-		mav.setView("redirect:"+url);
+		
 		return mav;
 	}
 

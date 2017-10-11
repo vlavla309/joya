@@ -11,6 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
@@ -30,10 +31,11 @@ public class LoginCheckFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest)request;
+		HttpServletResponse res = (HttpServletResponse) response;
 		String email = null;
 		String name = null;
 		String passwd = null;
-
+		User userinfo = null;
 		Cookie[] cookies = req.getCookies();
 		if (cookies != null) {
 			
@@ -44,14 +46,23 @@ public class LoginCheckFilter implements Filter {
 	                String[] tokens = user.split(Delimiter.USER_INFO);
 	                email = tokens[0];
 					UserService userService = new UserServiceImpl();
-					User userinfo = userService.read(email);
+					userinfo = userService.read(email);
 					name = userinfo.getName();
 				}
 			}
+			
 		}
-		request.setAttribute("email", email);
-		request.setAttribute("name", name);
-		chain.doFilter(request, response);
+		
+
+		if(userinfo == null) {
+			System.out.println("로그인 해");
+			req.getRequestDispatcher("/user/login3.joya").forward(req, res);
+		}else {
+			request.setAttribute("email", email);
+			request.setAttribute("name", name);
+			System.out.println(email + ": "+name);
+			chain.doFilter(request, response);
+		}
 		
 	}
 

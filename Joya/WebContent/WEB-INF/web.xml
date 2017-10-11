@@ -32,7 +32,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>LoginCheckFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/mypage/*</url-pattern>
 	</filter-mapping>
 
 	<!-- 관리자페이지 로그인 필터 적용 -->

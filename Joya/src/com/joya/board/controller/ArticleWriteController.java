@@ -32,7 +32,7 @@ public class ArticleWriteController implements Controller {
 	
 	private ArticleService articleService = new ArticleServiceImpl();
 	private ImageService imgService = new ImageServiceImpl();
-	private String fileRepository = "C:/Users/kosta/Desktop/joya/Joya/WebContent/boards/asimages";
+	private String fileRepository = "C:/Users/kosta/Desktop/joya/Joya/WebContent/boards/asimages/";
 	String fileName;
 	
 
