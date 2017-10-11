@@ -17,8 +17,7 @@ public class Wishlist {
 	public Wishlist() {	}
 	
 	public Wishlist(int productId, String email) {
-		this.productId = productId;
-		this.email = email;
+		this(productId, email, null, null, null, null);
 	}
 
 	public Wishlist(int productId, String email, String productName, String imgName, String imgPath) {
@@ -82,11 +81,9 @@ public class Wishlist {
 		this.imgPath = imgPath;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Wishlist [productId=" + productId + ", email=" + email + ", regdate=" + regdate + ", productName="
 				+ productName + ", imgName=" + imgName + ", imgPath=" + imgPath + "]";
 	}
-	
 }

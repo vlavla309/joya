@@ -57,7 +57,7 @@ public class JdbcWishlistDao implements WishlistDao {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {}
-			System.out.println("JdbcWishlistDao.insert(wishlist) 실행 중 예외발생");
+			System.out.println("JdbcWishlistDao.insert(userEmail, productId) 실행 중 예외발생");
 		}finally {
 			try {
 				if(pstmt != null) pstmt.close();
@@ -101,7 +101,7 @@ public class JdbcWishlistDao implements WishlistDao {
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("JdbcWishlistDao.listAll() 실행 중 예외발생");
+			System.out.println("JdbcWishlistDao.listAll(userEmail) 실행 중 예외발생");
 		}finally {
 			try {
 				if(rs != null)    rs.close();
@@ -165,7 +165,7 @@ public class JdbcWishlistDao implements WishlistDao {
 				return false;
 			} catch (SQLException e1) {
 			}
-			System.out.println("JdbcWishlistDao.deleteUser(wishlist) 실행 중 예외발생");
+			System.out.println("JdbcWishlistDao.deleteUser(userEmail, productId) 실행 중 예외발생");
 		} finally {
 			try {
 				if (rs != null)
@@ -299,7 +299,7 @@ public class JdbcWishlistDao implements WishlistDao {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("JdbcArticleDao.listByPage(params) 실행 중 예외발생");
+			System.out.println("JdbcArticleDao.listByPage(userEmail, params) 실행 중 예외발생");
 		} finally {
 			try {
 				if(rs != null)    rs.close();
@@ -338,47 +338,4 @@ public class JdbcWishlistDao implements WishlistDao {
 		return wishlist;
 	}
 	
-	public static void main(String[] args) {
-		JdbcWishlistDao wishlistDao=(JdbcWishlistDao) DaoFactory.getInstance().getDao(JdbcWishlistDao.class);
-
-		/*List<Wishlist> list=wishlistDao.listAll("joa@joa");
-		for (Wishlist wishlist : list) {
-			System.out.println(wishlist);
-		}*/
-		/*System.out.println("gk");
-		
-		List<Wishlist> list = wishlistDao.ProductlistAll(userEmail);
-		
-		for (Wishlist wishlist : list) {
-			System.out.println(wishlist);
-		}
-		*/
-		/*
-		List<Wishlist> pageList = wishlistDao.listByPage("joa@joa", 2);
-		for (Wishlist wishlist : pageList) {
-			System.out.println(wishlist);
-		}
-		
-		System.out.println("----------");
-		
-		System.out.println(wishlistDao.delete("joa@joa", 1));
-		
-		System.out.println("----------");
-		
-		pageList = wishlistDao.listByPage("joa@joa", 2);
-		for (Wishlist wishlist : pageList) {
-			System.out.println(wishlist);
-		}
-		
-		wishlistDao.insert("joa@joa", 1);
-		
-		System.out.println("----------");
-		
-		pageList = wishlistDao.listByPage("joa@joa", 1);
-		for (Wishlist wishlist : pageList) {
-			System.out.println(wishlist);
-		}
-		*/
-		
-	}
 }
