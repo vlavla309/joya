@@ -24,6 +24,9 @@ import com.joya.image.service.ImageServiceImpl;
 import com.joya.product.domain.Product;
 import com.joya.product.service.ProductService;
 import com.joya.product.service.ProductServiceImpl;
+import com.joya.wishlist.domain.Wishlist;
+import com.joya.wishlist.service.WishlistService;
+import com.joya.wishlist.service.WishlistServiceImpl;
 
 /**
  * 상품 상세보기 컨트롤러
@@ -35,6 +38,7 @@ public class ProductViewController implements Controller {
 	private ProductService productservice = new ProductServiceImpl();
 	private ImageService ImageService = new ImageServiceImpl();
 	private ArticleService articleService = new ArticleServiceImpl();
+	private WishlistService wishlistService = new WishlistServiceImpl();
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -113,9 +117,13 @@ public class ProductViewController implements Controller {
 			return null;
 
 		} else {
+			String userEmail = (String)request.getAttribute("email");
+			mav.addObject("loginuser", userEmail);
 			mav.addObject("imglist", images);
 			mav.addObject("reviewlist", review);
 			mav.addObject("product", product);
+			Wishlist wish =  wishlistService.read(userEmail, Integer.parseInt(productid));
+			mav.addObject("wishlist", wish);
 			mav.setView("/product/product.jsp");
 			return mav;
 		}

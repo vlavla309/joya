@@ -41,5 +41,10 @@ public class WishlistServiceImpl implements WishlistService {
 	public List<Wishlist> listByParams(String userEmail, Params params) {
 		return wishlistDao.listByParams(userEmail, params);
 	}
+
+	@Override
+	public Wishlist read(String userEmail, int productId) {
+		return wishlistDao.read(userEmail, productId);
+	}
 }
 

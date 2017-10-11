@@ -282,11 +282,25 @@
 															</div>
 														</form>
 														<div class="wls">
-															<a class="wish-list"
-																href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}"><i
-																class="fa fa-heart"></i> Wish list </a> <span>|</span> <a
-																href="mailto:info@yourdomain.com"><i
-																class="fa fa-envelope"></i> SEND EMAIL</a>
+															<c:choose>
+																<c:when test="${empty loginuser || loginuser eq null }">
+																	<a class="wish-list" href="/user/login.joya" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
+																</c:when>
+																<c:otherwise>
+																	<c:choose>
+																		<c:when test="${empty wishlist || loginuser eq null}">
+																			<a class="wish-list"
+																			href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}"><i
+																			class="fa fa-heart-o"></i>Add to Wishlist</a> 
+																		</c:when>
+																		<c:otherwise>
+																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">delete to Wishlist</span></a>
+																		</c:otherwise>
+																	</c:choose>
+																</c:otherwise>
+															</c:choose>
+															<span>|</span> 
+															<a href="mailto:info@yourdomain.com"><i	class="fa fa-envelope"></i> SEND EMAIL</a>
 														</div>
 													</div>
 													<ul id="tabs_detail"

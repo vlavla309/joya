@@ -128,26 +128,29 @@
 </head>
 
 <body>
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content" id="ji-mymodal">
-                                         <div class="modal-header alert alert-danger">
-                                           <input value="${user.email }" name="email" type="hidden">
-                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                           <span aria-hidden="true">&times;</span>
-                                           </button>
-                                           <h4 class="modal-title" id="myModalLabel">알림</h4>
-                                         </div>
-                                         <div class="modal-body">
-                                           <label class="success-message">상품이 장바구니에 담겼습니다.</label>
-                                         </div>
-                                         <div class="modal-footer">
-                                           <a  class="btn btn-success delete-confirm"  href="/cart.joya">장바구니로 이동</a>
-                                           <button class="btn btn-default" data-dismiss="modal " id="continuemodal">쇼핑 계속하기</button>
-                                         </div>
-                                       </div>
-                                      </div>
-                                     </div>
+	<!-- start cart modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	    <div class="modal-dialog" role="document">
+	      <div class="modal-content" id="ji-mymodal">
+	       <div class="modal-header alert alert-danger">
+	         <input value="${user.email }" name="email" type="hidden">
+	         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	         <span aria-hidden="true">&times;</span>
+	         </button>
+	         <h4 class="modal-title" id="myModalLabel">알림</h4>
+	       </div>
+	       <div class="modal-body">
+	         <label class="success-message">상품이 장바구니에 담겼습니다.</label>
+	       </div>
+	       <div class="modal-footer">
+	         <a  class="btn btn-success delete-confirm"  href="/cart.joya">장바구니로 이동</a>
+	         <button class="btn btn-default" data-dismiss="modal " id="continuemodal">쇼핑 계속하기</button>
+	       </div>
+	     </div>
+	    </div>
+	</div>
+	<!-- end cart modal -->   
+
 	<!-- Header -->
 	<jsp:include page="../include/header.jsp" />
   	<!-- end of Header -->
@@ -264,21 +267,29 @@
 																					<a class="clickid" value="${product.productId }"><i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span></a>																		
 																				</div>
 																		</div>
-																		<!-- fa fa-heart-o -->
-																		<c:set var="doneLoop" value="false"/>
-																		<c:set var="find" value="false"/>
-																		<c:forEach items="${wishlist}" var="wish" varStatus="status">
-																			<c:if test="${not doneLoop}">
-																				<c:if test="${(wish.productId==product.productId)&&(wish.email==loginuser)}">
-																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-																					<c:set var="doneLoop" value="true"/>
-																					<c:set var="find" value="true"/>
+																		<c:choose>
+																			<c:when test="${empty loginuser || loginuser eq null }">
+																				<a class="wish-list" href="/user/login.joya" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
+																			</c:when>
+																			<c:otherwise>
+																				<!-- 로그인을 하면 -->
+																				<c:set var="doneLoop" value="false"/>
+																				<c:set var="find" value="false"/>
+																				<c:forEach items="${wishlist}" var="wish" varStatus="status">
+																					<c:if test="${not doneLoop}">
+																						<c:if test="${(wish.productId==product.productId)&&(wish.email==loginuser)}">
+																							<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistdelete.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
+																							<c:set var="doneLoop" value="true"/>
+																							<c:set var="find" value="true"/>
+																						</c:if>
+																					</c:if>
+																				</c:forEach>
+																				<c:if test="${not find}">
+																					<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
 																				</c:if>
-																			</c:if>
-																		</c:forEach>
-																		<c:if test="${not find}">
-																			<a class="wish-list" href="${pageContext.servletContext.contextPath}/mypage/wishlistcreate.joya?productId=${product.productId}" title="wish list"><i class="fa fa-heart-o"></i><span class="list-mode">Add to Wishlist</span></a>
-																		</c:if>
+																			</c:otherwise>
+																		</c:choose>
+																		<!-- ${loginuser}  -->
 																	</div>
 																	</li>
 																</ul>

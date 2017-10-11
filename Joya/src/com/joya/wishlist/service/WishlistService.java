@@ -7,21 +7,23 @@ import com.joya.wishlist.domain.Wishlist;
 
 public interface WishlistService {
 	
-	/** À§½Ã¸®½ºÆ®¿¡ µî·Ï */
+	/** ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ */
 	public void insert(String userEmail,  int productId);
 	
-	/** À§½Ã¸®½ºÆ® ÀüÃ¼ ¸ñ·Ï ¹ÝÈ¯ */
+	/** ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ */
 	public List<Wishlist> listAll(String userEmail);
 	
-	/** »óÇ° ¸ñ·Ï¿¡ À§½Ã¸®½ºÆ® ÀüÃ¼ ¸ñ·Ï ¹ÝÈ¯ */
+	/** ï¿½ï¿½Ç° ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ */
 	public List<Wishlist> listAll();
 	
-	/** À§½Ã¸®½ºÆ® ¸ñ·Ï¿¡¼­ »èÁ¦ */
+	/** ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	public boolean delete(String userEmail,  int productId);
 	
-	/** ¼±ÅÃ ÆäÀÌÁö¿¡ ´ëÇÑ À§½Ã¸®½ºÆ® ¹ÝÈ¯ */
+	/** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ */
 	public List<Wishlist> listByPage(String email, int pageNum);
 	
-	/** {¼±ÅÃÆäÀÌÁö, ÇÑÆäÀÌÁö´ç Ãâ·Â Çà¼ö}¿¡ ´ëÇÑ À§½Ã¸®½ºÆ® ¹ÝÈ¯ */
+	/** {ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½}ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ */
 	public List<Wishlist> listByParams(String userEmail, Params params);
+	
+	public Wishlist read(String userEmail, int productId);
 }

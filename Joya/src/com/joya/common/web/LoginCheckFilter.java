@@ -22,13 +22,8 @@ import com.joya.user.service.UserServiceImpl;
  */
 public class LoginCheckFilter implements Filter {
 	
-	private int status;
-	
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException{
-		status = Integer.parseInt(filterConfig.getInitParameter("status"));
-		System.out.println("[status] : "+status);
-	}
+	public void init(FilterConfig filterConfig) throws ServletException{}
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

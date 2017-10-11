@@ -26,4 +26,7 @@ public interface WishlistDao {
 	/** {선택페이지, 한페이지당 출력 행수}에 대한 위시리스트 반환 */
 	public List<Wishlist> listByParams(String userEmail, Params params);
 	
+	/** 위시리스트 검색 */
+	public Wishlist read(String userEmail, int productId);
+	
 }
