@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
-  <title>Account Page</title>
+  <title>Cart - Joya</title>
   
   <!-- css 적용 부분 시작 -->
     <link href="assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
