@@ -269,7 +269,7 @@
 										</p>
 									</div>
 									<div class="home-banner-action">
-										<a href="collection.html">Shop Now</a>
+										<a href="${pageContext.servletContext.contextPath }/product/list.joya">Shop Now</a>
 									</div>
 								</div>
 							</div>
