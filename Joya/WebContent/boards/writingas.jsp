@@ -14,7 +14,7 @@
   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
-<title>Q&A - Writing</title>
+<title>A/S - Writing</title>
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
   type='text/css'>
 <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet"
@@ -40,14 +40,15 @@
   <script src="/assets/javascripts/referer.js" type="text/javascript"></script>
 <%-- CSS 적용 부분 종료 --%>   
 
-<%--비밀글 라디오 버튼 이벤트 --%>    
+<%--비밀글 라디오 버튼 이벤트 --%>  
 <script>
   $(function() {
-    $("input[type='checkbox']").click(function(){
-          var radioValue = $("input[name='radio']:checked").val();
+    $("input[type='radio']").click(function(){
+          var radioValue = $("input[name='articleType']:checked").val();
           if(radioValue == "secret"){
-          	$("input[name='title']").attr("value","비밀글입니다.");
+            $("input[name='title']").attr("value","비밀글입니다.");
           }
+          
       });
   })
 </script>
@@ -58,7 +59,7 @@
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
 
-  
+
  <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
  <!-- hearder 영역 종료 -->
@@ -74,8 +75,7 @@
               <div class="col-md-24">
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
-                <span>/</span> <span class="page-title">Q&A -
-                  Writing</span>
+                <span>/</span> <span class="page-title">A/S - Writing</span>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
           <div class="container">
             <div class="row">
               <div id="page-header">
-                <h1 id="page-title">Q&A</h1>
+                <h1 id="page-title">A/S</h1>
               </div>
             </div>
           </div>
@@ -95,13 +95,11 @@
                 <div class="row">
 
                   <form
-                    action="${pageContext.servletContext.contextPath}/boards/writearticle.joya"
-                    method="post" id="form">
+                    action="${pageContext.servletContext.contextPath}/boards/writearticle.joya?board_id=4"
+                    method="post" enctype="multipart/form-data">
                     <div class="left-block col-md-12">
-                      <input type="hidden" value="contact"
-                        name="form_type"><input type="hidden"
-                        name="utf8" value="â">
-                      <input type="hidden" name="board_id" value="2">  
+                      <!-- <input type="hidden" value="contact" name="form_type"> -->
+                      <input type="hidden" name="board_id" value="4"> 
                       
                       <div class="typediv">
                         <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
@@ -109,12 +107,12 @@
                       <br>
 
                       <div class="midivision2">
-                      <label class="control-label" for="name">제목<span
+                        <label class="control-label" for="name">제목<span
                           class="req">*</span></label>
                       </div>
-                       <input type="text" value=""
-                        class="form-control" name="title"> 
-                      <input type="hidden" value="${email}" name="email">
+                      <input type="text" id="name" value=""
+                        class="form-control" name="title"> <input
+                        type="hidden" value="${email}" name="email">
 
                       <c:choose>
                         <c:when test="${not empty email}">
@@ -155,8 +153,11 @@
                       <textarea id="message" rows="5"
                         class="form-control" name="contents"></textarea>
                       <br>
+                      <div class="midivision7">
+                      <input type="file" name="filepath" value="5">
+                      </div>
                       <div class="midivision6">
-                        <button class="btn">올리기</button>
+                        <button class="btn" type="">올리기</button>
                       </div>
                     </div>
                   </form>
@@ -209,7 +210,7 @@
               </div>
             </div>
           </div>
-       </section>
+        </section>
      </div>
     </div>
   </div>

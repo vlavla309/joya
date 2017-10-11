@@ -36,18 +36,18 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-  
   <script src="/assets/javascripts/referer.js" type="text/javascript"></script>
 <%-- CSS 적용 부분 종료 --%>   
 
-<%--비밀글 라디오 버튼 이벤트 --%>    
+<%--비밀글 라디오 버튼 이벤트 --%>  
 <script>
   $(function() {
-    $("input[type='checkbox']").click(function(){
-          var radioValue = $("input[name='radio']:checked").val();
+    $("input[type='radio']").click(function(){
+          var radioValue = $("input[name='articleType']:checked").val();
           if(radioValue == "secret"){
-          	$("input[name='title']").attr("value","비밀글입니다.");
+            $("input[name='title']").attr("value","비밀글입니다.");
           }
+          
       });
   })
 </script>
@@ -57,7 +57,6 @@
 <%-- BODY 영역 시작 --%>
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
-
   
  <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
@@ -74,8 +73,7 @@
               <div class="col-md-24">
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
-                <span>/</span> <span class="page-title">Q&A -
-                  Writing</span>
+                <span>/</span> <span class="page-title">Q&A - Edit</span>
               </div>
             </div>
           </div>
@@ -94,28 +92,29 @@
               <div class="container">
                 <div class="row">
 
-                  <form
-                    action="${pageContext.servletContext.contextPath}/boards/writearticle.joya"
-                    method="post" id="form">
+                  <form action="${pageContext.servletContext.contextPath}/boards/updatearticle.joya?boardid=2"
+                    method="post">
                     <div class="left-block col-md-12">
                       <input type="hidden" value="contact"
                         name="form_type"><input type="hidden"
                         name="utf8" value="â">
-                      <input type="hidden" name="board_id" value="2">  
-                      
-                      <div class="typediv">
+                        
+                        <div class="typediv">
                         <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
                       </div>
                       <br>
 
                       <div class="midivision2">
-                      <label class="control-label" for="name">제목<span
+                        <label class="control-label" for="name">제목<span
                           class="req">*</span></label>
                       </div>
-                       <input type="text" value=""
+                      <input type="text" id="name" value="${article.title}"
                         class="form-control" name="title"> 
-                      <input type="hidden" value="${email}" name="email">
-
+                        
+                        <input type="hidden" value="${email}" name="email">
+                        <input type="hidden" name="articleId" value="${param.articleid}">
+                        <input type="hidden" name="boardid" value="2">
+ 
                       <c:choose>
                         <c:when test="${not empty email}">
                           <div>
@@ -153,10 +152,11 @@
                         <span class="req">*</span>
                       </label>
                       <textarea id="message" rows="5"
-                        class="form-control" name="contents"></textarea>
+                        class="form-control" name="contents">${article.contents}</textarea>
                       <br>
                       <div class="midivision6">
-                        <button class="btn">올리기</button>
+                        <input class="btn" type="submit" value="수정하기">
+                        <button class="btn"><a href="${pageContext.servletContext.contextPath}/boards/qnalist.joya">글목록</a></button>
                       </div>
                     </div>
                   </form>
@@ -208,12 +208,13 @@
                 </div>
               </div>
             </div>
-          </div>
-       </section>
-     </div>
+         </div>
+      </div>
+     </section>
     </div>
   </div>
-  <!-- Main 영역 종료 -->
+ </div>
+ <!-- Main 영역 종료 -->
 
   <!-- footer 영역 시작 -->
   <jsp:include page="../include/footer.jsp" />

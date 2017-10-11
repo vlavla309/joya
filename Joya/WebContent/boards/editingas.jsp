@@ -6,15 +6,15 @@
 <html lang="en" class="no-js">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-
-<%-- CSS 적용 부분 시작 --%> 
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport"
   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
-<title>Q&A - Writing</title>
+<title>A/S - Writing</title>
+
+<!-- css 적용 부분 시작 -->
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
   type='text/css'>
 <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet"
@@ -36,34 +36,32 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-  
   <script src="/assets/javascripts/referer.js" type="text/javascript"></script>
-<%-- CSS 적용 부분 종료 --%>   
+<%-- CSS 적용 부분 종료 --%>  
 
-<%--비밀글 라디오 버튼 이벤트 --%>    
+<%--비밀글 라디오 버튼 이벤트 --%>
 <script>
   $(function() {
-    $("input[type='checkbox']").click(function(){
-          var radioValue = $("input[name='radio']:checked").val();
+    $("input[type='radio']").click(function(){
+          var radioValue = $("input[name='articleType']:checked").val();
           if(radioValue == "secret"){
-          	$("input[name='title']").attr("value","비밀글입니다.");
+            $("input[name='title']").attr("value","비밀글입니다.");
           }
+          
       });
   })
 </script>
 </head>
 <%-- HEAD 영역 종료 --%>
 
-<%-- BODY 영역 시작 --%>
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
 
-  
  <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
  <!-- hearder 영역 종료 -->
 
- <!-- Main 영역 시작 -->
+  <!-- Main 영역 시작 -->
   <div id="content-wrapper-parent">
     <div id="content-wrapper">
       <!-- Content -->
@@ -74,8 +72,7 @@
               <div class="col-md-24">
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
-                <span>/</span> <span class="page-title">Q&A -
-                  Writing</span>
+                <span>/</span> <span class="page-title">A/S - Editing</span>
               </div>
             </div>
           </div>
@@ -84,7 +81,7 @@
           <div class="container">
             <div class="row">
               <div id="page-header">
-                <h1 id="page-title">Q&A</h1>
+                <h1 id="page-title">A/S</h1>
               </div>
             </div>
           </div>
@@ -93,29 +90,21 @@
             <div class="group-contact clearfix">
               <div class="container">
                 <div class="row">
-
-                  <form
-                    action="${pageContext.servletContext.contextPath}/boards/writearticle.joya"
-                    method="post" id="form">
+                  <form action="${pageContext.servletContext.contextPath}/boards/updatearticle.joya?boardid=4"
+                    method="post" enctype="multipart/form-data">
                     <div class="left-block col-md-12">
-                      <input type="hidden" value="contact"
-                        name="form_type"><input type="hidden"
-                        name="utf8" value="â">
-                      <input type="hidden" name="board_id" value="2">  
-                      
                       <div class="typediv">
                         <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
                       </div>
                       <br>
-
                       <div class="midivision2">
-                      <label class="control-label" for="name">제목<span
-                          class="req">*</span></label>
+                        <label class="control-label" for="name">제목<span class="req">*</span></label>
                       </div>
-                       <input type="text" value=""
+                      <input type="text" id="name" value="${article.title}"
                         class="form-control" name="title"> 
-                      <input type="hidden" value="${email}" name="email">
-
+                        <input type="hidden" value="${email}" name="email">
+                        <input type="hidden" name="articleId" value="${param.articleid}">
+                        <input type="hidden" name="boardId" value="4">
                       <c:choose>
                         <c:when test="${not empty email}">
                           <div>
@@ -153,10 +142,14 @@
                         <span class="req">*</span>
                       </label>
                       <textarea id="message" rows="5"
-                        class="form-control" name="contents"></textarea>
+                        class="form-control" name="contents">${article.contents}</textarea>
                       <br>
+                      <div class="midivision7">
+                      <input type="file" name="filepath" value="5">
+                      </div>
                       <div class="midivision6">
-                        <button class="btn">올리기</button>
+                        <input class="btn" type="submit" value="수정하기">
+                        <button class="btn"><a href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a></button>
                       </div>
                     </div>
                   </form>
@@ -208,10 +201,12 @@
                 </div>
               </div>
             </div>
+
           </div>
-       </section>
-     </div>
+      </div>
+      </section>
     </div>
+  </div>
   </div>
   <!-- Main 영역 종료 -->
 

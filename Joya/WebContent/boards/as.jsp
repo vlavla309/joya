@@ -12,7 +12,7 @@
   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
-<title>Q&A</title>
+<title>A/S</title>
 
 <!-- css 적용 부분 시작 -->
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
@@ -40,11 +40,9 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-  
   <script src="/assets/javascripts/referer.js" type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
 
-<%-- 비밀글 modal 이벤트 액션 --%>
 <script>
 	$(function() {
 		$(".secrettitle").on("click", function(event) {
@@ -54,18 +52,14 @@
 
 		$(".yes").on("click",function() {
 			var id = $(".yes").attr("name");
-			console.log("articleId " + id);
 			var secretPw = $(".secretpasswd").val();
 			var password = $(".pw").val();
-			console.log("모달창비번 " + secretPw);
-			console.log("원래비번 " + password);
 
 			if (secretPw == password) {
-				location.href = "${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid="+ id + "&boardid=2";
-
+					location.href = "${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid="+ id + "&boardid=4";
 			} else {
-				$(".errorpasswd").text("비밀번호가 일치하지 않습니다.");
-				$(".secretpasswd").val("");
+					$(".errorpasswd").text("비밀번호가 일치하지 않습니다.");
+					$(".secretpasswd").val("");
 			}
 		});
 	})
@@ -112,7 +106,7 @@
               <div class="col-md-24">
                 <a href="index-2.html" class="homepage-link"
                   title="Back to the frontpage">Home</a> <span>/</span>
-                <span class="page-title">Q&A</span>
+                <span class="page-title">A/S</span>
               </div>
             </div>
           </div>
@@ -121,7 +115,7 @@
           <div class="container">
             <div class="row">
               <div id="page-header" class="col-md-24">
-                <h1 id="page-title">Q&A</h1>
+                <h1 id="page-title">A/S</h1>
               </div>
 
               <div id="ji-tableD">
@@ -141,7 +135,7 @@
                       <c:when test="${empty list }">
                         <tr class="odd">
                           <td></td>
-                          <td>검색된 글이 존재하지 않습니다.</td>
+                          <td>검색된 글이 존재하지 않습니다.</a></td>
                           <td></td>
                           <td></td>
                           <td></td>
@@ -157,30 +151,29 @@
                               <%-- 삭제된 글일 경우 --%>
                               <c:when test="${article.contents eq '삭제' }">
                                 <td class="titletd">
-                                  <c:if test="${article.writer eq '관리자'}">
-                                    <img src="../assets/images/replying.png"> &nbsp;
-                                  </c:if> 
+                                 <c:if test="${article.writer eq '관리자'}">
+                                   <img src="../assets/images/replying.png"> &nbsp;
+                                 </c:if> 
                                  <a class="titlebtn">${article.title}</a></td>
                                 <td colspan='3'></td>
                               </c:when>
                               <c:otherwise>
-                                <%-- 관리자인 경우 --%>
                                 <td class="titletd">
+                                  <%-- 관리자인 경우 --%>
                                   <c:if test="${article.writer eq '관리자'}">
-                                   <img src="../assets/images/replying.png"> &nbsp;
+                                  <img src="../assets/images/replying.png"> &nbsp;
                                    </c:if>
-                                 <c:choose>
-                                  <%-- 비밀글인 경우 --%>
-                                   <c:when test="${article.title eq '비밀글입니다.' }">
+                                   <c:choose>
+                                    <%-- 비밀글인 경우 --%>
+                                    <c:when test="${article.title eq '비밀글입니다.' }">
                                      <img src="../assets/images/secret_lock.png"> &nbsp;
-                                       <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
+                                        <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
                                     </c:when>
-                                   <c:otherwise>
-                                   <%-- 일반게시글인 경우 --%>
-                                     <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=2">${article.title}</a>
-                                   </c:otherwise>
-                                 </c:choose>
-                                 </td>
+                                    <c:otherwise>
+                                     <%-- 일반게시글인 경우 --%>
+                                      <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=4">${article.title}</a>
+                                    </c:otherwise>
+                                  </c:choose></td>
                                 <td class="writertd">${article.writer}</td>
                                 <td>${article.regdate}</td>
                                 <td>${article.hitcount}</td>
@@ -193,10 +186,10 @@
                     </c:choose>
                   </tbody>
                 </table>
-                
+
                 <div id="ji-writeD">
                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/writingqna.jsp">글쓰기</a>
+                    <a href="${pageContext.servletContext.contextPath}/boards/writingas.jsp">글쓰기</a>
                   </button>
                   </form>
                 </div>
@@ -211,8 +204,8 @@
               </c:if>
 
               <c:if test="${pb.isShowPrevious()}">
-                <li class="prev">
-                  <a href="${pb.getQueryString(pb.previousStartPage)}">이전목록</a></li>
+                <li class="prev"><a
+                  href="${pb.getQueryString(pb.previousStartPage)}">이전목록</a></li>
               </c:if>
 
               <c:forEach var="i" varStatus="status" begin="${pb.currentStartPage}" end="${pb.currentEndPage}">
@@ -227,28 +220,26 @@
               </c:forEach>
 
               <c:if test="${pb.isShowNext()}">
-                <li class="next">
-                <a href="${pb.getQueryString(pb.nextStartPage) }">다음목록</a></li>
+                <li class="next"><a href="${pb.getQueryString(pb.nextStartPage) }">다음목록</a></li>
               </c:if>
 
               <c:if test="${pb.isShowLast()}">
-                <li>
-                <a href="${pb.getQueryString(pb.totalPageCount) }">끝으로</a></li>
+                <li><a href="${pb.getQueryString(pb.totalPageCount) }">끝으로</a></li>
               </c:if>
             </ul>
 
+
             <%-- 검색 --%>
             <div class="jiji_div">
-              <form name="search" class="form-inline" role="form"
-                method="get"
-                action="${pageContext.servletContext.contextPath}/boards/qnalist.joya">
+              <form name="search" class="form-inline" role="form" method="get"
+                action="${pageContext.servletContext.contextPath}/boards/aslist.joya">
                 <div class="form-group">
                   <select class="form-control" id="type" name="type">
                     <option value="title">제목</option>
                     <option value="contents">내용</option>
                     <option value="writer">작성자</option>
-                  </select> <input type="text" class="form-control" id="value"
-                    name="value" required>
+                  </select> 
+                 <input type="text" class="form-control" id="value" name="value" required>
                 </div>
                 <button type="submit" class="btn btn-default">검색</button>
               </form>
@@ -263,4 +254,3 @@
   <jsp:include page="../include/footer.jsp" />
   <!-- footer 종료 -->
 </body>
-<!-- BODY 영역 종료 -->
