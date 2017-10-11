@@ -3,8 +3,8 @@
       <div class="top-navigation">
         <ul class="list-inline">
           <li class="top-logo">
-            <a id="site-title" href="index-2.html" title="Jewelry - HTML Template theme">          
-            <img class="img-responsive" src="../assets/images/logo.png" alt="Jewelry - HTML Template theme">          
+            <a id="site-title" href="/index.joya" title="Joya">          
+            <img class="img-responsive" src="/assets/images/logo.png" alt="Joya Logo">          
             </a>
           </li>
           <li class="navigation">     
@@ -55,13 +55,13 @@
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav hoverMenuWrapper">
                     <li class="nav-item active">
-                    <a href="#">
+                    <a href="/index.joya">
                     <span>Home</span>
                     </a>
                     </li>
                     <li class="dropdown mega-menu">
-                    <a href="collection.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-                    <span>Collections</span>
+                    <a href="#" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
+                    <span>Product</span>
                     <i class="fa fa-caret-down"></i>
                     <i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
                     <i class="sub-dropdown visible-sm visible-md visible-lg"></i>
@@ -70,7 +70,7 @@
                       <ul class="sub-mega-menu">
                         <li>
                         <ul>
-                          <li class="list-title">Collection Links</li>
+                          <li class="list-title"><a class="list-title" href="/product/list.joya?category=반지">반지</a></li>
                           <li class="list-unstyled li-sub-mega">
                           <a href="#">Dolorem Sed </a>
                           </li>
@@ -89,7 +89,7 @@
                         </li>
                         <li>
                         <ul>
-                          <li class="list-title">Collection Links</li>
+                          <li class="list-title"><a href="/product/list.joya?category=목걸이">목걸이</a></li>
                           <li class="list-unstyled li-sub-mega">
                           <a href="#">Dolorem Sed </a>
                           </li>
@@ -107,7 +107,7 @@
                         </li>
                         <li>
                         <ul>
-                          <li class="list-title">Collection Links</li>
+                          <li class="list-title"><a href="/product/list.joya?category=귀걸이">귀걸이</a></li>
                           <li class="list-unstyled li-sub-mega">
                           <a href="#">Dolorem Sed </a>
                           </li>
@@ -125,7 +125,7 @@
                         </li>
                         <li>
                         <ul>
-                          <li class="list-title">Collection Links</li>
+                          <li class="list-title"><a href="/product/list.joya?category=팔찌">팔찌</a></li>
                           <li class="list-unstyled li-sub-mega">
                           <a href="#">Dolorem Sed <span class="megamenu-label new-label">New</span>
                           </a>
@@ -145,80 +145,18 @@
                       </ul>
                     </div>
                     </li>
-                    <li class="dropdown mega-menu">
-                    <a href="collection.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-                    <span>Pages</span>
-                    <i class="fa fa-caret-down"></i>
-                    <i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
-                    <i class="sub-dropdown visible-sm visible-md visible-lg"></i>
-                    </a>
-                    <div class="megamenu-container megamenu-container-2 dropdown-menu banner-right mega-col-2" style="display: none;">
-                      <ul class="sub-mega-menu">
-                        <li>
-                        <ul>
-                          <li class="list-title">Page Layout</li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="collection.html">Collection full width </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="collection-left.html">Collection - left sidebar </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="collection-right.html">Collection - right sidebar </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="product.html">Product full width </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="product-left.html">Product - left sidebar </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="product-right.html">Product - right sidebar </a>
-                          </li>
-                        </ul>
-                        </li>
-                        <li>
-                        <ul>
-                          <li class="list-title">Page Content</li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="about-us.html">About </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="price-table.html">Price table </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="faqs.html">FAQs </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="testimonials.html">Testimonial </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="collection.html">New product introduction </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega last">
-                          <a href="contact.html"> Contact </a>
-                          </li>
-                        </ul>
-                        </li>
-                      </ul>
-                    </div>
-                    </li>
+                    
                     <li class="nav-item dropdown">
                     <a href="blog-full.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-                    <span>Blog</span>
+                    <span>Board</span>
                     <i class="fa fa-caret-down"></i>
                     <i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
                     <i class="sub-dropdown visible-sm visible-md visible-lg"></i>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class=""><a tabindex="-1" href="blog-3-col.html">Blog grid 3 columns</a></li>
-                      <li class=""><a tabindex="-1" href="blog-2-col.html">Blog grid 2 columns</a></li>
-                      <li class=""><a tabindex="-1" href="blog.html">Blog grid full width</a></li>
-                      <li class=""><a tabindex="-1" href="blog-left.html">Blog - left sidebar</a></li>
-                      <li class=""><a tabindex="-1" href="blog-right.html">Blog - right sidebar</a></li>
-                      <li class=""><a tabindex="-1" href="article.html">Post full width</a></li>
-                      <li class=""><a tabindex="-1" href="article-left.html"> Post - left sidebar</a></li>
-                      <li class="last"><a tabindex="-1" href="article-right.html">Post - right sidebar</a></li>
+                      <li class=""><a tabindex="-1" href="blog-3-col.html">Q&A</a></li>
+                      <li class=""><a tabindex="-1" href="blog-2-col.html">A/S</a></li>
+                      
                     </ul>
                     </li>
                     <li class="nav-item">
@@ -256,7 +194,7 @@
                   <div class="num-items-in-cart">
                     <span class="icon">
                       Cart
-                      <span class="number">1</span>
+                      <!-- <span class="number">1</span> -->
                     </span>
                   </div>
                 </a>
