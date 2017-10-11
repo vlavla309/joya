@@ -1387,3 +1387,9 @@ ul#price-table{display:block;width:100%;height:auto;margin-top:40px;}
 		padding-right: 15px !important;
 	}	
 }
+.blogs .article-content .article-content-inner a .wishlistDeleteBtn {
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: none;
+}
