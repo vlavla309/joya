@@ -36,16 +36,16 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-  
-  <script src="/assets/javascripts/referer.js" type="text/javascript"></script>
 <%-- CSS 적용 부분 종료 --%>   
 
 <%--비밀글 라디오 버튼 이벤트 --%>    
 <script>
   $(function() {
-    $("input[type='checkbox']").click(function(){
-          var radioValue = $("input[name='radio']:checked").val();
+    $("#secret").click(function(){
+          var radioValue = $("#secret:checked").val();
+          
           if(radioValue == "secret"){
+        	alert(radioValue);
           	$("input[name='title']").attr("value","비밀글입니다.");
           }
       });
@@ -104,7 +104,7 @@
                       <input type="hidden" name="board_id" value="2">  
                       
                       <div class="typediv">
-                        <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
+                        <input id = "secret" type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
                       </div>
                       <br>
 
