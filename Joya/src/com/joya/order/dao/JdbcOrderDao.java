@@ -43,7 +43,7 @@ public class JdbcOrderDao implements OrderDao {
 				"             payment_type, " + 
 				"             status, " + 
 				"             message, " + 
-				"             usedpoint, " +
+				"             usedpoint, payment," +
 				"             gst_email) " +
 				"VALUES      (?, " + 
 				"             ?, " + 
@@ -55,7 +55,7 @@ public class JdbcOrderDao implements OrderDao {
 				"             ?, " +
 				"             ?, " +
 				"             ?, " +
-				"             ?, " +
+				"             ?, ?," +
 				"             ?) ";
 
 		try {
@@ -72,7 +72,8 @@ public class JdbcOrderDao implements OrderDao {
 			pstmt.setString(9, order.getStatus());
 			pstmt.setString(10, order.getMassage());
 			pstmt.setInt(11, order.getUsedPoint());
-			pstmt.setString(12, order.getGstEmail());
+			pstmt.setInt(12, order.getPayment());
+			pstmt.setString(13, order.getGstEmail());
 
 			rs=pstmt.executeQuery();
 		}catch (SQLException e) {

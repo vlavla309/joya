@@ -48,6 +48,7 @@ public class CreateOrderActionController implements Controller {
 		String email=request.getParameter("email");
 		String orderer=request.getParameter("ordername");
 		String orderphone=request.getParameter("orderphone");
+		String before_use_point_price = request.getParameter("before_use_point_price");
 		String paymentType=request.getParameter("payment");
 		int usedpoint=0;
 		//주문자의 전체 포인트
@@ -60,7 +61,6 @@ public class CreateOrderActionController implements Controller {
 		}
 		//주문하고 남은 포인트
 		String rest_point = request.getParameter("rest_point");
-		String payment = request.getParameter("payment");
 		//주소 
 		String address1 = request.getParameter("address1"); //postcode
 		String address2 = request.getParameter("address2");
@@ -113,16 +113,18 @@ public class CreateOrderActionController implements Controller {
 		}
 
 		order.setOrderId(orderId);
-		order.setPrice(Integer.parseInt(totalPrice));
+		order.setPrice(Integer.parseInt(before_use_point_price));
 		order.setOrderer(orderer);
 		order.setReceiver(receiver);
+		order.setPayment(Integer.parseInt(totalPrice));
 		order.setAddress(receiveaddress);
 		order.setPhone(orderphone);
 		order.setStatus(status);
 		order.setPaymentType(paymentType);
 		order.setUsedPoint(usedpoint);
 		order.setMassage(deliverymsg);
-
+		System.out.println(order);
+		
 		orderServ.create(order);
 
 		//주문항목 db에 입력
