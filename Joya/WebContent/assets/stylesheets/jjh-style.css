@@ -5,11 +5,11 @@
 }
 
 .ji-size{
-	width:15px;
+	width:25px;
 }
 
 .ji_title{
-	width:250px;
+	width:230px;
 }
 
 .ji-writerS{
@@ -37,6 +37,98 @@
 }
 
 
+#ji-tableM{
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.textleft{
+	text-align: left;
+}
+
+.point{
+	background-color: #f2f2f2;
+}
+
+.errorpasswd{
+	font-size: 10pt;
+	color:red;
+}
+
+.modal-dialog12{
+	width:32%;
+	margin-top: 20%;
+}
+
+#secretm{
+	width:45%;
+	height: 45%;
+	margin-top: 20%;
+	margin-left:20%;
+}
+
+#secretf{
+	text-align: center;
+}
+
+
+.modal-header{
+	text-align: center;
+}
+
+.modal-title{
+	font-size: 11pt;
+}
+
+#yesbtn{
+	border: none;
+	background-color: white;
+	font-size: 10pt;
+}
+
+.fileimage{
+	max-width: 200px;
+}
+
+.imginmodal{
+	max-width: 700px;
+	margin : auto;
+}
+
+#imagebody{
+	text-align: center;
+}
+
+.imagem{
+	position: relative;
+	top: -200px;
+	left: -100px;
+	width: 70%;
+	
+}
+
+.secrettitle{
+	cursor: pointer;
+	
+}
+
+.titletd{
+	text-align: left;
+}
+
+#deleteb_m{
+	background-color: white;
+	border: none;
+}
+
+#deletecon_m{
+	position: relative;
+	top: 150px;
+	left: 200px;
+	width:50%;
+}
+
 /* cart.jsp */
 .ji-productSelect{
 	width:24px;
@@ -47,4 +139,6 @@
 	width:25px;
 	height:25px;
 }
+
+
 

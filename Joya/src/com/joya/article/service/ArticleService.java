@@ -7,10 +7,7 @@ import com.joya.common.web.Params;
 
 public interface ArticleService {
 	
-	/**Q&A, 공지 게시글 등록 */
-	public void create(Article article);
-	
-	/** A/S, 상품평 게시글 등록 */
+	/** Q&A, 공지 게시글, A/S, 상품평 게시글 등록 */
 	public void create(Article article, String articleType);
 	
 	/** 전체 글 목록 */
@@ -23,7 +20,7 @@ public interface ArticleService {
 	public boolean edit(Article article);
 	
 	/** 글 삭제 */
-	public void delete(int articleId);
+	public boolean delete(Article article);
 	
 	/** 답글등록(관리자) */
 	public void reply(Article article);
