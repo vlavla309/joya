@@ -18,9 +18,9 @@ import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
 /**
- * 
+ * ?���??��?��메터 ?���??��코딩 처리 ?��?��
  */
-public class LoginCheckFilter implements Filter {
+public class SetUserInfoFilter implements Filter {
 	
 	private String encoding;
 	
@@ -53,15 +53,9 @@ public class LoginCheckFilter implements Filter {
 			}
 			
 		}
-		
-		if(userinfo==null) {
-			req.getRequestDispatcher("/user/login3.joya");
-			
-		}else {
 			request.setAttribute("email", email);
 			request.setAttribute("name", name);
 			System.out.println(email + ": "+name);
-		}
 			chain.doFilter(request, response);
 	}
 

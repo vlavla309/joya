@@ -28,17 +28,14 @@ public class WishlistCreateController implements Controller{
 		
 		ModelAndView mav = new ModelAndView();
 		int productId = Integer.parseInt(request.getParameter("productId"));
+		String url ="";
 		
-		
-		if(request.getAttribute("email")==null) {
-			mav.setView("redirect:"+url);
-		}else {
-			wishlistService.insert((String) request.getAttribute("email"), productId);
-			String url = request.getHeader("REFERER");
-			mav.setView("redirect:"+url);
-		}
+		wishlistService.insert((String) request.getAttribute("email"), productId);
+		url = request.getHeader("REFERER");
+		System.out.println("이전페이지 url 출력해보기 : "+url);
+			
 
-		
+		mav.setView("redirect:"+url);
 		return mav;
 	}
 
