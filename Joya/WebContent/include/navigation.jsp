@@ -178,9 +178,9 @@
               <i class="sub-dropdown"></i>
               </span>
               </a>
-              <form id="header-search" class="search-form dropdown-menu" action="http://demo.designshopify.com/html_jewelry/search.html" method="get">
-                <input type="hidden" name="type" value="product">
-                <input type="text" name="q" value="" accesskey="4" autocomplete="off" placeholder="Search something...">
+              <form id="header-search" class="search-form dropdown-menu" action="${pageContext.servletContext.contextPath }/product/list.joya" method="get">
+                <!-- <input type="hidden" name="type" value="product"> -->
+                <input type="text" name="value" value="" accesskey="4" autocomplete="off" placeholder="상품명으로 검색..." required>
                 <button type="submit" class="btn">Search</button>
               </form>
             </div>
@@ -194,7 +194,7 @@
                   <div class="num-items-in-cart">
                     <span class="icon">
                       Cart
-                      <!-- <span class="number">1</span> -->
+                      <span class="number" id="cartSize"></span>
                     </span>
                   </div>
                 </a>

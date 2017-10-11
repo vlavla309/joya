@@ -46,6 +46,7 @@
 	<script src="assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="assets/javascripts/cs.script.js" type="text/javascript"></script>
 	<script src="assets/javascripts/referer.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/cart_function.js" type="text/javascript"></script>
     
 </head>
 
@@ -212,9 +213,7 @@
 															<a href="${pageContext.servletContext.contextPath }/product/view.joya?productid=${product.productId}&type=view" class="container_item">
 															<img src="${imgs[product.productId] }" class="img-responsive" alt="${product.productName }">
 															</a>
-															<div class="hbw">
-																<span class="hoverBorderWrapper"></span>
-															</div>
+															
 															</li>
 															<li class="row-right parent-fly animMix">
 															<div class="product-content-left">
@@ -231,20 +230,7 @@
 																</div>
 															</div>
 															
-															<div class="hover-appear">
-																<form action="http://demo.designshopify.com/html_jewelry/product.html" method="post">
-																	<div class="effect-ajax-cart">
-																		<input type="hidden" name="quantity" value="1">
-																		<button class="select-option" type="button" onclick="window.location.href='product.html'"><i class="fa fa-th-list" title="Select Options"></i><span class="list-mode">Select Option</span></button>
-																	</div>
-																</form>
-																<div class="product-ajax-qs hidden-xs hidden-sm">
-																	<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																		<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
-																	</div>
-																</div>
-																<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-															</div>
+															
 															</li>
 														</ul>
 													</div>    

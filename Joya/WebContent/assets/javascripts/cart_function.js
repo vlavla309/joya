@@ -16,6 +16,7 @@ var DELIMITER_CART_ITEM_INFO="#@#";
 $(document).ready(function(){
 	//장바구니 쿠키 체크
 	checkCartCookie();
+	
 })
 
 
@@ -30,6 +31,7 @@ function checkCartCookie(){
 		//expired 단위 2일
 		$.cookie("cart", " ", {expired:2, path:'/'} );
 	}
+	setCartSize();
 }
 
 /*장바구니에 새 품목 추가*/
@@ -91,16 +93,12 @@ function setCartCookie(cartMap){
 		}
 	})
 	$.cookie("cart", cartCookieValue, {expired:2, path:'/'});
+	setCartSize();
 }
 
 /**카트 맵의 사이즈 즉 장바구니 품목 개수 반환*/
-function getCartSize(){
-	return getCartMap().size;
-}
-
-/**맵객체의 값 출력*/
-function printMap(cartMap){
-	for(var [key, value] of cartMap){
-		console.log("key:"+key+" val:"+value);
-	}
+function setCartSize(){
+	var size=getCartMap().size;
+	console.log("사이즈" + size);
+	$("#cartSize").text(size);
 }
