@@ -1,10 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-
-<!-- Mirrored from demo.designshopify.com/html_jewelry/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 08:51:03 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -87,23 +83,25 @@
                     
                     <!-- 테이블 바디 시작 -->
                     <tbody>
-                    <tr class="odd ">
-                      <td>
-                        <a href="order_detail.jsp" title="">#1001</a>
-                      </td>
-                      <td>
-                        <span class="note">Oct, 30 2015</span>
-                      </td>
-                      <td>
-                        <span class="status_authorized">신용카드</span>
-                      </td>
-                      <td>
-                        <span class="status_unfulfilled">Oct, 30 2015</span>
-                      </td>
-                      <td>
-                        <span class="total">35,000원</span>
-                      </td>
-                    </tr>
+                    <c:forEach items="${orders}" var="order" varStatus="status">
+	                    <tr class="odd ">
+	                      <td>
+	                        <a href="order_detail.jsp" title="">${order.orderId}</a>
+	                      </td>
+	                      <td>
+	                        <span class="note"> ${order.orderDate}</span>
+	                      </td>
+	                      <td>
+	                        <span class="status_authorized">${order.paymentType}</span>
+	                      </td>
+	                      <td>
+	                        <span class="status_unfulfilled">날짜 뭐냐?</span>
+	                      </td>
+	                      <td>
+	                        <span class="total">${order.payment}</span>
+	                      </td>
+	                    </tr>
+	                </c:forEach>
                     </tbody>
                     <!-- 테이블 바디 종료 -->
                     
