@@ -159,6 +159,7 @@
 													</li>
 													<li>
 														<form id = "search" name="search" class="form-inline" role="form" method="get">
+															<input type="hidden" value="${category }" name="category">
 															<select class="form-control" name="type" id="mySelect">
 																	<option value="null">전체보기</option>
 																	<option value="newProduct">newProduct</option>
