@@ -43,7 +43,8 @@ public class JdbcOrderDao implements OrderDao {
 				"             payment_type, " + 
 				"             status, " + 
 				"             message, " + 
-				"             usedpoint) " + 
+				"             usedpoint, " +
+				"             gst_email) " +
 				"VALUES      (?, " + 
 				"             ?, " + 
 				"             ?, " + 
@@ -51,6 +52,7 @@ public class JdbcOrderDao implements OrderDao {
 				"             ?, " + 
 				"             ?, " + 
 				"             ?, " + 
+				"             ?, " +
 				"             ?, " +
 				"             ?, " +
 				"             ?, " +
@@ -70,6 +72,7 @@ public class JdbcOrderDao implements OrderDao {
 			pstmt.setString(9, order.getStatus());
 			pstmt.setString(10, order.getMassage());
 			pstmt.setInt(11, order.getUsedPoint());
+			pstmt.setString(12, order.getGstEmail());
 
 			rs=pstmt.executeQuery();
 		}catch (SQLException e) {
@@ -148,6 +151,7 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("       usedpoint,");
 		sb.append("       card_no,");
 		sb.append("       approval_no,");
+		sb.append("       gst_email,");
 		sb.append("       order_date ");
 		sb.append("FROM   (SELECT Ceil(rownum / ?) request_page, ");
 		sb.append("               order_id, ");
@@ -164,6 +168,7 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("               usedpoint,");
 		sb.append("               card_no,");
 		sb.append("               approval_no,");
+		sb.append("               gst_email,");
 		sb.append("               To_char(order_date, 'YYYY/MM/DD') order_date ");
 		sb.append("        FROM   (SELECT * ");
 		sb.append("                FROM   orders");
@@ -265,7 +270,7 @@ public class JdbcOrderDao implements OrderDao {
 			order.setUsedPoint(rs.getShort("usedpoint"));
 			order.setCardNo(rs.getInt("approval_no"));
 			order.setOrderDate(rs.getString("order_date"));
-
+			order.setGstEmail(rs.getString("gst_email"));
 		} catch (SQLException e) {e.printStackTrace();}
 		return order;
 
