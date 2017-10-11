@@ -53,7 +53,6 @@
 	<!-- 홈페이지 등록 -->
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- 문자 인코딩 필터 -->
@@ -81,13 +80,37 @@
 	</filter-mapping>
 
 
+<<<<<<< HEAD
+
+
+	<!-- 관리자페이지 로그인 필터 적용 -->
+	<filter>
+		<filter-name>AdminCheckFilter</filter-name>
+		<filter-class>com.joya.common.web.AdminCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AdminCheckFilter</filter-name>
+		<url-pattern>/admin/</url-pattern>
+		<url-pattern>/admin/index.joya</url-pattern>
+		<url-pattern>/admin/users.joya</url-pattern>
+		<url-pattern>/admin/product_add.joya</url-pattern>
+		<url-pattern>/admin/visitors.joya</url-pattern>
+	</filter-mapping>
+
+
+=======
+>>>>>>> 0db370cda33d456c2c090565e9e975d240d140a5
 	<!-- 웹브라우저 모든 요청에 대한 단일 진입점 역할의 Front Controller Servlet(메인서블릿) 등록 -->
 	<servlet>
 		<servlet-name>MainController</servlet-name>
 		<servlet-class>com.joya.main.controller.MainController</servlet-class>
 		<init-param>
 			<param-name>controllerMapperLocation</param-name>
+<<<<<<< HEAD
+			<param-value>C:/Users\vlavl/Documents/joya/Joya/WebContent/WEB-INF/controller-mapper.xml</param-value>
+=======
 			<param-value>C:/kosta164/1Team/Joya/WebContent/WEB-INF/controller-mapper.xml</param-value>
+>>>>>>> 0db370cda33d456c2c090565e9e975d240d140a5
 		</init-param>
 
 		<load-on-startup>1</load-on-startup> <!-- was가 구동될 때 미리 실행되어 만들어짐 -->

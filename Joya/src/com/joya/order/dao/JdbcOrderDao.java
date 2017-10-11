@@ -159,53 +159,67 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("               status,");
 		sb.append("               payment_type,");
 		sb.append("               payment,");
-		sb.append("               payment_date,");
+		sb.append("               To_char(payment_date, 'YYYY/MM/DD') payment_date,");
 		sb.append("               usedpoint,");
 		sb.append("               card_no,");
 		sb.append("               approval_no,");
-		sb.append("               order_date ");
+		sb.append("               To_char(order_date, 'YYYY/MM/DD') order_date ");
 		sb.append("        FROM   (SELECT * ");
 		sb.append("                FROM   orders");
-		
+
 		if(type!=null&&status!=null) {
-			sb.append("   WHERE  email = ? AND status = ? ");
+			switch(type) {
+			case "email":
+				sb.append("   WHERE  email LIKE ");
+				sb.append("'%"+value+"%'");	
+				break;
+			case "orderer":
+				sb.append("   WHERE  orderer = ");
+				sb.append("'"+value+"'");	
+				break;
+			}
+
+
+			sb.append("   AND status = ? ");
+
 		}else {
 			if(type!=null) {
-				sb.append("   WHERE  email = ? ");
+				switch(type) {
+				case "email":
+					sb.append("   WHERE  email LIKE ");
+					sb.append("'%"+value+"%'");	
+					break;
+				case "orderer":
+					sb.append("	  WHERE  orderer = ");
+					sb.append("'"+value+"'");	
+					break;
+				}
 			}
 			if(status!=null) {
 				sb.append("   WHERE  status = ? ");
 			}
 		}
-		
+
 		sb.append("                ORDER  BY order_id DESC)) ");
 		sb.append(" WHERE  request_page = ?");
-		
-		System.out.println(sb.toString());
+
+//		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
-			
-			
+
+
 			pstmt.setInt(1, param.getPageSize());
 			
-			
-			if(type!=null&&status!=null) {
-				pstmt.setString(2, value);
-				pstmt.setString(3, status);
-				pstmt.setInt(4, param.getPage());
+
+
+			if(status!=null) {
+				pstmt.setString(2, status);
+				pstmt.setInt(3, param.getPage());
 			}else {
 				pstmt.setInt(2, param.getPage());
-				if(type!=null) {
-					pstmt.setString(2, value);
-					pstmt.setInt(3, param.getPage());
-				}
-				if(status!=null) {
-					pstmt.setString(2, status);
-					pstmt.setInt(3, param.getPage());
-				}
 			}
-			
+
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
@@ -250,35 +264,105 @@ public class JdbcOrderDao implements OrderDao {
 			order.setUsedPoint(rs.getShort("usedpoint"));
 			order.setCardNo(rs.getInt("approval_no"));
 			order.setOrderDate(rs.getString("order_date"));
-			
+
 		} catch (SQLException e) {e.printStackTrace();}
 		return order;
-		
+
 	}
-	
+
 	@Override
 	public int pageCount(Params param, String status) {
-		// TODO Auto-generated method stub
-		return 0;
+		String type=param.getType();
+		String value=param.getValue();
+		
+		int count=0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT count(*) count");
+		sb.append("	FROM   (SELECT * ");
+		sb.append(" 	     FROM  orders");
+
+		if(type!=null&&status!=null) {
+			switch(type) {
+			case "email":
+				sb.append("   WHERE  email LIKE ");
+				sb.append("'%"+value+"%'");	
+				break;
+			case "orderer":
+				sb.append("	WHERE  orderer = ");
+				sb.append("'"+value+"'");	
+				break;
+			}
+			sb.append("   AND status = ? )");
+		}else {
+			if(type!=null) {
+				switch(type) {
+				case "email":
+					sb.append("   WHERE  email LIKE ");
+					sb.append("'%"+value+"%')");	
+					break;
+				case "orderer":
+					sb.append("	  WHERE  orderer = ");
+					sb.append("'"+value+"')");	
+					break;
+				}
+			}
+			if(status!=null) {
+				sb.append("   WHERE  status = ? )");
+			}else {
+				sb.append(" )");
+			}
+		}
+		
+//		System.out.println(sb.toString());
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sb.toString());
+
+			if(status!=null) {
+				pstmt.setString(1, status);
+			}
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				count=rs.getInt("count");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+
+		return count;
 	}
-	
+
 	public static void main(String[] args) {
 		JdbcOrderDao dao=(JdbcOrderDao) DaoFactory.getInstance().getDao(JdbcOrderDao.class);
-		
+
 		Params param=new Params();
 		param.setPageSize(50);
+		param.setType("email");
+		param.setValue("joa1");
 		List<Orders> orders=new ArrayList<Orders>();
-		
-		orders=dao.listByParam(param, "�ֹ�����");
-		System.out.println(param.toString());
+
+		System.out.println(dao.pageCount(param, null));
+		orders=dao.listByParam(param, null);
 		for (Orders order : orders) {
 			System.out.println(order);
 		}
 		
-		
-		
-		
 	}
-
 }
 
