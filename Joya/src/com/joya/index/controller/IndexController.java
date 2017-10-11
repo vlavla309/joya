@@ -44,7 +44,6 @@ public class IndexController implements Controller{
 		Params param = new Params();
 		param.setPageSize(pageSize);
 
-		System.out.println("파람 "+param);
 		List<Product> productlist = productservice.listByParams(param, "전체",  "newProduct");
 		List<Images> imglist = imgService.listAll();
 		Map<Integer,String> imgs=new HashMap<Integer,String>();
@@ -54,7 +53,6 @@ public class IndexController implements Controller{
 				if((images.getProductId()==product.getProductId()) && images.getOrderNo()==0) {
 					String path=images.getPath()+images.getImageName();
 					imgs.put(product.getProductId(), path);
-					System.out.println(images);
 					break;
 				}
 			}

@@ -196,7 +196,6 @@ public class JdbcProductDao implements ProductDao{
 
 		sb.append(" WHERE  request_page = ?");
 		
-		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
