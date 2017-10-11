@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-	<!-- test page -->
-	<bean name="/hello" class="com.joya.test.HelloController" />
-	
 	<!-- admin -->
 	<bean name="/admin/users" class="com.joya.admin.controller.UserListController" />
 	<bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
-	<bean name="/admin/product_add" class="com.joya.admin.controller.ProductUploadFormController" />
+	<bean name="/admin/productadd" class="com.joya.admin.controller.ProductUploadFormController" />
 	<bean name="/admin/product_add_action" class="com.joya.admin.controller.ProductUploadActionController" />
 	<bean name="/admin/visitors" class="com.joya.admin.controller.VisitorCountController" />
 	<bean name="/admin/admin_check" class="com.joya.admin.controller.AdminAuthController" />
@@ -14,33 +11,13 @@
 	<!-- product -->
 	<bean name="/product/list" class="com.joya.product.controller.ProductlistController" />
 	<bean name="/product/view" class="com.joya.product.controller.ProductViewController" />
-
-	<!-- order -->
-	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
-
+	
 	<!-- cart -->
 	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
-<<<<<<< HEAD
 	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
-
-	<!-- cart -->
-	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
 	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
 	
 	<!-- 회원 관련 -->
-	<bean name="/user/login_action" class="com.joya.user.controller.CertificationController" />
-	<bean name="/user/email_action" class="com.joya.user.controller.CheckEmailController" />
-	<bean name="/user/passwd_action" class="com.joya.user.controller.CheckPasswdController" />
-	<bean name="/user/close_action" class="com.joya.user.controller.CloseAccountController" />
-	<bean name="/user/modify_action" class="com.joya.user.controller.ModifyUserController" />
-	<bean name="/user/register_action" class="com.joya.user.controller.RegisterController" />
-=======
-	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
-	
-	<bean name="/order/order_add" class="com.joya.order.controller.OrderAddFormController" />
-	
-	<!-- 회원 관련 -->
->>>>>>> 7276b90e64316bffe8bac12cfad29c99cbf7440d
 	<bean name="/user/loginaction" class="com.joya.user.controller.CertificationController" />
 	<bean name="/user/emailaction" class="com.joya.user.controller.CheckEmailController" />
 	<bean name="/user/passwdaction" class="com.joya.user.controller.CheckPasswdController" />
@@ -49,9 +26,11 @@
 	<bean name="/user/registeraction" class="com.joya.user.controller.RegisterController" />
 	
 	<!-- 마이페이지 관련 -->
-	<bean name="/user/mypage_action" class="com.joya.user.controller.MyPageController" />
 	<bean name="/user/mypageaction" class="com.joya.user.controller.MyPageController" />
 	<bean name="/user/bridgeaction" class="com.joya.user.controller.BridgeController" />
+	
+	<!-- order -->
+	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
 	
 	<!-- 위시리스트 관련 -->
 	<bean name="/mypage/wishlist" class="com.joya.wishlist.controller.WishlistController" />
