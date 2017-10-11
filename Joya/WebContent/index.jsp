@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
+<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
   <title>Joya - World Jewelry</title>
+  	<!-- favicon -->
   	<link rel="shortcut icon" href="/assets/images/favicon.ico">
-
   
     <link href="assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
   
@@ -202,7 +202,6 @@
 												
 												<!-- 여기서부터 상품 항목 -->
 												<c:forEach items="${productlist}" var="product" varStatus="status">
-														<%-- <c:if test="${(product.productId eq img.productId)&&(img.orderNo eq 0)}"> --%>
 													<div class="element no_full_width col-md-8 col-sm-8 not-animated" data-animate="fadeInUp" data-delay="0">
 														<ul class="row-container list-unstyled clearfix">
 															<li class="row-left">
@@ -230,7 +229,6 @@
 															</li>
 														</ul>
 													</div>    
-													<%-- </c:if> --%>
 												</c:forEach>	
 													<!-- 여기가 상품항목 끝 -->            
 												</div>

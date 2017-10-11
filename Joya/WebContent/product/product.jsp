@@ -10,6 +10,9 @@
 <meta name="description" content="" />
 <title>Product Full Width</title>
 
+<!-- favicon -->
+  	<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
 	type='text/css'>
 <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet"

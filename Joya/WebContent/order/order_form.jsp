@@ -8,6 +8,8 @@
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
   <title>Register</title>
+  <!-- favicon -->
+  	<link rel="shortcut icon" href="/assets/images/favicon.ico">
   
     <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
   
