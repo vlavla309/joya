@@ -93,10 +93,10 @@
 	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}" title="">${order.orderId}</a>
 	                      </td>
 	                      <td>
-	                        <span class="note"> ${order.orderDate}</span>
+	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}" title=""><span class="note"> ${order.orderDate}</span></a>
 	                      </td>
 	                      <td>
-	                        <span class="status_authorized">${order.paymentType}</span>
+	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}" title=""><span class="status_authorized">${order.paymentType}</span></a>
 	                      </td>
 	                      <td>
 	                        <span class="status_unfulfilled">${order.status}</span>

@@ -40,7 +40,7 @@ public class ProductlistController implements Controller{
          throws ServletException, UnsupportedEncodingException {
       
       ModelAndView mav = new ModelAndView();
-      int pageSize = 5;
+      int pageSize = 16;
       int pageNum = 5;
       String page = request.getParameter("page");
       if(page==null) page = "1";

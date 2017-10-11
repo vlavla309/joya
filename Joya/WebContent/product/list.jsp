@@ -65,13 +65,11 @@
 		// quick-view modal
 		$(".clickid").click(function(event) {
 			var id = $(this).attr("value");
-			alert(id)
 			$.ajax({
 				url : "${pageContext.servletContext.contextPath }/product/view.joya?productid="+id+"&type=quick",
 				dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
 				success : function(data) {
 					viewuser(data)
-					//alert(data.Product[0].productname);
 				}
 			});
 		});
@@ -85,8 +83,7 @@
 			$.each(data.images, function(index,  image) {
 				var pathname = image.path + image.filename
 				if(image.orderno=="0"){
-				$(".imagemain").attr("src",pathname);
-					alert($(".imagemain").attr("src"));
+					$(".imagemain").attr("src",pathname);
 				} 
 			});
 		} 
@@ -196,7 +193,7 @@
 																	</li>
 																	<li class="row-right parent-fly animMix">
 																	<div class="product-content-left">
-																		<a class="title-5" href="product.html">${product.productName}</a>
+																		<a href="${pageContext.servletContext.contextPath }/product/view.joya?productid=${product.productId}&type=view" class="container_item">${product.productName}</a>
 																		<span class="spr-badge" id="spr_badge_1293239619454" data-rating="0.0">
 																		<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
 																		<span class="spr-badge-caption">
