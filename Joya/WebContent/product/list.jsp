@@ -77,7 +77,6 @@
 		// quick-view modal
 		$(".clickid").click(function(event) {
 			var id = $(this).attr("value");
-			alert(id)
 			$.ajax({
 				url : "${pageContext.servletContext.contextPath }/product/view.joya?productid="+id+"&type=quick",
 				dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
@@ -98,7 +97,6 @@
 				var pathname = image.path + image.filename
 				if(image.orderno=="0"){
 				$(".imagemain").attr("src",pathname);
-					alert($(".imagemain").attr("src"));
 				} 
 			});
 		} 
