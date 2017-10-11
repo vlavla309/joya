@@ -22,6 +22,7 @@ import com.joya.orderitem.service.OrderItemServiceImpl;
 import com.joya.product.domain.Product;
 import com.joya.product.service.ProductService;
 import com.joya.product.service.ProductServiceImpl;
+import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
@@ -30,7 +31,7 @@ public class CreateOrderActionController implements Controller {
 	OrderItemService orderItemServ=new OrderItemServiceImpl();
 	ProductService productServ=new ProductServiceImpl();
 	UserService userServ = new UserServiceImpl();
-	
+
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
@@ -92,7 +93,7 @@ public class CreateOrderActionController implements Controller {
 				orderItems=makeOrderItems(orderId, cartInfo);
 			}
 		}
-		
+
 		//주문금액 계산
 		for (OrderItems orderItem : orderItems) {
 			int productId=orderItem.getProductId();
@@ -109,7 +110,7 @@ public class CreateOrderActionController implements Controller {
 			order.setEmail("anonymous@joa.com");
 			order.setGstEmail(email);
 		}
-		
+
 		order.setOrderId(orderId);
 		order.setPrice(price);
 		order.setOrderer(orderer);
@@ -126,6 +127,14 @@ public class CreateOrderActionController implements Controller {
 		//주문항목 db에 입력
 		for (OrderItems orderItem : orderItems) {
 			orderItemServ.create(orderItem);
+		}
+
+		//사용한포인트가있을경우 포인트 차감
+		if(usedpoint!=0) {
+			User user=userServ.read(email);
+			int curPoint=user.getPoint();
+			user.setPoint(curPoint-usedpoint);
+			userServ.modify(user);
 		}
 
 		mav.addObject("order", order);
@@ -145,5 +154,5 @@ public class CreateOrderActionController implements Controller {
 		}
 		return list;
 	}
-	
+
 }
