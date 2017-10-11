@@ -3,7 +3,6 @@ package com.joya.board.controller;
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,20 +12,25 @@ import com.joya.article.service.ArticleServiceImpl;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 
-/**
- * 게시글 등록 처리
- * 
- * @author 김미소
- */
-public class QnAWriteController implements Controller {
+public class ReplyArticleController implements Controller {
 	
 	private ArticleService articleService = new ArticleServiceImpl();
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
-		System.out.println("쓰기컨트롤러=================");
+		
+		
+		request.setCharacterEncoding("utf-8");
+		
+		System.out.println("reply 컨트롤러~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println(request.getParameter("articleId"));
+		
 		ModelAndView mav = new ModelAndView();
+		
+		int articleId = Integer.parseInt(request.getParameter("articleid"));
+		
+		String boardId = request.getParameter("boardid");
 		
 		String email = request.getParameter("email");
 		String title = request.getParameter("title");
@@ -35,19 +39,33 @@ public class QnAWriteController implements Controller {
 		String contents = request.getParameter("contents");
 		
 		Article article = new Article();
+		article.setArticleId(articleId);
 		article.setEmail(email);
 		article.setTitle(title);
 		article.setWriter(writer);
 		article.setPasswd(passwd);
 		article.setContents(contents);
 		
-		articleService.create(article);
+		articleService.reply(article);
 		
 		mav.addObject("article", article);
-		mav.setView("redirect:/boards/qnalist.joya");
-		
-		
-		
+		if(boardId != null) {
+			switch(boardId) {
+			case "1":
+				mav.setView("redirect:/boards/qnalist.joya");
+				break;
+			case "2":
+				mav.setView("redirect:/boards/qnalist.joya");
+				break;
+			case "3":
+				mav.setView("redirect:/boards/aslist.joya");
+				break;
+			case "4":
+				mav.setView("redirect:/boards/aslist.joya");
+				break;	
+			}
+		}
+
 		return mav;
 	}
 
