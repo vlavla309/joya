@@ -1,5 +1,6 @@
 package com.joya.orderitem.dao;
 
+import java.awt.event.ItemEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +10,11 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import com.joya.common.db.DaoFactory;
 import com.joya.common.exception.MallException;
 import com.joya.order.domain.Orders;
 import com.joya.orderitem.domain.OrderItems;
+import com.joya.product.dao.JdbcProductDao;
 
 public class JdbcOrderItemDao implements OrderItemDao {
 	private DataSource dataSource;
@@ -51,7 +54,7 @@ public class JdbcOrderItemDao implements OrderItemDao {
 			rs=pstmt.executeQuery();
 		}catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcOrderItemDao.create(OrderItems orderItem) ¿¡·¯ ¹ß»ý", e);
+			throw new MallException("JdbcOrderItemDao.create(OrderItems orderItem) ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½", e);
 		}finally {
 			try {
 				if(rs != null)    rs.close();
@@ -80,7 +83,6 @@ public class JdbcOrderItemDao implements OrderItemDao {
 		sb.append("       FROM orderitems");
 		sb.append("		  WHERE  order_id = ?");
 
-		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -112,6 +114,17 @@ public class JdbcOrderItemDao implements OrderItemDao {
 	public OrderItems search(int orderid, int productid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public static void main(String[] args) {
+		JdbcOrderItemDao item=(JdbcOrderItemDao) DaoFactory.getInstance().getDao(JdbcOrderItemDao.class);
+		
+		List<OrderItems> list = item.listByOrderID(9);
+		
+		for (OrderItems orderItems : list) {
+			System.out.println(orderItems);
+		}
+		
 	}
 
 }

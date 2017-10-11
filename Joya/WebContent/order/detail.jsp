@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
-  <title>Order List</title>
+  <title>Order Detail View</title>
  
      <!-- css 적용 부분 시작 -->
     <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
@@ -19,19 +19,27 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	<link href="../assets/stylesheets/orders.css" rel="stylesheet" type="text/css" media="all">
+	<link href="../assets/stylesheets/orderList.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../assets/stylesheets/orders.css" rel="stylesheet" type="text/css" media="all">
   
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
   <!-- css 적용 부분 종료 -->
-    </style>
+ <style type="text/css">
+ 	 .productimg{
+ 	 
+ 	 	width: 150px;
+	  
+  	}
+ </style>
+ 
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" class="templateCustomersRegister notouch">
   
 <!-- Header 영역 시작 -->
 <jsp:include page="../include/header.jsp" />
-<!-- hearder 영역 종료 -->
+ <!-- hearder 영역 종료 -->
   
   <div id="content-wrapper-parent">
     <div id="content-wrapper">  
@@ -43,19 +51,19 @@
               <div class="col-md-24">
                 <a href="index-2.html" class="homepage-link" title="Back to the frontpage">Home</a>
                 <span>/</span>
-                <span class="page-title">Order List</span>
+                <span class="page-title">Order Detail</span>
               </div>
             </div>
           </div>
         </div>              
         <section class="content">
-        <br>
           <div class="container">
+          <br> 
             <div class="row">
               <!-- 주문 내역 조회 영역 시작 -->
               <div id="col-main" class="account-page col-sm-18 col-md-18 clearfix">
                 <div id="customer_orders">
-                  <h6 class="sb-title">Order history</h6>
+                  <h6 class="sb-title">주문 상세 정보</h6>
                   <span class="mini-line"></span>
                   <div class="row wrap-table">
                     <table class="table-hover">
@@ -63,22 +71,22 @@
                     <thead>
                     <tr>
                       <th class="order_number">
-                        No.
+                        상품번호
                       </th>
                       <th class="date">
-                        주문일
+                        제품사진
                       </th>
                       <th class="payment_status">
-                        결제 방법
+                        제품명
                       </th>
                       <th class="fulfillment_status">
-                        접수상태
+                        수량
                       </th>
-                      <th class="total">
-                        사용한 포인트
+                      <th class="fulfillment_status">
+                        금액
                       </th>
-                      <th class="total">
-                        총액
+                      <th class="fulfillment_status">
+                        상품평
                       </th>
                     </tr>
                     </thead>
@@ -86,28 +94,28 @@
                     
                     <!-- 테이블 바디 시작 -->
                     <tbody>
-                    <c:forEach items="${orders}" var="order" varStatus="status">
-	                    <tr class="odd ">
-	                      <td>
-	                        <a href="/mypage/orderdetail.joya?orderid=${order.orderId}" title="">${order.orderId}</a>
-	                      </td>
-	                      <td>
-	                        <span class="note"> ${order.orderDate}</span>
-	                      </td>
-	                      <td>
-	                        <span class="status_authorized">${order.paymentType}</span>
-	                      </td>
-	                      <td>
-	                        <span class="status_unfulfilled">${order.status}</span>
-	                      </td>
-	                      <td>
-	                        <span class="total">${order.usedPoint}</span>
-	                      </td>
-	                      <td>
-	                        <span class="total">${order.payment}</span>
-	                      </td>
-	                    </tr>
-	                </c:forEach>
+	                    <c:forEach items="${itemlist}" var="item" varStatus="status">
+			                    <tr class="odd ">
+			                      <td>
+			                        ${item.productId}
+			                      </td>
+			                      <td>
+			                        <a href ="/product/view.joya?productid=${item.productId}&type=view" ><span class="note"><img src="${images[item.productId].path}${images[item.productId].imageName}" class="productimg"></span></a>
+			                      </td>
+			                      <td>
+			                        <span class="status_authorized">${products[item.productId].productName }</span>
+			                      </td>
+			                      <td>
+			                        <span class="status_unfulfilled">${item.amount}</span>
+			                      </td>
+			                      <td>
+			                        <span class="status_unfulfilled">${products[item.productId].price * item.amount}</span>
+			                      </td>
+			                      <td>
+			                        <a href="/mypage/review.joya"><input class="btn btn-default" type="button" value="상품평"></a>
+			                      </td>
+			                    </tr>
+		                </c:forEach>
                     </tbody>
                     <!-- 테이블 바디 종료 -->
                     

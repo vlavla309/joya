@@ -39,6 +39,7 @@
 	<bean name="/mypage/wishlistcreate" class="com.joya.wishlist.controller.WishlistCreateController" />
 	<bean name="/mypage/wishlistdelete" class="com.joya.wishlist.controller.WishlistDeleteController" />
 	<bean name="/mypage/orderlist" class="com.joya.order.controller.OrderListController" />
+	<bean name="/mypage/orderdetail" class="com.joya.order.controller.OrderDetailController" />
 	
 	<!-- board -->
 	<bean name="/boards/writearticle" class="com.joya.board.controller.ArticleWriteController" />

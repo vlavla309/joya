@@ -31,7 +31,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    
 </head>
 
 <body>
@@ -56,27 +56,27 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                             <form role="form" name="productForm" action="/admin/product_add_action.joya" method="post" enctype="multipart/form-data">
+                             <form role="form" name="productForm" action="/admin/product_add_action.joya" method="post" enctype="multipart/form-data" onsubmit="return checkattfile();">
                                 <div class="col-lg-6">
                                    		<h1>상품 정보</h1>
                                         <div class="form-group">
                                             <label>상품이름</label>
-                                            <input type='text' class="form-control" maxlength="30" name="productName">
+                                            <input type='text' class="form-control" maxlength="30" name="productName" required="required">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
                                             <label>제조사</label>
-                                            <input type='text'  class="form-control" maxlength="30" name="maker">
+                                            <input type='text'  class="form-control" maxlength="30" name="maker" required="required">
                                             <p class="help-block">최대 30글자</p>
                                         </div>
                                          <div class="form-group">
                                             <label>가격</label>
-                                            <input type="number" class="form-control" name="price">
+                                            <input type="number" class="form-control" name="price" required="required">
                                             <p class="help-block">(단위:원)</p>
                                         </div>
                                         <div class="form-group">
                                             <label>재고량</label>
-                                            <input type="number" class="form-control" name="amount">
+                                            <input type="number" class="form-control" name="amount" required="required">
                                             <p class="help-block">(단위:개)</p>
                                         </div>
                                         <div class="form-group">
@@ -90,7 +90,8 @@
                                         </div>
                                          <div class="form-group">
                                             <label>상품 설명</label>
-                                            <textarea class="form-control" rows="6"  name="productDesc"></textarea>
+                                            <textarea class="form-control" rows="6"  name="productDesc" maxlength="300" required="required"></textarea>
+                                            <p class="help-block">최대 300자</p> 
                                         </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -100,11 +101,11 @@
 										<input type="button" value="제거" onClick="deleteFile(this.form)" border=0 style='cursor:hand'>
 										<div class="form-group" id="imageForm">
                                             <label>사진 등록 (대표 사진)</label>
-                                            <input type="file" name="filename1" value="5">
+                                            <input type="file" name="filename1" value="5" required="required">
                                              <p class="help-block">필수 사항입니다.</p>
                                         </div>
                                      
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button id="btnsubmit" type="submit" class="btn btn-default">Submit Button</button>
                                         <button type="reset" class="btn btn-default">Reset Button</button>
                                  
                                 </div>
