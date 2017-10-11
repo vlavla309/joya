@@ -11,7 +11,9 @@ import com.joya.common.controller.ModelAndView;
 import com.joya.common.web.Params;
 
 public class OrderListController implements Controller {
-
+	
+	
+	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
@@ -36,8 +38,6 @@ public class OrderListController implements Controller {
 			param.setType("email");
 			param.setValue(value);
 		}
-		
-		
 		
 		// mav.addObject("order", order);
 		mav.setView("/order/list.joya");
