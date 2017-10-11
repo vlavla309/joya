@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
+	<!-- index -->
+   <bean name="/index" class="com.joya.index.controller.IndexController" />
+
+
 	<!-- admin -->
    <bean name="/admin/users" class="com.joya.admin.controller.UserListController" />
    <bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
@@ -31,7 +35,7 @@
 	<bean name="/user/bridgeaction" class="com.joya.user.controller.BridgeController" />
 	
 	<!-- order -->
-	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
+	<bean name="/order/orderaction" class="com.joya.order.controller.CreateOrderActionController" />
 	<bean name="/order/orderadd" class="com.joya.order.controller.OrderAddFormController" />
 	
 	<!-- 위시리스트 관련 -->

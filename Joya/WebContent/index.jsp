@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
@@ -61,7 +62,7 @@
 				<div class="camera_wrap" id="home-slider">
 					<div data-src="assets/images/slide-image-1.jpg">
 						<div class="camera_caption camera_title_1 fadeIn">
-						  <a href="collection.html" style="color:#010101;">Live the moment</a>
+						  <a  style="color:#010101;">Live the moment</a>
 						</div>
 						<div class="camera_caption camera_caption_1 fadeIn" style="color: rgb(1, 1, 1);">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -70,7 +71,7 @@
 							<img src="assets/images/slide-image-caption-1.png" alt="image_caption">
 						</div>
 						<div class="camera_cta_1">
-							<a href="collection.html" class="btn">See Collection</a>
+							<a href="${pageContext.servletContext.contextPath }/product/list.joya" class="btn">See Collection</a>
 						</div>
 					</div>
 					<div data-src="assets/images/slide-image-2.jpg">
@@ -103,14 +104,14 @@
 																<div class="home_collections_item">
 																	<div class="home_collections_item_inner">
 																		<div class="collection-details">
-																			<a href="collection.html" title="Browse our Bracelets">
+																			<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=팔찌" title="Browse our Bracelets">
 																				<img src="assets/images/3_large.png" alt="Bracelets">
 																			</a>
 																		</div>
 																		<div class="hover-overlay">
-																			<span class="col-name"><a href="collection.html">Bracelets</a></span>
+																			<span class="col-name"><a href="${pageContext.servletContext.contextPath }/product/list.joya?category=팔찌">팔찌</a></span>
 																			<div class="collection-action">
-																				<a href="collection.html">See the Collection</a>
+																				<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=팔찌">See the Collection</a>
 																			</div>
 																		</div>
 																	</div>
@@ -118,14 +119,14 @@
 																<div class="home_collections_item">
 																	<div class="home_collections_item_inner">
 																		<div class="collection-details">
-																			<a href="collection.html" title="Browse our Earrings">
+																			<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=귀걸이" title="Browse our Earrings">
 																			<img src="assets/images/2_large.png" alt="Earrings">
 																			</a>
 																		</div>
 																		<div class="hover-overlay">
-																			<span class="col-name"><a href="collection.html">Earrings</a></span>
+																			<span class="col-name"><a href="${pageContext.servletContext.contextPath }/product/list.joya?category=귀걸이">귀걸이</a></span>
 																			<div class="collection-action">
-																				<a href="collection.html">See the Collection</a>
+																				<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=귀걸이">See the Collection</a>
 																			</div>
 																		</div>
 																	</div>
@@ -133,14 +134,14 @@
 																<div class="home_collections_item">
 																	<div class="home_collections_item_inner">
 																		<div class="collection-details">
-																			<a href="collection.html" title="Browse our Necklaces">
+																			<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=목걸이" title="Browse our Necklaces">
 																			<img src="assets/images/1_79ec3305-7c83-4daa-804c-fac19b2d1b7b_large.png" alt="Necklaces">
 																			</a>
 																		</div>
 																		<div class="hover-overlay">
-																			<span class="col-name"><a href="collection.html">Necklaces</a></span>
+																			<span class="col-name"><a href="${pageContext.servletContext.contextPath }/product/list.joya?category=목걸이">목걸이</a></span>
 																			<div class="collection-action">
-																				<a href="collection.html">See the Collection</a>
+																				<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=목걸이">See the Collection</a>
 																			</div>
 																		</div>
 																	</div>
@@ -148,14 +149,14 @@
 																<div class="home_collections_item">
 																	<div class="home_collections_item_inner">
 																		<div class="collection-details">
-																			<a href="collection.html" title="Browse our Rings">
+																			<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=반지" title="Browse our Rings">
 																			<img src="assets/images/4_large.png" alt="Rings">
 																			</a>
 																		</div>
 																		<div class="hover-overlay">
-																			<span class="col-name"><a href="collection.html">Rings</a></span>
+																			<span class="col-name"><a href="${pageContext.servletContext.contextPath }/product/list.joya?category=반지">반지</a></span>
 																			<div class="collection-action">
-																				<a href="collection.html">See the Collection</a>
+																				<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=반지">See the Collection</a>
 																			</div>
 																		</div>
 																	</div>
@@ -163,12 +164,12 @@
 																<div class="home_collections_item">
 																	<div class="home_collections_item_inner">
 																		<div class="collection-details">
-																			<a href="collection.html" title="Browse our Bracelets">
+																			<a href="${pageContext.servletContext.contextPath }/product/list.joya?category=시계" title="Browse our Bracelets">
 																				<img src="assets/images/3_large.png" alt="Bracelets">
 																			</a>
 																		</div>
 																		<div class="hover-overlay">
-																			<span class="col-name"><a href="collection.html">Bracelets</a></span>
+																			<span class="col-name"><a href="${pageContext.servletContext.contextPath }/product/list.joya?category=시계">시계</a></span>
 																			<div class="collection-action">
 																				<a href="collection.html">See the Collection</a>
 																			</div>
@@ -201,14 +202,15 @@
 											<h6 class="general-title">New Products</h6>
 											<div class="home_products_wrapper">
 												<div id="home_products">
+												
+												<!-- 여기서부터 상품 항목 -->
+												<c:forEach items="${productlist}" var="product" varStatus="status">
+														<%-- <c:if test="${(product.productId eq img.productId)&&(img.orderNo eq 0)}"> --%>
 													<div class="element no_full_width col-md-8 col-sm-8 not-animated" data-animate="fadeInUp" data-delay="0">
 														<ul class="row-container list-unstyled clearfix">
 															<li class="row-left">
-															<a href="product.html" class="container_item">
-															<img src="assets/images/1_grande.jpg" class="img-responsive" alt="Curabitur cursus dignis">
-															<span class="sale_banner">
-															<span class="sale_text">Sale</span>
-															</span>
+															<a href="${pageContext.servletContext.contextPath }/product/view.joya?productid=${product.productId}&type=view" class="container_item">
+															<img src="${imgs[product.productId] }" class="img-responsive" alt="${product.productName }">
 															</a>
 															<div class="hbw">
 																<span class="hoverBorderWrapper"></span>
@@ -216,7 +218,7 @@
 															</li>
 															<li class="row-right parent-fly animMix">
 															<div class="product-content-left">
-																<a class="title-5" href="product.html">Curabitur cursus dignis</a>
+																<a class="title-5" href="${pageContext.servletContext.contextPath }/product/view.joya?productid=${product.productId}&type=view">${product.productName }</a>
 																<span class="spr-badge" id="spr_badge_12932382113" data-rating="0.0">
 																<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
 																<span class="spr-badge-caption">
@@ -225,13 +227,10 @@
 															</div>
 															<div class="product-content-right">
 																<div class="product-price">
-																	<span class="price_sale">$259.00</span>
-																	<del class="price_compare"> $300.00</del>
+																	<span class="price">&#8361; ${product.price }</span>
 																</div>
 															</div>
-															<div class="list-mode-description">
-																 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-															</div>
+															
 															<div class="hover-appear">
 																<form action="http://demo.designshopify.com/html_jewelry/product.html" method="post">
 																	<div class="effect-ajax-cart">
@@ -248,282 +247,10 @@
 															</div>
 															</li>
 														</ul>
-													</div>                
-													<div class="element no_full_width col-md-8 col-sm-8 not-animated" data-animate="fadeInUp" data-delay="1">
-														<ul class="row-container list-unstyled clearfix">
-															<li class="row-left">
-															<a href="product.html" class="container_item">
-															<img src="assets/images/2_119a31f2-2054-4483-93a3-841310e6bdfb_grande.jpg" class="img-responsive" alt="Curabitur cursus dignis">
-															</a>
-															<div class="hbw">
-																<span class="hoverBorderWrapper"></span>
-															</div>
-															</li>
-															<li class="row-right parent-fly animMix">
-															<div class="product-content-left">
-																<a class="title-5" href="product.html">Curabitur cursus dignis</a>
-																<span class="spr-badge" id="spr_badge_12932396193" data-rating="0.0">
-																<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
-																<span class="spr-badge-caption">
-																No reviews </span>
-																</span>
-															</div>
-															<div class="product-content-right">
-																<div class="product-price">
-																	<span class="price">
-																	$200.00 </span>
-																</div>
-															</div>
-															<div class="list-mode-description">
-																 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-															</div>
-															<div class="hover-appear">
-																<form action="http://demo.designshopify.com/html_jewelry/product.html" method="post">
-																	<div class="hide clearfix">
-																		<select name="id">
-																			<option selected="selected" value="5141875779">Default Title</option>
-																		</select>
-																	</div>
-																	<div class="effect-ajax-cart">
-																		<input type="hidden" name="quantity" value="1">
-																		<button class="add-to-cart" type="submit" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
-																	</div>
-																</form>
-																<div class="product-ajax-qs hidden-xs hidden-sm">
-																	<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																		<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
-																	</div>
-																</div>
-																<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-															</div>
-															</li>
-														</ul>
-													</div>
-													<div class="element no_full_width col-md-8 col-sm-8 not-animated" data-animate="fadeInUp" data-delay="2">
-														<ul class="row-container list-unstyled clearfix">
-															<li class="row-left">
-															<a href="product.html" class="container_item">
-															<img src="assets/images/6_03a522d6-f36a-4f59-a815-bbade4d87a6e_grande.jpg" class="img-responsive" alt="Donec aliquam ante non">
-															<span class="sale_banner">
-															<span class="sale_text">Sale</span>
-															</span>
-															</a>
-															<div class="hbw">
-																<span class="hoverBorderWrapper"></span>
-															</div>
-															</li>
-															<li class="row-right parent-fly animMix">
-															<div class="product-content-left">
-																<a class="title-5" href="product.html">Donec aliquam ante non</a>
-																<span class="spr-badge" id="spr_badge_12932369312" data-rating="4.0">
-																<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
-																<span class="spr-badge-caption">
-																1 review </span>
-																</span>
-															</div>
-															<div class="product-content-right">
-																<div class="product-price">
-																	<span class="price_sale">$250.00</span>
-																	<del class="price_compare"> $300.00</del>
-																</div>
-															</div>
-															<div class="list-mode-description">
-																 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-															</div>
-															<div class="hover-appear">
-																<form action="http://demo.designshopify.com/html_jewelry/product.html" method="post">
-																	<div class="hide clearfix">
-																		<select name="id">
-																			<option value="3947648771">black / small</option>
-																			<option selected="selected" value="3947648835">white / small</option>
-																			<option value="3947648899">black / medium</option>
-																			<option value="3947648963">white / medium</option>
-																		</select>
-																	</div>
-																	<div class="effect-ajax-cart">
-																		<input type="hidden" name="quantity" value="1">
-																		<button class="select-option" type="button" onclick="window.location.href='product.html'"><i class="fa fa-th-list" title="Select Options"></i><span class="list-mode">Select Option</span></button>
-																	</div>
-																</form>
-																<div class="product-ajax-qs hidden-xs hidden-sm">
-																	<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																		<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
-																	</div>
-																</div>
-																<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-															</div>
-															</li>
-														</ul>
-													</div>
-													<div class="element no_full_width col-md-8 col-sm-8 not-animated" data-animate="fadeInUp" data-delay="3">
-														<ul class="row-container list-unstyled clearfix">
-															<li class="row-left">
-															<a href="product.html" class="container_item">
-															<img src="assets/images/4_0fe2529b-f7ae-4ed5-a8ff-4fae623757f9_grande.jpg" class="img-responsive" alt="Donec condime fermentum">
-															</a>
-															<div class="hbw">
-																<span class="hoverBorderWrapper"></span>
-															</div>
-															</li>
-															<li class="row-right parent-fly animMix">
-															<div class="product-content-left">
-																<a class="title-5" href="product.html">Donec condime fermentum</a>
-																<span class="spr-badge" id="spr_badge_12932358434" data-rating="0.0">
-																<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
-																<span class="spr-badge-caption">
-																No reviews </span>
-																</span>
-															</div>
-															<div class="product-content-right">
-																<div class="product-price">
-																	<span class="price">
-																	$200.00 </span>
-																</div>
-															</div>
-															<div class="list-mode-description">
-																 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-															</div>
-															<div class="hover-appear">
-																<form action="http://demo.designshopify.com/html_jewelry/product.html" method="post">
-																	<div class="hide clearfix">
-																		<select name="id">
-																			<option selected="selected" value="3947646083">black / small</option>
-																			<option value="3947646147">red / small</option>
-																			<option value="3947646211">white / small</option>
-																			<option value="3947646275">blue / small</option>
-																			<option value="3947646339">black / medium</option>
-																			<option value="3947646403">red / medium</option>
-																			<option value="3947646467">blue / medium</option>
-																			<option value="3947646531">white / medium</option>
-																		</select>
-																	</div>
-																	<div class="effect-ajax-cart">
-																		<input type="hidden" name="quantity" value="1">
-																		<button class="select-option" type="button" onclick="window.location.href='product.html'"><i class="fa fa-th-list" title="Select Options"></i><span class="list-mode">Select Option</span></button>
-																	</div>
-																</form>
-																<div class="product-ajax-qs hidden-xs hidden-sm">
-																	<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																		<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
-																	</div>
-																</div>
-																<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-															</div>
-															</li>
-														</ul>
-													</div>               
-													<div class="element no_full_width col-md-8 col-sm-8 not-animated" data-animate="fadeInUp" data-delay="4">
-														<ul class="row-container list-unstyled clearfix">
-															<li class="row-left">
-															<a href="product.html" class="container_item">
-															<img src="assets/images/10_16854be2-a731-4970-984e-7f6e483d2405_grande.jpg" class="img-responsive" alt="Maximus quam posuere">
-															<span class="sale_banner">
-															<span class="sale_text">Sale</span>
-															</span>
-															</a>
-															<div class="hbw">
-																<span class="hoverBorderWrapper"></span>
-															</div>
-															</li>
-															<li class="row-right parent-fly animMix">
-															<div class="product-content-left">
-																<a class="title-5" href="product.html">Maximus quam posuere</a>
-																<span class="spr-badge" id="spr_badge_1293227907" data-rating="3.0">
-																<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
-																<span class="spr-badge-caption">
-																1 review </span>
-																</span>
-															</div>
-															<div class="product-content-right">
-																<div class="product-price">
-																	<span class="price_sale">$200.00</span>
-																	<del class="price_compare"> $300.00</del>
-																</div>
-															</div>
-															<div class="list-mode-description">
-																 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-															</div>
-															<div class="hover-appear">
-																<form action="http://demo.designshopify.com/html_jewelry/product.html" method="post">
-																	<div class="hide clearfix">
-																		<select name="id">
-																			<option selected="selected" value="3947629763">black / small</option>
-																			<option value="3947629827">white / small</option>
-																			<option value="3947629891">black / medium</option>
-																			<option value="3947629955">white / medium</option>
-																		</select>
-																	</div>
-																	<div class="effect-ajax-cart">
-																		<input type="hidden" name="quantity" value="1">
-																		<button class="select-option" type="button" onclick="window.location.href='product.html'"><i class="fa fa-th-list" title="Select Options"></i><span class="list-mode">Select Option</span></button>
-																	</div>
-																</form>
-																<div class="product-ajax-qs hidden-xs hidden-sm">
-																	<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																		<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
-																	</div>
-																</div>
-																<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-															</div>
-															</li>
-														</ul>
-													</div>                
-													<div class="element no_full_width col-md-8 col-sm-8 not-animated" data-animate="fadeInUp" data-delay="5">
-														<ul class="row-container list-unstyled clearfix">
-															<li class="row-left">
-															<a href="product.html" class="container_item">
-															<img src="assets/images/11_68ab6d0f-109c-429b-a903-4cbf60257806_grande.jpg" class="img-responsive" alt="Product full width">
-															<span class="sale_banner">
-															<span class="sale_text">Sale</span>
-															</span>
-															</a>
-															<div class="hbw">
-																<span class="hoverBorderWrapper"></span>
-															</div>
-															</li>
-															<li class="row-right parent-fly animMix">
-															<div class="product-content-left">
-																<a class="title-5" href="product.html">Product full width</a>
-																<span class="spr-badge" id="spr_badge_1293240771" data-rating="0.0">
-																<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
-																<span class="spr-badge-caption">
-																No reviews </span>
-																</span>
-															</div>
-															<div class="product-content-right">
-																<div class="product-price">
-																	<span class="price_sale">$200.00</span>
-																	<del class="price_compare"> $300.00</del>
-																</div>
-															</div>
-															<div class="list-mode-description">
-																 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis amet voluptas assumenda est, omnis dolor repellendus quis nostrum. Temporibus autem quibusdam et aut officiis debitis aut rerum dolorem necessitatibus saepe eveniet ut et neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed...
-															</div>
-															<div class="hover-appear">
-																<form action="http://demo.designshopify.com/html_jewelry/product.html" method="post">
-																	<div class="hide clearfix">
-																		<select name="id">
-																			<option selected="selected" value="3947656579">black / small</option>
-																			<option value="3947656643">white / small</option>
-																			<option value="3947656707">black / medium</option>
-																			<option value="3947656771">white / medium</option>
-																		</select>
-																	</div>
-																	<div class="effect-ajax-cart">
-																		<input type="hidden" name="quantity" value="1">
-																		<button class="select-option" type="button" onclick="window.location.href='product.html'"><i class="fa fa-th-list" title="Select Options"></i><span class="list-mode">Select Option</span></button>
-																	</div>
-																</form>
-																<div class="product-ajax-qs hidden-xs hidden-sm">
-																	<div data-href="./ajax/_product-qs.html" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-																		<i class="fa fa-eye" title="Quick view"></i><span class="list-mode">Quick View</span>																		
-																	</div>
-																</div>
-																<a class="wish-list" href="account.html" title="wish list"><i class="fa fa-heart"></i><span class="list-mode">Add to Wishlist</span></a>
-															</div>
-															</li>
-														</ul>
-													</div>                
+													</div>    
+													<%-- </c:if> --%>
+												</c:forEach>	
+													<!-- 여기가 상품항목 끝 -->            
 												</div>
 											</div>
 										</div>
