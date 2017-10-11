@@ -11,7 +11,7 @@ public class Article {
 	private String regdate;
 	private String passwd;
 	private int groupNo;
-	private int type;
+	private int type;                //회원(비회원) 또는 관리자
 	private int hitcount;
 	private String filePath;
 	private int productId;

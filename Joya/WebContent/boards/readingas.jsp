@@ -35,88 +35,72 @@
   type="text/css" media="all">
 <link href="../assets/stylesheets/jjh-style.css" rel="stylesheet"
   type="text/css" media="all">
-
 <script src="../assets/javascripts/jquery-1.9.1.min.js"
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-  
- 
 <!-- css 적용 부분 종료 -->
 
-<%--
-	String user = null;
-	String email = null;
-	String name = null;
-
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equalsIgnoreCase("user")) {
-				user = URLDecoder.decode(cookie.getValue(), "utf-8");
-				String[] tokens = user.split("###");
-				email = tokens[0];
-				name = tokens[1];
-			}
-		}
-	}
---%>
-
-
+<%-- 삭제시 페이지 이동 --%>
 <script type="text/javascript">
-	$(function(){
-		$(".yes").on("click", function(event){
+	$(function() {
+		$(".yes").on("click",function(event) {
 			$.ajax({
 				url : "${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}",
-				success : function(data){
-					location.href="${pageContext.servletContext.contextPath}/boards/aslist.joya";
-				}
+				success : function(data) {
+						  		location.href = "${pageContext.servletContext.contextPath}/boards/aslist.joya";
+					      }
 			});
 		});
-		
+
 	})
 </script>
-
-
-
 </head>
+<%-- HEAD 영역 종료 --%>
 
+<%-- BODY 영역 시작 --%>
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templateCustomersRegister notouch">
-  
-    <%-- 회원삭제 modal --%>
+
+  <%-- 회원삭제 modal --%>
   <div class="modal" id="deleteModal">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">삭제하시겠습니까?</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="yes" data-dismiss="modal" name="">삭제</button>
-        <button type="reset" class="no" data-dismiss="modal" name="">취소</button>
-      </div>
-    </div>
-  </div>
- </div>
- 
-     <%-- 이미지 modal --%>
- <div class="modal" id="imageModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content" id="imagem">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
-        <h4 class="modal-title">Image</h4>
-      </div>
-      <div class="modal-body" id="imagebody">
-       <span><image class="imginmodal" src="${article.filePath }"></span>
-      </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" id="deletecon_m">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title">삭제하시겠습니까?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="deleteb_m" class="yes" data-dismiss="modal" name="">삭제</button>
+          <button type="reset" id="deleteb_m" class="no" data-dismiss="modal" name="">취소</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <%-- 이미지 modal --%>
+  <div class="modal" id="imageModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content" id="imagem">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title">Image</h4>
+        </div>
+        <div class="modal-body" id="imagebody">
+          <span><image class="imginmodal"
+              src="${article.filePath }"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default"
+            data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
@@ -143,80 +127,84 @@
               <div id="page-header" class="col-md-24">
                 <h1 id="page-title">A/S</h1>
               </div>
-              <form action="${pageContext.servletContext.contextPath}/boards/updateaction.joya?articleid=${article.articleId}&boardid=4"
-                    method="post">
-              <div id="ji-tableM">
-                <table>
-                <tr>
-                  <td><strong>제목</strong></td>
-                  <td colspan="5" class="textleft">${article.title }</td>
+              
+              <form
+                action="${pageContext.servletContext.contextPath}/boards/updateaction.joya?articleid=${article.articleId}&boardid=4"
+                method="post">
+                <div id="ji-tableM">
+                 <%-- 게시글 상세읽기 테이블 --%>
+                  <table>
+                    <tr>
+                      <td><strong>제목</strong></td>
+                      <td colspan="5" class="textleft">${article.title }</td>
 
-                </tr>
-                <tr>
-                  <td><strong>작성자</strong></td>
-                  <td class="textleft">${article.writer }</td>
-                  <td><strong>작성일</strong></td>
-                  <td class="textleft">${article.regdate }</td>
-                  <td><strong>조회수</strong></td>
-                  <td class="textleft">${article.hitcount }</td>
-                </tr>
-                <tr>
-                  <td><strong>첨부파일</strong></td>
-                  <td colspan="5" class="textleft"><a style="cursor: pointer;" data-toggle="modal" data-target="#imageModal"><img class="fileimage" src="${article.filePath }"></a></td>
-                </tr>
+                    </tr>
+                    <tr>
+                      <td><strong>작성자</strong></td>
+                      <td class="textleft">${article.writer }</td>
+                      <td><strong>작성일</strong></td>
+                      <td class="textleft">${article.regdate }</td>
+                      <td><strong>조회수</strong></td>
+                      <td class="textleft">${article.hitcount }</td>
+                    </tr>
+                    <tr>
+                      <td><strong>첨부파일</strong></td>
+                      <td colspan="5" class="textleft"><a
+                        style="cursor: pointer;" data-toggle="modal"
+                        data-target="#imageModal"><img
+                          class="fileimage" src="${article.filePath }"></a></td>
+                    </tr>
 
-                <tr>
-                  <%--
-                    <td colspan="6" >${article.contents.replace('\\r\\n','<br>')}</td>
-                  --%>
-                  <td colspan="6" >${article.contents }</td>
-                </tr>
-                </table>
+                    <tr>
+                      <td colspan="6">${article.contents }</td>
+                    </tr>
+                  </table>
 
-                <div id="ji-writeD">
-                
-                <c:choose>
-                  <c:when test="${name eq '관리자'}">
-                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/replyingqna.jsp?articleid=${article.articleId}&boardid=4">답글쓰기</a>
-                    </button>
-                    <input class="btn" type="submit" value="수정" >
-                     <button type="button" class="btn">
-                     <!--<a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a>-->  
-                     <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> 
-                     </button>
+                  <div id="ji-writeD">
+                    <%-- 관리자인 경우(답글쓰기 추가) --%>
+                    <c:choose>
+                      <c:when test="${name eq '관리자'}">
+                        <button type="button" class="btn">
+                          <a href="${pageContext.servletContext.contextPath}/boards/replyingqna.jsp?articleid=${article.articleId}&boardid=4">답글쓰기</a>
+                        </button>
+                        <input class="btn" type="submit" value="수정">
+                        <button type="button" class="btn">
+                          <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a>
+                        </button>
+                        <button type="button" class="btn">
+                          <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
+                        </button>
+                     </c:when>
+                      <%--회원인 경우(수정, 삭제) --%>
+                     <c:when test="${name eq article.writer}">
+                      <input class="btn" type="submit" value="수정">
                       <button type="button" class="btn">
-                      <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
-                      </button>
-                      </div>
-                    </c:when>
-                  
-                    <c:when test="${name eq article.writer}">
-                      <input class="btn" type="submit" value="수정" >
-                      <button type="button" class="btn">
-                      <!--<a href="${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}">삭제</a> --> 
-                      <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a> 
+                        <a class="deletebtn" data-toggle="modal" data-target="#deleteModal">삭제</a>
                       </button>
                       <button type="button" class="btn">
-                      <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
+                        <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
                       </button>
-                      </div>
-                    </c:when>
-                    <c:otherwise>
-                     <button type="button" class="btn">
-                     <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
-                     </button>
-                     </div>
-                    </c:otherwise>
-                  </c:choose>
-
-              </div>
-              </form>
+                     </c:when>
+                    <%-- 비회원인 경우 --%>
+                     <c:otherwise>
+                      <button type="button" class="btn">
+                        <a class="deletebtn" href="${pageContext.servletContext.contextPath}/boards/aslist.joya">글목록</a>
+                      </button>
+                   </c:otherwise>
+                </c:choose>
             </div>
           </div>
-
+          </form>
+          
+         </div>
+        </div>
+       </section>
+      </div>
+    </div>
+   </div>
 
   <!-- footer 시작 -->
   <jsp:include page="../include/footer.jsp" />
   <!-- footer 종료 -->
 </body>
+<!-- BODY 영역 종료 -->

@@ -42,25 +42,6 @@
   type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
 
-<%--
-	String user = null;
-	String email = null;
-	String name = null;
-
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equalsIgnoreCase("user")) {
-				user = URLDecoder.decode(cookie.getValue(), "utf-8");
-				String[] tokens = user.split("###");
-				email = tokens[0];
-				name = tokens[1];
-			}
-		}
-	}
---%>
-
-
 <script>
   $(function() {
     

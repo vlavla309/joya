@@ -42,24 +42,6 @@
   type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
 
-<%--
-	String user = null;
-	String email = null;
-	String name = null;
-
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equalsIgnoreCase("user")) {
-				user = URLDecoder.decode(cookie.getValue(), "utf-8");
-				String[] tokens = user.split("###");
-				email = tokens[0];
-				name = tokens[1];
-			}
-		}
-	}
---%>
-
 <script>
   $(function() {
     
@@ -70,11 +52,8 @@
       
    	$(".yes").on("click", function(){
       var id = $(".yes").attr("name");
-      console.log("articleId "+id);
       var secretPw = $(".secretpasswd").val();
   	  var password = $(".pw").val();
-  	  console.log("모달창비번 "+secretPw);
-  	  console.log("원래비번 "+password);
   	  
   	  if(secretPw == password){
           		location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid="+id+"&boardid=4";
