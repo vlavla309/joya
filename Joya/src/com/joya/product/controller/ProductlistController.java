@@ -68,14 +68,15 @@ public class ProductlistController implements Controller{
          param.setValue(value);
       }
       
-      List<Product> productlist = productservice.listByParams(param, "반지",  type);
+      List<Product> productlist = productservice.listByParams(param, category,  type);
       List<Images> imglist = imgService.listAll();
       List<Wishlist> wishlist = wishlistService.listAll();
       
-      int rowCount = productservice.pageCount(param, "반지", type);
+      int rowCount = productservice.pageCount(param, category, type);
       PageBuilder pageBuilder = new PageBuilder(param, rowCount);
       pageBuilder.build();
       
+      mav.addObject("category", category);
       mav.addObject("loginuser", (String)request.getAttribute("email"));
       mav.addObject("imglist", imglist);
       mav.addObject("wishlist", wishlist);
