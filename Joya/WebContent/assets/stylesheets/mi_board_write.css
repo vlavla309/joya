@@ -32,4 +32,20 @@
 	float:right;
 }
 
+.midivision7{
+	float:left;
+}
+
+.typediv{
+	float: right;
+	font-size: 9pt;
+}
+
+
+#replydiv{
+	padding-left:  15%;
+	padding-right: 15%;
+}
+
+
 </style>
