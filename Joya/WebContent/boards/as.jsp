@@ -164,11 +164,18 @@
                                    </c:if>
                                    <c:choose>
                                     <%-- 비밀글인 경우 --%>
-                                    <c:when test="${article.title eq '비밀글입니다.' }">
+                                   <c:when test="${article.title eq '비밀글입니다.' }">
                                      <img src="../assets/images/secret_lock.png"> &nbsp;
-                                        <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
+                                       <c:choose>
+                                        <c:when test="${name eq '관리자' }">
+                                          <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=2">${article.title}</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                          <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
+                                        </c:otherwise>
+                                       </c:choose>
                                     </c:when>
-                                    <c:otherwise>
+                                   <c:otherwise>
                                      <%-- 일반게시글인 경우 --%>
                                       <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=4">${article.title}</a>
                                     </c:otherwise>
@@ -188,7 +195,7 @@
 
                 <div id="ji-writeD">
                   <button type="button" class="btn">
-                    <a href="${pageContext.servletContext.contextPath}/boards/writingas.jsp">글쓰기</a>
+                    <a href="${pageContext.servletContext.contextPath}/boards/writingas.joya">글쓰기</a>
                   </button>
                   </form>
                 </div>

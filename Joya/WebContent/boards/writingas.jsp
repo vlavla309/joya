@@ -137,7 +137,7 @@
 
                       <div class="midivision1 col-md-12">
                         <label class="control-label" for="name">비밀번호<span
-                          class="req">*</span></label> <input type="text"
+                          class="req">*</span></label> <input type="password"
                           id="name" value="" class="form-control"
                           name="passwd" pattern="[0-9]{4}" required
                           placeholder="비밀번호(숫자0~9까지 4자리)">
