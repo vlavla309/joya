@@ -76,6 +76,8 @@
                     <input type="hidden" name="email" value="${email}">
                     <input type="hidden" name="writer" value="${name}">
                     <input type="hidden" name="passwd" value="상품평비번">
+                    <input type="hidden" name="productid" value="${productid}">
+                    <input type="hidden" name="orderid" value="${orderid}">
                     <thead>
                     <tr>
                       <th class="order_number" id="mi_review_1">
