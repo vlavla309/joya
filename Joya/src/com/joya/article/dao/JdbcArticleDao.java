@@ -724,23 +724,5 @@ public class JdbcArticleDao implements ArticleDao {
 		return article;
 	}
 
-	public static void main(String[] args) {
-		JdbcArticleDao artdao=(JdbcArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
-		
-		int pageSize = 16;
-		int pageNum = 5;
-		int pageCount = 1;
-		Params param = new Params();
-		param.setPage(pageCount);
-		param.setPageNum(pageNum);
-		param.setPageSize(pageSize);
-		System.out.println("[param] : "+param);
-		
-		List<Article> artlist = artdao.listByParams(param, 3, 1);
-		
-		for (Article article : artlist) {
-			System.out.println(article);
-		}
-	}
 
 }

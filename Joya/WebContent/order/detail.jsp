@@ -113,7 +113,7 @@
 			                        <span class="status_unfulfilled">${products[item.productId].price * item.amount}</span>
 			                      </td>
 			                      <td>
-			                        <a href="/mypage/review.joya"><input class="btn btn-default" type="button" value="상품평"></a>
+			                        <a href="/mypage/review.joya?productid=${item.productId}&orderid=${item.orderId}"><input class="btn btn-default" type="button" value="상품평"></a>
 			                      </td>
 			                    </tr>
 		                </c:forEach>

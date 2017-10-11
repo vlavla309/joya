@@ -39,7 +39,6 @@ public class ArticleWriteController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
-		System.out.println("쓰기컨트롤러=================");
 		
 		request.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView();
@@ -64,8 +63,6 @@ public class ArticleWriteController implements Controller {
 			contents = request.getParameter("contents");
 			articleType = request.getParameter("articleType");
 			
-			System.out.println("비밀글-------------"+articleType);
-			
 			Article article = new Article();
 			article.setEmail(email);
 			article.setTitle(title);
@@ -89,14 +86,10 @@ public class ArticleWriteController implements Controller {
 			} else {
 				mav.addObject("article", article);
 			}
-			System.out.println("qna게시판1111111111111");
 			
 			mav.setView("redirect:/boards/qnalist.joya");
-			System.out.println("qna게시판2222222222");
 			
 		} else if(boardId.equals("3") || boardId.equals("4")) {
-			
-			System.out.println("AS게시판");
 			
 			// 파일업로드
 			DiskFileItemFactory itemFactory = new DiskFileItemFactory();
@@ -108,6 +101,8 @@ public class ArticleWriteController implements Controller {
 			String imageName = null;
 			String path = "/boards/asimages/";
 			String boardNo = null;
+			String productid = null;
+			String orderid = null;
 			
 			try {
 				fileList = fileUpload.parseRequest(request);
@@ -119,37 +114,35 @@ public class ArticleWriteController implements Controller {
 						switch(item.getFieldName()) {
 						case "board_id" :
 							boardNo = item.getString("utf-8");
-							System.out.println("as게시판보드넘:"+boardNo);
 							break;
 						case "title":
 							title = item.getString("utf-8");
-							System.out.println("as제목:"+title);
 							break;
 						case "articleType":
 							articleType = item.getString("utf-8");
-							System.out.println("as비밀글타입:"+articleType);
 							break;
 						case "email":
 							email = item.getString("utf-8");
-							System.out.println("as게시판이메일:"+email);
 							break;
 						case "writer":
 							writer = item.getString("utf-8");
-							System.out.println("as글쓴이:"+writer);
 							break;
 						case "passwd":
 							passwd = item.getString("utf-8");
-							System.out.println("as비번:"+passwd);
 							break;
 						case "contents":
 							contents = item.getString("utf-8");
-							System.out.println("as내용:"+contents);
+							break;
+						case "productid":
+							productid = item.getString("utf-8");
+							break;
+						case "orderid":
+							orderid = item.getString("utf-8");
 							break;
 						
 						}
 					}else {
 						imageName = item.getName();
-						System.out.println("이미지네임:"+imageName);
 						File saveFile = new File(fileRepository + imageName);
 						try {
 							item.write(saveFile);
@@ -165,16 +158,17 @@ public class ArticleWriteController implements Controller {
 					article.setPasswd(passwd);
 					article.setContents(contents.replace("\r\n", "<br>"));
 					article.setFilePath(path + imageName);
-					System.out.println("AS게시판11111111111111 : " + path + imageName);
 					
 					if(boardId != null) {
 						switch(boardId) {
 						case "3":
+							article.setProductId(Integer.parseInt(productid));
 							articleService.create(article, "review");
+							mav.setView("redirect:/mypage/orderdetail.joya?orderid="+orderid);
 							break;
 						case "4":
 							articleService.create(article, "as");
-							System.out.println("AS게시판22222222222");
+							mav.setView("redirect:/boards/aslist.joya");
 							break;
 							
 						}
@@ -186,12 +180,10 @@ public class ArticleWriteController implements Controller {
 						mav.addObject("article", article);
 					}
 				
-				
 			} catch (FileUploadException e) {
 				e.printStackTrace();
 			}
-			mav.setView("redirect:/boards/aslist.joya");
-			System.out.println("AS게시판33333333333");
+			
 			
 		}
 		return mav;

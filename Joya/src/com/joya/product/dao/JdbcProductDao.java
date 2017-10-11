@@ -35,7 +35,6 @@ public class JdbcProductDao implements ProductDao{
 
 	@Override
 	public void create(Product product) {
-		System.out.println(product);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String query = "INSERT INTO products " + 
@@ -197,8 +196,6 @@ public class JdbcProductDao implements ProductDao{
 
 		sb.append(" WHERE  request_page = ?");
 
-		
-		System.out.println("sql : "+sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());

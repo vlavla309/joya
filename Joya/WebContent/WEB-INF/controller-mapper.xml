@@ -41,6 +41,8 @@
 	<bean name="/mypage/orderlist" class="com.joya.order.controller.OrderListController" />
 	<bean name="/mypage/orderdetail" class="com.joya.order.controller.OrderDetailController" />
 	
+	<bean name="/mypage/review" class="com.joya.board.controller.ReviewWriteController" />
+	
 	<!-- board -->
 	<bean name="/boards/writearticle" class="com.joya.board.controller.ArticleWriteController" />
 	<bean name="/boards/qnalist" class="com.joya.board.controller.QnAListController" />
