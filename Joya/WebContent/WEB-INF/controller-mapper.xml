@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
+	<!-- index -->
+   <bean name="/index" class="com.joya.index.controller.IndexController" />
+
+
 	<!-- admin -->
    <bean name="/admin/users" class="com.joya.admin.controller.UserListController" />
    <bean name="/admin/userinfo" class="com.joya.admin.controller.UserInfoController" />
