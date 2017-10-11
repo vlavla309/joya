@@ -138,7 +138,7 @@
                                                 
                                                 <!-- 제품 수량 -->
 												<td>
-													<input type="number" class="form-control input-1 replace productAmount" min="1" maxlength="5" size="5" id="updates_3947646083" name="${cartItem.key }" value="${cartItem.value }">
+													<input type="number" class="form-control input-1 replace productAmount" maxlength="5" size="5" id="updates_3947646083" name="${cartItem.key }" value="${cartItem.value }">
 												</td>
                                                 
                                                 <!-- 제품 수량에 대한 가격 -->
@@ -187,7 +187,7 @@
 									</div>
 									<div class="clearfix">
 										<div id="checkout-proceed" class="last1 text-right">
-											<a class="btn" href="${pageContext.servletContext.contextPath}/order/orderadd.joya" type="submit" id="checkout" name="checkout">Checkout</a>
+											<button class="btn" type="submit" id="checkout" name="checkout">Checkout</button>
 										</div>
 									</div>
 								

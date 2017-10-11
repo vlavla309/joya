@@ -31,7 +31,7 @@ import com.joya.product.service.ProductServiceImpl;
 public class ProductUploadActionController implements Controller {
 	ProductService productService=new ProductServiceImpl();
 	ImageService imgService= new ImageServiceImpl();
-	private String fileRepository = "C:\\gugu\\fileupload\\";
+	private String fileRepository = "C:\\Users\\vlavl\\Documents\\joya\\Joya\\WebContent\\shopimg\\";
 	String fileName;
 
 	@Override

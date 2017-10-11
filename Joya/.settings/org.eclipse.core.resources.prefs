@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/product/product.jsp=UTF-8
 encoding//src/com/joya/common/controller/ControllerFactory.java=UTF-8
 encoding//src/com/joya/main/controller/MainController.java=UTF-8
 encoding//src/com/joya/test/HelloController.java=UTF-8

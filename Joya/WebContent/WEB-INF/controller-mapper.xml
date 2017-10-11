@@ -16,11 +16,11 @@
 	<bean name="/product/view" class="com.joya.product.controller.ProductViewController" />
 
 	<!-- order -->
-	<bean name="/order/orderaction" class="com.joya.order.controller.CreateOrderActionController" />
-	<bean name="/order/orderadd" class="com.joya.order.controller.OrderAddFormController" />
+	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
 
 	<!-- cart -->
 	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
+<<<<<<< HEAD
 	<bean name="/order/order_add_action" class="com.joya.order.controller.CreateOrderActionController" />
 
 	<!-- cart -->
@@ -34,6 +34,13 @@
 	<bean name="/user/close_action" class="com.joya.user.controller.CloseAccountController" />
 	<bean name="/user/modify_action" class="com.joya.user.controller.ModifyUserController" />
 	<bean name="/user/register_action" class="com.joya.user.controller.RegisterController" />
+=======
+	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
+	
+	<bean name="/order/order_add" class="com.joya.order.controller.OrderAddFormController" />
+	
+	<!-- 회원 관련 -->
+>>>>>>> 7276b90e64316bffe8bac12cfad29c99cbf7440d
 	<bean name="/user/loginaction" class="com.joya.user.controller.CertificationController" />
 	<bean name="/user/emailaction" class="com.joya.user.controller.CheckEmailController" />
 	<bean name="/user/passwdaction" class="com.joya.user.controller.CheckPasswdController" />
@@ -53,13 +60,7 @@
 	<bean name="/mypage/orderlist" class="com.joya.order.controller.OrderListController" />
 	
 	<!-- board -->
-	<bean name="/boards/writearticle" class="com.joya.board.controller.ArticleWriteController" />
+	<bean name="/boards/qnawrite" class="com.joya.board.controller.QnAWriteController" />
 	<bean name="/boards/qnalist" class="com.joya.board.controller.QnAListController" />
-	<bean name="/boards/aslist" class="com.joya.board.controller.ASListController" />
-	<bean name="/boards/readingarticle" class="com.joya.board.controller.ReadArticleController" />
-	<bean name="/boards/replyarticle" class="com.joya.board.controller.ReplyArticleController" />
-	<bean name="/boards/updatearticle" class="com.joya.board.controller.UpdateArticleController" />
-	<bean name="/boards/updateaction" class="com.joya.board.controller.UpdateActionController" />
-	<bean name="/boards/deletearticle" class="com.joya.board.controller.DeleteArticleController" />
 	
 </beans>
