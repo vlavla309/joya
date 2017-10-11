@@ -79,7 +79,6 @@
 		$(".add-to-cart").click(function() {
 			var productId = $(this).val();
 			var amount = $("#quantity").val();
-			alert(productId + " " + amount);
 			addCartItem(productId, amount);
 		});
 	})
