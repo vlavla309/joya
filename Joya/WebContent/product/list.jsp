@@ -122,7 +122,7 @@
 							<div class="col-md-24">
 								<a href="index-2.html" class="homepage-link" title="Back to the frontpage">Home</a>
 								<span>/</span>
-								<span class="page-title">Collection Full Width</span>
+								<span class="page-title">Product</span>
 							</div>
 						</div>
 					</div>
@@ -135,7 +135,7 @@
 						<div class="row"> 
 							<div id="collection-content">
 								<div id="page-header">
-									<h1 id="page-title">Collection Full Width</h1>
+									<h1 id="page-title">분류 : ${category }</h1>
 								</div>
 								<div class="collection-warper col-sm-24 clearfix"> 
 									<div class="collection-panner">
@@ -256,12 +256,12 @@
 										    	<nav aria-label="Page navigation">
 												  <ul class="pagination">
 														<c:if test="${pageBuilder.isShowFirst()}">
-															<li><a href="${pageBuilder.getQueryString(1)}">처음으로</a></li>
+															<li><a href="${pageBuilder.getQueryString(1)}&category=${category}">처음으로</a></li>
 														</c:if>
 									
 														<c:if test="${pageBuilder.isShowPrevious()}">
 															<li class="prev"><a
-																href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}">이전목록</a></li>
+																href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}&category=${category}">이전목록</a></li>
 														</c:if>
 									
 														<c:forEach var="i" begin="${pageBuilder.currentStartPage }"
@@ -271,19 +271,19 @@
 																	<li class="active"><a>${i}</a></li>
 																</c:when>
 																<c:otherwise>
-																	<li><a href="${pageBuilder.getQueryString(i)}">${i}</a></li>
+																	<li><a href="${pageBuilder.getQueryString(i)}&category=${category}">${i}</a></li>
 																</c:otherwise>
 															</c:choose>
 														</c:forEach>
 									
 														<c:if test="${pageBuilder.isShowNext()}">
 															<li class="next"><a
-																href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}">다음목록</a></li>
+																href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}&category=${category}">다음목록</a></li>
 														</c:if>
 									
 														<c:if test="${pageBuilder.isShowLast()}">
 															<li><a
-																href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}">끝으로</a></li>
+																href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}&category=${category}">끝으로</a></li>
 														</c:if>
 									
 													</ul>

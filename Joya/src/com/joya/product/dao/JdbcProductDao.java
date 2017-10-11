@@ -64,7 +64,6 @@ public class JdbcProductDao implements ProductDao{
 			pstmt.setInt(5, product.getPrice());
 			pstmt.setInt(6, product.getAmount());
 			pstmt.executeQuery();
-			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
@@ -172,7 +171,8 @@ public class JdbcProductDao implements ProductDao{
 			sb.append("                where category_name = ?");
 			sb.append("                or category_name in (select category_name from categories where parent=?)");
 		}else {
-			sb.append(")");
+			sb.append("                where category_name != ?");
+			sb.append("                or category_name in (select category_name from categories where parent=?)");
 		}
 		if(type!=null) {
 			sb.append(" and  product_name LIKE ?");
@@ -197,6 +197,8 @@ public class JdbcProductDao implements ProductDao{
 
 		sb.append(" WHERE  request_page = ?");
 
+		
+		System.out.println("sql : "+sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -372,11 +374,13 @@ public class JdbcProductDao implements ProductDao{
 
 
 		Params params = new Params();
-		List<Product> products=productDao.listByParams(params, "반지", "highPrice");
+		params.setType("name");
+		params.setValue("로즈리");
+		List<Product> products=productDao.listByParams(params, "귀걸이", "newProduct");
 		for (Product product : products) {
 			System.out.println(product);
 		}
-		System.out.println(productDao.pageCount(params, "반지", "highPrice"));
+		System.out.println(productDao.pageCount(params, "귀걸이", "newProduct"));
 
 		System.out.println(productDao.read(1));
 
