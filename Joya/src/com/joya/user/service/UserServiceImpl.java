@@ -44,4 +44,10 @@ public class UserServiceImpl implements UserService{
 	public int pageCount(Params params) {
 		return userDao.pageCount(params);
 	}
+
+	@Override
+	public void pointmodify(String email, int poiont) {
+		userDao.pointmodify(email, poiont);
+		
+	}
 }

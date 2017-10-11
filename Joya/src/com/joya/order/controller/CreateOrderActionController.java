@@ -52,6 +52,7 @@ public class CreateOrderActionController implements Controller {
 		int usedpoint=0;
 		//주문자의 전체 포인트
 		String totalpoint = request.getParameter("totalpoint");
+		String totalPrice = request.getParameter("totalPrice");
 		//주문자가 주문할 때 사용한 포인트
 		String usedpointStr = request.getParameter("used_point");
 		if(usedpointStr!=null) {
@@ -112,7 +113,7 @@ public class CreateOrderActionController implements Controller {
 		}
 
 		order.setOrderId(orderId);
-		order.setPrice(price);
+		order.setPrice(Integer.parseInt(totalPrice));
 		order.setOrderer(orderer);
 		order.setReceiver(receiver);
 		order.setAddress(receiveaddress);

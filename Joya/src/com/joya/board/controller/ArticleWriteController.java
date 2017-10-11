@@ -22,6 +22,9 @@ import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 import com.joya.image.service.ImageService;
 import com.joya.image.service.ImageServiceImpl;
+import com.joya.user.domain.User;
+import com.joya.user.service.UserService;
+import com.joya.user.service.UserServiceImpl;
 
 /**
  * 게시글 등록 처리
@@ -32,6 +35,8 @@ public class ArticleWriteController implements Controller {
 	
 	private ArticleService articleService = new ArticleServiceImpl();
 	private ImageService imgService = new ImageServiceImpl();
+	private UserService userService = new UserServiceImpl();
+	
 	private String fileRepository = "C:/Users/kosta/Desktop/joya/Joya/WebContent/boards/asimages/";
 	String fileName;
 	
@@ -164,6 +169,8 @@ public class ArticleWriteController implements Controller {
 						case "3":
 							article.setProductId(Integer.parseInt(productid));
 							articleService.create(article, "review");
+							User user = userService.read(email);
+							userService.pointmodify(email, user.getPoint()+1000);
 							mav.setView("redirect:/mypage/orderdetail.joya?orderid="+orderid);
 							break;
 						case "4":

@@ -74,7 +74,7 @@
                                   <span class="wow fadeIn"><strong class="kind">주문번호</strong>${order.orderId }</span><br>
                                   <span class="wow fadeIn"><strong class="kind">배송지 정보</strong>${order.address }</span><br>
                                   <span class="wow fadeIn"><strong class="kind">결제 정보</strong>${order.paymentType }</span><br>
-                                  <span class="wow fadeIn"><strong class="kind">결제 금액</strong>${order.payment }</span><br>
+                                  <span class="wow fadeIn"><strong class="kind">결제 금액</strong>${order.price }</span><br>
                                 </div>
                                 <br>
                                 <div id="ji-buttons"><a href="/index.joya"  id="ji-gohomeB" class="wow fadeInLeft">홈으로</a></div>
