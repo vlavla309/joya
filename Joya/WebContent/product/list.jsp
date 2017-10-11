@@ -23,26 +23,37 @@
 	<link href="../assets/stylesheets/cs.global.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.style.css" rel="stylesheet" type="text/css" media="all">
 	<link href="../assets/stylesheets/cs.media.3x.css" rel="stylesheet" type="text/css" media="all">
-	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.easing.1.3.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.camera.min.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.mobile.customized.min.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/cookies.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/modernizr.js" type="text/javascript"></script>  
-	<script src="../assets/javascripts/application.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.owl.carousel.min.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.bxslider.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/skrollr.min.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
-	<script src="../assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
-	<script src="../assets/javascripts/cs.script.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.imagesloaded.min.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.easing.1.3.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.camera.min.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.mobile.customized.min.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/cookies.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/modernizr.js" type="text/javascript"></script>  
+	<script src="../assets/stylesheets/javascripts/application.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.owl.carousel.min.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.bxslider.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/skrollr.min.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
+	<script src="../assets/stylesheets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
+	<script src="../assets/stylesheets/javascripts/cs.script.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/cart_function.js" type="text/javascript"></script>
-	<script src="/assets/javascripts/referer.js" type="text/javascript"></script>
+    <link href="../assets/stylesheets/jjh-style.css" rel='stylesheet' type='text/css'>
 	
 	<script>
 	$(function() {
+		/* 장바구니 담기 확인 모달 띄우기 */
+        $('.movebtn').click(function () {
+            $('#myModal').modal('show');
+        }); 
+		
+        $('.add-to-cart2').click(function () {
+            $('#quick-shop-modal').css("display", "none");
+            $('#myModal').modal('show');
+            
+        }); 
+		
 		var value="";
 		var type = "";
 		
@@ -51,6 +62,7 @@
 		    type = $(this).val();
 		    
 		    var frm = $("#search");
+		    
 		    frm.action = 'product/list.joya?type='+type;
 		    frm.submit();
 		    
@@ -65,11 +77,13 @@
 		// quick-view modal
 		$(".clickid").click(function(event) {
 			var id = $(this).attr("value");
+			alert(id)
 			$.ajax({
 				url : "${pageContext.servletContext.contextPath }/product/view.joya?productid="+id+"&type=quick",
 				dataType : "json", //응답결과로 반환되는 데이터타입(text, html, xml, html, json)
 				success : function(data) {
 					viewuser(data)
+					//alert(data.Product[0].productname);
 				}
 			});
 		});
@@ -83,7 +97,8 @@
 			$.each(data.images, function(index,  image) {
 				var pathname = image.path + image.filename
 				if(image.orderno=="0"){
-					$(".imagemain").attr("src",pathname);
+				$(".imagemain").attr("src",pathname);
+					alert($(".imagemain").attr("src"));
 				} 
 			});
 		} 
@@ -99,12 +114,42 @@
 			addCartItem(productId, amount);
 		});
 		
+		$("#continuemodal").click(function(){
+			/* location.href = "${pageContext.servletContext.contextPath }/product/list.joya"; */
+			location.reload();
+		});
+		
 		
 	});
 	</script>
+  <style type="text/css">
+    #myModal {
+      z-index: 6;
+    }
+  </style>
 </head>
 
 <body>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content" id="ji-mymodal">
+                                         <div class="modal-header alert alert-danger">
+                                           <input value="${user.email }" name="email" type="hidden">
+                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                           <span aria-hidden="true">&times;</span>
+                                           </button>
+                                           <h4 class="modal-title" id="myModalLabel">알림</h4>
+                                         </div>
+                                         <div class="modal-body">
+                                           <label class="success-message">상품이 장바구니에 담겼습니다.</label>
+                                         </div>
+                                         <div class="modal-footer">
+                                           <a  class="btn btn-success delete-confirm"  href="/cart.joya">장바구니로 이동</a>
+                                           <button class="btn btn-default" data-dismiss="modal " id="continuemodal">쇼핑 계속하기</button>
+                                         </div>
+                                       </div>
+                                      </div>
+                                     </div>
 	<!-- Header -->
 	<jsp:include page="../include/header.jsp" />
   	<!-- end of Header -->
@@ -193,7 +238,7 @@
 																	</li>
 																	<li class="row-right parent-fly animMix">
 																	<div class="product-content-left">
-																		<a href="${pageContext.servletContext.contextPath }/product/view.joya?productid=${product.productId}&type=view" class="container_item">${product.productName}</a>
+																		<a class="title-5" href="product.html">${product.productName}</a>
 																		<span class="spr-badge" id="spr_badge_1293239619454" data-rating="0.0">
 																		<span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span>
 																		<span class="spr-badge-caption">
@@ -213,7 +258,7 @@
 																		<form action="#" method="post">						
 																			<div class="effect-ajax-cart">
 																				<input  name="quantity" value="1" type="hidden">
-																				<button class="add-to-cart" value="${product.productId }" type="button" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
+																				<button  class="add-to-cart movebtn" value="${product.productId }" type="button" name="add"><i class="fa fa-shopping-cart"></i><span class="list-mode">Add to Cart</span></button>
 																			</div>
 																		</form>
 																		<div class="product-ajax-qs hidden-xs hidden-sm">
