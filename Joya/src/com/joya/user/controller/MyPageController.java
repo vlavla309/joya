@@ -35,7 +35,7 @@ public class MyPageController implements Controller{
 		
 		ModelAndView mav = new ModelAndView();
 		
-		String email = request.getParameter("email");
+		String email = (String) request.getAttribute("email");
 		String referer = request.getParameter("referer");
 		User user = userService.read(email);
 		String[] tokens = user.getAddress().split(Delimiter.USER_INFO);
@@ -43,7 +43,7 @@ public class MyPageController implements Controller{
 		if (referer != null) {
 			switch (referer) {
 			case "1":
-				mav.setView("redirect:" + request.getContextPath() + "/mypage/orderlist.joya");
+				mav.setView(request.getContextPath() + "/mypage/orderlist.joya");
 				break;
 			case "2":
 				mav.setView(request.getContextPath() + "/mypage/pwcheck.joya");
@@ -58,8 +58,8 @@ public class MyPageController implements Controller{
 		
 		mav.addObject("user", user);
 		mav.addObject("address1", tokens[0]);
-//		mav.addObject("address2", tokens[1]);
-//		mav.addObject("address3", tokens[2]);
+		mav.addObject("address2", tokens[1]);
+		mav.addObject("address3", tokens[2]);
 		
 		return mav;
 	}

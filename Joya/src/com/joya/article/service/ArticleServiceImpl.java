@@ -13,11 +13,6 @@ public class ArticleServiceImpl implements ArticleService {
 	ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
 
 	@Override
-	public void create(Article article) {
-		dao.create(article);
-	}
-	
-	@Override
 	public void create(Article article, String articleType) {
 		dao.create(article, articleType);
 	}
@@ -38,9 +33,10 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public void delete(int articleId) {
-		dao.delete(articleId);
+	public boolean delete(Article article) {
+		return dao.delete(article);
 	}
+
 
 	@Override
 	public void reply(Article article) {
@@ -62,6 +58,13 @@ public class ArticleServiceImpl implements ArticleService {
 	public int pageCount(Params params, int boardId) {
 		return dao.pageCount(params, boardId);
 	}
+
+	@Override
+	public List<Article> listByParams(Params params, int boardId, int productid) {
+		return dao.listByParams(params, boardId, productid);
+	}
+
+
 
 
 	

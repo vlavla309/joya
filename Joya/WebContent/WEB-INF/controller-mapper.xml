@@ -27,8 +27,6 @@
 	<bean name="/cart" class="com.joya.cart.controller.CartListController" />
 	<bean name="/wishtocart" class="com.joya.cart.controller.WishListToCartActionController" />
 	
-	<bean name="/order/order_add" class="com.joya.order.controller.OrderAddFormController" />
-	
 	<!-- 회원 관련 -->
 	<bean name="/user/login_action" class="com.joya.user.controller.CertificationController" />
 	<bean name="/user/email_action" class="com.joya.user.controller.CheckEmailController" />
@@ -36,24 +34,32 @@
 	<bean name="/user/close_action" class="com.joya.user.controller.CloseAccountController" />
 	<bean name="/user/modify_action" class="com.joya.user.controller.ModifyUserController" />
 	<bean name="/user/register_action" class="com.joya.user.controller.RegisterController" />
-	<bean name="/user/mypage_action" class="com.joya.user.controller.MyPageController" />
-	<bean name="/user/bridge_action" class="com.joya.user.controller.BridgeController" />
 	<bean name="/user/loginaction" class="com.joya.user.controller.CertificationController" />
 	<bean name="/user/emailaction" class="com.joya.user.controller.CheckEmailController" />
 	<bean name="/user/passwdaction" class="com.joya.user.controller.CheckPasswdController" />
 	<bean name="/user/closeaction" class="com.joya.user.controller.CloseAccountController" />
 	<bean name="/user/modifyaction" class="com.joya.user.controller.ModifyUserController" />
 	<bean name="/user/registeraction" class="com.joya.user.controller.RegisterController" />
+	
+	<!-- 마이페이지 관련 -->
+	<bean name="/user/mypage_action" class="com.joya.user.controller.MyPageController" />
 	<bean name="/user/mypageaction" class="com.joya.user.controller.MyPageController" />
 	<bean name="/user/bridgeaction" class="com.joya.user.controller.BridgeController" />
 	
-	<!-- 마이페이지 관련 -->
+	<!-- 위시리스트 관련 -->
 	<bean name="/mypage/wishlist" class="com.joya.wishlist.controller.WishlistController" />
 	<bean name="/mypage/wishlistcreate" class="com.joya.wishlist.controller.WishlistCreateController" />
 	<bean name="/mypage/wishlistdelete" class="com.joya.wishlist.controller.WishlistDeleteController" />
+	<bean name="/mypage/orderlist" class="com.joya.order.controller.OrderListController" />
 	
 	<!-- board -->
-	<bean name="/boards/qnawrite" class="com.joya.board.controller.QnAWriteController" />
+	<bean name="/boards/writearticle" class="com.joya.board.controller.ArticleWriteController" />
 	<bean name="/boards/qnalist" class="com.joya.board.controller.QnAListController" />
+	<bean name="/boards/aslist" class="com.joya.board.controller.ASListController" />
+	<bean name="/boards/readingarticle" class="com.joya.board.controller.ReadArticleController" />
+	<bean name="/boards/replyarticle" class="com.joya.board.controller.ReplyArticleController" />
+	<bean name="/boards/updatearticle" class="com.joya.board.controller.UpdateArticleController" />
+	<bean name="/boards/updateaction" class="com.joya.board.controller.UpdateActionController" />
+	<bean name="/boards/deletearticle" class="com.joya.board.controller.DeleteArticleController" />
 	
 </beans>

@@ -102,6 +102,7 @@ public class JdbcOrderDao implements OrderDao {
 		Connection con=null;
 		PreparedStatement pstmt =null;
 		ResultSet rs=null;
+		// 임의의 주문번호를 생성(주문 테이블에서 주문번호를 증가시킴)하고 반환
 		String sql="SELECT orders_seq.NEXTVAL new_id FROM DUAL";
 
 		try {

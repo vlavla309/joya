@@ -35,6 +35,7 @@ public class OrderAddFormController implements Controller{
 		ModelAndView mav = new ModelAndView();
 		UserService userserv=new UserServiceImpl();
 		String loginuser = (String)request.getAttribute("email");
+		String type = request.getParameter("type");
 		User user=null;
 		
 		Map<String, String> cartMap=new HashMap<String, String>();
@@ -76,7 +77,12 @@ public class OrderAddFormController implements Controller{
 			mav.addObject("user", user);
 		    mav.setView("/order/order_form.jsp");
 		}else {
-			mav.setView("/user/login3.jsp");
+			if(type !=null && type.equals("guest")) {
+				mav.setView("/order/order_form.jsp");
+			}else {
+				mav.setView("/user/login3.jsp");
+			}
+			
 		}
 	    return mav;
 	}

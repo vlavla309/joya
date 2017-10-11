@@ -123,7 +123,7 @@
                                         <li class="col-md-21 unpadding-top">
                                         <ul class="login-wrapper list-unstyled">
                                           <li>
-                                            <a href="${pageContext.servletContext.contextPath}/order/order_form.joya">
+                                            <a href="${pageContext.servletContext.contextPath}/order/orderadd.joya?type=guest">
 	                                            <div class="orderselect_mimi1">
 	                                            <div class="minimi">
 	                                            <h1>ORDER <br>for Guest</h1> 

@@ -77,7 +77,7 @@
 										<div class="wrap-table">
                     
                                             <!-- 장바구니 테이블 start -->
-											<table class="cart-items haft-border">
+										<table class="cart-items haft-border">
 											<colgroup>
 											<col class="checkout-image">
 											<col class="checkout-info">

@@ -93,14 +93,14 @@
 											<div class="info">
 												<i class="fa fa-user"></i>
 												<span class="address-group">
-												<span class="author">${user.name }</span>
-												<span class="email">${user.email }</span>
+												<span class="author">${user.name}</span>
+												<span class="email">${user.email}</span>
 												</span>
 											</div>
 											<div class="address">
 												<span class="address-group">
-												<span class="address1">Point : ${user.point } <span class="phone-number"></span></span>
-                                                <span class="address1">Address : ${address1 } ${address2 } ${address3 } <span class="phone-number"></span></span>
+												<span class="address1">Point : ${user.point} <span class="phone-number"></span></span>
+                                                <span class="address1">Address : ${address1} ${address2} ${address3} <span class="phone-number"></span></span>
 												</span>
 											</div>
 											</address>

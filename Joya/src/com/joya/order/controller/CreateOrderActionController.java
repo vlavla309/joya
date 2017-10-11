@@ -35,7 +35,7 @@ public class CreateOrderActionController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
-		
+		// 먼저 주문번호 생성를 해야함
 		int orderId=orderServ.getNewOrderId();
 		int price=0;
 		
@@ -49,7 +49,6 @@ public class CreateOrderActionController implements Controller {
 		String totalpoint = request.getParameter("totalpoint");
 		//주문자가 주문할 때 사용한 포인트
 		String usedpointStr = request.getParameter("used_point");
-		System.out.println("[usedpointStr] : "+usedpointStr);
 		if(usedpointStr!=null) {
 			usedpoint=Integer.parseInt(usedpointStr);
 		}
@@ -79,22 +78,16 @@ public class CreateOrderActionController implements Controller {
 		//주문접수, 주문취소, 결제완료, 배송중, 배송완료
 		String status = "주문접수";
 		
+		//order items 리스트를 만들기 위해 makeOrderItems 메소드에 미리 생성된 order id를 넘겨줌 
 		List<OrderItems> orderItems=null;
+		
 		Cookie[] cookies=request.getCookies();
 		for (Cookie cookie : cookies) {
 			if(cookie.getName().equalsIgnoreCase("cart")) {
 				String cartInfo = URLDecoder.decode(cookie.getValue(), "utf-8");
-				System.out.println(cartInfo);
+				//makeOrderItems는 쿠키에 저장되어있는 장바구니를 읽고, 파싱해서 리스트로 반환
 				orderItems=makeOrderItems(orderId, cartInfo);
 			}
-		}
-		
-		for (OrderItems orderItem : orderItems) {
-			System.out.println(orderItem);
-			int productId=orderItem.getProductId();
-			Product product=productServ.read(productId);
-			price+=orderItem.getAmount()*product.getPrice();
-			//orderItemServ.create(orderItem);
 		}
 		
 		Orders order=new Orders();
@@ -110,20 +103,35 @@ public class CreateOrderActionController implements Controller {
 		order.setUsedPoint(usedpoint);
 		order.setMassage(deliverymsg);
 		
-		System.out.println(order);
 		
 		orderServ.create(order);
 		
-	//	mav.setView("/product/list.jsp");
-	//	return mav;
-		return null;
+		for (OrderItems orderItem : orderItems) {
+			System.out.println(orderItem);
+			int productId=orderItem.getProductId();
+			
+			/* 주문한 상품들의 productid로 상품 가격의 단가를 가져온다. */
+			Product product=productServ.read(productId);
+			
+			/* 주문 수량과 단가를 곱하고 누적해서 주문 상품들에 대한 총 가격을 계산. */
+			price+=orderItem.getAmount()*product.getPrice();
+			
+			System.out.println("[CreateOrderActionController  orderItem] : "+orderItem);
+			
+			orderItemServ.create(orderItem);
+		}
+		
+		mav.addObject("order", order);
+		mav.setView("/order/result.jsp");
+		return mav;
 	}
 	
 	private List<OrderItems> makeOrderItems(int orderId, String cookieValue){
+		//productid#@#amount@@@productid#@#amount@@@productid#@#amount 형식으로 쿠키에 cart가 저장되어 있음.
 		List<OrderItems> list=new ArrayList<OrderItems>();
-		String[] cartItems=cookieValue.split(Delimiter.CART_ITEM);
+		String[] cartItems=cookieValue.split(Delimiter.CART_ITEM); //@@@
 		for (String item : cartItems) {
-			String productId=item.split(Delimiter.CART_ITEM_INFO)[0];
+			String productId=item.split(Delimiter.CART_ITEM_INFO)[0]; //#@#
 			String amount=item.split(Delimiter.CART_ITEM_INFO)[1];
 			OrderItems orderItem=new OrderItems(Integer.parseInt(productId),orderId,Integer.parseInt(amount));
 			list.add(orderItem);

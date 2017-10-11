@@ -16,16 +16,6 @@ var DELIMITER_CART_ITEM_INFO="#@#";
 $(document).ready(function(){
 	//장바구니 쿠키 체크
 	checkCartCookie();
-/*
-	addCartItem("1", 10);
-	addCartItem("2", 10);
-	addCartItem("3", 10);
-	addCartItem("2", 10);
-	addCartItem("3", 10);
-	
-	removeCartItem("2");
-//	updateCartItem("3", 30);
-*/	console.log($.cookie("cart"));
 })
 
 
@@ -77,7 +67,7 @@ function getCartMap(){
 	var cartMap=new Map();
 
 	
-	if(cartCookieValue!=""){//쿠키값이 비어있을경우 빈 Map 반환
+	if(cartCookieValue!=" "){//쿠키값이 비어있을경우 빈 Map 반환
 		//쿠키값을 구획문자로 파싱(품목별로 나눔)
 		var cartItems=cartCookieValue.split(DELIMITER_CART_ITEM);
 		//배열을 foreach 문으로 수행
