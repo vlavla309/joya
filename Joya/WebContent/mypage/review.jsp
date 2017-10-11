@@ -104,7 +104,6 @@
                           </tr>
                         </tbody>
                         <!-- 테이블 바디 종료 -->
-
                       </table>
                       <div id="reviewfile_m">
                         <input type="file" name="filepath" value="5">
