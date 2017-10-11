@@ -45,7 +45,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">방문자 수</h1>
+                    <h1 class="page-header">매출액</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -56,12 +56,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           일일 방문자 수 
-                           <input type="date" name="date" id="visitDate" value="${date}">
+                           일일 매출액
+                           <input type="datetime-local" name="date" id="salesDate" value="${date}">
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="morris-line-chart"></div>
+                            <div id="morris-bar-chart"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -90,7 +90,7 @@
     <!-- Morris Charts JavaScript -->
     <script src="${pageContext.servletContext.contextPath}/admin/vendor/raphael/raphael.min.js"></script>
     <script src="${pageContext.servletContext.contextPath}/admin/vendor/morrisjs/morris.min.js"></script>
-    <script src="${pageContext.servletContext.contextPath}/admin/data/visitcount-data.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/admin/data/sales-data.js"></script>
     <script src="${pageContext.servletContext.contextPath}/admin/dist/js/visitor_count.js"></script>
 
 	<script type="text/javascript">
