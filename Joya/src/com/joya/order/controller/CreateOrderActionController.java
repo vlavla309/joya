@@ -113,10 +113,10 @@ public class CreateOrderActionController implements Controller {
 		}
 
 		order.setOrderId(orderId);
-		order.setPrice(Integer.parseInt(before_use_point_price));
+		order.setPrice(price);
 		order.setOrderer(orderer);
 		order.setReceiver(receiver);
-		order.setPayment(Integer.parseInt(totalPrice));
+		order.setPayment(price-usedpoint);
 		order.setAddress(receiveaddress);
 		order.setPhone(orderphone);
 		order.setStatus(status);
