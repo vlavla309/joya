@@ -51,7 +51,6 @@
         $('.add-to-cart2').click(function () {
             $('#quick-shop-modal').css("display", "none");
             $('#myModal').modal('show');
-            
         }); 
 		
 		var value="";
