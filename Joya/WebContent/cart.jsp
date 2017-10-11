@@ -33,6 +33,8 @@
 	<script src="assets/javascripts/cookies.js" type="text/javascript"></script>
 	<script src="assets/javascripts/cart.js" type="text/javascript"></script>
 	<script src="assets/javascripts/cart_function.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/referer.js" type="text/javascript"></script>
+	
 	
 	
   
