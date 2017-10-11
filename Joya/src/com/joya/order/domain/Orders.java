@@ -17,12 +17,13 @@ public class Orders {
 	private int approvalNo;
 	private String orderDate;
 	private String massage;
+	private String gstEmail;
 	
 	public Orders() {}
 
 	public Orders(int orderId, String email, int price, String orderer, String receiver, String address, String phone,
 			String status, String paymentType, int usedPoint, String paymentDate, int payment, int cardNo,
-			int approvalNo, String orderDate, String massage) {
+			int approvalNo, String orderDate, String massage, String gstEmail) {
 		super();
 		this.orderId = orderId;
 		this.email = email;
@@ -40,8 +41,8 @@ public class Orders {
 		this.approvalNo = approvalNo;
 		this.orderDate = orderDate;
 		this.massage = massage;
+		this.gstEmail = gstEmail;
 	}
-
 
 	public int getOrderId() {
 		return orderId;
@@ -154,19 +155,14 @@ public class Orders {
 	public void setApprovalNo(int approvalNo) {
 		this.approvalNo = approvalNo;
 	}
-	
-	
 
 	public String getOrderDate() {
 		return orderDate;
 	}
 
-
-
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-
 
 	public String getMassage() {
 		return massage;
@@ -176,14 +172,20 @@ public class Orders {
 		this.massage = massage;
 	}
 
+	public String getGstEmail() {
+		return gstEmail;
+	}
+
+	public void setGstEmail(String gstEmail) {
+		this.gstEmail = gstEmail;
+	}
+
 	@Override
 	public String toString() {
 		return "Orders [orderId=" + orderId + ", email=" + email + ", price=" + price + ", orderer=" + orderer
 				+ ", receiver=" + receiver + ", address=" + address + ", phone=" + phone + ", status=" + status
 				+ ", paymentType=" + paymentType + ", usedPoint=" + usedPoint + ", paymentDate=" + paymentDate
 				+ ", payment=" + payment + ", cardNo=" + cardNo + ", approvalNo=" + approvalNo + ", orderDate="
-				+ orderDate + ", massage=" + massage + "]";
+				+ orderDate + ", massage=" + massage + ", gstEmail=" + gstEmail + "]";
 	}
-
-	
 }
