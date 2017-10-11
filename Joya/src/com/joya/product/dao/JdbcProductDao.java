@@ -167,13 +167,13 @@ public class JdbcProductDao implements ProductDao{
 		sb.append("                    hitcount");
 		sb.append("                    FROM   products");
 		if(!categoryName.equals("전체")) {
-			sb.append("                where category_name = ?");
-			sb.append("                or category_name in (select category_name from categories where parent=?)");
+			sb.append("                where (category_name = ?");
+			sb.append("                or category_name in (select category_name from categories where parent=?))");
 		}else {
-			sb.append("                where category_name != ?");
-			sb.append("                or category_name in (select category_name from categories where parent=?)");
+			sb.append("                where (category_name != ?");
+			sb.append("                or category_name in (select category_name from categories where parent=?))");
 		}
-		if(type!=null) {
+		if(value!=null) {
 			sb.append(" and  product_name LIKE ?");
 			value = "%" + value + "%";
 		}
@@ -195,7 +195,8 @@ public class JdbcProductDao implements ProductDao{
 		}
 
 		sb.append(" WHERE  request_page = ?");
-
+		
+		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -203,7 +204,7 @@ public class JdbcProductDao implements ProductDao{
 			pstmt.setString(2,  categoryName);
 			pstmt.setString(3,  categoryName);
 
-			if(type != null){
+			if(value != null){
 				pstmt.setString(4, value);
 				pstmt.setInt(5, params.getPage());
 			}else{
