@@ -72,60 +72,42 @@
                         <ul>
                           <li class="list-title"><a class="list-title" href="/product/list.joya?category=반지">반지</a></li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">Dolorem Sed </a>
+                          <a href="#">웨딩링</a>
                           </li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">Proident Nulla </a>
+                          <a href="#">남성반지</a>
                           </li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">Phasellus Leo <span class="megamenu-label hot-label">Hot</span>
+                          <a href="#">여성반지</a>
+                          </li>
+                          <li class="list-unstyled li-sub-mega">
+                          <a href="#">싱글링<span class="megamenu-label hot-label">Hot</span>
                           </a>
                           </li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">Tristique Amet <span class="megamenu-label feature-label">Featured</span>
+                          <a href="#">커플링<span class="megamenu-label feature-label">Featured</span>
                           </a>
                           </li>
                         </ul>
                         </li>
                         <li>
                         <ul>
-                          <li class="list-title"><a href="/product/list.joya?category=목걸이">목걸이</a></li>
+                          <li class="list-title"><a  class="list-title" href="/product/list.joya?category=목걸이">목걸이</a></li>
+                          <li class="list-unstyled li-sub-mega">
+                        </ul>
+                        </li>
+                        <li>
+                        <ul>
+                          <li class="list-title"><a  class="list-title" href="/product/list.joya?category=귀걸이">귀걸이</a></li>
                           <li class="list-unstyled li-sub-mega">
                           <a href="#">Dolorem Sed </a>
                           </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Proident Nulla <span class="megamenu-label new-label">New</span>
-                          </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Phasellus Leo </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Tristique Amet </a>
                           </li>
                         </ul>
                         </li>
                         <li>
                         <ul>
-                          <li class="list-title"><a href="/product/list.joya?category=귀걸이">귀걸이</a></li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Dolorem Sed </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Proident Nulla </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Phasellus Leo <span class="megamenu-label sale-label">Sale</span>
-                          </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Tristique Amet </a>
-                          </li>
-                        </ul>
-                        </li>
-                        <li>
-                        <ul>
-                          <li class="list-title"><a href="/product/list.joya?category=팔찌">팔찌</a></li>
+                          <li class="list-title"><a  class="list-title" href="/product/list.joya?category=팔찌">팔찌</a></li>
                           <li class="list-unstyled li-sub-mega">
                           <a href="#">Dolorem Sed <span class="megamenu-label new-label">New</span>
                           </a>
