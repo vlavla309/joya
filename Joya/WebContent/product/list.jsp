@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
-  <title>Collection Full Width Page</title>
+  <title>Products - Joya</title>
   
 	<link href="/assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
 	<link href="/assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 
@@ -90,7 +90,7 @@
 		function viewuser(data) {
 			$("#quickview_title").text(data.Product[0].productname);
 			$("#description").text(data.Product[0].discription);
-			$(".price_sale").text(data.Product[0].price);
+			$(".price_sale").html("&#8361; "+data.Product[0].price);
 			$(".maker").text(data.Product[0].maker);
 			$(".add-to-cart2").val(data.Product[0].productid);
 			$.each(data.images, function(index,  image) {
@@ -249,7 +249,7 @@
 																	<div class="product-content-right">
 																		<div class="product-price">
 																			<span class="price">
-																			${product.price} </span>
+																			&#8361;${product.price} </span>
 																		</div>
 																	</div>
 																	<div class="list-mode-description">
@@ -390,16 +390,6 @@
 									</div>
 								</div>
 								<div id="quick-shop-container">
-									<div id="quick-shop-relative" class="relative text-left">
-										<ul class="list-unstyled">
-											<li class="control-group vendor">
-											<span class="control-label">Vendor :</span><a href="http://demo.designshopify.com/collections/vendors?q=Vendor+1"> Vendor 1</a>
-											</li>
-											<li class="control-group type">
-											<span class="control-label">Type :</span><a href="http://demo.designshopify.com/collections/types?q=Sweaters+Wear"> Sweaters Wear</a>
-											</li>
-										</ul>
-									</div>
 									<form action="#" method="post" class="variants" id="quick-shop-product-actions" enctype="multipart/form-data">
 										<div id="quick-shop-price-container" class="detail-price">
 											<span class="price_sale">$259.00</span><span class="dash">
