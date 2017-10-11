@@ -7,6 +7,8 @@
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
   <title>Joya - World Jewelry</title>
+  	<link rel="shortcut icon" href="/assets/images/favicon.ico">
+
   
     <link href="assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
   
@@ -389,47 +391,7 @@
 			</div>
 		</div>
 	</div>
-	<!--Androll-->
-	<script type="text/javascript">
-	adroll_adv_id = "HTF7KIWJRBHHXL46WLUDBC";
-	adroll_pix_id = "IE5CHDRTR5ABXH2P6QXAVM";
-	(function () {
-	var oldonload = window.onload;
-	window.onload = function(){
-	   __adroll_loaded=true;
-	   var scr = document.createElement("script");
-	   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
-	   scr.setAttribute('async', 'true');
-	   scr.type = "text/javascript";
-	   scr.src = host + "/j/roundtrip.js";
-	   ((document.getElementsByTagName('head') || [null])[0] ||
-		document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
-	   if(oldonload){oldonload()}};
-	}());
-	</script>
+	
 
-	<!-- Google Code -->
-	<script>
-
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-
-	  })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
-
-
-
-	  ga('create', 'UA-55571446-8', 'auto');
-
-	  ga('require', 'displayfeatures');
-	  
-	  ga('set', 'dimension1', 'html_jewelry');
-		 
-	  ga('set', 'dimension2', 'html_jewelry');
-
-	  ga('send', 'pageview');
-
-	</script>
+	
 </body>
