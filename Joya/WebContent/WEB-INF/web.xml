@@ -8,17 +8,57 @@
 	<!-- 홈페이지 등록 -->
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-	
-	
+
+	<!-- 문자 인코딩 필터 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.joya.common.web.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 로그인 필터 -->
+	<filter>
+		<filter-name>LoginCheckFilter</filter-name>
+		<filter-class>com.joya.common.web.LoginCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginCheckFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+
+	<!-- 관리자페이지 로그인 필터 적용 -->
+	<filter>
+		<filter-name>AdminCheckFilter</filter-name>
+		<filter-class>com.joya.common.web.AdminCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AdminCheckFilter</filter-name>
+		<url-pattern>/admin/</url-pattern>
+		<url-pattern>/admin/index.joya</url-pattern>
+		<url-pattern>/admin/users.joya</url-pattern>
+		<url-pattern>/admin/product_add.joya</url-pattern>
+		<url-pattern>/admin/visitors.joya</url-pattern>
+	</filter-mapping>
+
+
 	<!-- 웹브라우저 모든 요청에 대한 단일 진입점 역할의 Front Controller Servlet(메인서블릿) 등록 -->
 	<servlet>
 		<servlet-name>MainController</servlet-name>
 		<servlet-class>com.joya.main.controller.MainController</servlet-class>
 		<init-param>
 			<param-name>controllerMapperLocation</param-name>
-			<param-value>c:/workspace/eclipse/Joya/WebContent/WEB-INF/controller-mapper.xml</param-value>
+			<param-value>C:/Users\vlavl/Documents/joya/Joya/WebContent/WEB-INF/controller-mapper.xml</param-value>
 		</init-param>
 
 		<load-on-startup>1</load-on-startup> <!-- was가 구동될 때 미리 실행되어 만들어짐 -->
