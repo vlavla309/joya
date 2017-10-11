@@ -154,8 +154,8 @@
                     <i class="sub-dropdown visible-sm visible-md visible-lg"></i>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class=""><a tabindex="-1" href="blog-3-col.html">Q&A</a></li>
-                      <li class=""><a tabindex="-1" href="blog-2-col.html">A/S</a></li>
+                      <li class=""><a tabindex="-1" href="/boards/qnalist.joya">Q&A</a></li>
+                      <li class=""><a tabindex="-1" href="/boards/aslist.joya">A/S</a></li>
                       
                     </ul>
                     </li>
