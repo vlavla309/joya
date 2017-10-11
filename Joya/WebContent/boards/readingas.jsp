@@ -137,7 +137,6 @@
                     <tr>
                       <td><strong>제목</strong></td>
                       <td colspan="5" class="textleft">${article.title }</td>
-
                     </tr>
                     <tr>
                       <td><strong>작성자</strong></td>
@@ -154,7 +153,6 @@
                         data-target="#imageModal"><img
                           class="fileimage" src="${article.filePath }"></a></td>
                     </tr>
-
                     <tr>
                       <td colspan="6">${article.contents }</td>
                     </tr>
@@ -193,7 +191,7 @@
                    </c:otherwise>
                 </c:choose>
             </div>
-          </div>
+           </div>
           </form>
           
          </div>

@@ -2,30 +2,10 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%--
-	String user = null;
-	String email = null;
-	String name = null;
-
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equalsIgnoreCase("user")) {
-				user = URLDecoder.decode(cookie.getValue(), "utf-8");
-				String[] tokens = user.split("###");
-				email = tokens[0];
-				name = tokens[1];
-			}
-		}
-	}
- 
---%>
-
 <!doctype html>
 <html lang="en" class="no-js">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
-
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport"
@@ -33,6 +13,8 @@
 <link rel="canonical" href="http://demo.designshopify.com/" />
 <meta name="description" content="" />
 <title>A/S - Writing</title>
+
+<!-- css 적용 부분 시작 -->
 <link href="../assets/stylesheets/font.css" rel='stylesheet'
   type='text/css'>
 <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet"
@@ -54,8 +36,10 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-  
-  <script>
+<%-- CSS 적용 부분 종료 --%>  
+
+<%--비밀글 라디오 버튼 이벤트 --%>
+<script>
   $(function() {
     $("input[type='radio']").click(function(){
           var radioValue = $("input[name='articleType']:checked").val();
@@ -65,21 +49,16 @@
           
       });
   })
-  
-  
 </script>
-
 </head>
+<%-- HEAD 영역 종료 --%>
 
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templatePage notouch">
 
-
-  
-   <!-- Header 영역 시작 -->
+ <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
-  <!-- hearder 영역 종료 -->
-
+ <!-- hearder 영역 종료 -->
 
   <!-- Main 영역 시작 -->
   <div id="content-wrapper-parent">
@@ -92,8 +71,7 @@
               <div class="col-md-24">
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
-                <span>/</span> <span class="page-title">A/S -
-                  Editing</span>
+                <span>/</span> <span class="page-title">A/S - Editing</span>
               </div>
             </div>
           </div>
@@ -111,27 +89,21 @@
             <div class="group-contact clearfix">
               <div class="container">
                 <div class="row">
-
                   <form action="${pageContext.servletContext.contextPath}/boards/updatearticle.joya?boardid=4"
                     method="post" enctype="multipart/form-data">
                     <div class="left-block col-md-12">
-                      
                       <div class="typediv">
                         <input type="radio" name="articleType" value="secret" > 비밀글 &nbsp;
                       </div>
                       <br>
-
                       <div class="midivision2">
-                        <label class="control-label" for="name">제목<span
-                          class="req">*</span></label>
+                        <label class="control-label" for="name">제목<span class="req">*</span></label>
                       </div>
                       <input type="text" id="name" value="${article.title}"
                         class="form-control" name="title"> 
-                        
                         <input type="hidden" value="${email}" name="email">
                         <input type="hidden" name="articleId" value="${param.articleid}">
                         <input type="hidden" name="boardId" value="4">
-
                       <c:choose>
                         <c:when test="${not empty email}">
                           <div>
@@ -197,8 +169,7 @@
                       <li>010-1111-0000</li>
                       <br>
                       <br>
-                      <li class="email"><i class="fa fa-envelope"></i>
-                        support@designshopify.com</li>
+                      <li class="email"><i class="fa fa-envelope"></i> support@designshopify.com</li>
                     </ul>
                     <ul class="right-content">
                       <li class="title">
@@ -241,6 +212,5 @@
   <!-- footer 영역 시작 -->
   <jsp:include page="../include/footer.jsp" />
   <!-- footer 영역 종료 -->
-
-
 </body>
+<!-- BODY 영역 종료 -->

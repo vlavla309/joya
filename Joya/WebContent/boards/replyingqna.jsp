@@ -2,29 +2,12 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%--
-	String user = null;
-	String email = null;
-	String name = null;
-
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equalsIgnoreCase("user")) {
-				user = URLDecoder.decode(cookie.getValue(), "utf-8");
-				String[] tokens = user.split("###");
-				email = tokens[0];
-				name = tokens[1];
-			}
-		}
-	}
---%>
-
 <!doctype html>
 <html lang="en" class="no-js">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 
+<%-- CSS 적용 부분 시작 --%>  
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport"
@@ -53,17 +36,17 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
-
-
+<%-- CSS 적용 부분 종료 --%> 
+ 
 </head>
+<%-- HEAD 영역 종료 --%> 
 
-<body itemscope="" itemtype="http://schema.org/WebPage"
-  class="templatePage notouch">
+<%-- BODY 영역 시작 --%> 
+<body itemscope="" itemtype="http://schema.org/WebPage" class="templatePage notouch">
 
   <!-- Header 영역 시작 -->
   <jsp:include page="../include/header.jsp" />
   <!-- hearder 영역 종료 -->
-
 
   <!-- Main 영역 시작 -->
   <div id="content-wrapper-parent">
@@ -76,8 +59,7 @@
               <div class="col-md-24">
                 <a href="http://demo.designshopify.com/"
                   class="homepage-link" title="Back to the frontpage">Home</a>
-                <span>/</span> <span class="page-title">Q&A -
-                  Replying</span>
+                <span>/</span> <span class="page-title">Q&A - Replying</span>
               </div>
             </div>
           </div>
@@ -90,7 +72,6 @@
               </div>
             </div>
           </div>
-
           <div id="col-main" class="contact-page clearfix">
             <div class="group-contact clearfix">
               <div class="container">
@@ -152,9 +133,9 @@
               </div>
             </div>
           </div>
-      </div>
-    </div>
-    </section>
+       </section>
+     </div>
+   </div>
   </div>
   </div>
   </div>
@@ -163,6 +144,5 @@
   <!-- footer 영역 시작 -->
   <jsp:include page="../include/footer.jsp" />
   <!-- footer 영역 종료 -->
-
-
 </body>
+<!-- BODY 영역 종료 -->

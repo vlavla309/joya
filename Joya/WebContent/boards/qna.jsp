@@ -42,50 +42,49 @@
   type="text/javascript"></script>
 <!-- css 적용 부분 종료 -->
 
+<%-- 비밀글 modal 이벤트 액션 --%>
 <script>
-  $(function() {
-    
-    $(".secrettitle").on("click",function(event) {
-      var articleId = $(event.target).attr("name");
-      var id = $(".yes").attr("name", articleId);
-    });
-      
-   	$(".yes").on("click", function(){
-      var id = $(".yes").attr("name");
-      console.log("articleId "+id);
-      var secretPw = $(".secretpasswd").val();
-  	  var password = $(".pw").val();
-  	  console.log("모달창비번 "+secretPw);
-  	  console.log("원래비번 "+password);
-  	  
-  	  if(secretPw == password){
-          		location.href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid="+id+"&boardid=2";
-    	
-  	  } else {
-	         $(".errorpasswd").text("비밀번호가 일치하지 않습니다.");
-	    	 $(".secretpasswd").val("");
-	  }	
-    	 
-     });
-   	 
+	$(function() {
+		$(".secrettitle").on("click", function(event) {
+			var articleId = $(event.target).attr("name");
+			var id = $(".yes").attr("name", articleId);
+		});
 
-  })
-  
+		$(".yes").on("click",function() {
+			var id = $(".yes").attr("name");
+			console.log("articleId " + id);
+			var secretPw = $(".secretpasswd").val();
+			var password = $(".pw").val();
+			console.log("모달창비번 " + secretPw);
+			console.log("원래비번 " + password);
+
+			if (secretPw == password) {
+				location.href = "${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid="+ id + "&boardid=2";
+
+			} else {
+				$(".errorpasswd").text("비밀번호가 일치하지 않습니다.");
+				$(".secretpasswd").val("");
+			}
+		});
+	})
 </script>
 </head>
+<%-- HEAD 영역 종료 --%>
 
-  <%-- 비밀글일때 비밀번호 확인 modal --%>
-  <div class="modal" id="checkModal">
-  <div class="modal-dialog modal-sm" >
+<%-- 비밀글일때 비밀번호 확인 modal --%>
+<div class="modal" id="checkModal">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content" id="secretm">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
         <span class="modal-title">비밀글을 읽으시려면 비밀번호를 입력해주세요.</span>
       </div>
       <div class="modal-footer" id="secretf">
         <div class="mimodal">
-        <input type="text" class="secretpasswd" name="">
-        <button type="button" class="yes" id="yesbtn" value="">확인</button>
+          <input type="text" class="secretpasswd" name="">
+          <button type="button" class="yes" id="yesbtn" value="">확인</button>
         </div>
         <span class="errorpasswd" value=""></span>
       </div>
@@ -93,7 +92,7 @@
   </div>
 </div>
 
-
+<%-- BODY 영역 시작 --%>
 <body itemscope="" itemtype="http://schema.org/WebPage"
   class="templateCustomersRegister notouch">
 
@@ -135,12 +134,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                  
+
                     <c:choose>
                       <c:when test="${empty list }">
                         <tr class="odd">
                           <td></td>
-                          <td>검색된 글이 존재하지 않습니다.</a></td>
+                          <td>검색된 글이 존재하지 않습니다.</td>
                           <td></td>
                           <td></td>
                           <td></td>
@@ -151,59 +150,57 @@
                           varStatus="status">
                           <tr class="odd" value="">
                             <td>${(pb.totalRowCount - ((params.page - 1) * params.pageSize)) - status.index}</td>
-                            
+
                             <c:choose>
+                              <%-- 삭제된 글일 경우 --%>
                               <c:when test="${article.contents eq '삭제' }">
                                 <td class="titletd">
                                   <c:if test="${article.writer eq '관리자'}">
-                                  <img src="../assets/images/replying.png"> &nbsp;
+                                    <img src="../assets/images/replying.png"> &nbsp;
                                   </c:if> 
-                                  <a class="titlebtn" >${article.title}</a></td>
-                                  <td colspan='3'></td>
-                                  
+                                 <a class="titlebtn">${article.title}</a></td>
+                                <td colspan='3'></td>
                               </c:when>
                               <c:otherwise>
-                                   <td class="titletd">
-                                   <c:if test="${article.writer eq '관리자'}">
+                                <%-- 관리자인 경우 --%>
+                                <td class="titletd">
+                                  <c:if test="${article.writer eq '관리자'}">
                                    <img src="../assets/images/replying.png"> &nbsp;
                                    </c:if>
-                                     <c:choose>
-                                        <c:when test="${article.title eq '비밀글입니다.' }">
-                                          <img src="../assets/images/secret_lock.png"> &nbsp;
-                                          <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
-                                        </c:when>
-                                        <c:otherwise>
-                                           <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=2">${article.title}</a>
-                                        </c:otherwise>
-                                     </c:choose>
-                                   </td>
-                                   <td class="writertd">${article.writer}</td>
-                                   <td>${article.regdate}</td>
-                                   <td>${article.hitcount}</td>
-                                   <input type="hidden" class="pw" name="passwd" value="${article.passwd }">
+                                 <c:choose>
+                                  <%-- 비밀글인 경우 --%>
+                                   <c:when test="${article.title eq '비밀글입니다.' }">
+                                     <img src="../assets/images/secret_lock.png"> &nbsp;
+                                       <a class="secrettitle" data-toggle="modal" data-target="#checkModal" name="${article.articleId }">${article.title}</a>
+                                    </c:when>
+                                   <c:otherwise>
+                                   <%-- 일반게시글인 경우 --%>
+                                     <a class="titlebtn" href="${pageContext.servletContext.contextPath}/boards/readingarticle.joya?articleid=${article.articleId}&boardid=2">${article.title}</a>
+                                   </c:otherwise>
+                                 </c:choose>
+                                 </td>
+                                <td class="writertd">${article.writer}</td>
+                                <td>${article.regdate}</td>
+                                <td>${article.hitcount}</td>
+                                <input type="hidden" class="pw" name="passwd" value="${article.passwd }">
                               </c:otherwise>
                             </c:choose>
-                            
-                            
                           </tr>
                         </c:forEach>
                       </c:otherwise>
                     </c:choose>
                   </tbody>
                 </table>
-
+                
                 <div id="ji-writeD">
-
                   <button type="button" class="btn">
                     <a href="${pageContext.servletContext.contextPath}/boards/writingqna.jsp">글쓰기</a>
                   </button>
                   </form>
                 </div>
-
               </div>
             </div>
           </div>
-
 
           <div class="row">
             <ul class="pagination">
@@ -212,13 +209,11 @@
               </c:if>
 
               <c:if test="${pb.isShowPrevious()}">
-                <li class="prev"><a
-                  href="${pb.getQueryString(pb.previousStartPage)}">이전목록</a></li>
+                <li class="prev">
+                  <a href="${pb.getQueryString(pb.previousStartPage)}">이전목록</a></li>
               </c:if>
 
-              <c:forEach var="i" varStatus="status"
-                begin="${pb.currentStartPage}"
-                end="${pb.currentEndPage}">
+              <c:forEach var="i" varStatus="status" begin="${pb.currentStartPage}" end="${pb.currentEndPage}">
                 <c:choose>
                   <c:when test="${params.page==i}">
                     <li class="active"><a>${i}</a></li>
@@ -230,16 +225,15 @@
               </c:forEach>
 
               <c:if test="${pb.isShowNext()}">
-                <li class="next"><a
-                  href="${pb.getQueryString(pb.nextStartPage) }">다음목록</a></li>
+                <li class="next">
+                <a href="${pb.getQueryString(pb.nextStartPage) }">다음목록</a></li>
               </c:if>
 
               <c:if test="${pb.isShowLast()}">
-                <li><a
-                  href="${pb.getQueryString(pb.totalPageCount) }">끝으로</a></li>
+                <li>
+                <a href="${pb.getQueryString(pb.totalPageCount) }">끝으로</a></li>
               </c:if>
             </ul>
-
 
             <%-- 검색 --%>
             <div class="jiji_div">
@@ -267,3 +261,4 @@
   <jsp:include page="../include/footer.jsp" />
   <!-- footer 종료 -->
 </body>
+<!-- BODY 영역 종료 -->
