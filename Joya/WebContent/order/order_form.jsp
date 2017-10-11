@@ -202,7 +202,7 @@
 												<input type="hidden" id = "before_use_point_price" value = "" name = "before_use_point_price">
 											</td>
 											<td id="subtotalCart" class="subtotal title-1">
-												<span>&#8361;</span><input type="hidden" id="totalPrice" name = "totalPrice"><span id="subtotalPrice"></span>
+												<span>&#8361;</span><span id="subtotalPrice"></span>
 											</td>
 											<td>
 												&nbsp;
@@ -214,6 +214,7 @@
 							 
 							<div id="col-main" class="col-md-24 register-page clearfix">
 								<form method="post" action="/order/orderaction.joya" accept-charset="UTF-8">
+									<input type="hidden" id="totalPrice" name = "totalPrice">
 									<h4>주문자 정보</h4>
 									<hr/><br/>
 									<input value="create_customer" name="form_type" type="hidden"><input name="utf8" value="✓" type="hidden">

@@ -16,6 +16,9 @@ public interface UserDao {
 //	회원 정보 수정
 	public void modify(User user);
 	
+//	회원 포인트 수정
+	public void pointmodify(String email, int poiont);
+	
 //	회원 인증
 	public User isMember(String id, String passwd);
 	

@@ -28,4 +28,6 @@ public interface UserService {
 //	페이징
 	public int pageCount(Params params);
 	
+	public void pointmodify(String email, int poiont);
+	
 }

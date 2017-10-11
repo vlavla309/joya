@@ -17,8 +17,6 @@ import com.joya.user.domain.User;
 public class JdbcUserDao implements UserDao{
 	private DataSource dataSource;
 
-
-
 	public DataSource getDataSource() {
 		return dataSource;
 	}
@@ -368,10 +366,38 @@ public class JdbcUserDao implements UserDao{
 		return new User(email, phone, name, passwd, address, point, birthdate, type, regdate);
 	}
 
-
+	@Override
+	public void pointmodify(String email, int poiont) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String query = "UPDATE users SET point = ? wHERE  email = ?";
+		try {
+			con = dataSource.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, poiont);
+			pstmt.setString(2, email);
+			pstmt.executeQuery();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {}
+				throw new MallException("JdbcUserDao.modify(User user)실행 중 예외 발생", e);
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch(SQLException e) {}
+		}
+	}
+	
 	public static void main(String[] args) {
 		JdbcUserDao userDao=(JdbcUserDao) DaoFactory.getInstance().getDao(JdbcUserDao.class);
 		
+		/*userDao.pointmodify("joa@joa.com", 100000);*/
+		System.out.println("성공");
 		/*System.out.println(userDao.read("ema232il@gmail.com"));*/
 
 		/*userDao.create(new User("dsf@gmail.com", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
@@ -400,4 +426,5 @@ public class JdbcUserDao implements UserDao{
 		System.out.println(userDao.read("joa@joa"));
 		System.out.println(userDao.read("admin@joa"));*/
 	}
+	
 }
