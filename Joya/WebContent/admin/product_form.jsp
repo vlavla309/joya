@@ -56,7 +56,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                             <form role="form" name="productForm" action="/admin/product_add_action.joya" method="post" enctype="multipart/form-data" onsubmit="return checkattfile();">
+                             <form role="form" name="productForm" action="/admin/product_add_action.joya" method="post" enctype="multipart/form-data" >
                                 <div class="col-lg-6">
                                    		<h1>상품 정보</h1>
                                         <div class="form-group">
