@@ -31,7 +31,7 @@ import com.joya.product.service.ProductServiceImpl;
 public class ProductUploadActionController implements Controller {
 	ProductService productService=new ProductServiceImpl();
 	ImageService imgService= new ImageServiceImpl();
-	private String fileRepository = "C:/Users/vlavl/Documents/git/Joya/WebContent/shop/";
+	private String fileRepository = "C:/Users/vlavl/Documents/git/Joya/WebContent/shopimg/";
 	String fileName;
 
 	@Override
@@ -69,7 +69,7 @@ public class ProductUploadActionController implements Controller {
 		try {
 			fileList = fileUpload.parseRequest(request);
 		
-			System.out.println("파일사이즈"+fileList.size());
+			System.out.println("업로드 사이즈"+fileList.size());
 			for (int i=0; i<fileList.size(); i++) {
 				FileItem item=fileList.get(i);
 				System.out.println("아이템"+item.toString());
@@ -100,7 +100,7 @@ public class ProductUploadActionController implements Controller {
 					imageName = item.getName();
 					images.add(new Images(imageName, productId, path, 0));
 
-					// 실제 경로에 파일 쓰긴
+					// 업로드된 파일을 서버의 특정 디렉토리에 저장
 					File saveFile = new File(fileRepository + imageName);
 					item.write(saveFile);
 				}
@@ -113,18 +113,19 @@ public class ProductUploadActionController implements Controller {
 
 				int orderImage=0;
 				for (Images image : images) {
-					System.out.println();
 					image.setOrderNo(orderImage++);
 					image.setProductId(productId);
 					imgService.create(image);
 				}
+
 			
 		}catch (Exception e) {}
 		mav.setView("/admin/");
 
 		return mav;
+
+
+
 	}
 
 }
-
-
