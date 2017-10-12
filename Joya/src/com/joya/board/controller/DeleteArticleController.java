@@ -23,7 +23,7 @@ public class DeleteArticleController implements Controller {
 		request.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView();
 		
-		int articleId = Integer.parseInt(request.getParameter("article_id"));
+		int articleId = Integer.parseInt(request.getParameter("articleid"));
 		
 		Article article = new Article();
 		article.setArticleId(articleId);

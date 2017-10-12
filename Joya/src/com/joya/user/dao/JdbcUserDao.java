@@ -195,6 +195,7 @@ public class JdbcUserDao implements UserDao{
 				"       address, " + 
 				"       point, " + 
 				"       type, " + 
+				"       passwd, " + 
 				"       TO_CHAR(birthdate, 'YYYYMMDD') birthdate, " + 
 				"       TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI:SS') regdate " + 
 				"		FROM   users " + 
@@ -358,7 +359,7 @@ public class JdbcUserDao implements UserDao{
 	private User createUser(ResultSet rs) throws SQLException {
 		String email = rs.getString("email");		
 		String name = rs.getString("name");		
-		String passwd = "****";		
+		String passwd = rs.getString("passwd");
 		String phone = rs.getString("phone");		
 		String birthdate = rs.getString("birthdate");		
 		String regdate = rs.getString("regdate");		
