@@ -50,7 +50,6 @@
           var radioValue = $("#secret:checked").val();
           
           if(radioValue == "secret"){
-        	alert(radioValue);
           	$("input[name='title']").attr("value","비밀글입니다.");
           }
       });
