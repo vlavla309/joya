@@ -268,7 +268,7 @@ public class JdbcOrderDao implements OrderDao {
 			order.setPaymentType(rs.getString("payment_type"));
 			order.setPayment(rs.getInt("payment"));
 			order.setPaymentDate(rs.getString("payment_date"));
-			order.setUsedPoint(rs.getShort("usedpoint"));
+			order.setUsedPoint(rs.getInt("usedpoint"));
 			order.setCardNo(rs.getInt("approval_no"));
 			order.setOrderDate(rs.getString("order_date"));
 			order.setGstEmail(rs.getString("gst_email"));
