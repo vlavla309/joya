@@ -241,6 +241,7 @@ public class JdbcUserDao implements UserDao{
 		sb.append(" point,");
 		sb.append(" birthdate,");
 		sb.append(" type,");
+		sb.append(" passwd,");
 		sb.append(" regdate");
 		sb.append(" FROM   (SELECT CEIL(rownum / ?) request_page,");
 		sb.append(" email,");
@@ -250,6 +251,7 @@ public class JdbcUserDao implements UserDao{
 		sb.append(" point,");
 		sb.append(" birthdate,");
 		sb.append(" type,");
+		sb.append(" passwd,");
 		sb.append(" regdate");
 		sb.append(" FROM   (SELECT email,");
 		sb.append(" phone,");
@@ -258,7 +260,8 @@ public class JdbcUserDao implements UserDao{
 		sb.append(" point,");
 		sb.append(" TO_CHAR(birthdate, 'YYYY/MM/DD HH24:MI:SS') birthdate,");
 		sb.append(" TO_CHAR(regdate, 'YYYY/MM/DD HH24:MI:SS') regdate,");
-		sb.append(" type");
+		sb.append(" type,");
+		sb.append(" passwd");
 		sb.append(" FROM   users ))");
 		if(value!=null) {
 			sb.append(" where email LiKE ?  or  product_name LIKE ?))");

@@ -41,6 +41,7 @@
 	<script src="assets/javascripts/jquery.fancybox-buttons.js" type="text/javascript"></script>
 	<script src="assets/javascripts/jquery.zoom.js" type="text/javascript"></script>	
 	<script src="assets/javascripts/cs.script.js" type="text/javascript"></script>
+		<script src="assets/javascripts/cookies.js" type="text/javascript"></script>
 	<script src="assets/javascripts/referer.js" type="text/javascript"></script>
 	<script src="/assets/javascripts/cart_function.js" type="text/javascript"></script>
     

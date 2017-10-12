@@ -254,30 +254,25 @@ public class JdbcProductDao implements ProductDao{
 		sb.append("                    amount,");
 		sb.append("                    hitcount");
 		sb.append("                    FROM   products ");
-		sb.append("                where category_name = ?");
-		sb.append("                or category_name in (select category_name from categories where parent=?)");
-		if(type!=null) {
+	
+		
+		if(!categoryName.equals("전체")) {
+			sb.append("           where (category_name = ?");
+			sb.append("           or category_name in (select category_name from categories where parent=?))");
+		}else {
+			sb.append("           where (category_name != ?");
+			sb.append("           or category_name in (select category_name from categories where parent=?))");
+		}
+		if(value!=null) {
 			sb.append(" and  product_name LIKE ?");
+			value = "%" + value + "%";
 		}
 
-		switch(orderType) {
-		case "newProduct":
-			sb.append(" ORDER BY regdate DESC)");
-			break;
-		case "hitProduct":
-			sb.append(" ORDER BY hitcount DESC)");
-			break;
-		case "highPrice":
-			sb.append(" ORDER BY price DESC)");
-			break;
-		case "lowPrice":
-			sb.append(" ORDER BY price asc)");
-			break;
-		default:
-		}
+		
+		sb.append(" )");
+		
 
-
-		//System.out.println(sb.toString());
+		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());

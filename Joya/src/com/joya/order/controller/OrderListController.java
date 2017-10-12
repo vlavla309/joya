@@ -42,9 +42,8 @@ public class OrderListController implements Controller {
 		
 		String status=request.getParameter("status");
 		if(status!=null&&status.equals("전체"))status=null;
-		if(type!=null)params.setType(type);
+		if(value!=null)params.setType("email");
 		if(value!=null)params.setValue(value);
-		
 		List<Orders> orders=orderServ.listByParam(params, status);
 		PageBuilder pageBuilder=new PageBuilder(params, orderServ.pageCount(params, status));
 		pageBuilder.build();

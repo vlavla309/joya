@@ -141,7 +141,8 @@ public class CreateOrderActionController implements Controller {
 			userServ.modify(user);
 			
 		}
-
+		
+		removeCartCookie(request, response);
 		mav.addObject("order", order);
 		mav.setView("/order/result.jsp");
 		return mav;
@@ -158,6 +159,20 @@ public class CreateOrderActionController implements Controller {
 			list.add(orderItem);
 		}
 		return list;
+	}
+	
+	private void removeCartCookie(HttpServletRequest request, HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equalsIgnoreCase("cart")) {
+					cookie.setMaxAge(0);
+					cookie.setPath("/");
+					response.addCookie(cookie);
+					break;
+				}
+			}
+		} 
 	}
 
 }

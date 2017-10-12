@@ -28,6 +28,9 @@
 	<script src="../assets/javascripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
     <script src="../assets/javascripts/referer.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/cookies.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/referer.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/cart_function.js" type="text/javascript"></script>
   <style type="text/css">
   .alert-danger {
     width: 87%; 

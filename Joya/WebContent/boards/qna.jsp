@@ -42,6 +42,10 @@
   type="text/javascript"></script>
 <script src="../assets/javascripts/bootstrap.min.3x.js"
   type="text/javascript"></script>
+  	<script src="/assets/javascripts/cookies.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/referer.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/cart_function.js" type="text/javascript"></script>
+  
 <!-- css 적용 부분 종료 -->
 
 <%-- 비밀글 modal 이벤트 액션 --%>
