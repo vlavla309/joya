@@ -123,7 +123,6 @@ public class CreateOrderActionController implements Controller {
 		order.setPaymentType(paymentType);
 		order.setUsedPoint(usedpoint);
 		order.setMassage(deliverymsg);
-		System.out.println(order);
 		
 		orderServ.create(order);
 
@@ -134,10 +133,13 @@ public class CreateOrderActionController implements Controller {
 
 		//사용한포인트가있을경우 포인트 차감
 		if(usedpoint!=0) {
+			
 			User user=userServ.read(email);
 			int curPoint=user.getPoint();
 			user.setPoint(curPoint-usedpoint);
+			System.out.println(user);
 			userServ.modify(user);
+			
 		}
 
 		mav.addObject("order", order);
