@@ -120,7 +120,8 @@
                                     <div class="checkout-title">
                                       <span class="general-title">비회원</span>
                                     </div>
-                                    <form method="post" action="http://demo.designshopify.com/html_jewelry/login.html" id="customer_login" accept-charset="UTF-8">
+                                    <!--start 비회원 주문조회 -->
+                                    <form method="post" action="/order/guestsearch.joya" id="customer_login" accept-charset="UTF-8">
                                       <input type="hidden" value="customer_login" name="form_type"><input type="hidden" name="utf8" value="✓">
                                       <div class="col-md-21 login-alert">
                                         <div class="alert alert-danger">
@@ -131,11 +132,11 @@
                                         <li class="clearfix"></li>
                                         <li id="login_email" class="col-md-21">
                                         <label class="control-label" for="customer_email">주문번호<span class="req">*</span></label>
-                                        <input type="email" value="" name="customer[email]" id="customer_email" class="form-control" required="required">
+                                        <input type="text" value="" name="orderno" id="customer_email" class="form-control" required="required">
                                         </li>
                                         <li id="login_email" class="col-md-21">
                                         <label class="control-label" for="customer_email">이메일<span class="req">*</span></label>
-                                        	<input type="email" value="" name="email" id="customer_email" class="form-control" required="required">
+                                        	<input type="email" value="" name="gstemail" id="customer_email" class="form-control" required="required">
                                         </li>
                                         <li class="col-md-21 unpadding-top">
                                         <ul class="login-wrapper list-unstyled">
@@ -146,6 +147,7 @@
                                         </li>
                                       </ul>
                                     </form>
+                                    <!-- end 비회원 주문조회 -->
                                   </div>
 								</div>
 							</div>   

@@ -15,7 +15,9 @@
           <c:when test="${empty cookie.user}">
               <ul id="accounts" class="list-inline">
             <li class="my-account">
-              <a href="account.html">Order List</a>
+            	<c:if test="${empty cookie.user}">
+            	  <a href="/user/login.joya">Order List</a>
+            	 </c:if>
             </li>  
             <li class="login">    
               <span id="loginButton" class="dropdown-toggle" data-toggle="dropdown">

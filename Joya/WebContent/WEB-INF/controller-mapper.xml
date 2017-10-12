@@ -37,6 +37,7 @@
 	<!-- order -->
 	<bean name="/order/orderaction" class="com.joya.order.controller.CreateOrderActionController" />
 	<bean name="/order/orderadd" class="com.joya.order.controller.OrderAddFormController" />
+	<bean name="/order/guestsearch" class="com.joya.order.controller.OrderSearchForGuestController" />
 	
 	<!-- 위시리스트 관련 -->
 	<bean name="/mypage/wishlist" class="com.joya.wishlist.controller.WishlistController" />

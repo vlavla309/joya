@@ -35,8 +35,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Orders search(String orderid) {
-		return dao.search(orderid);
+	public  Orders search(String orderid, String email) {
+		return dao.search(orderid, email);
 	}
 
 	@Override

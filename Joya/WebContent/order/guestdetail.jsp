@@ -77,9 +77,6 @@
               <div id="col-main" class="account-page col-sm-18 col-md-18 clearfix">
                 <div id="customer_orders">
                   <h6 class="sb-title">주문 상세 정보</h6>
-                  <c:if test="${empty cookie.user}">
-                  	<span class="req">회원만 상품평을 작성할 수 있습니다</span>
-                  </c:if>
                   <span class="mini-line"></span>
                   <div class="row wrap-table">
                     <table class="table-hover">
