@@ -72,20 +72,20 @@
                         <ul>
                           <li class="list-title"><a class="list-title" href="/product/list.joya?category=반지">반지</a></li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">웨딩링</a>
+                          <a href="/product/list.joya?category=웨딩링">웨딩링</a>
                           </li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">남성반지</a>
+                          <a href="/product/list.joya?category=남성반지">남성반지</a>
                           </li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">여성반지</a>
+                          <a href="/product/list.joya?category=여성반지">여성반지</a>
                           </li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">싱글링<span class="megamenu-label hot-label">Hot</span>
+                          <a href="/product/list.joya?category=싱글링">싱글링<span class="megamenu-label hot-label">Hot</span>
                           </a>
                           </li>
                           <li class="list-unstyled li-sub-mega">
-                          <a href="#">커플링<span class="megamenu-label feature-label">Featured</span>
+                          <a href="/product/list.joya?category=커플링">커플링<span class="megamenu-label feature-label">Featured</span>
                           </a>
                           </li>
                         </ul>
