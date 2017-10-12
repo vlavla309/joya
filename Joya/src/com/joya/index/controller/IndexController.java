@@ -18,6 +18,8 @@ import com.joya.image.service.ImageServiceImpl;
 import com.joya.product.domain.Product;
 import com.joya.product.service.ProductService;
 import com.joya.product.service.ProductServiceImpl;
+import com.joya.visitlog.service.VisitLogService;
+import com.joya.visitlog.service.VisitLogServiceImpl;
 import com.joya.wishlist.domain.Wishlist;
 import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
@@ -36,10 +38,13 @@ public class IndexController implements Controller{
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
-
+		//메인페이지 로드 일 경우 접속기록
+		VisitLogService vServe=new VisitLogServiceImpl();
+		String ip=request.getRemoteHost();
+		vServe.create(ip);
+		
 		ModelAndView mav = new ModelAndView();
 		int pageSize = 6;
-
 
 		Params param = new Params();
 		param.setPageSize(pageSize);
@@ -59,8 +64,6 @@ public class IndexController implements Controller{
 		}
 		
 		List<Wishlist> wishlist = wishlistService.listAll();
-
-		
 
 		mav.addObject("loginuser", (String)request.getAttribute("email"));
 		mav.addObject("imgs", imgs);

@@ -66,14 +66,7 @@ public class MainController extends HttpServlet {
 		if(controller == null){
 			// 등록된 세부 컨트롤러가 없을 경우 uri에 해당하는 jsp로 단순 포워드
 			
-			//메인페이지 로드 일 경우 접속기록
-			if(uri.equals("/index")) {
-				System.out.println("메인 화면임");
-				VisitLogService vServe=new VisitLogServiceImpl();
-				String ip=request.getRemoteHost();
-				System.out.println(ip);
-				vServe.create(ip);
-			}
+			
 			view = viewResolver.resolve(uri+".jsp");
 			view.execute(request, response);
 			return;
