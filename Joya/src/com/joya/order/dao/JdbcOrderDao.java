@@ -177,8 +177,8 @@ public class JdbcOrderDao implements OrderDao {
 		if(type!=null&&status!=null) {
 			switch(type) {
 			case "email":
-				sb.append("   WHERE  email LIKE ");
-				sb.append("'%"+value+"%'");	
+				sb.append("   WHERE  email = ");
+				sb.append("'"+value+"'");	
 				break;
 			case "orderer":
 				sb.append("   WHERE  orderer = ");
@@ -193,8 +193,8 @@ public class JdbcOrderDao implements OrderDao {
 			if(type!=null) {
 				switch(type) {
 				case "email":
-					sb.append("   WHERE  email LIKE ");
-					sb.append("'%"+value+"%'");	
+					sb.append("   WHERE  email = ");
+					sb.append("'"+value+"'");	
 					break;
 				case "orderer":
 					sb.append("	  WHERE  orderer = ");
@@ -210,7 +210,7 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("                ORDER  BY order_id DESC)) ");
 		sb.append(" WHERE  request_page = ?");
 
-//		System.out.println(sb.toString());
+		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -295,8 +295,8 @@ public class JdbcOrderDao implements OrderDao {
 		if(type!=null&&status!=null) {
 			switch(type) {
 			case "email":
-				sb.append("   WHERE  email LIKE ");
-				sb.append("'%"+value+"%'");	
+				sb.append("   WHERE  email = ");
+				sb.append("'"+value+"'");	
 				break;
 			case "orderer":
 				sb.append("	WHERE  orderer = ");
@@ -308,23 +308,23 @@ public class JdbcOrderDao implements OrderDao {
 			if(type!=null) {
 				switch(type) {
 				case "email":
-					sb.append("   WHERE  email LIKE ");
-					sb.append("'%"+value+"%')");	
+					sb.append("   WHERE  email = ");
+					sb.append("'"+value+"'");	
 					break;
 				case "orderer":
 					sb.append("	  WHERE  orderer = ");
-					sb.append("'"+value+"')");	
+					sb.append("'"+value+"'");	
 					break;
 				}
 			}
 			if(status!=null) {
-				sb.append("   WHERE  status = ? )");
-			}else {
-				sb.append(" )");
+				sb.append("   WHERE  status = ? ");
 			}
+			sb.append(" )");
+		
 		}
 		
-//		System.out.println(sb.toString());
+		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());

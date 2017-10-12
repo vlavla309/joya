@@ -18,7 +18,7 @@ import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
 /**
- * ?���??��?��메터 ?���??��코딩 처리 ?��?��
+ * ?占쏙옙占�??占쏙옙?占쏙옙硫뷀꽣 ?占쏙옙占�??占쏙옙肄붾뵫 泥섎━ ?占쏙옙?占쏙옙
  */
 public class SetUserInfoFilter implements Filter {
 	
@@ -55,7 +55,6 @@ public class SetUserInfoFilter implements Filter {
 		}
 			request.setAttribute("email", email);
 			request.setAttribute("name", name);
-			System.out.println(email + ": "+name);
 			chain.doFilter(request, response);
 	}
 
