@@ -30,7 +30,9 @@
    <script src="../assets/javascripts/bootstrap.min.3x.js" type="text/javascript"></script>
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
    <script src="../assets/javascripts/postcode.js" type="text/javascript"></script>
-    
+<script src="/assets/javascripts/cookies.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/referer.js" type="text/javascript"></script>
+	<script src="/assets/javascripts/cart_function.js" type="text/javascript"></script>
     <!-- css 적용 영역 종료 -->
 </head>
 
