@@ -13,6 +13,7 @@ import com.joya.common.db.DaoFactory;
 import com.joya.common.exception.MallException;
 import com.joya.common.web.Params;
 import com.joya.order.domain.Orders;
+import com.joya.product.domain.Product;
 
 public class JdbcOrderDao implements OrderDao {
 	private DataSource dataSource;
@@ -248,10 +249,34 @@ public class JdbcOrderDao implements OrderDao {
 		return list;
 	}
 
+	//비회원 주문조회
 	@Override
-	public Orders search(String orderid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Orders search(String orderid, String email) {
+		Orders order = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from orders where GST_EMAIL=? and ORDER_ID=?";
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, orderid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				order = createOrder(rs);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new MallException("JdbcProductDao.read(String productId) �떎�뻾 以� �삁�쇅諛쒖깮", e);
+		}finally {
+			try {
+				if(rs != null)    rs.close();
+				if(pstmt != null) pstmt.close();
+				if(con != null)   con.close();
+			} catch (Exception e) {}
+		}
+		return order;
 	}
 
 	private Orders createOrder(ResultSet rs) {
@@ -358,7 +383,7 @@ public class JdbcOrderDao implements OrderDao {
 	public static void main(String[] args) {
 		JdbcOrderDao dao=(JdbcOrderDao) DaoFactory.getInstance().getDao(JdbcOrderDao.class);
 
-		Params param=new Params();
+		/*Params param=new Params();
 		param.setPageSize(50);
 		param.setType("email");
 		param.setValue("joa1");
@@ -368,7 +393,10 @@ public class JdbcOrderDao implements OrderDao {
 		orders=dao.listByParam(param, null);
 		for (Orders order : orders) {
 			System.out.println(order);
-		}
+		}*/
+		
+		Orders order = dao.search("142", "ttt@naver.com");
+		System.out.println(order);
 		
 	}
 }
