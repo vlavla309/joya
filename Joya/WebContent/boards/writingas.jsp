@@ -6,6 +6,8 @@
 <html lang="en" class="no-js">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
+<!-- favicon -->
+  	<link rel="shortcut icon" href="/assets/images/favicon.ico">
 
 <%-- CSS 적용 부분 시작 --%> 
 <meta charset="UTF-8">

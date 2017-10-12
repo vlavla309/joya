@@ -102,7 +102,6 @@
                           <li class="list-unstyled li-sub-mega">
                           <a href="#">Dolorem Sed </a>
                           </li>
-                          </li>
                         </ul>
                         </li>
                         <li>

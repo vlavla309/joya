@@ -8,6 +8,8 @@
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
   <title>Products - Joya</title>
+  	<!-- favicon -->
+  	<link rel="shortcut icon" href="/assets/images/favicon.ico">
   
 	<link href="/assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
 	<link href="/assets/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> 
@@ -179,11 +181,6 @@
 							<div id="collection-content">
 								<div id="page-header">
 									<h1 id="page-title">분류 : ${category }</h1>
-								</div>
-								<div class="collection-warper col-sm-24 clearfix"> 
-									<div class="collection-panner">
-										<img src="assets/images/collection_banner.jpg" class="img-responsive" alt="">
-									</div>
 								</div>
 								<div class="collection-main-content">									
 									<div id="col-main" class="collection collection-page col-xs-24 col-sm-24">

@@ -12,6 +12,8 @@
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
   <title>My Page</title>
+  <!-- favicon -->
+  	<link rel="shortcut icon" href="/assets/images/favicon.ico">
   
     <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">

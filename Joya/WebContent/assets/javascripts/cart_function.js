@@ -99,6 +99,5 @@ function setCartCookie(cartMap){
 /**카트 맵의 사이즈 즉 장바구니 품목 개수 반환*/
 function setCartSize(){
 	var size=getCartMap().size;
-	console.log("사이즈" + size);
 	$("#cartSize").text(size);
 }

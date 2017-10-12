@@ -12,6 +12,8 @@
   <link rel="canonical" href="http://demo.designshopify.com/" />
   <meta name="description" content="" />
   <title>Order Result</title>
+  <!-- favicon -->
+  	<link rel="shortcut icon" href="/assets/images/favicon.ico">
   
   <!-- css 적용 영역 시작 -->
     <link href="../assets/stylesheets/font.css" rel='stylesheet' type='text/css'>
