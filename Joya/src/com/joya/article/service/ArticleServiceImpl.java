@@ -64,6 +64,12 @@ public class ArticleServiceImpl implements ArticleService {
 		return dao.listByParams(params, boardId, productid);
 	}
 
+	@Override
+	public Article searchReview(int productId, String email, int boardId) {
+		
+		return dao.searchReview(productId, email, boardId);
+	}
+
 
 
 

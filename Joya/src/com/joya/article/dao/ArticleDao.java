@@ -17,6 +17,9 @@ public interface ArticleDao {
 	/** 게시글 상세보기 */
 	public Article read(int articleId);
 	
+	/** 상품평 작성여부 확인 */
+	public Article searchReview(int productId, String email, int boardId);
+	
 	/** 글 수정 */
 	public boolean edit(Article article);
 	

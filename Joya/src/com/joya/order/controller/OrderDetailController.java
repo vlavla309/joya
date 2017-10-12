@@ -9,6 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.joya.article.domain.Article;
+import com.joya.article.service.ArticleService;
+import com.joya.article.service.ArticleServiceImpl;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 import com.joya.image.domain.Images;
@@ -25,6 +28,7 @@ public class OrderDetailController implements Controller{
 	private ProductService productservice = new ProductServiceImpl();
 	private ImageService imgService= new ImageServiceImpl();
 	private OrderItemService itemserv = new OrderItemServiceImpl();
+	private ArticleService articleService = new ArticleServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -35,11 +39,17 @@ public class OrderDetailController implements Controller{
 		List<OrderItems> itemlist = itemserv.listByOrderID(Integer.parseInt(request.getParameter("orderid")));
 		Map<Integer,Product> products=new HashMap<Integer,Product>();
 		Map<Integer,Images> images=new HashMap<Integer,Images>();
-		
+		Map<Integer, Article> articles =new HashMap<Integer,Article>();
+		String name = (String)request.getAttribute("name");
 		for (OrderItems orderItems : itemlist) {
 			Product product = productservice.read(orderItems.getProductId());
 			products.put(orderItems.getProductId(),product);
+			
+			Article article = articleService.searchReview(orderItems.getProductId(), name, 3);
+			articles.put(orderItems.getProductId(), article);
+			
 			List<Images> imgs=imgService.listByProductid(orderItems.getProductId());
+			
 			for (Images img:imgs) {
 				if(img.getOrderNo()==0) {
 					images.put(orderItems.getProductId(), img);
@@ -48,6 +58,8 @@ public class OrderDetailController implements Controller{
 			}
 		}
 		
+		mav.addObject("articles", articles);
+		mav.addObject("name", name);
 		mav.addObject("status", request.getParameter("status"));
 		mav.addObject("products", products);
 		mav.addObject("images", images);

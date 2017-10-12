@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import com.joya.article.domain.Article;
 import com.joya.common.db.DaoFactory;
 import com.joya.common.web.Params;
+import com.joya.order.dao.JdbcOrderDao;
 
 public class JdbcArticleDao implements ArticleDao {
 
@@ -724,5 +725,49 @@ public class JdbcArticleDao implements ArticleDao {
 		return article;
 	}
 
+	@Override
+	public Article searchReview(int productId, String writer, int boardId) {
+		
+		String sql = "select * from ARTICLES where BOARD_ID = ? and PRODUCT_ID=? and WRITER = ?";
+
+		Article article = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardId);
+			pstmt.setInt(2, productId);
+			pstmt.setString(3, writer);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				article = createArticle(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return article;
+	}
+	
+	public static void main(String[] args) {
+		//JdbcOrderDao dao=(JdbcOrderDao) DaoFactory.getInstance().getDao(JdbcOrderDao.class);
+		JdbcArticleDao dao = (JdbcArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
+		
+		Article art = dao.searchReview(8, "조아조", 3);
+		System.out.println(art);
+	}
 
 }

@@ -1,5 +1,6 @@
 package com.joya.article.service;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import com.joya.article.domain.Article;
@@ -15,6 +16,9 @@ public interface ArticleService {
 	
 	/** 게시글 상세보기 */
 	public Article read(int articleId);
+	
+	/** 상품평 조회 */
+	public Article searchReview(int productId, String email, int boardId);
 	
 	/** 글 수정 */
 	public boolean edit(Article article);

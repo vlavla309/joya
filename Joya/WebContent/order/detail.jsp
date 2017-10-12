@@ -41,6 +41,7 @@
 	 	if(status != "배송완료"){
 	 		$("input[type=button]").attr("disabled", "disabled");
 	 	}
+ 		
 	})
  </script>
 </head>
@@ -122,7 +123,14 @@
 			                        <span class="status_unfulfilled">${products[item.productId].price * item.amount}</span>
 			                      </td>
 			                      <td>
-			                        <input class="btn btn-default reviewbtn" type="button" value="상품평" onclick="location.href='/mypage/review.joya?productid=${item.productId}&orderid=${item.orderId}'">
+				                      <c:choose>
+					                      <c:when test="${empty articles[item.productId] || articles[item.productId] eq null}">
+					                      	<input class="btn btn-default reviewbtn" type="button" value="상품평" onclick="location.href='/mypage/review.joya?productid=${item.productId}&orderid=${item.orderId}'">
+					                      </c:when>
+					                      <c:otherwise>
+					                      	<input class="btn btn-default reviewbtn" type="button" value="상품평 작성완료" disabled="disabled" onclick="location.href='/mypage/review.joya?productid=${item.productId}&orderid=${item.orderId}'">
+					                      </c:otherwise>
+				                      </c:choose>
 			                      </td>
 			                    </tr>
 		                </c:forEach>
