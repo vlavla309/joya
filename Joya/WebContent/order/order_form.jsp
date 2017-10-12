@@ -46,7 +46,6 @@
 	    	$("#same").change(function(){
 	            $("#receiver").val($("#ordername").val())
 	            $("#receivephone").val($("#orderphone").val())
-	            alert($("#sample6_postcode").val())
 	            $(".revpostcode").val($("#sample6_postcode").val())
 	            $(".revaddress1").val($("#sample6_address").val())
 	            $(".revaddress2").val($("#sample6_address2").val())
