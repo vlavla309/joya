@@ -48,7 +48,7 @@
 	$(function() {
 		$(".yes").on("click",function(event) {
 			$.ajax({
-				url : "${pageContext.servletContext.contextPath}/boards/deletearticle.joya?article_id=${article.articleId}",
+				url : "${pageContext.servletContext.contextPath}/boards/deletearticle.joya?articleid=${article.articleId}",
 				success : function(data) {
 						  		location.href = "${pageContext.servletContext.contextPath}/boards/aslist.joya";
 					      }
