@@ -99,28 +99,11 @@
                         <li>
                         <ul>
                           <li class="list-title"><a  class="list-title" href="/product/list.joya?category=귀걸이">귀걸이</a></li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Dolorem Sed </a>
-                          </li>
                         </ul>
                         </li>
                         <li>
                         <ul>
                           <li class="list-title"><a  class="list-title" href="/product/list.joya?category=팔찌">팔찌</a></li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Dolorem Sed <span class="megamenu-label new-label">New</span>
-                          </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="#">Proident Nulla </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega">
-                          <a href="product.html">Phasellus Leo </a>
-                          </li>
-                          <li class="list-unstyled li-sub-mega last">
-                          <a href="product.html">Tristique Amet <span class="megamenu-label hot-label">Hot</span>
-                          </a>
-                          </li>
                         </ul>
                         </li>
                       </ul>
@@ -128,7 +111,7 @@
                     </li>
                     
                     <li class="nav-item dropdown">
-                    <a href="blog-full.html" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
                     <span>Board</span>
                     <i class="fa fa-caret-down"></i>
                     <i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
