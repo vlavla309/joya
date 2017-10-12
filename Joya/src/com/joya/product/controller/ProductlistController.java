@@ -45,17 +45,18 @@ public class ProductlistController implements Controller{
       String page = request.getParameter("page");
       if(page==null) page = "1";
       int pageCount = Integer.parseInt(page);
-      String type = request.getParameter("type");
+      String sortType = request.getParameter("sortType");
       String value= request.getParameter("value");
       String category= request.getParameter("category");
       if(category == null) {
          category="전체";
       }
       
-      if(type == null) {
-         type ="newProduct";
-      }else if( type.equals("null")) {
-         type ="newProduct";
+      System.out.println("정렬방식"+sortType);
+      if(sortType == null) {
+    	  sortType ="newProduct";
+      }else if( sortType.equals("null")) {
+    	  sortType ="newProduct";
       }
       
       Params param = new Params();
@@ -68,14 +69,15 @@ public class ProductlistController implements Controller{
          param.setValue(value);
       }
       
-      List<Product> productlist = productservice.listByParams(param, category,  type);
+      List<Product> productlist = productservice.listByParams(param, category,  sortType);
       List<Images> imglist = imgService.listAll();
       List<Wishlist> wishlist = wishlistService.listAll();
       
-      int rowCount = productservice.pageCount(param, category, type);
+      int rowCount = productservice.pageCount(param, category, sortType);
       PageBuilder pageBuilder = new PageBuilder(param, rowCount);
       pageBuilder.build();
       
+      mav.addObject("sortType", sortType);
       mav.addObject("category", category);
       mav.addObject("loginuser", (String)request.getAttribute("email"));
       mav.addObject("imglist", imglist);

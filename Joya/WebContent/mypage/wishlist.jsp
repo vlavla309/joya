@@ -128,7 +128,7 @@ $(document).ready(function(){
                                 <div class="article-content-inner"  >
                                   <div class="blogs-image">
                                     <ul class="list-inline">
-                                      <li><a href="#">
+                                      <li><a href="/product/view.joya?productid=${wishlist.productId }&type=view">
                                           <div><img src="${wishlist.imgPath}${wishlist.imgName}"  alt="">
                                           </div>
                                       </a></li>

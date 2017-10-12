@@ -37,7 +37,9 @@ public class ArticleWriteController implements Controller {
 	private ImageService imgService = new ImageServiceImpl();
 	private UserService userService = new UserServiceImpl();
 	
-	private String fileRepository = "C:/Users/kosta/Desktop/joya/Joya/WebContent/boards/asimages/";
+	//이클립스에 개발용으로 톰캣 구동시 실제 웹 디렉토리는 프로젝트 파일의 위치가 아니가 하단의 임시경로에 위치힌다
+	private String fileRepository = "C:/workspace/eclipse/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Joya/boards/asimages/";
+	
 	String fileName;
 	
 

@@ -31,7 +31,7 @@ import com.joya.product.service.ProductServiceImpl;
 public class ProductUploadActionController implements Controller {
 	ProductService productService=new ProductServiceImpl();
 	ImageService imgService= new ImageServiceImpl();
-	private String fileRepository = "C:\\gugu\\fileupload\\";
+	private String fileRepository = "C:/Users/vlavl/Documents/git/Joya/WebContent/shop/";
 	String fileName;
 
 	@Override
@@ -72,7 +72,7 @@ public class ProductUploadActionController implements Controller {
 			System.out.println("파일사이즈"+fileList.size());
 			for (int i=0; i<fileList.size(); i++) {
 				FileItem item=fileList.get(i);
-//				System.out.println("아이템"+item.toString());
+				System.out.println("아이템"+item.toString());
 				if (item.isFormField()) {
 					String param=item.getString("utf-8");
 //					System.out.println(param);
@@ -113,13 +113,14 @@ public class ProductUploadActionController implements Controller {
 
 				int orderImage=0;
 				for (Images image : images) {
+					System.out.println();
 					image.setOrderNo(orderImage++);
 					image.setProductId(productId);
 					imgService.create(image);
 				}
 			
 		}catch (Exception e) {}
-		mav.setView("/admin/pages/product_form.jsp");
+		mav.setView("/admin/");
 
 		return mav;
 	}

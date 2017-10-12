@@ -200,7 +200,7 @@
 													<li>
 														<form id = "search" name="search" class="form-inline" role="form" method="get">
 															<input type="hidden" value="${category }" name="category">
-															<select class="form-control" name="type" id="mySelect">
+															<select class="form-control" name="sortType" id="mySelect">
 																	<option value="null">전체보기</option>
 																	<option value="newProduct">newProduct</option>
 																	<option value="hitProduct">hitProduct</option>
@@ -304,12 +304,12 @@
 										    	<nav aria-label="Page navigation">
 												  <ul class="pagination">
 														<c:if test="${pageBuilder.isShowFirst()}">
-															<li><a href="${pageBuilder.getQueryString(1)}&category=${category}">처음으로</a></li>
+															<li><a href="${pageBuilder.getQueryString(1)}&category=${category}&sortType=${sortType}">처음으로</a></li>
 														</c:if>
 									
 														<c:if test="${pageBuilder.isShowPrevious()}">
 															<li class="prev"><a
-																href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}&category=${category}">이전목록</a></li>
+																href="${pageBuilder.getQueryString(pageBuilder.getPreviousStartPage())}&category=${category}&sortType=${sortType}">이전목록</a></li>
 														</c:if>
 									
 														<c:forEach var="i" begin="${pageBuilder.currentStartPage }"
@@ -319,19 +319,19 @@
 																	<li class="active"><a>${i}</a></li>
 																</c:when>
 																<c:otherwise>
-																	<li><a href="${pageBuilder.getQueryString(i)}&category=${category}">${i}</a></li>
+																	<li><a href="${pageBuilder.getQueryString(i)}&category=${category}&sortType=${sortType}">${i}</a></li>
 																</c:otherwise>
 															</c:choose>
 														</c:forEach>
 									
 														<c:if test="${pageBuilder.isShowNext()}">
 															<li class="next"><a
-																href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}&category=${category}">다음목록</a></li>
+																href="${pageBuilder.getQueryString(pageBuilder.getNextStartPage())}&category=${category}&sortType=${sortType}">다음목록</a></li>
 														</c:if>
 									
 														<c:if test="${pageBuilder.isShowLast()}">
 															<li><a
-																href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}&category=${category}">끝으로</a></li>
+																href="${pageBuilder.getQueryString(pageBuilder.getTotalPageCount())}&category=${category}&sortType=${sortType}">끝으로</a></li>
 														</c:if>
 									
 													</ul>
