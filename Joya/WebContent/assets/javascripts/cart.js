@@ -27,6 +27,7 @@ $(document).ready(function(){
 		location.href="/order/orderadd.joya"
 	})
 	
+	setCheckoutBtn();
 })
 
 
@@ -50,5 +51,11 @@ function calcTotalPrice(){
 	})
 	$("#subtotalPrice").html(totalPrice);
 }	
-
+function setCheckoutBtn(){
+	var cartSize=getCartSize();
+	console.log("카트사이즈 :"+cartSize);
+	if(cartSize==0){
+		$("#checkout").attr("disabled", "disabled");
+	}
+}
 

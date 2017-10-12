@@ -101,3 +101,7 @@ function setCartSize(){
 	var size=getCartMap().size;
 	$("#cartSize").text(size);
 }
+
+function getCartSize(){
+	return getCartMap().size;
+}

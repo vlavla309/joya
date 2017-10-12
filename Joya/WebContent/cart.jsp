@@ -143,7 +143,7 @@
                                                 
                                                 <!-- 제품 수량 -->
 												<td>
-													<input type="number" class="form-control input-1 replace productAmount" maxlength="5" size="5" id="updates_3947646083" name="${cartItem.key }" value="${cartItem.value }">
+													<input type="number" class="form-control input-1 replace productAmount" maxlength="5" size="5" min = "1" id="updates_3947646083" name="${cartItem.key }" value="${cartItem.value }">
 												</td>
                                                 
                                                 <!-- 제품 수량에 대한 가격 -->
@@ -173,7 +173,7 @@
 													&nbsp;
 												</td>
 												<td class="update-quantities">
-													<button type="button" id="update-cart" class="btn btn-2" name="update">Update Qty</button>
+													<button type="button" id="update-cart" class="btn btn-2" name="update" >Update Qty</button>
 												</td>
 												<td id="subtotalCart" class="subtotal title-1">
 													<span>&#8361;</span><span id="subtotalPrice"></span>
