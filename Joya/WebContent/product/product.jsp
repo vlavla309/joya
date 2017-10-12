@@ -389,10 +389,10 @@
 											<div class="spr-container">
 												<div class="spr-header">
 													<h2 class="spr-header-title">Customer Reviews</h2> 	
-														<span class="spr-summary-actions"> <a href="#"
+														<span class="spr-summary-actions"> <!-- <a href="#"
 															class="spr-summary-actions-newreview"
-															onclick="SPR.toggleForm(1293236931);return false">Write
-																a review</a>
+															onclick="SPR.toggleForm(1293236931);return false">Write 
+																a review</a>-->
 														</span>
 												</div>
 											</div>

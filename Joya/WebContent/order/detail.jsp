@@ -39,7 +39,6 @@
  	$(function() {
  		var status = "${status}"
 	 	if(status != "배송완료"){
-	 		alert(status)
 	 		$("input[type=button]").attr("disabled", "disabled");
 	 	}
 	})
