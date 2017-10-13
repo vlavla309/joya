@@ -14,7 +14,12 @@ import com.joya.common.exception.MallException;
 import com.joya.common.web.Params;
 import com.joya.product.domain.Product;
 
-
+/**
+ * 상품 Dao
+ *
+ * @author 한수진
+ *
+ */
 public class JdbcProductDao implements ProductDao{
 
 	private DataSource dataSource;
@@ -32,7 +37,8 @@ public class JdbcProductDao implements ProductDao{
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
+	
+	/** 상품등록  */
 	@Override
 	public void create(Product product) {
 		Connection con = null;
@@ -76,14 +82,15 @@ public class JdbcProductDao implements ProductDao{
 			} catch(SQLException e) {}
 		}
 	}
-
+	
+	/** 상품 수정  */
 	@Override
 	public void update(Product product) {
 		// TODO Auto-generated method stub
 
 	}
 
-
+	/** 상품 상세보기 */
 	@Override
 	public Product read(int productId) {
 		Product product = null;
@@ -122,7 +129,7 @@ public class JdbcProductDao implements ProductDao{
 		return product;
 	}
 
-
+	/** 상품 목록 */
 	@Override
 	public List<Product> listByParams(Params params, String categoryName, String orderType) {
 
@@ -229,7 +236,8 @@ public class JdbcProductDao implements ProductDao{
 		}
 		return list;
 	}
-
+	
+	/** 상품 리스트 페이징 count */
 	@Override
 	public int pageCount(Params params, String categoryName, String orderType) {
 
@@ -311,7 +319,7 @@ public class JdbcProductDao implements ProductDao{
 		return null;
 	}
 
-
+	/** Product 도메인 생성 및 반환 */
 	private Product createProduct(ResultSet rs) throws SQLException {
 		int productId=rs.getInt("product_id");
 		String categoryName = rs.getString("category_name");      
@@ -331,7 +339,8 @@ public class JdbcProductDao implements ProductDao{
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	/** max product id 반환 */
 	@Override
 	public int getNewProductId() {
 		int newProductId=0;

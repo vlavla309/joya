@@ -5,6 +5,12 @@ import java.util.List;
 import com.joya.common.web.Params;
 import com.joya.product.domain.Product;
 
+/**
+ * 상품 Serviece interface
+ *
+ * @author 한수진
+ *
+ */
 public interface ProductService {
 	
 	public void create(Product product);
