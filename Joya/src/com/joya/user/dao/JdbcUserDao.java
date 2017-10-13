@@ -56,7 +56,7 @@ public class JdbcUserDao implements UserDao{
 			pstmt.setString(3, user.getName());
 			pstmt.setString(4, user.getPasswd());
 			pstmt.setString(5, user.getAddress());
-			pstmt.setInt(6, user.getPoint());
+			pstmt.setInt(6, 10000);
 			pstmt.setString(7, user.getBirthdate());
 			pstmt.setInt(8, user.getType());
 			pstmt.executeQuery();
