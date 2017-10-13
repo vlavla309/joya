@@ -12,9 +12,10 @@ import com.joya.common.controller.ModelAndView;
 import com.joya.image.domain.Images;
 import com.joya.image.service.ImageService;
 import com.joya.image.service.ImageServiceImpl;
-
-
-
+/**
+ * @author 김형주
+ *
+ */
 public class ImagelistController implements Controller {
 	
 	private ImageService imgService= new ImageServiceImpl();

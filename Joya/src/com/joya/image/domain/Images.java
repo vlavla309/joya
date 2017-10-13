@@ -1,5 +1,10 @@
 package com.joya.image.domain;
 
+
+/**
+ * @author 김형주
+ *
+ */
 public class Images {
 	
 	private String imageName;
