@@ -270,7 +270,7 @@ public class JdbcOrderDao implements OrderDao {
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcProductDao.read(String productId) �떎�뻾 以� �삁�쇅諛쒖깮", e);
+			throw new MallException("Orders search(String orderid, String email)", e);
 		}finally {
 			try {
 				if(rs != null)    rs.close();

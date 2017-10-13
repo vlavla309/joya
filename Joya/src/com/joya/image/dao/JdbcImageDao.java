@@ -60,7 +60,7 @@ public class JdbcImageDao implements ImageDao{
 			try {
 				con.rollback();
 			} catch (SQLException e1) {}
-				throw new MallException("JdbcImageDao.create(Image image)½ÇÇà Áß ¿¹¿Ü ¹ß»ý", e);
+				throw new MallException("JdbcImageDao.create(Image image)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½", e);
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();
@@ -157,20 +157,6 @@ public class JdbcImageDao implements ImageDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public static void main(String[] args) {
-		JdbcImageDao articledao = (JdbcImageDao) DaoFactory.getInstance().getDao(JdbcImageDao.class);
-		//List<Images> img = articledao.listAll();
-		/*for (Images images : img) {
-			System.out.println(images);
-		}*/
-		
-		/*List<Images> img = articledao.listByProductid(1);
-		for (Images images : img) {
-			System.out.println(images);
-		}*/
-	}
-	
 	
 
 }
