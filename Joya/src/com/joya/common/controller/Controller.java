@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * ëª¨ë“  ?„¸ë¶? ì»¨íŠ¸ë¡¤ëŸ¬?— ???•œ ?‹¤?–‰ë©”ì†Œ?“œ ê·œì•½ ?„ ?–¸ - ì»¤ë§¨?“œ?Œ¨?„´ ? ?š©
- * @author ê¹?ê¸°ì •
+ * ëª¨ë“  ì„¸ë¶€ ì»¨íŠ¸ë¡¤ëŸ¬ì— ëŒ€í•œ ì‹¤í–‰ë©”ì†Œë“œ ê·œì•½ ì„ ì–¸ - ì»¤ë§¨ë“œíŒ¨í„´ ì ìš©
+ * @author ê¹€í˜•ì£¼
  */
 public interface Controller {
 	
-	/** ?‹¤?–‰ ê·œì•½ ë©”ì†Œ?“œ 
+	/** ì‹¤í–‰ ê·œì•½ ë©”ì†Œë“œ 
 	 * @throws UnsupportedEncodingException */
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, UnsupportedEncodingException;
 }

@@ -4,26 +4,26 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
- * ServletContext ?ƒëª…ì£¼ê¸?(?ƒ?„±/?†Œë©?) ê´?? ¨ ?´ë²¤íŠ¸ ë¦¬ìŠ¤?„ˆ
- * @author ê¹?ê¸°ì •
+ * ServletContext ìƒëª…ì£¼ê¸°(ìƒì„±/ì†Œë©¸) ê´€ë ¨ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ
+ * @author ê¹€ê¸°ì •
  */
 public class ServletContextLoadListener implements ServletContextListener {
 	
 	/**
-	 * ServletContext?ƒ?„± ?´ë²¤íŠ¸ ì²˜ë¦¬
-     * ServletContextê°? ?ƒ?„±?˜ë©?(?„œë¸”ë¦¿ì»¨í…Œ?´?„ˆ ì´ˆê¸°?™”) ?›¹ ?• ?”Œë¦¬ì??´?…˜?‚´?˜
-     * ëª¨ë“  Servlet, JSP, Filter ?“±?´ ê³µìœ ?•  ?ˆ˜ ?žˆ?Š” ê°ì²´ ?˜?Š” ë¦¬ì†Œ?Š¤ ?ƒ?„± ë°? ?“±ë¡?(ì´ˆê¸°?™”)
+	 * ServletContextìƒì„± ì´ë²¤íŠ¸ ì²˜ë¦¬
+     * ServletContextê°€ ìƒì„±ë˜ë©´(ì„œë¸”ë¦¿ì»¨í…Œì´ë„ˆ ì´ˆê¸°í™”) ì›¹ ì• í”Œë¦¬ì¼€ì´ì…˜ë‚´ì˜
+     * ëª¨ë“  Servlet, JSP, Filter ë“±ì´ ê³µìœ í•  ìˆ˜ ìžˆëŠ” ê°ì²´ ë˜ëŠ” ë¦¬ì†ŒìŠ¤ ìƒì„± ë° ë“±ë¡(ì´ˆê¸°í™”)
 	 */
 	public void contextInitialized(ServletContextEvent event)  {
-//		System.out.println("[Debug] : ServletContext ?ƒ?„±?¨ >>>");
+//		System.out.println("[Debug] : ServletContext ìƒì„±ë¨ >>>");
 //		DaoFactory2 daoFactory = new DaoFactory2();
-		// ëª¨ë“  ?„œë¸”ë¦¿, JSP?“¤?´ ê³µìœ ?•  ?ˆ˜ ?žˆ?„ë¡? ServletContext?— DaoFactory ???ž¥
+		// ëª¨ë“  ì„œë¸”ë¦¿, JSPë“¤ì´ ê³µìœ í•  ìˆ˜ ìžˆë„ë¡ ServletContextì— DaoFactory ì €ìž¥
 //		ServletContext servletContext = event.getServletContext();
 //		servletContext.setAttribute("daoFactory", daoFactory);
 	}
 	
 	
 	public void contextDestroyed(ServletContextEvent event)  {
-//		System.out.println("[Debug] : ServletContext(?„œë¸”ë¦¿ì»¨í…Œ?´?„ˆ) ì¢…ë£Œ?¨ >>>");
+//		System.out.println("[Debug] : ServletContext(ì„œë¸”ë¦¿ì»¨í…Œì´ë„ˆ) ì¢…ë£Œë¨ >>>");
     }
 }

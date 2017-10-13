@@ -10,8 +10,9 @@ import com.joya.common.exception.MallException;
 
 
 /**
- * 
- * @author �?기정
+ * 팩토리 패턴 DaoFactory 작업
+ * 싱글톤 패턴적용
+ * @author 김형주
  */
 public class DaoFactory {
 	
@@ -55,15 +56,12 @@ public class DaoFactory {
 			Class cls = Class.forName(className);
 			dao = cls.newInstance();
 			
-			//JdbcXXXDao dao = (JdbcXXXDao)dao;
-			//dao.setDataSource(dataSource);
-			
-			// ?��?�� 메소?��?���?
+			// 동적 메소드호출
 			Method method =  cls.getMethod("setDataSource", DataSource.class);
 			method.invoke(dao, dataSource);
 			
 		} catch (Exception e) {
-			throw new MallException("DaoFactory.getDao(String className) �ͼ��� �߻�!", e);
+			throw new MallException("DaoFactory.getDao(String className) 실행 중 예외발생", e);
 		}
 		return dao;
 	}

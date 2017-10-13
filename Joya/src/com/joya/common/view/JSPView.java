@@ -38,12 +38,5 @@ public class JSPView implements View {
 			dispatcher = request.getRequestDispatcher(path);
 			dispatcher.forward(request, response);
 		}
-		
-		
-		
-		
-		
-		
 	}
-
 }

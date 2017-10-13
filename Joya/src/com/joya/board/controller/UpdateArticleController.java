@@ -2,7 +2,6 @@ package com.joya.board.controller;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,23 +18,25 @@ import com.joya.article.service.ArticleService;
 import com.joya.article.service.ArticleServiceImpl;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
-import com.joya.image.service.ImageService;
-import com.joya.image.service.ImageServiceImpl;
 
+/**
+ * 게시글 수정 작업
+ * @author 김미소
+ *
+ */
 public class UpdateArticleController implements Controller {
-
+	final long maxSize = 5*1024*1024; //업로드 이미지 최대 크기
 	private ArticleService articleService = new ArticleServiceImpl();
-	private ImageService imgService = new ImageServiceImpl();
-	private String fileRepository = "C:/kosta164/1Team/Joya/WebContent/boards/asimages/";
+
+	private String fileRepository ;
 	String fileName;
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
-		System.out.println("수정액션컨트롤러=====+========+============");
-		request.setCharacterEncoding("utf-8");
-
 		ModelAndView mav = new ModelAndView();
+
+		fileRepository = request.getServletContext().getInitParameter("articleImageUploadPath");
 		
 		String boardId = request.getParameter("boardid");
 		int articleId = 0;
@@ -72,10 +73,9 @@ public class UpdateArticleController implements Controller {
 			// 파일업로드
 			DiskFileItemFactory itemFactory = new DiskFileItemFactory();
 			ServletFileUpload fileUpload = new ServletFileUpload(itemFactory);
-			fileUpload.setSizeMax(5 * 1024 * 1024);
+			fileUpload.setSizeMax(maxSize);
 
 			List<FileItem> fileList = null;
-			List<File> imgs = new ArrayList<File>();
 			String imageName = null;
 			String path = "/boards/asimages/";
 			String boardNo = null;
@@ -84,35 +84,26 @@ public class UpdateArticleController implements Controller {
 				fileList = fileUpload.parseRequest(request);
 				for (int i = 0; i < fileList.size(); i++) {
 					FileItem item = fileList.get(i);
-					System.out.println("아이템" + item.getFieldName());
 					if (item.isFormField()) {
-						String param = item.getString("utf-8");
 						switch (item.getFieldName()) {
 						case "articleId" :
 							articleId = Integer.parseInt(item.getString("utf-8"));
-							System.out.println("as게시판articleId:"+articleId);
 							break;
 						case "title":
 							title = item.getString("utf-8");
-							System.out.println("as제목:" + title);
 							break;
 						case "articleType":
 							articleType = item.getString("utf-8");
-							System.out.println("as비밀글타입:" + articleType);
 							break;
 						case "passwd":
 							passwd = item.getString("utf-8");
-							System.out.println("as비번:" + passwd);
 							break;
 						case "contents":
 							contents = item.getString("utf-8");
-							System.out.println("as내용:" + contents);
 							break;
-
 						}
 					} else {
 						imageName = item.getName();
-						System.out.println("이미지네임:" + imageName);
 						File saveFile = new File(fileRepository + imageName);
 						try {
 							item.write(saveFile);
@@ -127,7 +118,6 @@ public class UpdateArticleController implements Controller {
 				article.setContents(contents.replace("\r\n", "<br>"));
 				article.setPasswd(passwd);
 				article.setFilePath(path + imageName);
-				System.out.println("AS게시판11111111111111");
 
 				articleService.edit(article);
 
@@ -141,7 +131,6 @@ public class UpdateArticleController implements Controller {
 				e.printStackTrace();
 			}
 			mav.setView("redirect:/boards/aslist.joya");
-
 		}
 		return mav;
 	}

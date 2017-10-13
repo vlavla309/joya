@@ -3,7 +3,9 @@ package com.joya.common.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-/** ëª¨ë¸ ë°? ë·? ?Œ¨?Š¤ ???¥?„ ?œ„?•œ Wrapper ?´?˜?Š¤ */
+/** ëª¨ë¸ ë° ë·° íŒ¨ìŠ¤ ì €ì¥ì„ ìœ„í•œ Wrapper í´ë˜ìŠ¤ 
+ * @author ê¹€ê¸°ì •
+ * */
 public class ModelAndView{
 	private String view;
 	private Map<String, Object> model;
@@ -12,7 +14,7 @@ public class ModelAndView{
 		model = new HashMap<String, Object>();
 	}
 	
-	/*ë·? ?˜?´ì§??˜ ê²½ë¡œ */
+	/*ë·° í˜ì´ì§€ì˜ ê²½ë¡œ */
 	public ModelAndView(String view, Map<String, Object> model) {
 		this.view = view;
 		this.model = model;

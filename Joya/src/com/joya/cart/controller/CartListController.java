@@ -1,19 +1,17 @@
 package com.joya.cart.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
-import com.joya.common.web.Delimiter;
+import com.joya.common.web.CartManager;
 import com.joya.image.domain.Images;
 import com.joya.image.service.ImageService;
 import com.joya.image.service.ImageServiceImpl;
@@ -21,6 +19,10 @@ import com.joya.product.domain.Product;
 import com.joya.product.service.ProductService;
 import com.joya.product.service.ProductServiceImpl;
 
+/**
+ * 장바구니 목록 조회 작업
+ * @author 김형주
+ */
 public class CartListController implements Controller {
 	ProductService productServ=new ProductServiceImpl();
 	ImageService imgServ =new ImageServiceImpl();
@@ -29,24 +31,15 @@ public class CartListController implements Controller {
 			throws ServletException, UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 
-		Map<String, String> cartMap=new HashMap<String, String>();
+		Map<String, String> cartMap;
 		Map<String,Product> products=new HashMap<String,Product>();
 		Map<String,Images> images=new HashMap<String,Images>();
 
+		String cartCookieVal=CartManager.getCartCookieVal(request);
 
-		Cookie[] cookies=request.getCookies();
-		String cartCookieVal=" ";
-		if(cookies!=null){
-			for(Cookie cookie:cookies) {
-				if(cookie.getName().equalsIgnoreCase("cart")) {
-					cartCookieVal=URLDecoder.decode(cookie.getValue(), "utf-8");
-					break;
-				}
-			}
-		}
+		cartMap=CartManager.getCartMap(cartCookieVal);
 
-		cartMap=getCartMap(cartCookieVal);
-
+		//장바구니 정보 Map 객체의 키값(상품번호)를 통해 해당 상품의 정보를 조회, 해당 상품의 대표 사진을 각각의 Map객체에 저장
 		for(String k:cartMap.keySet()) {
 			Product product=productServ.read(Integer.parseInt(k));
 			products.put(product.getProductId()+"",product);
@@ -64,20 +57,5 @@ public class CartListController implements Controller {
 		mav.addObject("images", images);
 		mav.setView("/cart.jsp");
 		return mav;
-	}
-
-	private Map<String, String> getCartMap(String cartCookieVal) {
-		Map<String, String> cartMap=new HashMap<>();
-
-		if(!cartCookieVal.equals(" ")) {
-			String[] cartItems=cartCookieVal.split(Delimiter.CART_ITEM);
-			for (String item : cartItems) {
-				String productId=item.split(Delimiter.CART_ITEM_INFO)[0];
-				String amount=item.split(Delimiter.CART_ITEM_INFO)[1];
-				cartMap.put(productId, amount);
-			}
-		}
-
-		return cartMap;
 	}
 }

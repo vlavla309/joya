@@ -9,7 +9,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * ?š”ì²??ŒŒ?¼ë©”í„° ?•œê¸??¸ì½”ë”© ì²˜ë¦¬ ?•„?„°
+ * ìš”ì²­íŒŒë¼ë©”í„° í•œê¸€ì¸ì½”ë”© ì²˜ë¦¬ í•„í„°
+ * @author ê¹€í˜•ì£¼
  */
 public class CharacterEncodingFilter implements Filter {
 	
@@ -22,12 +23,12 @@ public class CharacterEncodingFilter implements Filter {
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// ? „ì²˜ë¦¬
+		// pre proc
 		if(encoding != null){
 			request.setCharacterEncoding(encoding);
 		}
 		chain.doFilter(request, response);
-		// ?›„ì²˜ë¦¬
+		// post proc
 	}
 
 	@Override

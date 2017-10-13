@@ -17,8 +17,8 @@ import com.joya.visitlog.service.VisitLogService;
 import com.joya.visitlog.service.VisitLogServiceImpl;
 
 
-/**
- * 
+/** 미구현
+ * 매출액 통계 작업
  * @author 김형주
  *
  */

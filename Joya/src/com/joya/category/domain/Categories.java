@@ -1,5 +1,9 @@
 package com.joya.category.domain;
-
+/**
+ * 상품 카테고리 도메인 클래스
+ * @author 김형주
+ *
+ */
 public class Categories {
 	private String categoryName;
 	private String parent;

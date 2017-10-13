@@ -14,11 +14,9 @@ import com.joya.common.controller.ControllerFactory;
 import com.joya.common.controller.ModelAndView;
 import com.joya.common.view.View;
 import com.joya.common.view.ViewResolver;
-import com.joya.visitlog.service.VisitLogService;
-import com.joya.visitlog.service.VisitLogServiceImpl;
 
 /**
- * 
+ * 모든 요청을 받아들이는 프론트 컨트롤러
  * @author 김형주
  */
 public class MainController extends HttpServlet {

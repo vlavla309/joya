@@ -5,8 +5,11 @@ import java.util.List;
 import com.joya.article.domain.Article;
 import com.joya.common.web.Params;
 
+/**
+ * 게시글 DAO 인터페이스
+ * @author 김미소
+ */
 public interface ArticleDao {
-	
 
 	/** 공지사항, QnA, A/S, 상품평 게시글 등록 */
 	public void create(Article article, String articleType);

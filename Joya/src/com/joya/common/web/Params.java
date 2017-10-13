@@ -1,17 +1,17 @@
 package com.joya.common.web;
 
 /**
- * ¿©·¯°³ÀÇ ¿äÃ»ÆÄ¶ó¸ŞÅÍµéÀ» ÀúÀå(Æ÷Àå)ÇÏ±â À§ÇÑ JavaBean
- * {»ç¿ëÀÚ ¼±ÅÃÆäÀÌÁö, °Ë»öÀ¯Çü, °Ë»ö°ª, ÇÑÆäÀÌÁö¿¡ Ãâ·ÂÇÏ´Â ÇàÀÇ °¹¼ö, ÆäÀÌÁö ¹øÈ£ µî}
+ * ì—¬ëŸ¬ê°œì˜ ìš”ì²­íŒŒë¼ë©”í„°ë“¤ì„ ì €ì¥(í¬ì¥)í•˜ê¸° ìœ„í•œ JavaBean
+ * {ì‚¬ìš©ì ì„ íƒí˜ì´ì§€, ê²€ìƒ‰ìœ í˜•, ê²€ìƒ‰ê°’, í•œí˜ì´ì§€ì— ì¶œë ¥í•˜ëŠ” í–‰ì˜ ê°¯ìˆ˜, í˜ì´ì§€ ë²ˆí˜¸ ë“±}
  *  
- * @author ±è±âÁ¤
+ * @author ê¹€ê¸°ì •
  */
 public class Params {
-	private int page;         /** »ç¿ëÀÚ ¿äÃ» ÆäÀÌÁö */
-	private String type;      /** »ç¿ëÀÚ °Ë»ö À¯Çü */
-	private String value;     /** »ç¿ëÀÚ °Ë»ö °ª */
-	private int pageSize;     /** ÆäÀÌÁö¿¡ Ãâ·ÂÇÒ ÇàÀÇ ¼ö */
-	private int pageNum;      /** ÆäÀÌÁö¿¡ Ãâ·ÂÇÒ ÆäÀÌÁö ¼ö */
+	private int page;         /** ì‚¬ìš©ì ìš”ì²­ í˜ì´ì§€ */
+	private String type;      /** ì‚¬ìš©ì ê²€ìƒ‰ ìœ í˜• */
+	private String value;     /** ì‚¬ìš©ì ê²€ìƒ‰ ê°’ */
+	private int pageSize;     /** í˜ì´ì§€ì— ì¶œë ¥í•  í–‰ì˜ ìˆ˜ */
+	private int pageNum;      /** í˜ì´ì§€ì— ì¶œë ¥í•  í˜ì´ì§€ ìˆ˜ */
 	
 	public Params() {
 		this(1, null, null, 10, 10);

@@ -1,7 +1,6 @@
 package com.joya.admin.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,15 +10,13 @@ import org.json.simple.JSONObject;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
-import com.joya.common.web.PageBuilder;
-import com.joya.common.web.Params;
 import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
 
 /**
- * 
+ * 회원정보를 Json으로 리턴
  * @author 김형주
  *
  */
@@ -28,10 +25,8 @@ public class UserInfoController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
-		ModelAndView mav = new ModelAndView();
 		
 		String email=request.getParameter("email");
-		System.out.println(email);
 		User user=userService.read(email);
 		
 		JSONObject json=new JSONObject();
@@ -47,7 +42,7 @@ public class UserInfoController implements Controller {
 		
 		
 		String result=json.toJSONString();
-		System.out.println(result);
+		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/plain");
 		try {

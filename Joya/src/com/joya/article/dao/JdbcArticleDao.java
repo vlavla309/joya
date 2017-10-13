@@ -12,8 +12,11 @@ import javax.sql.DataSource;
 import com.joya.article.domain.Article;
 import com.joya.common.db.DaoFactory;
 import com.joya.common.web.Params;
-import com.joya.order.dao.JdbcOrderDao;
 
+/**
+ * 게시글 JDBC DAO
+ * @author 김미소
+ */
 public class JdbcArticleDao implements ArticleDao {
 
 	private DataSource dataSource;
@@ -96,7 +99,7 @@ public class JdbcArticleDao implements ArticleDao {
 			sb.append(" VALUES      (articles_seq.nextval, ");
 			sb.append(" ?, "); // email
 
-			
+
 			if (articleType != null) { // board_id
 				switch (articleType) {
 				case "notice":
@@ -537,7 +540,7 @@ public class JdbcArticleDao implements ArticleDao {
 
 		return list;
 	}
-	
+
 	@Override
 	public List<Article> listByParams(Params params, int boardId, int productid) {
 		List<Article> list = null;
@@ -601,7 +604,7 @@ public class JdbcArticleDao implements ArticleDao {
 			pstmt.setInt(2, boardId);
 			pstmt.setInt(3, productid);
 			pstmt.setInt(4, params.getPage());
-			
+
 			rs = pstmt.executeQuery();
 			list = new ArrayList<Article>();
 
@@ -727,7 +730,7 @@ public class JdbcArticleDao implements ArticleDao {
 
 	@Override
 	public Article searchReview(int productId, String writer, int boardId) {
-		
+
 		String sql = "select * from ARTICLES where BOARD_ID = ? and PRODUCT_ID=? and WRITER = ?";
 
 		Article article = null;
@@ -761,11 +764,11 @@ public class JdbcArticleDao implements ArticleDao {
 		}
 		return article;
 	}
-	
+
 	public static void main(String[] args) {
 		//JdbcOrderDao dao=(JdbcOrderDao) DaoFactory.getInstance().getDao(JdbcOrderDao.class);
 		JdbcArticleDao dao = (JdbcArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
-		
+
 		Article art = dao.searchReview(8, "조아조", 3);
 		System.out.println(art);
 	}

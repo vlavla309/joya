@@ -1,8 +1,7 @@
 package com.joya.board.domain;
 /**
- * 사용자 정보 저장을 위한 JavaBean
- * 
- * @author 정지현
+ * 게시판 도메인 클래스
+ * @author 김미소
  */
 public class Board {
 	
@@ -50,5 +49,4 @@ public class Board {
 	public String toString() {
 		return "Board [boardId=" + boardId + ", boardName=" + boardName + ", boardDesc=" + boardDesc + "]";
 	}
-
 }

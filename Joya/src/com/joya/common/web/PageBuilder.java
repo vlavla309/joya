@@ -1,21 +1,21 @@
 package com.joya.common.web;
 
 /**
- * ?˜?´ì§? ê³„ì‚° ë°? ?˜?´ì§? ë²ˆí˜¸(1|2|3|4|5....) ì¶œë ¥?„ ê°ê°?˜ JSP?—?„œ ì²˜ë¦¬?•˜ì§? ?•Šê³?,
- * ?¬?‚¬?š©?•  ?ˆ˜ ?ˆ?„ë¡? ?œ ?‹¸ë¦¬í‹° ?´?˜?Š¤ ? •?˜
- * @author ê¹?ê¸°ì •
+ * í˜ì´ì§• ê³„ì‚° ë° í˜ì´ì§€ ë²ˆí˜¸(1|2|3|4|5....) ì¶œë ¥ì„ ê°ê°ì˜ JSPì—ì„œ ì²˜ë¦¬í•˜ì§€ ì•Šê³ ,
+ * ì¬ì‚¬ìš©í•  ìˆ˜ ìˆë„ë¡ ìœ í‹¸ë¦¬í‹° í´ë˜ìŠ¤ ì •ì˜
+ * @author ê¹€ê¸°ì •
  */
 public class PageBuilder {
 	
-	private Params params;            /** ?š”ì²? ?ŒŒ?¼ë©”í„° */
+	private Params params;            /** ìš”ì²­ íŒŒë¼ë©”í„° */
 	
-	private int totalRowCount;        /** ?…Œ?´ë¸”ë¡œë¶??„° ê²??ƒ‰?œ ?–‰?˜ ?ˆ˜ */
-	private int totalPageCount;       /** ?—°?‚°?— ?”°ë¥? ? „ì²´í˜?´ì§? ?ˆ˜ */
+	private int totalRowCount;        /** í…Œì´ë¸”ë¡œë¶€í„° ê²€ìƒ‰ëœ í–‰ì˜ ìˆ˜ */
+	private int totalPageCount;       /** ì—°ì‚°ì— ë”°ë¥¸ ì „ì²´í˜ì´ì§€ ìˆ˜ */
 	private int listNo;               /** ëª©ë¡ ë²ˆí˜¸ */
-	private int currentStartPage;     /** ?˜„?¬ ëª©ë¡?˜ ?‹œ?‘?˜?´ì§? ë²ˆí˜¸ */
-	private int currentEndPage;       /** ?˜„?¬ ëª©ë¡?˜ ë§ˆì?ë§‰í˜?´ì§? ë²ˆí˜¸ */
-	private int previousStartPage;    /** ?´? „ ëª©ë¡?˜ ?‹œ?‘?˜?´ì§? ë²ˆí˜¸ */
-	private int nextStartPage;        /** ?‹¤?Œ ëª©ë¡?˜ ?‹œ?‘?˜?´ì§? ë²ˆí˜¸ */
+	private int currentStartPage;     /** í˜„ì¬ ëª©ë¡ì˜ ì‹œì‘í˜ì´ì§€ ë²ˆí˜¸ */
+	private int currentEndPage;       /** í˜„ì¬ ëª©ë¡ì˜ ë§ˆì§€ë§‰í˜ì´ì§€ ë²ˆí˜¸ */
+	private int previousStartPage;    /** ì´ì „ ëª©ë¡ì˜ ì‹œì‘í˜ì´ì§€ ë²ˆí˜¸ */
+	private int nextStartPage;        /** ë‹¤ìŒ ëª©ë¡ì˜ ì‹œì‘í˜ì´ì§€ ë²ˆí˜¸ */
 	
 	
 	public PageBuilder() {
@@ -23,8 +23,8 @@ public class PageBuilder {
 	}
 	
 	/**
-	 * @param params           ?š”ì²? ?ŒŒ?¼ë©”í„°
-	 * @param totalRowCount    ê²??ƒ‰???…ë³? ê²??ƒ‰?œ ?–‰?˜ ?ˆ˜
+	 * @param params           ìš”ì²­ íŒŒë¼ë©”í„°
+	 * @param totalRowCount    ê²€ìƒ‰íƒ€ì…ë³„ ê²€ìƒ‰ëœ í–‰ì˜ ìˆ˜
 	 */
 	public PageBuilder(Params params, int totalRowCount ) {
 		this.params = params;
@@ -103,16 +103,16 @@ public class PageBuilder {
 				+ "]";
 	}
 
-	/** ?˜?´ì§? ê³„ì‚° */
+	/** í˜ì´ì§• ê³„ì‚° */
 	public void build(){
-		// DBë¡œë??„° ê²??ƒ‰?œ ?–‰?˜ ?ˆ˜?— ?”°ë¥? ? „ì²´í˜?´ì§??ˆ˜ ê³„ì‚°
+		// DBë¡œë¶€í„° ê²€ìƒ‰ëœ í–‰ì˜ ìˆ˜ì— ë”°ë¥¸ ì „ì²´í˜ì´ì§€ìˆ˜ ê³„ì‚°
 		totalPageCount = (int)Math.ceil((double)totalRowCount / params.getPageSize());
 		
-		// ëª©ë¡ë³? ë²ˆí˜¸
+		// ëª©ë¡ë³„ ë²ˆí˜¸
 		listNo = (params.getPage() - 1) / params.getPageNum();
 		//(1~5): 0, (6~10): 1, (11~15): 2, .....
 		
-		// ?˜„?¬ ëª©ë¡?˜ ?‹œ?‘?˜?´ì§?ë²ˆí˜¸?? ë§ˆì?ë§‰í˜?´ì§?ë²ˆí˜¸ ê³„ì‚°
+		// í˜„ì¬ ëª©ë¡ì˜ ì‹œì‘í˜ì´ì§€ë²ˆí˜¸ì™€ ë§ˆì§€ë§‰í˜ì´ì§€ë²ˆí˜¸ ê³„ì‚°
 		currentStartPage = (listNo * params.getPageNum()) + 1;
 		currentEndPage = (listNo * params.getPageNum()) + params.getPageNum();
 		
@@ -125,84 +125,40 @@ public class PageBuilder {
 			currentEndPage = totalPageCount;
 		}
 		
-		// ?´? „ ëª©ë¡?˜ ?‹œ?‘?˜?´ì§? ë²ˆí˜¸ ê³„ì‚°
+		// ì´ì „ ëª©ë¡ì˜ ì‹œì‘í˜ì´ì§€ ë²ˆí˜¸ ê³„ì‚°
 		previousStartPage = currentStartPage - params.getPageNum();
-		// ì²«ë²ˆì§? ëª©ë¡?¸ ê²½ìš° 1?˜?´ì§?ë¡? ?„¤? •
+		// ì²«ë²ˆì§¸ ëª©ë¡ì¸ ê²½ìš° 1í˜ì´ì§€ë¡œ ì„¤ì •
 		if (previousStartPage < 0)  previousStartPage = 1;
 		
-		// ?‹¤?Œ ëª©ë¡?˜ ?‹œ?‘?˜?´ì§? ë²ˆí˜¸ ê³„ì‚°
+		// ë‹¤ìŒ ëª©ë¡ì˜ ì‹œì‘í˜ì´ì§€ ë²ˆí˜¸ ê³„ì‚°
 		nextStartPage = currentStartPage + params.getPageNum();
 	}
 	
-	/** ?˜„?¬ ëª©ë¡?—?„œ [ì²˜ìŒ?œ¼ë¡?] ì¶œë ¥ ?—¬ë¶? ë°˜í™˜ */
+	/** í˜„ì¬ ëª©ë¡ì—ì„œ [ì²˜ìŒìœ¼ë¡œ] ì¶œë ¥ ì—¬ë¶€ ë°˜í™˜ */
 	public boolean isShowFirst() {
 		return listNo > 0;
 	}
 	
-	/** ?˜„?¬ ëª©ë¡?—?„œ [??œ¼ë¡?] ì¶œë ¥ ?—¬ë¶? ë°˜í™˜ */
+	/** í˜„ì¬ ëª©ë¡ì—ì„œ [ëìœ¼ë¡œ] ì¶œë ¥ ì—¬ë¶€ ë°˜í™˜ */
 	public boolean isShowLast() {
 		return currentEndPage < totalPageCount;
 	}
 	
-	/** ?˜„?¬ ëª©ë¡?—?„œ [?´? „ëª©ë¡] ì¶œë ¥ ?—¬ë¶? ë°˜í™˜ */
+	/** í˜„ì¬ ëª©ë¡ì—ì„œ [ì´ì „ëª©ë¡] ì¶œë ¥ ì—¬ë¶€ ë°˜í™˜ */
 	public boolean isShowPrevious() {
 		return listNo > 0;
 	}
 	
-	/** ?˜„?¬ ëª©ë¡?—?„œ [?‹¤?Œëª©ë¡] ì¶œë ¥ ?—¬ë¶? ë°˜í™˜ */
+	/** í˜„ì¬ ëª©ë¡ì—ì„œ [ë‹¤ìŒëª©ë¡] ì¶œë ¥ ì—¬ë¶€ ë°˜í™˜ */
 	public boolean isShowNext() {
 		return currentEndPage < totalPageCount;
 	}
 	
-	/** ?™?  ì¿¼ë¦¬?Š¤?Š¸ë§? ë°˜í™˜ */
+	/** ë™ì  ì¿¼ë¦¬ìŠ¤íŠ¸ë§ ë°˜í™˜ */
 	public String getQueryString(int page) {
 		String queryString = "?page=" + page;
-		// ì¡°ê±´ê²??ƒ‰?´ ?ˆ?Š” ê²½ìš°
+		// ì¡°ê±´ê²€ìƒ‰ì´ ìˆëŠ” ê²½ìš°
 		queryString += params.getType() != null ? "&type=" + params.getType() + "&value=" + params.getValue()  :  "";
 		return queryString;
-	}
-	
-	
-	/** ?…Œ?Š¤?Š¸?„ ?œ„?•œ main */
-	public static void main(String[] args) {
-		/** ?‚¬?š©? ?„ ?ƒ?˜?´ì§?, ê²??ƒ‰?œ ?˜•, ê²??ƒ‰ê°?, ?˜?´ì§??— ì¶œë ¥?•  ?–‰?˜ ?ˆ˜, ?˜?´ì§? ?ˆ˜, ?…Œ?´ë¸”ì—?„œ ê²??ƒ‰?œ ?–‰?˜ ?ˆ˜ */
-		Params params = new Params(15, null, null, 10, 10);
-		int selectCount = 156;
-		PageBuilder pageBuilder = new PageBuilder(params, selectCount);
-		pageBuilder.build();
-		
-		System.out.println("ê²??ƒ‰?œ ?–‰?ˆ˜: " + pageBuilder.getTotalRowCount());
-		System.out.println("?š”ì²??˜?´ì§?: " + pageBuilder.getParams().getPage());
-		
-		System.out.println("? „ì²´í˜?´ì§??ˆ˜: " + pageBuilder.getTotalPageCount());
-		
-		System.out.println("?˜„?¬ëª©ë¡?˜ ?‹œ?‘?˜?´ì§?: " + pageBuilder.getCurrentStartPage());
-		System.out.println("?˜„?¬ëª©ë¡?˜ ??˜?´ì§?: " + pageBuilder.getCurrentEndPage());
-		
-		System.out.println("ì²˜ìŒ?œ¼ë¡? ë³´ì—¬ì£¼ê¸° ?—¬ë¶?: " + pageBuilder.isShowFirst());
-		System.out.println("?´? „ëª©ë¡ ë³´ì—¬ì£¼ê¸° ?—¬ë¶?: " + pageBuilder.isShowPrevious());
-		
-		System.out.println("?‹¤?Œëª©ë¡ ë³´ì—¬ì£¼ê¸° ?—¬ë¶?: " + pageBuilder.isShowNext());
-		System.out.println("??œ¼ë¡? ë³´ì—¬ì£¼ê¸° ?—¬ë¶?: " + pageBuilder.isShowLast());
-		
-		// JSP?—?„œ ?˜?´ì§? ë²ˆí˜¸ ì§ì ‘ ì¶œë ¥ ?‹œ		
-		for(int i=pageBuilder.getCurrentStartPage(); i<=pageBuilder.getCurrentEndPage(); i++){
-			System.out.print(i + " | ");
-		}
-		System.out.println();
-		
-		
-		System.out.println("-----------------------------------------------");
-		
-		// ?´ë¦„ìœ¼ë¡? ê²??ƒ‰ ?‹œ
-		Params searchParams = new Params(1, "name", "ê¹?ê¸°ì •", 10, 10);
-		int searchCount = 11;
-		PageBuilder pageBuilder2 = new PageBuilder(searchParams, searchCount);
-		pageBuilder2.build();
-		System.out.println("ê²??ƒ‰?œ ?–‰?ˆ˜: " + pageBuilder2.getTotalRowCount());
-		System.out.println("?š”ì²??˜?´ì§?: " + pageBuilder2.getParams().getPage());
-		
-		System.out.println("? „ì²´í˜?´ì§??ˆ˜: " + pageBuilder2.getTotalPageCount());
-		
 	}
 }

@@ -1,9 +1,9 @@
 package com.joya.common.exception;
 
 /**
- * ?‚¬?š©? ? •?˜ RuntimeException
+ * ì‚¬ìš©ì ì •ì˜ RuntimeException
  * 
- * @author ê¹?ê¸°ì •
+ * @author ê¹€ê¸°ì •
  */
 public class MallException extends RuntimeException {
 	

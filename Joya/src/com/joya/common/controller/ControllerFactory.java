@@ -12,9 +12,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * Factory �뙣�꽩 �쟻�슜 ControllerFactory
+ * Factory 패턴 ControllerFactory
  * 
- * @author 源�湲곗젙
+ * @author 김형주
  */
 public class ControllerFactory {
 
@@ -24,9 +24,7 @@ public class ControllerFactory {
 
 	public ControllerFactory(String controllerMapperLocation){
 		
-		
 		controllerMap = new HashMap<String, Controller>();
-
 		
 		try {
 			parserFactory = DocumentBuilderFactory.newInstance();
@@ -41,8 +39,6 @@ public class ControllerFactory {
 				Node node=beans.item(i);
 				if(node.getNodeType()!=Node.ELEMENT_NODE)continue;
 				Element beanElem=(Element)node;
-//				System.out.println(beanElem.getAttribute("name"));
-//				System.out.println(beanElem.getAttribute("class"));
 				String uri = beanElem.getAttribute("name");
 				String controllerClass = beanElem.getAttribute("class");
 				

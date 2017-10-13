@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 
+/**
+ * 상품평 쓰기 작업
+ * @author 김미소
+ *
+ */
 public class ReviewWriteController implements Controller{
 
 	@Override
@@ -18,9 +23,10 @@ public class ReviewWriteController implements Controller{
 		ModelAndView mav = new ModelAndView();
 		
 		String productid = request.getParameter("productid");
-		System.out.println("productid"+productid);
+
 		mav.addObject("productid", productid);
 		mav.addObject("orderid", request.getParameter("orderid"));
+		
 		mav.setView("/mypage/review_write.joya");
 		
 		return mav;

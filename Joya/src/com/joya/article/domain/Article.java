@@ -1,5 +1,9 @@
 package com.joya.article.domain;
 
+/**
+ * 게시글 도메인 클래스
+ * @author 김미소
+ */
 public class Article {
 
 	private int articleId;
@@ -15,8 +19,7 @@ public class Article {
 	private int hitcount;
 	private String filePath;
 	private int productId;
-	
-	
+
 	public Article() {}
 
 	public Article(int articleId, String email, int boardId, String title, String contents, String writer,
@@ -174,7 +177,7 @@ public class Article {
 				+ ", groupNo=" + groupNo + ", type=" + type + ", hitcount=" + hitcount + ", filePath=" + filePath
 				+ ", productId=" + productId + "]";
 	}
-	
-	
-	
+
+
+
 }

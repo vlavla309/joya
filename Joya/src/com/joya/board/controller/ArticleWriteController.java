@@ -27,29 +27,25 @@ import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
 /**
- * 게시글 등록 처리
- * 
+ * 게시글 등록 작업
  * @author 김미소
  */
 public class ArticleWriteController implements Controller {
+	final long maxSize=5*1024*1024; //업로드 이미지 파일 최대 크기
 	
 	private ArticleService articleService = new ArticleServiceImpl();
-	private ImageService imgService = new ImageServiceImpl();
 	private UserService userService = new UserServiceImpl();
 	
-	//이클립스에 개발용으로 톰캣 구동시 실제 웹 디렉토리는 프로젝트 파일의 위치가 아니가 하단의 임시경로에 위치힌다
-	private String fileRepository = "C:/workspace/eclipse/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Joya/boards/asimages/";
-	
+	private String fileRepository;
 	String fileName;
 	
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
-		
-		request.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView();
 		
+		fileRepository=request.getServletContext().getInitParameter("articleImageUploadPath");
 		String boardId = request.getParameter("board_id");
 		
 		String email = null;
@@ -61,7 +57,6 @@ public class ArticleWriteController implements Controller {
 		String filePath = null;
 		
 		if(boardId.equals("1") || boardId.equals("2")) {
-			System.out.println("qna게시판");
 			
 			email = request.getParameter("email");
 			title = request.getParameter("title");
@@ -101,10 +96,9 @@ public class ArticleWriteController implements Controller {
 			// 파일업로드
 			DiskFileItemFactory itemFactory = new DiskFileItemFactory();
 			ServletFileUpload fileUpload = new ServletFileUpload(itemFactory);
-			fileUpload.setSizeMax(5 * 1024 * 1024);
+			fileUpload.setSizeMax(maxSize);
 			
 			List<FileItem> fileList = null;
-			List<File> imgs = new ArrayList<File>();
 			String imageName = null;
 			String path = "/boards/asimages/";
 			String boardNo = null;
@@ -115,9 +109,7 @@ public class ArticleWriteController implements Controller {
 				fileList = fileUpload.parseRequest(request);
 				for (int i = 0; i < fileList.size(); i++) {
 					FileItem item = fileList.get(i);
-					System.out.println("아이템"+item.getFieldName());
 					if(item.isFormField()) {
-						String param = item.getString("utf-8");
 						switch(item.getFieldName()) {
 						case "board_id" :
 							boardNo = item.getString("utf-8");
@@ -179,7 +171,6 @@ public class ArticleWriteController implements Controller {
 							articleService.create(article, "as");
 							mav.setView("redirect:/boards/aslist.joya");
 							break;
-							
 						}
 					}
 					
@@ -193,9 +184,7 @@ public class ArticleWriteController implements Controller {
 				e.printStackTrace();
 			}
 			
-			
 		}
 		return mav;
 	}
-
 }

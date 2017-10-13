@@ -18,7 +18,8 @@ import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
 /**
- * 
+ * 로그인 여부 체크하는 필터
+ * @author 최명승
  */
 public class LoginCheckFilter implements Filter {
 	
@@ -28,18 +29,14 @@ public class LoginCheckFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest)request;
-		HttpServletResponse res = (HttpServletResponse) response;
 		String email = null;
 		String name = null;
-		String passwd = null;
 		User userinfo = null;
 		Cookie[] cookies = req.getCookies();
 		
 		if (cookies != null) {
-			
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equalsIgnoreCase("user")) {
-					
 					String user = URLDecoder.decode(cookie.getValue(), "utf-8");
 	                String[] tokens = user.split(Delimiter.USER_INFO);
 	                email = tokens[0];
@@ -48,17 +45,13 @@ public class LoginCheckFilter implements Filter {
 					name = userinfo.getName();
 				}
 			}
-			
 		}
 			request.setAttribute("email", email);
 			request.setAttribute("name", name);
 			chain.doFilter(request, response);
-			
 	}
 
 	@Override
 	public void destroy() {	}
-
-	
 
 }

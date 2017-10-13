@@ -11,9 +11,14 @@ import javax.sql.DataSource;
 import com.joya.category.domain.Categories;
 import com.joya.common.exception.MallException;
 
+/**
+ * ÏÉÅÌíà Ïπ¥ÌÖåÍ≥†Î¶¨ JDBC DAO
+ * @author ÍπÄÌòïÏ£º
+ *
+ */
 public class JdbcCategoryDao implements CategoryDao{
 	private DataSource dataSource;
-	
+
 	public DataSource getDataSource() {
 		return dataSource;
 	}
@@ -25,7 +30,7 @@ public class JdbcCategoryDao implements CategoryDao{
 	@Override
 	public void create(Categories category) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -33,7 +38,7 @@ public class JdbcCategoryDao implements CategoryDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public List<Categories> listAll() {
 
@@ -46,9 +51,7 @@ public class JdbcCategoryDao implements CategoryDao{
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT *");
 		sb.append(" FROM categories");
-	
 
-		//		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -61,7 +64,7 @@ public class JdbcCategoryDao implements CategoryDao{
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MallException("JdbcCategoryDao.listAll() ø°∑Øπﬂª˝", e);
+			throw new MallException("JdbcCategoryDao.listAll() ÔøΩÔøΩÔøΩÔøΩÔøΩﬂªÔøΩ", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();
@@ -75,12 +78,12 @@ public class JdbcCategoryDao implements CategoryDao{
 	@Override
 	public void update(Categories category) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(int categoriesid) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

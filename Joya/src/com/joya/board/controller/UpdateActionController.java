@@ -12,6 +12,10 @@ import com.joya.article.service.ArticleServiceImpl;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 
+/**
+ * 게시글 수정 페이지 보기 작업
+ * @author 김미소
+ */
 public class UpdateActionController implements Controller {
 
 	private ArticleService articleService = new ArticleServiceImpl();
@@ -21,8 +25,6 @@ public class UpdateActionController implements Controller {
 			throws ServletException, UnsupportedEncodingException {
 		ModelAndView mav = new ModelAndView();
 
-		request.setCharacterEncoding("utf-8");
-		System.out.println("수정 전 액션 컨트롤러--------------");
 		int articleId = Integer.parseInt(request.getParameter("articleid"));
 		String boardId = request.getParameter("boardid");
 
@@ -49,5 +51,4 @@ public class UpdateActionController implements Controller {
 
 		return mav;
 	}
-
 }

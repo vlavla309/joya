@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 모든 뷰에 ???�� ?��?��메소?�� 규약 ?��?��
- * @author �?기정
+ * 모든 뷰에 대한 실행메소드 규약 선언
+ * @author 김형주
  */
 public interface View {
 	
-	/** ?��?�� 규약 메소?�� */
+	/** 실행 규약 메소드 */
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

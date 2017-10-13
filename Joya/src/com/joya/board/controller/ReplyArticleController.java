@@ -12,6 +12,11 @@ import com.joya.article.service.ArticleServiceImpl;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
 
+/**
+ * 답글 작성 작업
+ * @author 김미소
+ *
+ */
 public class ReplyArticleController implements Controller {
 	
 	private ArticleService articleService = new ArticleServiceImpl();
@@ -20,18 +25,11 @@ public class ReplyArticleController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
 		
-		
-		request.setCharacterEncoding("utf-8");
-		
-		System.out.println("reply 컨트롤러~~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println(request.getParameter("articleId"));
-		
 		ModelAndView mav = new ModelAndView();
 		
 		int articleId = Integer.parseInt(request.getParameter("articleid"));
 		
 		String boardId = request.getParameter("boardid");
-		
 		String email = request.getParameter("email");
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer");
@@ -49,6 +47,8 @@ public class ReplyArticleController implements Controller {
 		articleService.reply(article);
 		
 		mav.addObject("article", article);
+		
+		//게시판별 뷰로 리다이렉트
 		if(boardId != null) {
 			switch(boardId) {
 			case "1":
@@ -65,8 +65,6 @@ public class ReplyArticleController implements Controller {
 				break;	
 			}
 		}
-
 		return mav;
 	}
-
 }

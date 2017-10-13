@@ -1,7 +1,6 @@
 package com.joya.admin.controller;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,30 +23,29 @@ import com.joya.product.service.ProductServiceImpl;
 
 
 /**
- * 
+ * 상품 등록 작업
  * @author 김형주
- *
  */
 public class ProductUploadActionController implements Controller {
+	final long maxSize=5*1024*1024; //최대 사진 크기 5MB
+	
 	ProductService productService=new ProductServiceImpl();
 	ImageService imgService= new ImageServiceImpl();
-	private String fileRepository = "C:/Users/vlavl/Documents/git/Joya/WebContent/shopimg/";
+	
+	//상품이미지가 업로드 되는 실제 경로
+	private String fileRepository;
 	String fileName;
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)	throws ServletException {
 		ModelAndView mav = new ModelAndView();
-
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
+		
+		//이미지 파일 업로드 경로 설정
+		fileRepository=request.getServletContext().getInitParameter("productImageUploadPath");
+		
 		DiskFileItemFactory itemFactory = new DiskFileItemFactory();
 		ServletFileUpload fileUpload = new ServletFileUpload(itemFactory);
-		fileUpload.setSizeMax(5 * 1024 * 1024); 
+		fileUpload.setSizeMax(maxSize); 
 
 		List<FileItem> fileList = null;
 
@@ -59,40 +57,35 @@ public class ProductUploadActionController implements Controller {
 		String productDesc=null;
 
 
-		List<File> imgs=new ArrayList<File>();
 		List<Images> images=new ArrayList<Images>();
 		String imageName=null;
 		int productId=0;
 		String path="/shopimg/";
-
 		
 		try {
 			fileList = fileUpload.parseRequest(request);
 		
-			System.out.println("업로드 사이즈"+fileList.size());
 			for (int i=0; i<fileList.size(); i++) {
 				FileItem item=fileList.get(i);
-				System.out.println("아이템"+item.toString());
 				if (item.isFormField()) {
-					String param=item.getString("utf-8");
-//					System.out.println(param);
-					switch(i) {
-					case 0:
+					String fieldName=item.getFieldName();
+					switch(fieldName) {
+					case "productName":
 						productName=item.getString("utf-8");
 						break;
-					case 1:
+					case "maker":
 						maker=item.getString("utf-8");
 						break;
-					case 2:
+					case "price":
 						price=Integer.parseInt(item.getString("utf-8"));
 						break;
-					case 3:
+					case "amount":
 						amount=Integer.parseInt(item.getString("utf-8"));
 						break;
-					case 4:
+					case "categoryName":
 						categoryName=item.getString("utf-8");
 						break;
-					case 5:
+					case "productDesc":
 						productDesc=item.getString("utf-8");
 						break;
 					}
@@ -100,13 +93,12 @@ public class ProductUploadActionController implements Controller {
 					imageName = item.getName();
 					images.add(new Images(imageName, productId, path, 0));
 
-					// 업로드된 파일을 서버의 특정 디렉토리에 저장
+					// 업로드된 파일을 서버의 특정 디렉토리에 쓰기
 					File saveFile = new File(fileRepository + imageName);
 					item.write(saveFile);
 				}
 			}
 				Product product =new Product(0, productName, categoryName, maker, productDesc, "", price, amount, 0);
-				System.out.println(product);
 
 				productService.create(product);
 				productId=productService.getNewProductId();
@@ -123,9 +115,5 @@ public class ProductUploadActionController implements Controller {
 		mav.setView("/admin/");
 
 		return mav;
-
-
-
 	}
-
 }

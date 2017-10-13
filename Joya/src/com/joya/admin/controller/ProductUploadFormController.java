@@ -14,9 +14,9 @@ import com.joya.common.controller.ModelAndView;
 
 
 /**
- * 
+ * 상품 업로드 폼 입력 페이지
+ * 현재 DB에 있는 카테고리를 조회 후 전달
  * @author 김형주
- *
  */
 public class ProductUploadFormController implements Controller {
 	private CategoryService categoryService=new CategoryServiceImpl();

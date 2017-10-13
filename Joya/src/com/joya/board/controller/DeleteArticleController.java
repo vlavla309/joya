@@ -11,7 +11,10 @@ import com.joya.article.service.ArticleService;
 import com.joya.article.service.ArticleServiceImpl;
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
-
+/**
+ * 게시글 삭제 작업
+ * @author 김미소
+ */
 public class DeleteArticleController implements Controller {
 	
 	private ArticleService articleService = new ArticleServiceImpl();
@@ -19,8 +22,6 @@ public class DeleteArticleController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, UnsupportedEncodingException {
-		System.out.println("삭제 컨트롤러*******************");
-		request.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView();
 		
 		int articleId = Integer.parseInt(request.getParameter("articleid"));
@@ -29,16 +30,10 @@ public class DeleteArticleController implements Controller {
 		article.setArticleId(articleId);
 		
 		articleService.delete(article);
-		System.out.println("삭제11111111111");
 		
 		mav.addObject("article", article);
 		mav.setView("redirect:/boards/qnalist.joya");
 		
-		System.out.println("삭제2222222222222");
-		
 		return mav;
-		
-		
 	}
-
 }

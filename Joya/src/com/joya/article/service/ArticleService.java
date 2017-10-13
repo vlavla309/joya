@@ -1,11 +1,14 @@
 package com.joya.article.service;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 import com.joya.article.domain.Article;
 import com.joya.common.web.Params;
 
+/**
+ * 게시글 서비스 인터페이스
+ * @author 김미소
+ */
 public interface ArticleService {
 	
 	/** Q&A, 공지 게시글, A/S, 상품평 게시글 등록 */

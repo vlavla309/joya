@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * °ü¸®ÀÚÀÎÁö ¿©ºÎ È®ÀÎ ÇÊÅÍ
+ * ê´€ë¦¬ìì¸ì§€ ì²´í¬í•˜ëŠ” í•„í„°
+ * @author ê¹€í˜•ì£¼
  */
 public class AdminCheckFilter implements Filter {
 	
@@ -26,12 +27,10 @@ public class AdminCheckFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest)request;
 		HttpServletResponse res=(HttpServletResponse)response;
-		System.out.println("Ã¼Å©");
 		String admin = null;
 
 		Cookie[] cookies = req.getCookies();
 		if (cookies != null) {
-			
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equalsIgnoreCase("admin")) {
 					admin = URLDecoder.decode(cookie.getValue(), "utf-8");

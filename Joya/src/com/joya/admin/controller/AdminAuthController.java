@@ -10,10 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.joya.common.controller.Controller;
 import com.joya.common.controller.ModelAndView;
+import com.joya.common.web.Delimiter;
 import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * ê´€ë¦¬ìí˜ì´ì§€ ë¡œê·¸ì¸ ì‘ì—…
+ * @author ê¹€í˜•ì£¼
+ */
 public class AdminAuthController implements Controller {
 
 	private UserService userService = new UserServiceImpl();
@@ -25,19 +30,21 @@ public class AdminAuthController implements Controller {
 		ModelAndView mav = new ModelAndView();
 		String location = "/admin/index.joya";
 		
-		// PostÀÇ °æ¿ì ·Î±×ÀÎ
+		// Postì¼ ê²½ìš° ë¡œê·¸ì¸ ì‘ì—…
 		if(request.getMethod().equalsIgnoreCase("post")) {
 			String email = request.getParameter("email");
 			String passwd = request.getParameter("passwd");
-
+			
+			//íšŒì› ì—¬ë¶€ë¥¼ í™•ì¸
 			User user = userService.isMember(email, passwd);
 			if(user != null){
 				if(user.getType()==USER_ADMIN){	
 					String adminInfo = null;
 					try {
-						adminInfo = URLEncoder.encode(user.getEmail() + "###" + user.getName(), "utf-8");
+						//
+						adminInfo = URLEncoder.encode(user.getEmail() + Delimiter.USER_INFO + user.getName(), "utf-8");
 					} catch (UnsupportedEncodingException e) {
-						throw new ServletException("AdminAuthController.handleRequest() Áß ¿¹¿Ü ¹ß»ı", e);
+						throw new ServletException("AdminAuthController.handleRequest() ì‹¤í–‰ ì¤‘ ì˜ˆì™¸ ë°œìƒ..", e);
 					}
 					Cookie loginCookie = new Cookie("admin", adminInfo);
 					loginCookie.setPath("/");
@@ -46,7 +53,7 @@ public class AdminAuthController implements Controller {
 			} else {
 				location = "/admin/login.joya?status=err";
 			}
-		}else {// Get ¹æ½ÄÀÏ °æ¿ì ·Î±×¾Æ¿ô
+		}else {// Getë°©ì‹ì¼ ê²½ìš° ë¡œê·¸ì•„ì›ƒ
 			Cookie[] cookies = request.getCookies();
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {

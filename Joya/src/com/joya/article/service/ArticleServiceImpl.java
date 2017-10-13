@@ -8,6 +8,10 @@ import com.joya.article.domain.Article;
 import com.joya.common.db.DaoFactory;
 import com.joya.common.web.Params;
 
+/**
+ * 게시글 서비스 구현
+ * @author 김미소
+ */
 public class ArticleServiceImpl implements ArticleService {
 	
 	ArticleDao dao = (ArticleDao) DaoFactory.getInstance().getDao(JdbcArticleDao.class);
@@ -69,12 +73,4 @@ public class ArticleServiceImpl implements ArticleService {
 		
 		return dao.searchReview(productId, email, boardId);
 	}
-
-
-
-
-	
-	
-	
-
 }
