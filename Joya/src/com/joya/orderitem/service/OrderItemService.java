@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.joya.orderitem.domain.OrderItems;
 
+/**
+ * 
+ * @author 김형주
+ *
+ */
 public interface OrderItemService {
 
 	public void create(OrderItems orderItem);

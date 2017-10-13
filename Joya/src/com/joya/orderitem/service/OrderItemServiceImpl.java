@@ -6,6 +6,10 @@ import com.joya.common.db.DaoFactory;
 import com.joya.orderitem.dao.JdbcOrderItemDao;
 import com.joya.orderitem.domain.OrderItems;
 
+/**
+ * @author 김형주
+ *
+ */
 public class OrderItemServiceImpl implements OrderItemService {
 	JdbcOrderItemDao itemDao=(JdbcOrderItemDao) DaoFactory.getInstance().getDao(JdbcOrderItemDao.class);
 	@Override

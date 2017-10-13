@@ -1,5 +1,10 @@
 package com.joya.order.domain;
 
+/**
+ * order domain
+ * @author 김형주
+ *
+ */
 public class Orders {
 	private int orderId;
 	private String email;

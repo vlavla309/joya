@@ -5,6 +5,10 @@ import com.joya.common.web.Params;
 import com.joya.order.domain.Orders;
 
 
+/**
+ * @author 김형주
+ *
+ */
 public interface OrderDao {
 	
 	public void create(Orders order);

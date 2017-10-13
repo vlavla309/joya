@@ -16,6 +16,10 @@ import com.joya.order.domain.Orders;
 import com.joya.orderitem.domain.OrderItems;
 import com.joya.product.dao.JdbcProductDao;
 
+/**
+ * @author 김형주
+ *
+ */
 public class JdbcOrderItemDao implements OrderItemDao {
 	private DataSource dataSource;
 
@@ -31,7 +35,6 @@ public class JdbcOrderItemDao implements OrderItemDao {
 
 	@Override
 	public void create(OrderItems orderItem) {
-		System.out.println(orderItem);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -114,17 +117,6 @@ public class JdbcOrderItemDao implements OrderItemDao {
 	public OrderItems search(int orderid, int productid) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	public static void main(String[] args) {
-		JdbcOrderItemDao item=(JdbcOrderItemDao) DaoFactory.getInstance().getDao(JdbcOrderItemDao.class);
-		
-		List<OrderItems> list = item.listByOrderID(9);
-		
-		for (OrderItems orderItems : list) {
-			System.out.println(orderItems);
-		}
-		
 	}
 
 }
