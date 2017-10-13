@@ -13,9 +13,9 @@ import com.joya.wishlist.service.WishlistService;
 import com.joya.wishlist.service.WishlistServiceImpl;
 
 /**
- * ���ø���Ʈ ���� ��Ʈ�ѷ�
+ * 위시리스트 생성 컨트롤러
  *
- * @author �Ѽ���
+ * @author 정지현
  *
  */
 public class WishlistCreateController implements Controller{
@@ -32,8 +32,6 @@ public class WishlistCreateController implements Controller{
 		
 		wishlistService.insert((String) request.getAttribute("email"), productId);
 		url = request.getHeader("REFERER");
-		System.out.println("이전페이지 url 출력해보기 : "+url);
-			
 
 		mav.setView("redirect:"+url);
 		return mav;

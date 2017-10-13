@@ -1,5 +1,10 @@
 package com.joya.orderitem.domain;
 
+/**
+ * orderItems domain
+ * @author 김형주
+ *
+ */
 public class OrderItems {
 	
 	private int productId;

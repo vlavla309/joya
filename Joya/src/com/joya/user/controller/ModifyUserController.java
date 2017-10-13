@@ -39,8 +39,11 @@ public class ModifyUserController implements Controller {
 		String address3 = request.getParameter("address3");
 		String address = address1 + Delimiter.USER_INFO + address2 + Delimiter.USER_INFO + address3;
 		
-		User user = new User(email, phone, name, passwd, address, birthdate);
-		
+		User user = userService.read(email);
+		user.setAddress(address);
+		user.setBirthdate(birthdate);
+		user.setName(name);
+		user.setPhone(phone);
 		userService.modify(user);
 		
 		mav.setView(request.getContextPath() + "/mypage/main.joya");

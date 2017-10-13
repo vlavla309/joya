@@ -1,8 +1,14 @@
 package com.joya.visitlog.domain;
 
+/**
+ * 방문자 로그
+ * @author 김형주
+ *
+ */
 public class VisitLog {
 	private String ip;
 	private String visitDate;
+	
 	public String getIp() {
 		return ip;
 	}

@@ -18,6 +18,5 @@ public class VisitLogServiceImpl implements VisitLogService{
 	
 	public static void main(String[] args) {
 		VisitLogServiceImpl ser=new VisitLogServiceImpl();
-		System.out.println(ser.countVisitor("2011-12-27"));
 	}
 }

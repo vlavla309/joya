@@ -372,7 +372,8 @@ public class JdbcUserDao implements UserDao{
 
 		return new User(email, phone, name, passwd, address, point, birthdate, type, regdate);
 	}
-
+	
+// 회원 포인트 수정
 	@Override
 	public void pointmodify(String email, int poiont) {
 		Connection con = null;
@@ -398,40 +399,6 @@ public class JdbcUserDao implements UserDao{
 				if(con != null) con.close();
 			} catch(SQLException e) {}
 		}
-	}
-	
-	public static void main(String[] args) {
-		JdbcUserDao userDao=(JdbcUserDao) DaoFactory.getInstance().getDao(JdbcUserDao.class);
-		
-		/*userDao.pointmodify("joa@joa.com", 100000);*/
-		System.out.println("성공");
-		/*System.out.println(userDao.read("ema232il@gmail.com"));*/
-
-		/*userDao.create(new User("dsf@gmail.com", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
-		System.out.println("가입 성공");*/
-		
-		/*System.out.println("삭제 준비");
-		userDao.delete("dsf@gmail.com");
-		System.out.println("삭제 성공");
-		*/
-		
-		/*System.out.println("인증 준비");
-		System.out.println(userDao.isMember("joa@joa52", "2222"));
-		System.out.println("인증 성공");*/
-		
-		/*System.out.println("수정 준비");
-		userDao.modify(new User("joa@joa52", "010-2222-2222", "아무개", "2222", "서울시 강북구", "2000-11-11"));
-		System.out.println("수정 성공");*/
-		
-	/*	Params params = new Params();
-		List<User> users=userDao.listByParams(params);
-		for (User user : users) {
-			System.out.println(user);
-		}
-		System.out.println(userDao.pageCount(params));
-		
-		System.out.println(userDao.read("joa@joa"));
-		System.out.println(userDao.read("admin@joa"));*/
 	}
 	
 }

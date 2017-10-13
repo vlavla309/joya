@@ -3,7 +3,12 @@ package com.joya.product.dao;
 import java.util.List;
 import com.joya.common.web.Params;
 import com.joya.product.domain.Product;
-
+/**
+ * 상품 Dao interface
+ *
+ * @author 한수진
+ *
+ */
 public interface ProductDao {
 	//create, update, list
 	

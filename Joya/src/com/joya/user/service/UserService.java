@@ -27,7 +27,8 @@ public interface UserService {
 
 //	페이징
 	public int pageCount(Params params);
-	
+
+//  포인트 수정
 	public void pointmodify(String email, int poiont);
 	
 }

@@ -7,7 +7,12 @@ import com.joya.common.web.Params;
 import com.joya.product.dao.JdbcProductDao;
 import com.joya.product.dao.ProductDao;
 import com.joya.product.domain.Product;
-
+/**
+ *
+ *
+ * @author 한수진
+ *
+ */
 public class ProductServiceImpl implements ProductService {
 	
 	ProductDao productDao=(ProductDao) DaoFactory.getInstance().getDao(JdbcProductDao.class);
@@ -46,11 +51,4 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.getNewProductId();
 	}
 	
-	public static void main(String[] args) {
-		ProductServiceImpl pro=new ProductServiceImpl();
-		List<Product> pros=pro.listByParams(new Params(), "����", "hitProduct");
-		for (Product product : pros) {
-			System.out.println(product);
-		}
-	}
 }

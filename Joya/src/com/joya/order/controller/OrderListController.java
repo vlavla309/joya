@@ -14,7 +14,11 @@ import com.joya.common.web.Params;
 import com.joya.order.domain.Orders;
 import com.joya.order.service.OrderService;
 import com.joya.order.service.OrderServiceImpl;
-
+/**
+ * 
+ * @author 한수진
+ *
+ */
 public class OrderListController implements Controller {
 	private OrderService orderServ=new OrderServiceImpl();
 	
@@ -48,11 +52,6 @@ public class OrderListController implements Controller {
 		PageBuilder pageBuilder=new PageBuilder(params, orderServ.pageCount(params, status));
 		pageBuilder.build();
 		
-//		System.out.println("status "+status);
-/*		for (Orders order : orders) {
-			System.out.println("[hihi]"+order);
-		}
-*/		
 		if(status!=null) {
 			mav.addObject("status", status);
 		}else mav.addObject("status", "전체");

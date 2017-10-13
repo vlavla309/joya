@@ -15,6 +15,10 @@ import com.joya.common.web.Params;
 import com.joya.order.domain.Orders;
 import com.joya.product.domain.Product;
 
+/**
+ * @author 김형주
+ *
+ */
 public class JdbcOrderDao implements OrderDao {
 	private DataSource dataSource;
 
@@ -28,7 +32,6 @@ public class JdbcOrderDao implements OrderDao {
 
 	@Override
 	public void create(Orders order) {
-		System.out.println(order);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -211,7 +214,6 @@ public class JdbcOrderDao implements OrderDao {
 		sb.append("                ORDER  BY order_id DESC)) ");
 		sb.append(" WHERE  request_page = ?");
 
-		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -349,7 +351,6 @@ public class JdbcOrderDao implements OrderDao {
 		
 		}
 		
-		System.out.println(sb.toString());
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
@@ -380,24 +381,5 @@ public class JdbcOrderDao implements OrderDao {
 		return count;
 	}
 
-	public static void main(String[] args) {
-		JdbcOrderDao dao=(JdbcOrderDao) DaoFactory.getInstance().getDao(JdbcOrderDao.class);
-
-		/*Params param=new Params();
-		param.setPageSize(50);
-		param.setType("email");
-		param.setValue("joa1");
-		List<Orders> orders=new ArrayList<Orders>();
-
-		System.out.println(dao.pageCount(param, null));
-		orders=dao.listByParam(param, null);
-		for (Orders order : orders) {
-			System.out.println(order);
-		}*/
-		
-		Orders order = dao.search("142", "ttt@naver.com");
-		System.out.println(order);
-		
-	}
 }
 
