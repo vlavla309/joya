@@ -26,7 +26,13 @@ import com.joya.user.domain.User;
 import com.joya.user.service.UserService;
 import com.joya.user.service.UserServiceImpl;
 
+/**
+ * 주문 생성 컨트롤러
+ * @author 김형주
+ *
+ */
 public class CreateOrderActionController implements Controller {
+	
 	OrderService orderServ=new OrderServiceImpl();
 	OrderItemService orderItemServ=new OrderItemServiceImpl();
 	ProductService productServ=new ProductServiceImpl();
@@ -103,11 +109,15 @@ public class CreateOrderActionController implements Controller {
 			/* 주문 수량과 단가를 곱하고 누적해서 주문 상품들에 대한 총 가격을 계산. */
 			price+=orderItem.getAmount()*product.getPrice();
 		}
-
+		
+		// 비회원 일 경우 이메일 처리
 		Orders order=new Orders();
 		if(userEmail!=null) {
 			order.setEmail(email);
 		}else {
+			// 기존 email테이블은 user의 email과 참조관계가 있어서 임의로 비회원 계정(anonymous@joa.com)을 만들어놓았다.
+			// order의 email 필드에 비회원계정인 anonymous@joa.com을 넣고, 
+			//비회원 사용자가 입력한 guest email을 gst email 필드에 저장한다.
 			order.setEmail("anonymous@joa.com");
 			order.setGstEmail(email);
 		}
@@ -137,7 +147,6 @@ public class CreateOrderActionController implements Controller {
 			User user=userServ.read(email);
 			int curPoint=user.getPoint();
 			user.setPoint(curPoint-usedpoint);
-			System.out.println(user);
 			userServ.modify(user);
 			
 		}
