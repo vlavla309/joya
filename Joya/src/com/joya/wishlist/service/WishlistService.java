@@ -7,23 +7,24 @@ import com.joya.wishlist.domain.Wishlist;
 
 public interface WishlistService {
 	
-	/** ���ø���Ʈ�� ��� */
+	/** 위시리스트 insert */
 	public void insert(String userEmail,  int productId);
 	
-	/** ���ø���Ʈ ��ü ��� ��ȯ */
+	/** 사용자 별 위시리스트 리스트 */
 	public List<Wishlist> listAll(String userEmail);
 	
-	/** ��ǰ ��Ͽ� ���ø���Ʈ ��ü ��� ��ȯ */
+	/** 위시리스트 전체 보기 */
 	public List<Wishlist> listAll();
 	
-	/** ���ø���Ʈ ��Ͽ��� ���� */
+	/** 위시리스트 삭제 */
 	public boolean delete(String userEmail,  int productId);
 	
-	/** ���� �������� ���� ���ø���Ʈ ��ȯ */
+	/** 사용자 별 위시리스트 리스트 & 페이징 */
 	public List<Wishlist> listByPage(String email, int pageNum);
 	
-	/** {����������, ���������� ��� ���}�� ���� ���ø���Ʈ ��ȯ */
+	/** 사용자 별 위시리스트 리스트 & 페이징 */
 	public List<Wishlist> listByParams(String userEmail, Params params);
 	
+	/**  */
 	public Wishlist read(String userEmail, int productId);
 }

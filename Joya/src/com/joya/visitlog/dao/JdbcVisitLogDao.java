@@ -10,6 +10,11 @@ import javax.sql.DataSource;
 import com.joya.common.db.DaoFactory;
 import com.joya.common.exception.MallException;
 
+/**
+ * Î∞©Î¨∏Ïûê Î°úÍ∑∏ Dao
+ * @author ÍπÄÌòïÏ£º
+ *
+ */
 public class JdbcVisitLogDao implements VisitLogDao{
 	private DataSource dataSource;
 
@@ -29,6 +34,7 @@ public class JdbcVisitLogDao implements VisitLogDao{
 		this.dataSource = dataSource;
 	}
 	
+	/** Î∞©Î¨∏Ïûê Î°úÍ∑∏ ÏÉùÏÑ± */
 	@Override
 	public void create(String ip) {
 		Connection con = null;
@@ -51,8 +57,8 @@ public class JdbcVisitLogDao implements VisitLogDao{
 			try {
 				con.rollback();
 			} catch (SQLException e1) {}
-				System.out.println("¡¢º”±‚ ∑œ Ω«∆–");
-				//throw new MallException("JdbcUserDao.create(User user)Ω««‡ ¡ﬂ øπø‹ πﬂª˝", e);
+				//System.out.println("JdbcVisitLog.create()");
+				//throw new MallException("JdbcUserDao.create(User user)", e);
 		} finally {
 			try {
 				if(pstmt != null) pstmt.close();
@@ -60,7 +66,8 @@ public class JdbcVisitLogDao implements VisitLogDao{
 			} catch(SQLException e) {}
 		}
 	}
-
+	
+	/** Î∞©Î¨∏Ïûê count */
 	@Override
 	public int countVisitor(String date) {
 		int count =0;
@@ -88,7 +95,7 @@ public class JdbcVisitLogDao implements VisitLogDao{
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MallException("JdbcVisitLog.countVisitor() ø°∑Øπﬂª˝", e);
+			throw new MallException("JdbcVisitLog.countVisitor()", e);
 		} finally {
 			try {
 				if(rs != null)    rs.close();
@@ -99,8 +106,4 @@ public class JdbcVisitLogDao implements VisitLogDao{
 		return count;
 	}
 	
-	public static void main(String[] args) {
-		JdbcVisitLogDao vDao = (JdbcVisitLogDao) DaoFactory.getInstance().getDao(JdbcVisitLogDao.class);
-		System.out.println(vDao.countVisitor("2011-12-27"));
-	}
 }

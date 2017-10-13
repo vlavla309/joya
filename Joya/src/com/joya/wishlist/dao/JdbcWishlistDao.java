@@ -341,7 +341,7 @@ public class JdbcWishlistDao implements WishlistDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new MallException("JdbcProductDao.read(String productId) �떎�뻾 以� �삁�쇅諛쒖깮", e);
+			throw new MallException("JdbcProductDao.read(String productId) 위시리트스", e);
 		} finally {
 			try {
 				if (rs != null)
@@ -354,12 +354,6 @@ public class JdbcWishlistDao implements WishlistDao {
 			}
 		}
 		return wishlist;
-	}
-
-	public static void main(String[] args) {
-		JdbcWishlistDao dao = (JdbcWishlistDao) DaoFactory.getInstance().getDao(JdbcWishlistDao.class);
-		Wishlist wish = dao.read("kkk@naver.com", 22);
-		System.out.println(wish);
 	}
 
 }

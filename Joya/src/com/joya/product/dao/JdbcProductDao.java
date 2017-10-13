@@ -368,28 +368,6 @@ public class JdbcProductDao implements ProductDao{
 		}
 		return newProductId;
 	}
-
-	public static void main(String[] args) {
-
-		JdbcProductDao productDao=(JdbcProductDao) DaoFactory.getInstance().getDao(JdbcProductDao.class);
-
-
-		Params params = new Params();
-		params.setType("name");
-		params.setValue("로즈리");
-		List<Product> products=productDao.listByParams(params, "귀걸이", "newProduct");
-		for (Product product : products) {
-			System.out.println(product);
-		}
-		System.out.println(productDao.pageCount(params, "귀걸이", "newProduct"));
-
-		System.out.println(productDao.read(1));
-
-		System.out.println(productDao.getNewProductId());
-	}
-
-
-
 }
 
 
